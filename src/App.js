@@ -1,23 +1,23 @@
-import './App.css';
+import React from 'react';
+import {
+  BrowserRouter as Router, Route, Switch, Redirect
+} from 'react-router-dom';
+// import { useAuthentication } from "./context/authContext"
+// import { MainContainer } from './styles/styles';
+import { LoggedRoute, NotLoggedRoute } from "./components/routes"
+import Home from './pages/Home';
 
-function App() {
+export function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    // <MainContainer>
+      <Router>
+        <Switch>
+          <Route path="/" exact component={ () => <Redirect to="/app" />} />
+          <NotLoggedRoute path="/app" exact component={Home} />
+        </Switch>
+      </Router>
+    // </MainContainer>
   );
-}
+};
 
-export default App;
+export default App

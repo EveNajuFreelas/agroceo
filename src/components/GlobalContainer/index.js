@@ -1,18 +1,18 @@
-import { Container, Drawer, } from "@material-ui/core";
+import { Container, Drawer } from "@material-ui/core";
 import React, { useState, Fragment } from "react"
 // import { DrawerMenu } from "../../components/DrawerMenu";
-// import { Header } from "../../components/Header";
+import { Header } from "../../components/Header";
 // import clsx from 'clsx';
-// import { useStyles } from "./styles";
+import { useStyles } from "./styles";
 // import { SetProperty } from '../SetProperty'
 // import { usePropertyContext } from "../../context/properties";
 
 export const GlobalContainer = ({ children }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   // const { propertySelected } = usePropertyContext();
-  // const classes = useStyles();
+  const classes = useStyles();
 
-  const toggleDrawer = () => setShowDrawer(state => !state)
+  const toggleDrawer = () => setShowDrawer(state => !state);
   
   return (
     <Fragment>
@@ -37,8 +37,8 @@ export const GlobalContainer = ({ children }) => {
           showDrawer={showDrawer}
           toggleDrawer={toggleDrawer}
         />
-      </Drawer>
-      <Header /> */}
+      </Drawer> */}
+      <Header />
       <Container style={{ paddingTop: 80 }}>
         {children}
       </Container>

@@ -60,11 +60,48 @@ export const defaultTheme = {
       bold: 'Inter-Bold',
       regular: 'Inter-Regular',
     },
+    weight: {
+      thin: 200,
+      normal: 400,
+      bold: 700,
+    },
   },
   fonts: {
     regular: 'Inter-Regular'
   },
   animation: {
     scale: 1.0
-  }
+  },
+  borderRadius: {
+    sm: '2px',
+    md: '5px',
+    lg: '10px',
+    xl: '10em',
+  },
+  padding: {
+    sm: '4px',
+    md: '8px',
+    lg: '12px',
+  },
+  margin: {
+    sm: '4px',
+    md: '8px',
+    lg: '12px',
+  },
+  opacity: {
+    low: '.9',
+    medium: '.5',
+    high: '.2',
+  },
+  border: {
+    buttonSuccess: `2px solid #005500`,
+    buttonError: `2px solid #550000`,
+    header: `1px solid #EBEBEB`,
+  },
+  align: {
+    center: 'center',
+    spaceAround: 'space-around',
+    spaceBetween: 'space-between',
+    flexEnd: 'flex-end',
+  },
 };

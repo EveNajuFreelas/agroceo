@@ -5,7 +5,7 @@ import { ThemeProvider } from 'styled-components';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { defaultTheme } from './theme';
 import App from './App';
-// import { RegisterContainer } from './context/userRegister';
+import { RegisterContainer } from './context/userRegister';
 import './index.css';
 // import { PopoverContainer } from './context/Popover';
 // import { SnackbarProvider } from 'notistack';
@@ -26,7 +26,7 @@ ReactDOM.render(
         {/* <SnackbarProvider maxSnack={3}> */}
           {/* <GlobalLoadingContext.Provider> */}
             <AuthenticationContainer.Provider>
-              {/* <RegisterContainer.Provider> */}
+              <RegisterContainer.Provider>
                 {/* <PopoverContainer.Provider> */}
                   {/* <ListPropertieContext.Provider> */}
                     {/* <PropertyContext.Provider> */}
@@ -34,7 +34,7 @@ ReactDOM.render(
                     {/* </PropertyContext.Provider> */}
                   {/* </ListPropertieContext.Provider> */}
                 {/* </PopoverContainer.Provider> */}
-              {/* </RegisterContainer.Provider> */}
+              </RegisterContainer.Provider>
             </AuthenticationContainer.Provider>
           {/* </GlobalLoadingContext.Provider> */}
         {/* </SnackbarProvider> */}

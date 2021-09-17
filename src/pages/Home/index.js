@@ -1,11 +1,8 @@
-import React from 'react'
+import React from 'react';
+import OverviewFinancial from '../../components/OverviewFinancial';
 
 const Home = () => {
-
-  return (
-    <p>tests Home Page</p>
-  )
-}
-
+	return <OverviewFinancial />;
+};
 
 export default Home;

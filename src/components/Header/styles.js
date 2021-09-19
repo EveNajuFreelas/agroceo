@@ -28,3 +28,22 @@ export const HeaderDate = styled.p`
 export const HeaderInfo = styled.div`
     margin: 0 ${margin.lg};
 `;
+
+export const MenuToggleButton = styled.div`
+  height: 1.5em;
+  width:  2em;
+  display: flex;
+  align-items: ${defaultTheme.align.center};
+  border-radius: ${defaultTheme.borderRadius.md};
+  padding: ${defaultTheme.padding.sm};
+  margin: 1.2em ${defaultTheme.margin.lg};
+  cursor: pointer;
+  
+  &:hover{
+    background-color: ${defaultTheme.colors.greyLight};
+    opacity: .8;
+  }
+  &:active{
+    opacity: .9;
+  }
+`;

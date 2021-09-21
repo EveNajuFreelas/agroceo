@@ -4,8 +4,9 @@ import { defaultTheme } from '../../theme';
 const { align, text, border, margin } = defaultTheme;
 
 export const HeaderStyle = styled.div`
-    display: flex;
-    width: 100%;
+    display: block;
+    right: 0;
+    width: ${props => !props.showDrawer ? '45	px' : '90 % '};
     height: 4em;
     background-color: #fff;
     justify-content: ${align.spaceBetween};

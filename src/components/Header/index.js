@@ -1,12 +1,17 @@
 import React, { useState } from "react";
-import { Select, MenuItem } from "@material-ui/core";
-import { HeaderStyle, HeaderTitle, HeaderDate, HeaderInfo } from "./styles";
+import { MenuItem } from "@material-ui/core";
+import { HeaderStyle, HeaderTitle, HeaderDate, HeaderInfo, StyledSelect } from "./styles";
 
 export const Header = () => {
     const [dropdownValue, setDropdownValue] = useState("Todas as Propriedades");
+    const todayDate = new Date().toLocaleDateString('pt-br', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        timeZone: 'utc'
+    });
 
     const handleDropdown = e => {
-        console.log(e.target.value);
         setDropdownValue(e.target.value);
     }
 
@@ -14,12 +19,12 @@ export const Header = () => {
         <HeaderStyle>
             <HeaderInfo>
                 <HeaderTitle>Oi!</HeaderTitle>
-                <HeaderDate>15 de setembro de 2021</HeaderDate>
+                <HeaderDate>{todayDate}</HeaderDate>
             </HeaderInfo>
-            <Select value={dropdownValue} onChange={handleDropdown}>
+            <StyledSelect value={dropdownValue} onChange={handleDropdown}>
                 <MenuItem value="Todas as Propriedades">Todas as Propriedades</MenuItem>
                 <MenuItem value="prop1">Prop 1</MenuItem>
-            </Select>
+            </StyledSelect>
         </HeaderStyle>
     );
 }

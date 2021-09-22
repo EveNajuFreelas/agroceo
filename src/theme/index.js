@@ -87,6 +87,7 @@ export const defaultTheme = {
     sm: '4px',
     md: '8px',
     lg: '12px',
+    xg: '24px',
   },
   opacity: {
     low: '.9',

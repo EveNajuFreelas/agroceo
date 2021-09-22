@@ -27,12 +27,23 @@ const OverviewFinancial = () => {
 					IconComponent={MdKeyboardArrowDown}
 					labelId='yearLabel'
 					value={2021}
-					color={`${colors.primary}`}
+					backgroundColor={`${colors.primary}`}
 					//onChange={handleChange}
-					label='Ano'
+					label='year'
 				>
 					<MenuItem value={2020}>2020</MenuItem>
 					<MenuItem value={2021}>2021</MenuItem>
+				</Select>
+				<Select
+					IconComponent={MdKeyboardArrowDown}
+					labelId='monthLabel'
+					value={'Setembro'}
+					color={`${colors.primary}`}
+					//onChange={handleChange}
+					label='month'
+				>
+					<MenuItem value={'outubro'}>outubro</MenuItem>
+					<MenuItem value={'novembro'}>novembro</MenuItem>
 				</Select>
 			</FilterFinancial>
 			<CardTab>

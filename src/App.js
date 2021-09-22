@@ -6,8 +6,8 @@ import {
 	Redirect,
 } from 'react-router-dom';
 import { MainContainer, theme } from './styles/styles';
-import { LoggedRoute, NotLoggedRoute } from './components/routes';
-import Home from './pages/Home';
+import { LoggedRoute, NotLoggedRoute } from './routes';
+import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
 import { ThemeProvider } from '@material-ui/styles';
 
@@ -27,7 +27,11 @@ export function App() {
 							exact
 							component={Login}
 						/>
-						<NotLoggedRoute path='/app' exact component={Home} />
+						<NotLoggedRoute
+							path='/app'
+							exact
+							component={Dashboard}
+						/>
 					</Switch>
 				</Router>
 			</MainContainer>

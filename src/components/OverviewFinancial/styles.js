@@ -22,6 +22,7 @@ export const FilterFinancial = styled.span`
 	display: flex;
 	align-items: center;
 	gap: 25px;
+	margin-bottom: ${margin.lg};
 `;
 
 export const FilterLabel = styled.span``;

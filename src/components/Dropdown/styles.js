@@ -36,7 +36,6 @@ export const DropdownTitleWrapper = styled.div`
 	transition: width 0.4s ease - out;
 	box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 	width: ${props => !props.showDrawer ? '40px' : '90%'};
-
 `;
 
 export const DropdownBodyContainer = styled.div`
@@ -87,11 +86,10 @@ export const DropRight = styled.div`
 	display: block;
 	left: 0;
 	width: 220px;
-	width: ${props => !props.isOpen ? '220px' : '80px'};
 	transition: width 0.4s ease-out;
 	height: 100%;
 	padding:  ${defaultTheme.padding.sm} 0 ${defaultTheme.padding.sm} ${defaultTheme.padding.sm};
 	border-radius: 0 ${defaultTheme.borderRadius.lg} ${defaultTheme.borderRadius.lg} 0;
-	z-index: 12;
+	z-index: 15;
 	background-color: red;
 `;

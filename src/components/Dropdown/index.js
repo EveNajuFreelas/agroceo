@@ -4,7 +4,6 @@ import { Icon } from "../Icons";
 import { iconList } from '../Icons/icon-list';
 import { Link } from "react-router-dom";
 import {
-  DropRight,
   DropdownTextWrapper,
   DropdownWrapper,
   DropdownItemText,
@@ -15,18 +14,13 @@ import {
 } from "./styles";
 
 
-export const Dropdown = ({ defaultValue, items, icon , isOpen}) => {
+export const Dropdown = ({ defaultValue, items, icon, isOpen }) => {
   const [isShow, setIsShow] = useState(false)
 
   const handleShowMenu = () => setIsShow((isShow) => !isShow);
 
-  /*return(
-    <DropRight>
-
-    </DropRight>
-  )*/
   return (
-    <DropdownWrapper  isShow={isShow}>
+    <DropdownWrapper isShow={isShow}>
       <DropdownButtonWrapper onClick={handleShowMenu} >
         {icon}
         <DropdownTextWrapper isOpen={isOpen}>
@@ -44,8 +38,8 @@ export const Dropdown = ({ defaultValue, items, icon , isOpen}) => {
             items.map((item) => (
               <DropdownMenuBody>
                 <Icon name={Object.values(iconList).find(e => e.render?.name === `Svg${item}`)} size={30} color='white'></Icon>
-                <Link to={ item.url }>
-                  <DropdownItemText >{item.text }</DropdownItemText>
+                <Link to={item.url}>
+                  <DropdownItemText >{item.text}</DropdownItemText>
                 </Link>
               </DropdownMenuBody>
             ))

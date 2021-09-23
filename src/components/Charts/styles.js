@@ -9,7 +9,6 @@ const ChartSection = styled.div`
 `;
 
 const TitleSection = styled.span`
-	font-family: 'Inter';
 	font-size: ${text.size.large};
 	color: ${colors.neutralDark};
 `;

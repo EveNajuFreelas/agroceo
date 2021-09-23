@@ -14,7 +14,6 @@ import CardListItem from './CardListItem';
 import Despesas from '../../utils/image/Despesas.svg';
 import Receitas from '../../utils/image/Receitas.svg';
 import Investimentos from '../../utils/image/Investimentos.svg';
-import { MdKeyboardArrowDown } from 'react-icons/md';
 import { defaultTheme } from '../../theme';
 const { colors } = defaultTheme;
 
@@ -24,7 +23,6 @@ const OverviewFinancial = () => {
 			<FilterFinancial>
 				<FilterLabel>Financeiro</FilterLabel>
 				<Select
-					IconComponent={MdKeyboardArrowDown}
 					labelId='yearLabel'
 					value={2021}
 					backgroundColor={`${colors.primary}`}
@@ -35,7 +33,6 @@ const OverviewFinancial = () => {
 					<MenuItem value={2021}>2021</MenuItem>
 				</Select>
 				<Select
-					IconComponent={MdKeyboardArrowDown}
 					labelId='monthLabel'
 					value={'Setembro'}
 					color={`${colors.primary}`}

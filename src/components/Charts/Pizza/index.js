@@ -1,5 +1,5 @@
 import React from 'react';
-import { Doughnut } from 'react-chartjs-2';
+import { Bar, Doughnut, Pie } from 'react-chartjs-2';
 import { ChartSection, PaperChart, TitleSection } from '../styles';
 import { PizzaContainer } from './styles';
 import { demandas } from '../../../utils/dataMock/mock';
@@ -8,19 +8,22 @@ const PizzaChart = () => {
 	const options = {
 		plugins: {
 			legend: {
+				maxWidth: 100,
 				display: true,
 				position: 'right',
-				align: 'start',
+				align: 'center',
 				labels: {
 					usePointStyle: true,
 					pointStyle: 'circle',
-					boxWidth: 20,
 				},
 			},
 		},
 		rotation: 90,
-		borderWidth: 8,
-		aintainAspectRatio: true,
+		borderWidth: 6,
+		cutout: 120,
+		radius: 160,
+		responsive: true,
+		maintainAspectRatio: false,
 	};
 
 	return (
@@ -28,12 +31,7 @@ const PizzaChart = () => {
 			<TitleSection>Demandas</TitleSection>
 			<PaperChart>
 				<PizzaContainer>
-					<Doughnut
-						height={'400px'}
-						width={'400px'}
-						data={demandas}
-						options={options}
-					/>
+					<Doughnut data={demandas} options={options} />
 				</PizzaContainer>
 			</PaperChart>
 		</ChartSection>

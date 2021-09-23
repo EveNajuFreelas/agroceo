@@ -3,11 +3,13 @@ import { iconList } from '../Icons/icon-list';
 
 export const menuItems = [
         {
+            id: 1,
             name: 'Inicio',
             icon: <Icon name={iconList.finance} size={25} color='white'></Icon>,
             url: "/app",
         },
         {
+            id: 2,
             name: 'Financeiro',
             icon: <Icon name={iconList.finance} size={25} color='white'></Icon>,
             url: "/app",
@@ -23,6 +25,7 @@ export const menuItems = [
             }]
         },
         {
+            id: 3,
             name: 'Manejo',
             icon: <Icon name={iconList.farm} size={25}></Icon>,
             url: "/app",
@@ -51,7 +54,9 @@ export const menuItems = [
                 text: 'Demandas',
                 url: "/app/pessoas/obrigacao",
             }]
-        }, {
+        }, 
+        {
+            id: 4,
             name: 'Relatórios',
             icon: <Icon name={iconList.farm} size={25}></Icon>,
             url: "/",
@@ -65,7 +70,9 @@ export const menuItems = [
                 name: "Propriedades",
                 url: "/app/propriedades"
             }]
-        }, {
+        }, 
+        {
+            id: 5,
             name: 'Configurações',
             icon: <Icon name={iconList.farm} size={25}></Icon>,
             url: "/",

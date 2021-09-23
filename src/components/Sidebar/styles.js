@@ -34,8 +34,6 @@ export const SidebarListItem = styled.span`
 	left: ${props => !props.isOpen ? '55px' : '-200%'};
 	flex: 0;
 	font-size: ${defaultTheme.text.size.medium};
-	font-family: ${defaultTheme.text.fontFamily.regular};
-	font-weight: ${defaultTheme.text.fontFamily.bold};
 	color: ${defaultTheme.colors.neutral0};
 	border-radius: ${defaultTheme.borderRadius.md};
 	margin-left: ${defaultTheme.margin.lg};
@@ -50,8 +48,6 @@ export const SidebarTitle = styled.span`
 	display: block;
 	top: 25px;
 	font-size: ${defaultTheme.text.size.h5};
-	font-family: ${defaultTheme.text.fontFamily.regular};
-	font-weight: ${defaultTheme.text.fontFamily.bold};
 	color: ${defaultTheme.colors.neutral0};
 	border-radius: ${defaultTheme.borderRadius.md};
 	margin-left: ${defaultTheme.margin.lg};

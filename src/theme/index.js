@@ -18,6 +18,7 @@ export const defaultTheme = {
     neutral4: '#7C7B7B',
     neutral5: '#212121',
     neutral6: '#A3A3A3',
+    green: '#03B562',
     events: {
       onPrimary: '#FFFFFF',
       onPrimaryVariant: '#FFFFFF',
@@ -87,6 +88,7 @@ export const defaultTheme = {
     sm: '4px',
     md: '8px',
     lg: '12px',
+    xg: '24px',
   },
   opacity: {
     low: '.9',

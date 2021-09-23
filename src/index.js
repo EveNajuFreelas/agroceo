@@ -13,6 +13,7 @@ import { AuthenticationContainer } from './context/authContext';
 // import { PropertyContext } from './context/properties';
 // import { ListPropertieContext } from './context/properties/list';
 // import { GlobalLoadingContext } from "./context/loader"
+import './i18n';
 
 const queryClient = new QueryClient();
 

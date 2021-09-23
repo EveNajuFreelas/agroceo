@@ -1,25 +1,53 @@
-import React, { useState } from "react";
-import { Select, MenuItem } from "@material-ui/core";
-import { HeaderStyle, HeaderTitle, HeaderDate, HeaderInfo } from "./styles";
+import { Button } from "@material-ui/core";
+import { AddCircleOutline } from '@material-ui/icons';
+import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import { HeaderStyle, HeaderTitle, HeaderDate, HeaderInfo, StyledSelect, StyledMenuItem } from "./styles";
+
+const mockProperties = [
+    {
+        value: 'all',
+        title: 'Todas as propriedades',
+    }, {
+        value: 'prop1',
+        title: 'Prop 1',
+    }, {
+        value: 'prop2',
+        title: 'Prop 2',
+    }
+]
 
 export const Header = () => {
-    const [dropdownValue, setDropdownValue] = useState("Todas as Propriedades");
+    const { t } = useTranslation()
+    const [dropdownValue, setDropdownValue] = useState(mockProperties.length > 0 ? mockProperties[0].value : 'none');
+
+    const todayDate = new Date().toLocaleDateString(t("date"), {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        timeZone: 'utc'
+    });
 
     const handleDropdown = e => {
-        console.log(e.target.value);
         setDropdownValue(e.target.value);
     }
 
     return (
         <HeaderStyle>
             <HeaderInfo>
-                <HeaderTitle>Oi!</HeaderTitle>
-                <HeaderDate>15 de setembro de 2021</HeaderDate>
+                <HeaderTitle>{t('greeting')}</HeaderTitle>
+                <HeaderDate>{todayDate}</HeaderDate>
             </HeaderInfo>
-            <Select value={dropdownValue} onChange={handleDropdown}>
-                <MenuItem value="Todas as Propriedades">Todas as Propriedades</MenuItem>
-                <MenuItem value="prop1">Prop 1</MenuItem>
-            </Select>
+            <StyledSelect 
+                value={dropdownValue} 
+                onChange={handleDropdown}
+            >
+                {mockProperties.length > 0 
+                    ? mockProperties.map(prop => (
+                        <StyledMenuItem value={prop.value}>{prop.title}</StyledMenuItem>
+                    )) 
+                    : <StyledMenuItem value="none">Nenhuma propriedade cadastrada.</StyledMenuItem>}                
+            </StyledSelect>
         </HeaderStyle>
     );
 }

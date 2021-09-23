@@ -1,6 +1,7 @@
 import { Button } from "@material-ui/core";
 import { AddCircleOutline } from '@material-ui/icons';
 import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { HeaderStyle, HeaderTitle, HeaderDate, HeaderInfo, StyledSelect, StyledMenuItem } from "./styles";
 
 const mockProperties = [
@@ -17,9 +18,10 @@ const mockProperties = [
 ]
 
 export const Header = () => {
+    const { t } = useTranslation()
     const [dropdownValue, setDropdownValue] = useState(mockProperties.length > 0 ? mockProperties[0].value : 'none');
 
-    const todayDate = new Date().toLocaleDateString('pt-br', {
+    const todayDate = new Date().toLocaleDateString(t("date"), {
         year: 'numeric',
         month: 'long',
         day: 'numeric',
@@ -33,7 +35,7 @@ export const Header = () => {
     return (
         <HeaderStyle>
             <HeaderInfo>
-                <HeaderTitle>Oi!</HeaderTitle>
+                <HeaderTitle>{t('greeting')}</HeaderTitle>
                 <HeaderDate>{todayDate}</HeaderDate>
             </HeaderInfo>
             <StyledSelect 

@@ -3,11 +3,9 @@ import { defaultTheme } from '../../theme';
 
 export const DropdownTextWrapper = styled.div`
 	position: fixed;
-	left: ${props => !props.isOpen ? '5%' : '-200%'};
+	left: ${props => !props.isOpen ? '55px' : '-200%'};
 	flex: 0;
 	font-size: ${defaultTheme.text.size.medium};
-	font-family: ${defaultTheme.text.fontFamily.regular};
-	font-weight: ${defaultTheme.text.fontFamily.bold};
 	color: ${defaultTheme.colors.neutral0};
 	border-radius: ${defaultTheme.borderRadius.md};
 	margin-left: ${defaultTheme.margin.lg};
@@ -75,8 +73,6 @@ export const DropdownIconOptionWrapper = styled.div`
 
 export const DropdownItemText = styled.span`
 	font-size: ${defaultTheme.text.size.normal};
-	font-family: ${defaultTheme.text.fontFamily.regular};
-	font-weight: ${defaultTheme.text.fontFamily.bold};
 	color: ${defaultTheme.colors.neutral0};
 	border-radius: ${defaultTheme.borderRadius.md};
 	margin-left: ${defaultTheme.margin.lg};

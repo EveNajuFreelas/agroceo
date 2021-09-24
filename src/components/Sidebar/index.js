@@ -4,11 +4,12 @@ import { Icon } from "../Icons";
 import { iconList } from '../Icons/icon-list';
 import { useHistory } from "react-router-dom"
 import { menuItems } from '../SidebarList/index';
+import { Dropdown } from '../Dropdown/index';
 import SidebarDropRight from '../SidebarDropRight/index';
 import {
-    SidebarDiv, 
-    ListItemWrapper, 
-    SidebarListItem, 
+    SidebarDiv,
+    ListItemWrapper,
+    SidebarListItem,
     SidebarTitle,
     DropRightIconOptionWrapper
 } from "./styles";
@@ -17,13 +18,24 @@ export const Sidebar = ({ showDrawer }) => {
     const history = useHistory();
     const [isOpen, setActive] = useState(false);
     const [isHovering, setIsHovering] = useState(false);
-    const [menuItemsId, setmenuItemsId] = useState(2);
+    const [menuItemsId, setmenuItemsId] = useState();
     const [selectedMenuItem, setSelectedMenuItem] = useState([]);
-    
-    useEffect(() => {
+
+    /*useEffect(() => {
         const selectedObj = menuItems.filter(i => i.id === menuItemsId);
         setSelectedMenuItem(selectedObj);
-    }, [menuItemsId !== null]);
+        console.log("selectedMenuItem: " + selectedMenuItem);
+    }, [menuItemsId !== null]);*/
+    
+    const updateSelectedMenuItem = function(e){
+        menuItems.reduce((previousValue, currentValue) => {
+            previousValue = currentValue.id;
+            if (previousValue == e) {
+                return setSelectedMenuItem(currentValue);
+            }
+            return currentValue.id;
+        }, [])
+    };
 
     const toggleDrawer = () => {
         setActive(isOpen => !isOpen);
@@ -32,6 +44,9 @@ export const Sidebar = ({ showDrawer }) => {
     const toggleHovering = (e) => {
         setmenuItemsId(e.target.id);
         setIsHovering(isHovering => !isHovering);
+        if(!isHovering){
+            updateSelectedMenuItem(menuItemsId);
+        }
     };
 
     return (
@@ -48,11 +63,10 @@ export const Sidebar = ({ showDrawer }) => {
                     />);
                 })
 
+                isHovering &&
                 menuItems.reduce((previousValue, currentValue) => {
-                    console.log("previous value " + previousValue);
-                    console.log("current value id " + currentValue.id);
-                    console.log("menuTab id " + menuItemsId);
-                    if (currentValue.id === menuItemsId) {
+                    previousValue = currentValue.id;
+                    if (previousValue == menuItemsId) {
                         console.log("true");
                         return <SidebarDropRight
                             defaultValue={currentValue.name}
@@ -76,11 +90,17 @@ export const Sidebar = ({ showDrawer }) => {
                         item.hasOwnProperty('menuItems') ?
                             <ListItemWrapper isOpen={isOpen} hover key={index} onMouseEnter={toggleHovering}
                                 onMouseLeave={toggleHovering} id={item.id}>
-                                {item.icon}
+                                {/*{item.icon}
                                 <SidebarListItem isOpen={isOpen}>{item.name}</SidebarListItem>
                                 <DropRightIconOptionWrapper>
                                     <Icon name={iconList.expand_more} size={20}></Icon>
-                                </DropRightIconOptionWrapper>
+                                </DropRightIconOptionWrapper>*/}
+                                <Dropdown
+                                    defaultValue={item.name}
+                                    items={item.menuItems}
+                                    icon={item.icon}
+                                    isOpen={isOpen}
+                                />
                             </ListItemWrapper>
                             :
                             <ListItemWrapper onClick={() => history.push(item.url)}>
@@ -90,15 +110,6 @@ export const Sidebar = ({ showDrawer }) => {
                     ))
                 }
             </SidebarDiv>
-            
-            {isHovering &&
-            <SidebarDropRight
-                defaultValue={selectedMenuItem.name}
-                items={selectedMenuItem.menuItems}
-                icon={selectedMenuItem.icon}
-                isOpen={isOpen}
-                isHovering={isHovering}
-            />}
         </div>
     )
 }

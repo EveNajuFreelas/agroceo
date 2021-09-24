@@ -67,7 +67,7 @@ export const menuItems = [
                 text: 'Demandas',
                 url: "/app/pessoas/cadastro"
             }, {
-                name: "Propriedades",
+                text: "Propriedades",
                 url: "/app/propriedades"
             }]
         }, 

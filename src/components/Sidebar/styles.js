@@ -8,9 +8,9 @@ export const SidebarDiv = styled.div`
 	transition: width 0.4s ease-out;
 	height: 100%;
 	padding:  ${defaultTheme.padding.sm} 0 ${defaultTheme.padding.sm} ${defaultTheme.padding.sm};
-	border-radius: 0 ${defaultTheme.borderRadius.lg} ${defaultTheme.borderRadius.lg} 0;
+	border-radius: 0 ${defaultTheme.borderRadius.md} ${defaultTheme.borderRadius.md} 0;
 	z-index: 11;
-	background-color: ${defaultTheme.colors.primary};
+	background-color: ${defaultTheme.colors.green};
 `;
 
 export const ListItemWrapper = styled.div`
@@ -21,9 +21,9 @@ export const ListItemWrapper = styled.div`
 	padding:  ${defaultTheme.padding.lg};
     transition: width 0.4s ease-out;
 	cursor: pointer;	
-	background-color: ${defaultTheme.colors.primary};
+	background-color: ${defaultTheme.colors.green};
 	&:hover{
-		background-color: ${defaultTheme.colors.primaryVariant};
+		background-color: ${defaultTheme.colors.neutral3};
 		margin-right: 0;
 		border-radius: ${defaultTheme.borderRadius.lg} 0 0 ${defaultTheme.borderRadius.lg};
 	}

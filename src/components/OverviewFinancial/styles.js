@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { defaultTheme } from '../../theme';
 
-const { align, text, border, margin } = defaultTheme;
+const { margin } = defaultTheme;
 
 export const OverviewFinancialContainer = styled.div`
 	width: 40%;

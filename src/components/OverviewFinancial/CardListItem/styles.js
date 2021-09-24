@@ -25,20 +25,24 @@ export const Title = styled.span`
 	font-family: ${text.fontFamily.bold};
 	color: ${colors.neutral5};
 `;
+
 export const Subtitle = styled.span`
 	font-size: ${text.size.caption};
 	color: ${colors.neutral6};
 `;
+
 export const ValueSection = styled.div`
 	display: flex;
 	flex-direction: column;
 `;
+
 export const Value = styled.span`
 	font-size: ${text.size.medium};
 	font-family: ${text.fontFamily.bold};
 	color: ${colors.auxiliar};
 	align-self: flex-end;
 `;
+
 export const Date = styled.span`
 	font-size: ${text.size.caption};
 	color: ${colors.neutral5};

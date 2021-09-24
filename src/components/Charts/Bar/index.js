@@ -1,11 +1,16 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
-import { BarContainer } from './styles';
+import {
+	BarContainer,
+	LegendBarContanier,
+	LegendBarItem,
+	LegendBarPoint,
+	LegendBarLabel,
+} from './styles';
 import { ChartSection, TitleSection, PaperChart } from '../styles';
 
 import { animais } from '../../../utils/dataMock/mock';
 import { defaultTheme } from '../../../theme';
-import { yellow } from '@material-ui/core/colors';
 
 const BarChart = () => {
 	const { colors } = defaultTheme;
@@ -13,7 +18,7 @@ const BarChart = () => {
 	const options = {
 		plugins: {
 			legend: {
-				display: true,
+				display: false,
 				position: 'top',
 				align: 'start',
 				padding: {
@@ -30,7 +35,6 @@ const BarChart = () => {
 
 		elements: {
 			bar: {
-				borderColor: yellow,
 				width: 30,
 			},
 		},
@@ -57,8 +61,19 @@ const BarChart = () => {
 	return (
 		<ChartSection>
 			<TitleSection>Entrada e Saída de Animais</TitleSection>
+
 			<PaperChart>
 				<BarContainer>
+					<LegendBarContanier>
+						{animais.datasets.map(data => (
+							<LegendBarItem>
+								<LegendBarPoint
+									style={{ background: data.backgroundColor }}
+								/>
+								<LegendBarLabel>{data.label}</LegendBarLabel>
+							</LegendBarItem>
+						))}
+					</LegendBarContanier>
 					<Bar
 						width={30}
 						height={30}

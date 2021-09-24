@@ -16,7 +16,7 @@ const TitleSection = styled.span`
 const PaperChart = styled.div`
 	padding: 20px;
 	width: 528px;
-	height: 340px;
+	height: 400px;
 	box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.09);
 	border-radius: 16px;
 	margin-top: 25px;

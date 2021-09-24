@@ -3,10 +3,6 @@ import { defaultTheme } from '../../theme';
 
 const { margin } = defaultTheme;
 
-export const OverviewFinancialContainer = styled.div`
-	width: 40%;
-`;
-
 export const CardTab = styled.div`
 	display: flex;
 	gap: 15px;

@@ -2,11 +2,17 @@ import React from 'react';
 import BarChart from '../../components/Charts/Bar';
 import PizzaChart from '../../components/Charts/Pizza';
 import OverviewFinancial from '../../components/OverviewFinancial';
-import { ContainerDashboard, ChartSection } from './styles';
+import {
+	ContainerDashboard,
+	ChartSection,
+	OverviewFinancialContainer,
+} from './styles';
 const Dashboard = () => {
 	return (
 		<ContainerDashboard>
-			<OverviewFinancial />
+			<OverviewFinancialContainer>
+				<OverviewFinancial />
+			</OverviewFinancialContainer>
 			<ChartSection>
 				<BarChart />
 				<PizzaChart />

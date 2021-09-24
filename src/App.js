@@ -5,7 +5,7 @@ import {
 	Switch,
 	Redirect,
 } from 'react-router-dom';
-import { MainContainer, theme } from './styles/styles';
+import { MainContainer } from './styles/styles';
 import { LoggedRoute, NotLoggedRoute } from './routes';
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
@@ -13,7 +13,7 @@ import { ThemeProvider } from '@material-ui/styles';
 
 export function App() {
 	return (
-		<ThemeProvider theme={theme}>
+		<ThemeProvider>
 			<MainContainer>
 				<Router>
 					<Switch>

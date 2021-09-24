@@ -4,24 +4,24 @@ import { defaultTheme } from '../theme';
 const { colors } = defaultTheme;
 //import { createTheme } from '@material-ui/styles';
 
-export const theme = createMuiTheme({
-	components: {
-		Select: {
-			variants: [
-				{
-					props: { variant: 'agro' },
-					style: {
-						border: `none`,
-						colors: `${colors.primary}`,
-					},
-				},
-			],
-		},
-	},
-});
+// export const theme = createMuiTheme({
+// 	components: {
+// 		Select: {
+// 			variants: [
+// 				{
+// 					props: { variant: 'agro' },
+// 					style: {
+// 						border: `none`,
+// 						colors: `${colors.primary}`,
+// 					},
+// 				},
+// 			],
+// 		},
+// 	},
+// });
 
 export const MainContainer = styled.div`
-	background-color: ${props => props.backgroundColor ?? '#fff'};
+	/* background-color: ${props => props.backgroundColor ?? '#fff'};
 	display: flex;
 	flex-direction: row;
 	overflow-x: auto;
@@ -32,6 +32,6 @@ export const MainContainer = styled.div`
 	align-content: space-between;
 
 	i:focus {
-		outline: none;
+		outline: none; */
 	}
 `;

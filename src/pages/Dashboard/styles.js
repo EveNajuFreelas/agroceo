@@ -1,12 +1,15 @@
 import styled from 'styled-components';
 
-const ContainerDashboard = styled.div`
+export const ContainerDashboard = styled.div`
 	display: flex;
 	gap: 20px;
 `;
-const ChartSection = styled.div`
+export const ChartSection = styled.div`
 	display: flex;
 	gap: 20px;
+	width: 70%;
 `;
 
-export { ContainerDashboard, ChartSection };
+export const OverviewFinancialContainer = styled.div`
+	width: 40%;
+`;

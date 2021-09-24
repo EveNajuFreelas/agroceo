@@ -7,7 +7,7 @@ import {
 	LegendBarPoint,
 	LegendBarLabel,
 } from './styles';
-import { ChartSection, TitleSection, PaperChart } from '../styles';
+import { ChartContainer, TitleSection, PaperChart } from '../styles';
 
 import { animais } from '../../../utils/dataMock/mock';
 import { defaultTheme } from '../../../theme';
@@ -59,7 +59,7 @@ const BarChart = () => {
 	};
 
 	return (
-		<ChartSection>
+		<ChartContainer>
 			<TitleSection>Entrada e Saída de Animais</TitleSection>
 
 			<PaperChart>
@@ -82,7 +82,7 @@ const BarChart = () => {
 					/>
 				</BarContainer>
 			</PaperChart>
-		</ChartSection>
+		</ChartContainer>
 	);
 };
 

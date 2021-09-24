@@ -1,6 +1,6 @@
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
-import { ChartSection, PaperChart, TitleSection } from '../styles';
+import { ChartContainer, PaperChart, TitleSection } from '../styles';
 import {
 	PizzaContainer,
 	LegendPizzaContainer,
@@ -29,7 +29,7 @@ const PizzaChart = () => {
 	};
 
 	return (
-		<ChartSection>
+		<ChartContainer>
 			<TitleSection>Demandas</TitleSection>
 			<PaperChart>
 				<PizzaContainer>
@@ -53,7 +53,7 @@ const PizzaChart = () => {
 					</LegendPizzaContainer>
 				</PizzaContainer>
 			</PaperChart>
-		</ChartSection>
+		</ChartContainer>
 	);
 };
 

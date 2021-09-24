@@ -19,7 +19,7 @@ const { colors } = defaultTheme;
 
 const OverviewFinancial = () => {
 	return (
-		<OverviewFinancialContainer>
+		<>
 			<FilterFinancial>
 				<FilterLabel>Financeiro</FilterLabel>
 				<Select
@@ -89,7 +89,7 @@ const OverviewFinancial = () => {
 					value={'- R$ 488,00'}
 				/>
 			</CardList>
-		</OverviewFinancialContainer>
+		</>
 	);
 };
 

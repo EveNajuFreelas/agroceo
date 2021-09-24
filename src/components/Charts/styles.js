@@ -3,17 +3,17 @@ import { defaultTheme } from '../../theme';
 
 const { text, colors } = defaultTheme;
 
-const ChartSection = styled.div`
+export const ChartContainer = styled.div`
 	display: 'flex';
 	flex-direction: 'row';
 `;
 
-const TitleSection = styled.span`
+export const TitleSection = styled.span`
 	font-size: ${text.size.large};
 	color: ${colors.neutralDark};
 `;
 
-const PaperChart = styled.div`
+export const PaperChart = styled.div`
 	padding: 20px;
 	width: 528px;
 	height: 400px;
@@ -21,5 +21,3 @@ const PaperChart = styled.div`
 	border-radius: 16px;
 	margin-top: 25px;
 `;
-
-export { ChartSection, TitleSection, PaperChart };

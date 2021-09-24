@@ -23,14 +23,11 @@ export function NotLoggedRoute({ component: Component, ...rest }) {
   const { user } = useAuthentication();
 
   return (
-    /** RETIRAR GLOBALCONTAINER APÓS AUTENTICAÇÃO CONCLUÍDA */
-    <GlobalContainer>
     <Route {...rest} render={props => {
       if (user) {
         return <Redirect to="/app" />
       }
       return <Component {...rest} />
     }} />
-    </GlobalContainer>
   )
 }

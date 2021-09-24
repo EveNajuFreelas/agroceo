@@ -1,6 +1,4 @@
-import { Button } from "@material-ui/core";
-import { AddCircleOutline } from '@material-ui/icons';
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { HeaderStyle, HeaderTitle, HeaderDate, HeaderInfo, StyledSelect, StyledMenuItem } from "./styles";
 

@@ -12,9 +12,9 @@ export function App() {
     <MainContainer>
       <Router>
         <Switch>
-          <Route path="/" exact component={ () => <Redirect to="/app" />} />
+          <Route path="/" exact component={ () => <Redirect to="/app/login" />} />
           <NotLoggedRoute path="/app/login" exact component={Login}/>
-          <NotLoggedRoute path="/app" exact component={Home} />
+          <LoggedRoute path="/app" exact component={Home} />
         </Switch>
       </Router>
     </MainContainer>

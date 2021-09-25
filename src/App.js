@@ -7,9 +7,11 @@ import {
 } from 'react-router-dom';
 import { MainContainer } from './styles/styles';
 import { LoggedRoute, NotLoggedRoute } from './routes';
+import { ThemeProvider } from '@material-ui/styles';
+
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
-import { ThemeProvider } from '@material-ui/styles';
+import Despesas from './pages/Financeiro/Despesas';
 
 export function App() {
 	return (
@@ -31,6 +33,11 @@ export function App() {
 							path='/app'
 							exact
 							component={Dashboard}
+						/>
+						<NotLoggedRoute
+							path='/financeiro/despesas'
+							exact
+							component={Despesas}
 						/>
 					</Switch>
 				</Router>

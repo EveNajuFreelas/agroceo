@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 
-export const FinancialOverview = styled.div``;
+export const FinancialOverview = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: 26px;
+`;
 
 export const SummaryContainer = styled.div`
 	display: flex;
-	height: 120px;
 	gap: 20px;
 `;
 

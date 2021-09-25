@@ -9,6 +9,7 @@ export const CardSummaryContainer = styled.div`
 
 	padding: 15px;
 	width: 428px;
+	height: 110px;
 
 	box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.09);
 	border-radius: 16px;

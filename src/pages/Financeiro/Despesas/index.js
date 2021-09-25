@@ -11,6 +11,7 @@ import { defaultTheme } from '../../../theme';
 
 import CardValue from '../../../components/Financeiro/CardValue';
 import CardTotalValue from '../../../components/Financeiro/CardTotalValue';
+import TableData from '../../../components/Financeiro/TableData';
 const Despesas = () => {
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
@@ -41,7 +42,9 @@ const Despesas = () => {
 					ano={2021}
 				/>
 			</SummaryContainer>
-			<TableContainer></TableContainer>
+			<TableContainer>
+				<TableData />
+			</TableContainer>
 		</FinancialOverview>
 	);
 };

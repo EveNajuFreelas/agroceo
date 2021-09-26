@@ -1,77 +1,85 @@
 import React from 'react';
 
-import { DataGrid } from '@mui/x-data-grid';
 import { defaultTheme } from '../../../theme';
+import { icon } from '../../../utils/functions';
+import DescriptionTable from './DescriptionTable';
+import { StyledDataGrid } from './styles';
+import { useTranslation } from 'react-i18next';
 
 const TableData = () => {
-	const { colors } = defaultTheme;
+	const { t } = useTranslation();
+	const { colors, text } = defaultTheme;
 
 	const columns = [
 		{
 			field: 'id',
 			headerName: 'ID',
 			width: 90,
-			color: `${colors.anotherGreen}`,
 		},
 		{
 			field: 'Description',
-			headerName: 'Descrição',
-			width: 300,
-			editable: true,
+			headerName: t('description'),
+			width: 210,
+			renderCell: DescriptionTable,
 		},
 		{
 			field: 'DateDespesa',
-			headerName: 'Data da despesa',
-			type: 'string',
-			width: 150,
-			editable: true,
+			headerName: t('expense date'),
+			type: 'date',
+			width: 165,
+			headerAlign: 'right',
 		},
 		{
-			field: 'FiscalNote',
-			headerName: 'Nota Fiscal',
-			type: 'string',
-			width: 110,
-			editable: true,
+			field: 'Invoice',
+			headerName: t('invoice'),
+			width: 130,
+			headerAlign: 'right',
 		},
 		{
 			field: 'Payment',
-			headerName: 'Forma de Pagamento',
-			type: 'string',
+			headerName: t('payment'),
 			width: 200,
-			editable: true,
+			headerAlign: 'right',
 		},
 		{
 			field: 'Parcela',
-			headerName: 'Parcela',
-			type: 'string',
+			headerName: t('instalment'),
 			width: 110,
-			editable: true,
+			headerAlign: 'right',
 		},
 		{
 			field: 'FirstParcela',
-			headerName: 'Data 1ª parcela',
-			type: 'string',
-			width: 200,
-			editable: true,
+			headerName: t('first instalment'),
+			type: 'date',
+			width: 155,
+			headerAlign: 'right',
 		},
 		{
 			field: 'Percent',
-			headerName: '% por Propriedade',
-			type: 'string',
-			width: 150,
-			editable: true,
+			headerName: t('% by property'),
+			width: 200,
+			headerAlign: 'right',
 		},
 		{
 			field: 'DocumentPicture',
-			headerName: 'Foto de documento',
-			type: 'image',
-			width: 110,
-			editable: true,
+			headerName: t('document photo'),
+			width: 180,
+			headerAlign: 'right',
 		},
 	];
 
 	const rows = [
-		{ id: 1, Description: 'Snow', firstName: 'Jon', age: 35 },
+		{
+			id: '0001',
+			Description: ('ração', 'insumos'),
+			DateDespesa: '08/09/2021',
+			Invoice: 'Sim',
+			Payment: 'Cartão de crédito',
+			Parcela: '10x',
+			FirstParcela: '09/11/2021',
+			Percent: '100% Fazenda Recanto do Sabiá',
+			DocumentPicture: '--',
+		},
 		{ id: 2, Description: 'Lannister', firstName: 'Cersei', age: 42 },
 		{ id: 3, Description: 'Lannister', firstName: 'Jaime', age: 45 },
 		{ id: 4, Description: 'Stark', firstName: 'Arya', age: 16 },
@@ -79,11 +87,24 @@ const TableData = () => {
 		{ id: 6, Description: 'Melisandre', firstName: null, age: 150 },
 		{ id: 7, Description: 'Clifford', firstName: 'Ferrara', age: 44 },
 		{ id: 8, Description: 'Frances', firstName: 'Rossini', age: 36 },
-		{ id: 9, Description: 'Roxie', firstName: 'Harvey', age: 65 },
+		{
+			id: 9,
+			Description: icon('insumos') + 'Ração para Bubalino',
+			firstName: 'Harvey',
+			age: 65,
+		},
 	];
+
 	return (
 		<div style={{ height: 610, width: '120%' }}>
-			<DataGrid rows={rows} columns={columns} checkboxSelection />
+			<StyledDataGrid
+				rows={rows}
+				columns={columns}
+				checkboxSelection
+				disableColumnFilter={true}
+				disableColumnMenu={true}
+				disableDensitySelector={true}
+			/>
 		</div>
 	);
 };

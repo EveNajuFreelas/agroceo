@@ -23,23 +23,6 @@ export const defaultTheme = {
 		neutralDark: '#525252',
 		anotherGreen: '#02733E',
 		greenLight: '#7AC743',
-		events: {
-			onPrimary: '#FFFFFF',
-			onPrimaryVariant: '#FFFFFF',
-			onSecondary: '#FFFFFF',
-			onSecondaryAccent: '#FFFFFF',
-			onBackground: '#212121',
-			onSurface: '#212121',
-			onSuccess: '#FFFFFF',
-			onError: '#FFFFFF',
-			onAlert: '#212121',
-			onNeutral0: '#212121',
-			onNeutral1: '#212121',
-			onNeutral2: '#212121',
-			onNeutral3: '#212121',
-			onNeutral4: '#FFFFFF',
-			onNeutral5: '#FFFFFF',
-		},
 	},
 	text: {
 		size: {

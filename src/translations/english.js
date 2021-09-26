@@ -4,4 +4,12 @@ export const english = {
 	'to pay': 'To pay',
 	'overdue': 'Overdue',
 	'paid': 'Paid',
+	'expense date': 'Expense date',
+	'description': 'Description',
+	'invoice': 'Invoice',
+	'payment': 'Payment method',
+	'instalment': 'Instalment',
+	'first instalment': 'first instalment',
+	'% by property': '% by property',
+	'document photo': 'document photo',
 };

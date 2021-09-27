@@ -3,6 +3,13 @@ import React from 'react'
 import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core'
 import { defaultTheme } from '../../theme';
+import FormControl from '@material-ui/core/FormControl';
+import IconButton from '@material-ui/core/IconButton';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import InputLabel from '@material-ui/core/InputLabel';
+import Visibility from '@material-ui/icons/Visibility.js';
+import VisibilityOff from '@material-ui/icons/VisibilityOff.js';
 import {
   BackgroundImg,
   InputField,
@@ -19,36 +26,39 @@ import {
   ActionButtons,
   LoginButton
 } from './styles';
-//import { FormatUnderlined } from '@material-ui/icons';
 
 const useStyles = makeStyles({
-  inputField:{
-    margin: 10,
-    color: '#272727',
-  },
   loginButton: {
     backgroundColor: defaultTheme.colors.green,
     color: defaultTheme.colors.neutral0,
-    '&:hover':{
+    textTransform: 'none',
+    marginBottom: defaultTheme.margin.md,
+    fontSize: defaultTheme.text.size.medium,
+    '&:hover': {
       backgroundColor: defaultTheme.colors.green,
       color: defaultTheme.colors.neutral0,
+      textTransform: 'none',
     }
   },
   forgotPassword: {
-    fontSize: 10,
+    fontSize: defaultTheme.text.size.small,
     color: defaultTheme.colors.green,
-    '&:hover':{
+    textTransform: 'none',
+    '&:hover': {
       backgroundcolor: 'transparent',
+      textTransform: 'none',
     }
   },
   termsAndPolicies: {
-    fontSize: 10,
+    fontSize: defaultTheme.text.size.small,
     textDecoration: 'none',
     color: defaultTheme.colors.neutral3,
-    '&:hover':{
+    textTransform: 'none',
+    '&:hover': {
       textDecoration: 'underline',
       backgroundColor: 'transparent',
       color: defaultTheme.colors.green,
+      textTransform: 'none',
     }
   }
 })
@@ -57,19 +67,67 @@ const Login = () => {
   const { t } = useTranslation();
   const classes = useStyles();
 
+  const [values, setValues] = React.useState({
+    password: '',
+    showPassword: false,
+  });
+
+  const handleChange = (prop) => (event) => {
+    setValues({ ...values, [prop]: event.target.value });
+  };
+
+  const handleClickShowPassword = () => {
+    setValues({
+      ...values,
+      showPassword: !values.showPassword,
+    });
+  };
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+
   return (
     <BackgroundImg>
       <LoginArea>
         <LoginForm>
-          
+
           <Header>
             <Title>{t('loginTitle')}</Title>
             <Subtitle>{t('loginSubtitle')}</Subtitle>
           </Header>
 
           <InputsArea>
-            <InputField className={classes.inputField} placeholder="(00) 0 0000-0000" label={t('phone')} />
-            <InputField className={classes.inputField} placeholder={t('password')} label={t('password')} />
+            <InputField
+              fullWidth
+              size="small"
+              margin="normal" 
+              placeholder="(00) 0 0000-0000"
+              label={t('phone')} />
+
+            <FormControl size="small" fullWidth margin="normal" variant="outlined">
+              <InputLabel htmlFor="outlined-adornment-password">{t('password')}</InputLabel>
+              <OutlinedInput
+                id="outlined-adornment-password"
+                type={values.showPassword ? 'text' : 'password'}
+                value={values.password}
+                onChange={handleChange('password')}
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                      edge="end"
+                    >
+                      {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                }
+                label="Password"
+              />
+            </FormControl>
+            {/*<InputField className={classes.inputField} type="password" placeholder={t('password')} label={t('password')} /> */}
           </InputsArea>
 
           <ActionButtons>

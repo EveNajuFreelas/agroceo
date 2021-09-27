@@ -86,6 +86,7 @@ export const ActionButtons = styled.div`
 
 export const LoginButton = styled((props) => <Button variant="contained" {...props} />)`
     width: 100%;
+    font-size: ${defaultTheme.text.size.medium};
 `;
 
 export const Footer = styled.div``;
@@ -115,14 +116,16 @@ export const LogoSvg = styled.svg`
 `;
 
 export const ContractsArea = styled.div`
-    margin-bottom: ${margin.lg};
+    margin-bottom: ${margin.large};
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-content: center;
+    justify-content: center;
 `;
 
 export const ContractsDivider = styled.span`
-    font-size: ${defaultTheme.text.size.medium};
+    font-size: ${defaultTheme.text.size.small};
     justify-self: center;
+    padding-top: 6px;
 `;

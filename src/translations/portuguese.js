@@ -12,4 +12,5 @@ export const portuguese = {
 	'first instalment': 'Data 1ª parcela',
 	'% by property': '% por Propriedade',
 	'document photo': 'Foto do documento',
+	'search prescription': 'Pesquisar prescrição',
 };

@@ -1,16 +1,13 @@
+import { TableContainer } from '@material-ui/core';
 import styled from 'styled-components';
-import { DataGrid } from '@mui/x-data-grid';
 import { defaultTheme } from '../../../theme';
 
 const { colors, text } = defaultTheme;
 
-export const StyledDataGrid = styled(DataGrid)`
-	&.MuiDataGrid-root .MuiDataGrid-columnSeparator {
-		display: none;
-	}
-
-	&.MuiDataGrid-root .MuiDataGrid-columnHeaderWrapper {
-		font-size: ${text.size.small};
-		font-family: ${text.fontFamily.bold};
+export const StyledTableContainer = styled(TableContainer)`
+	&.MuiTableContainer-root {
+		border: 1px solid #ebebeb;
+		border-radius: 10px 10px 0px 0px;
+		width: 100%;
 	}
 `;

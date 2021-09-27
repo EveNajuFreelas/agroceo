@@ -12,4 +12,5 @@ export const english = {
 	'first instalment': 'first instalment',
 	'% by property': '% by property',
 	'document photo': 'document photo',
+	'search prescription': 'search prescription',
 };

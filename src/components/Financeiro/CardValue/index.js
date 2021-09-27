@@ -10,7 +10,6 @@ import { defaultTheme } from '../../../theme';
 
 const CardValue = ({ value, colorText, text }) => {
 	const { colors } = defaultTheme;
-	console.log(colorText);
 	return (
 		<CardValueContainer>
 			<IconCardValue src={Calendar} />

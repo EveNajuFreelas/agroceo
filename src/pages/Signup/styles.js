@@ -122,8 +122,8 @@ export const LogoArea = styled.div`
 `;
 
 export const LogoSvg = styled.svg`
-    height: 260px;
-    width: 260px;
+    height: 400px;
+    width: 400px;
     background-image: url(${AgroceoLogo});
     background-repeat: no-repeat !important;
     @media (max-width: 1040px){

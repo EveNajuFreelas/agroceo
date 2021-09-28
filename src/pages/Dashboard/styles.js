@@ -11,5 +11,5 @@ export const ChartSection = styled.div`
 `;
 
 export const OverviewFinancialContainer = styled.div`
-	width: 40%;
+	width: 30%;
 `;

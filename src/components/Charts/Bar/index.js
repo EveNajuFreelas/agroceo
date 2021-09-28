@@ -11,6 +11,11 @@ import { ChartContainer, TitleSection, PaperChart } from '../styles';
 
 import { animais } from '../../../utils/dataMock/mock';
 import { defaultTheme } from '../../../theme';
+import Filter from '../../Filter';
+import {
+	itensMenuMonth,
+	itensMenuYear,
+} from '../../../utils/dataMock/itensMenu';
 
 const BarChart = () => {
 	const { colors } = defaultTheme;
@@ -58,10 +63,25 @@ const BarChart = () => {
 		maintainAspectRatio: false,
 	};
 
+	const filter = mes => {
+		console.log(mes);
+	};
+
 	return (
 		<ChartContainer>
-			<TitleSection>Entrada e Saída de Animais</TitleSection>
-
+			<TitleSection>
+				Entrada e Saída de Animais
+				<Filter
+					label={'2021'}
+					itensMenu={itensMenuYear}
+					clickFunction={filter}
+				/>
+				<Filter
+					label={'Setembro'}
+					itensMenu={itensMenuMonth}
+					clickFunction={filter}
+				/>
+			</TitleSection>
 			<PaperChart>
 				<BarContainer>
 					<LegendBarContanier>

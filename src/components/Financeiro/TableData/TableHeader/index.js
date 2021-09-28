@@ -1,5 +1,7 @@
 import { Button, InputAdornment } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
+import { defaultTheme } from '../../../../theme';
+import Filter from '../../../Filter';
 
 import Pdf from '../../../../utils/image/Pdf.svg';
 import Print from '../../../../utils/image/Print.svg';
@@ -14,19 +16,16 @@ import {
 	ButtonIcon,
 	ButtonWrapper,
 	FilterContainer,
-	AddCircle,
 } from './styles';
 
-import { defaultTheme } from '../../../../theme';
-import Filter from '../../../Filter';
+import {
+	itensMenuYear,
+	itensMenuMonth,
+} from '../../../../utils/dataMock/itensMenu';
 
 const TableHeader = () => {
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
-
-	const itensMenuYear = ['Todas as Despesas', '2020', '2021'];
-
-	const itensMenuMonth = ['Janeiro', 'Fevereiro', 'Março', 'Abril'];
 
 	const filter = mes => {
 		console.log(mes);

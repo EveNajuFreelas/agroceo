@@ -9,6 +9,8 @@ export const ChartContainer = styled.div`
 `;
 
 export const TitleSection = styled.span`
+	display: flex;
+	gap: 30px;
 	font-size: ${text.size.large};
 	color: ${colors.neutralDark};
 `;

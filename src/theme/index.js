@@ -20,7 +20,7 @@ export const defaultTheme = {
     neutral6: '#A3A3A3',
     green: '#03B562',
     darkGreen: '#013C21',
-    loginImgOverlay: 'rgba(4, 241, 130, 0.3)',
+    loginImgOverlay: 'rgba(4, 241, 130, 0.7)',
     gray: '#272727',
     events: {
       onPrimary: '#FFFFFF',

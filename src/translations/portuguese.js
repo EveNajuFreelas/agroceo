@@ -6,7 +6,10 @@ export const portuguese = {
     "phone": "Celular",
     "password": "Senha",
     "signIn": "Entrar",
+    "signUp": "Registrar",
     "forgotPw": "Esqueci minha senha",
-    "TermsnCond": "Termos e Condições",
-    "PrivacyPolicy": "Políticas de Privacidade",
+    "TermsnCond": "Termos",
+    "PrivacyPolicy": "Condições",
+    "ContractsText": "Li e estou de acordo com os",
+    "And": "e",
 }

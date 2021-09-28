@@ -41,16 +41,23 @@ const useStyles = makeStyles({
     }
   },
   forgotPassword: {
-    fontSize: defaultTheme.text.size.small,
+    fontSize: defaultTheme.text.size.medium,
     color: defaultTheme.colors.green,
     textTransform: 'none',
+    marginLeft: 'auto',
+    marginRight: 0,
     '&:hover': {
       backgroundcolor: 'transparent',
       textTransform: 'none',
-    }
+    },
+  },
+  register: {
+    fontSize: defaultTheme.text.size.medium,
+    color: defaultTheme.colors.green,
+    textTransform: 'none',
   },
   termsAndPolicies: {
-    fontSize: defaultTheme.text.size.small,
+    fontSize: defaultTheme.text.size.medium,
     textDecoration: 'none',
     color: defaultTheme.colors.neutral3,
     textTransform: 'none',
@@ -101,13 +108,14 @@ const Login = () => {
             <InputField
               fullWidth
               size="small"
-              margin="normal" 
+              margin="normal"
               placeholder="(00) 0 0000-0000"
               label={t('phone')} />
 
             <FormControl size="small" fullWidth margin="normal" variant="outlined">
               <InputLabel htmlFor="outlined-adornment-password">{t('password')}</InputLabel>
               <OutlinedInput
+                placeholder={t('password')}
                 id="outlined-adornment-password"
                 type={values.showPassword ? 'text' : 'password'}
                 value={values.password}
@@ -128,17 +136,21 @@ const Login = () => {
               />
             </FormControl>
             {/*<InputField className={classes.inputField} type="password" placeholder={t('password')} label={t('password')} /> */}
+            <Button className={classes.forgotPassword}>{t('forgotPw')}</Button>
           </InputsArea>
 
           <ActionButtons>
             <LoginButton className={classes.loginButton}>{t('signIn')}</LoginButton>
-            <Button className={classes.forgotPassword}>{t('forgotPw')}</Button>
+            <Button className={classes.register}>{t('signUp')}</Button>
           </ActionButtons>
 
           <ContractsArea>
-            <Button className={classes.termsAndPolicies}>{t('TermsnCond')}</Button>
-            <ContractsDivider> e </ContractsDivider>
-            <Button className={classes.termsAndPolicies}>{t('PrivacyPolicy')}</Button>
+            <ContractsDivider>
+              {t('ContractsText')}
+              <Button className={classes.termsAndPolicies}>{t('TermsnCond')}</Button>
+              {t('And')}
+              <Button className={classes.termsAndPolicies}>{t('PrivacyPolicy')}</Button>
+            </ContractsDivider>
           </ContractsArea>
 
         </LoginForm>

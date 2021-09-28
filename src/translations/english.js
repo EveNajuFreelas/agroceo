@@ -6,7 +6,10 @@ export const english = {
     "phone": "Phone",
     "password": "Password",
     "signIn": "Sign In",
+    "signUp": "Sign Up",
     "forgotPw": "Forgot my password",
-    "TermsnCond": "Terms and Conditions",
-    "PrivacyPolicy": "Privacy Policies",
+    "TermsnCond": "Terms",
+    "PrivacyPolicy": "Conditions",
+    "ContractsText": "read and agree with the",
+    "And": "and",
 }

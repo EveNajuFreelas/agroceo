@@ -110,7 +110,9 @@ const Login = () => {
               size="small"
               margin="normal"
               placeholder="(00) 0 0000-0000"
-              label={t('phone')} />
+              label={t('phone')}
+              type="number"
+              />
 
             <FormControl size="small" fullWidth margin="normal" variant="outlined">
               <InputLabel htmlFor="outlined-adornment-password">{t('password')}</InputLabel>
@@ -135,7 +137,6 @@ const Login = () => {
                 label="Password"
               />
             </FormControl>
-            {/*<InputField className={classes.inputField} type="password" placeholder={t('password')} label={t('password')} /> */}
             <Button className={classes.forgotPassword}>{t('forgotPw')}</Button>
           </InputsArea>
 

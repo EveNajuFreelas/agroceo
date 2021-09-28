@@ -41,6 +41,9 @@ export const LoginForm = styled.div`
     align-items: center;
     justify-content: space-around;
     padding: 0 ${padding.exg};
+    @media (max-width: 426px){
+        height: 80%;
+    }
 `;
 
 export const Header = styled.div`

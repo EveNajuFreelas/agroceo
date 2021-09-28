@@ -13,6 +13,7 @@ export const defaultTheme = {
 		errorLight: '#EF4967',
 		auxiliar: '#EB1F44',
 		alert: '#FFD400',
+		neutral: '#EBEBEB',
 		neutral0: '#FFFFFF',
 		neutral1: '#F5F5F7',
 		neutral2: '#E5E5E5',

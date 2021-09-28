@@ -7,8 +7,9 @@ const { colors } = defaultTheme;
 export const TableHeaderContainer = styled.div`
 	padding: 15px;
 	display: grid;
-	grid-template-columns: 10% 50% 40%;
+	grid-template-columns: 8% 42% 50%;
 	border-bottom: 1px solid #ebebeb;
+	align-items: center;
 `;
 export const ButtonContainer = styled.div`
 	display: flex;
@@ -34,11 +35,23 @@ export const ButtonWrapper = styled.button`
 
 export const SearchInput = styled(TextField)`
 	&.MuiTextField-root {
-		width: 50%;
+		width: 45%;
 		display: flex;
+		color: green;
+	}
+
+	&.MuiTextField-root .MuiInputLabel-root {
+		color: ${colors.neutral};
 	}
 `;
 export const ContainerRight = styled.div`
 	display: flex;
 	justify-content: space-between;
+`;
+
+export const FilterContainer = styled.div`
+	width: 75%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 `;

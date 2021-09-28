@@ -7,20 +7,20 @@ import { useTranslation } from 'react-i18next';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
-import { HeaderTable, StyledTableContainer } from './styles';
+import { StyledTableContainer } from './styles';
 import TableHeader from './TableHeader';
+
+import Edit from '../../../utils/image/Edit.svg';
+import Delete from '../../../utils/image/Delete.svg';
 
 const TableData = () => {
 	const { t } = useTranslation();
 	const { colors, text } = defaultTheme;
 
 	const columns = [
-		'ID',
-		t('description'),
 		t('expense date'),
 		t('invoice'),
 		t('payment'),
@@ -83,16 +83,21 @@ const TableData = () => {
 
 			<Table size='small' aria-label='a dense table'>
 				<TableHead>
-					<TableRow>
+					<TableRow style={{ color: 'green' }}>
+						<TableCell>ID</TableCell>
+						<TableCell>{t('description')}</TableCell>
 						{columns.map(column => (
-							<TableCell>{column}</TableCell>
+							<TableCell align='right'>{column}</TableCell>
 						))}
+						<TableCell>{''}</TableCell>
 					</TableRow>
 				</TableHead>
 				<TableBody>
 					{rows.map(row => (
 						<TableRow key={row.id}>
-							<TableCell>{row.id}</TableCell>
+							<TableCell style={{ color: colors.neutral6 }}>
+								{row.id}
+							</TableCell>
 							<TableCell align='left'>
 								<DescriptionTable
 									description={'Insumos'}
@@ -111,6 +116,15 @@ const TableData = () => {
 							<TableCell align='right'>{row.Percent}</TableCell>
 							<TableCell align='right'>
 								{row.DocumentPicture}
+							</TableCell>
+							<TableCell>
+								<img
+									style={{
+										marginRight: 10,
+									}}
+									src={Edit}
+								/>
+								<img src={Delete} />
 							</TableCell>
 						</TableRow>
 					))}

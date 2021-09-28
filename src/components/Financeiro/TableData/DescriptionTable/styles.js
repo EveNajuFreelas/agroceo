@@ -16,6 +16,9 @@ export const IconItemDescription = styled.img`
 `;
 
 export const TitleItem = styled.span`
-	font-size: ${text.size.large};
-	font-family: ${text.fontFamily.bold};
+	font-size: ${text.size.medium};
+
+	&:first-letter {
+		text-transform: capitalize;
+	}
 `;

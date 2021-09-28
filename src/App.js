@@ -16,32 +16,22 @@ import Despesas from './pages/Financeiro/Despesas';
 export function App() {
 	return (
 		<ThemeProvider>
-			<MainContainer>
-				<Router>
-					<Switch>
-						<Route
-							path='/'
-							exact
-							component={() => <Redirect to='/app' />}
-						/>
-						<NotLoggedRoute
-							path='/app/login'
-							exact
-							component={Login}
-						/>
-						<NotLoggedRoute
-							path='/app'
-							exact
-							component={Dashboard}
-						/>
-						<NotLoggedRoute
-							path='/financeiro/despesas'
-							exact
-							component={Despesas}
-						/>
-					</Switch>
-				</Router>
-			</MainContainer>
+			<Router>
+				<Switch>
+					<Route
+						path='/'
+						exact
+						component={() => <Redirect to='/app' />}
+					/>
+					<NotLoggedRoute path='/app/login' exact component={Login} />
+					<NotLoggedRoute path='/app' exact component={Dashboard} />
+					<NotLoggedRoute
+						path='/financeiro/despesas'
+						exact
+						component={Despesas}
+					/>
+				</Switch>
+			</Router>
 		</ThemeProvider>
 	);
 }

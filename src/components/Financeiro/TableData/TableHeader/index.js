@@ -1,9 +1,10 @@
-import { Button, Select, TextField, InputAdornment } from '@material-ui/core';
+import { Button, InputAdornment } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 
 import Pdf from '../../../../utils/image/Pdf.svg';
 import Print from '../../../../utils/image/Print.svg';
 import SearchIcon from '../../../../utils/image/Search.svg';
+import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
 
 import {
 	TableHeaderContainer,
@@ -12,21 +13,32 @@ import {
 	ContainerRight,
 	ButtonIcon,
 	ButtonWrapper,
+	FilterContainer,
+	AddCircle,
 } from './styles';
 
 import { defaultTheme } from '../../../../theme';
+import Filter from '../../../Filter';
 
 const TableHeader = () => {
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
 
+	const itensMenuYear = ['Todas as Despesas', '2020', '2021'];
+
+	const itensMenuMonth = ['Janeiro', 'Fevereiro', 'Março', 'Abril'];
+
+	const filter = mes => {
+		console.log(mes);
+	};
+
 	return (
 		<TableHeaderContainer>
 			<ButtonContainer>
-				<ButtonWrapper onClick={() => console.log('leele')}>
+				<ButtonWrapper>
 					<ButtonIcon src={Print} />
 				</ButtonWrapper>
-				<ButtonWrapper onClick={() => console.log('laala')}>
+				<ButtonWrapper>
 					<ButtonIcon src={Pdf} />
 				</ButtonWrapper>
 			</ButtonContainer>
@@ -41,15 +53,39 @@ const TableHeader = () => {
 						</InputAdornment>
 					),
 				}}
+				size='small'
 			/>
 			<ContainerRight>
-				<Select />
-				<Select />
-				<Select />
+				<FilterContainer>
+					<Filter
+						label={'2021'}
+						itensMenu={itensMenuYear}
+						clickFunction={filter}
+					/>
+					<Filter
+						label={'Setembro'}
+						itensMenu={itensMenuMonth}
+						clickFunction={filter}
+					/>
+					<Filter
+						label={'Todas as despesas'}
+						itensMenu={itensMenuYear}
+						clickFunction={filter}
+					/>
+				</FilterContainer>
+
 				<Button
 					variant='contained'
-					color={colors.primary}
-					// endIcon={<Icon>send</Icon>}
+					startIcon={
+						<AddCircleOutlineOutlinedIcon
+							style={{ color: '#fff' }}
+						/>
+					}
+					style={{
+						backgroundColor: `${colors.primary}`,
+						color: '#fff',
+						boxShadow: 'none',
+					}}
 				>
 					Registro
 				</Button>

@@ -13,4 +13,8 @@ export const portuguese = {
 	'% by property': '% por Propriedade',
 	'document photo': 'Foto do documento',
 	'search prescription': 'Pesquisar prescrição',
+	'rescued': 'Resgatado',
+	'invested': 'Investido',
+	'receivable': 'A receber',
+	'received': 'Recebido',
 };

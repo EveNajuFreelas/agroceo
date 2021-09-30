@@ -11,7 +11,7 @@ import { defaultTheme } from '../../../theme';
 import CardValue from '../../../components/Financeiro/CardValue';
 import CardTotalValue from '../../../components/Financeiro/CardTotalValue';
 import TableData from '../../../components/Financeiro/TableData';
-const Despesas = () => {
+const Investimento = () => {
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
 
@@ -79,23 +79,18 @@ const Despesas = () => {
 			<SummaryContainer>
 				<CardValueContainer>
 					<CardValue
-						colorText={`${colors.secondaryAccent}`}
-						text={t('to pay')}
-						value={'R$ 10.000,00'}
-					/>
-					<CardValue
 						colorText={`${colors.errorLight}`}
-						text={t('overdue')}
+						text={t('rescued')}
 						value={'R$ 5.000,00'}
 					/>
 					<CardValue
 						colorText={`${colors.greenLight}`}
-						text={t('paid')}
+						text={t('invested')}
 						value={'R$ 25.000,00'}
 					/>
 				</CardValueContainer>
 				<CardTotalValue
-					value={'R$ 40.000,00'}
+					value={'R$ 30.000,00'}
 					mes={'Setembro'}
 					ano={2021}
 				/>
@@ -107,4 +102,4 @@ const Despesas = () => {
 	);
 };
 
-export default Despesas;
+export default Investimento;

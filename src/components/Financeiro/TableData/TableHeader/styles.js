@@ -7,7 +7,7 @@ const { colors } = defaultTheme;
 export const TableHeaderContainer = styled.div`
 	padding: 15px;
 	display: grid;
-	grid-template-columns: 8% 42% 50%;
+	grid-template-columns: 8% 50% 42%;
 	border-bottom: 1px solid #ebebeb;
 	align-items: center;
 `;

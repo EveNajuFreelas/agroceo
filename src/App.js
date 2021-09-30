@@ -12,6 +12,8 @@ import { ThemeProvider } from '@material-ui/styles';
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
 import Despesas from './pages/Financeiro/Despesas';
+import Investimento from './pages/Financeiro/Investimento';
+import Receitas from './pages/Financeiro/Receitas';
 
 export function App() {
 	return (
@@ -29,6 +31,16 @@ export function App() {
 						path='/financeiro/despesas'
 						exact
 						component={Despesas}
+					/>
+					<NotLoggedRoute
+						path='/financeiro/investimentos'
+						exact
+						component={Investimento}
+					/>
+					<NotLoggedRoute
+						path='/financeiro/receitas'
+						exact
+						component={Receitas}
 					/>
 				</Switch>
 			</Router>

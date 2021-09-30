@@ -14,7 +14,6 @@ const Filter = ({ label, itensMenu, clickFunction }) => {
 
 	useEffect(() => {
 		handleClose();
-		console.log(labelSelected);
 		clickFunction(labelSelected);
 	}, [labelSelected]);
 
@@ -24,8 +23,8 @@ const Filter = ({ label, itensMenu, clickFunction }) => {
 
 	return (
 		<>
-			<LabelContainer>
-				<LabelFilter onClick={handleClick}>{labelSelected}</LabelFilter>
+			<LabelContainer onClick={handleClick}>
+				<LabelFilter>{labelSelected}</LabelFilter>
 				<KeyboardArrowDownIcon />
 			</LabelContainer>
 			<Menu

@@ -13,4 +13,8 @@ export const english = {
 	'% by property': '% by property',
 	'document photo': 'document photo',
 	'search prescription': 'search prescription',
+	'rescued': 'Rescued',
+	'invested': 'Invested',
+	'receivable': 'Receivable',
+	'received': 'Received',
 };

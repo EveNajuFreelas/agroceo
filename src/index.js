@@ -20,27 +20,26 @@ const queryClient = new QueryClient();
 dotenv.config();
 
 ReactDOM.render(
-  <React.StrictMode>
-
-    <ThemeProvider theme={defaultTheme}>
-      <QueryClientProvider client={queryClient}>
-        {/* <SnackbarProvider maxSnack={3}> */}
-          {/* <GlobalLoadingContext.Provider> */}
-            <AuthenticationContainer.Provider>
-              <RegisterContainer.Provider>
-                {/* <PopoverContainer.Provider> */}
-                  {/* <ListPropertieContext.Provider> */}
-                    {/* <PropertyContext.Provider> */}
-                      <App />
-                    {/* </PropertyContext.Provider> */}
-                  {/* </ListPropertieContext.Provider> */}
-                {/* </PopoverContainer.Provider> */}
-              </RegisterContainer.Provider>
-            </AuthenticationContainer.Provider>
-          {/* </GlobalLoadingContext.Provider> */}
-        {/* </SnackbarProvider> */}
-      </QueryClientProvider>
-    </ThemeProvider>
-  </React.StrictMode>,
-  document.getElementById('root')
+	<React.StrictMode>
+		<ThemeProvider theme={defaultTheme}>
+			<QueryClientProvider client={queryClient}>
+				{/* <SnackbarProvider maxSnack={3}> */}
+				{/* <GlobalLoadingContext.Provider> */}
+				<AuthenticationContainer.Provider>
+					<RegisterContainer.Provider>
+						{/* <PopoverContainer.Provider> */}
+						{/* <ListPropertieContext.Provider> */}
+						{/* <PropertyContext.Provider> */}
+						<App />
+						{/* </PropertyContext.Provider> */}
+						{/* </ListPropertieContext.Provider> */}
+						{/* </PopoverContainer.Provider> */}
+					</RegisterContainer.Provider>
+				</AuthenticationContainer.Provider>
+				{/* </GlobalLoadingContext.Provider> */}
+				{/* </SnackbarProvider> */}
+			</QueryClientProvider>
+		</ThemeProvider>
+	</React.StrictMode>,
+	document.getElementById('root')
 );

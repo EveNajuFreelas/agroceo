@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { createContainer, useContainer } from "unstated-next";
-import { clear, getObject, saveObject } from "../../storage";
+import { clear, getObject, saveObject } from "../../utils/storage";
 import { useMutation } from "react-query";
 import api from "../../api";
 

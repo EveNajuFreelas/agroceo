@@ -35,6 +35,7 @@ export const defaultTheme = {
       onNeutral3: '#212121',
       onNeutral4: '#FFFFFF',
       onNeutral5: '#FFFFFF',
+      onHover: 'rgba(255, 255, 255, 0.3)',
     },
   },
   text: {
@@ -64,6 +65,7 @@ export const defaultTheme = {
     weight: {
       thin: 200,
       normal: 400,
+      semiBold: 500,
       bold: 700,
     },
   },
@@ -106,4 +108,8 @@ export const defaultTheme = {
     spaceBetween: 'space-between',
     flexEnd: 'flex-end',
   },
+  width: {
+    sidebarOpen: '20%',
+    sidebarClosed: '5%',
+  }
 };

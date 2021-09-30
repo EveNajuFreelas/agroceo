@@ -1,32 +1,49 @@
+import { Drawer, ListItem } from '@material-ui/core';
 import styled from 'styled-components'
 import { defaultTheme } from '../../theme';
+import { iconList } from '../../assets/Icons/icon-list';
 
-export const SidebarDiv = styled.div`
-	position: fixed;
-	top: 0;
-	width: ${props => !props.isOpen ? '220px' : '80px'};
-	transition: width 0.4s ease-out;
-	height: 100%;
-	padding:  ${defaultTheme.padding.sm} 0 ${defaultTheme.padding.sm} ${defaultTheme.padding.sm};
-	border-radius: 0 ${defaultTheme.borderRadius.md} ${defaultTheme.borderRadius.md} 0;
-	z-index: 11;
-	background-color: ${defaultTheme.colors.green};
+const { borderRadius, colors, padding, width, text } = defaultTheme;
+
+export const SidebarWrapper = styled(Drawer)`
+	.MuiPaper-root {
+		background-color: ${colors.green};
+		padding: ${padding.sm};
+		padding-right: 0;
+		width: ${(props) => props.isOpen ? width.sidebarOpen : width.sidebarClosed};
+	}
+
+	.MuiDrawer-paperAnchorDockedLeft {
+		border: none;
+		border-radius: 0 ${borderRadius.md} ${borderRadius.md} 0;
+	}
 `;
 
-export const ListItemWrapper = styled.div`
-	display: flex;
-	align-items: ${defaultTheme.align.center};
-	margin: ${defaultTheme.margin.md} ${defaultTheme.margin.sm};
-	border-radius: ${defaultTheme.borderRadius.md};
-	padding:  ${defaultTheme.padding.lg};
-    transition: width 0.4s ease-out;
-	cursor: pointer;	
-	background-color: ${defaultTheme.colors.green};
-	&:hover{
-		background-color: ${defaultTheme.colors.neutral3};
-		margin-right: 0;
-		border-radius: ${defaultTheme.borderRadius.lg} 0 0 ${defaultTheme.borderRadius.lg};
+export const ListItemWrapper = styled(ListItem)`
+	cursor: pointer; 
+	
+	.MuiListItem-gutters {
+		padding:  ${padding.lg};
 	}
+
+	&:hover{
+		background-color: ${colors.events.onHover};
+		border-radius: ${borderRadius.lg} 0 0 ${borderRadius.lg};
+	} 
+`;
+
+export const SidebarHeader = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+
+	font-size: ${text.size.h5};
+	font-weight: ${text.weight.semiBold};
+	color: white;
+`;
+
+export const SidebarIcon = styled(iconList.menu)`
+
 `;
 
 export const SidebarListItem = styled.span`

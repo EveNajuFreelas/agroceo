@@ -3,19 +3,24 @@ import { defaultTheme } from '../../theme';
 import { Select, MenuItem } from "@material-ui/core";
 import { ExpandMore } from '@material-ui/icons';
 
-const { align, text, border, margin, colors, padding, borderRadius } = defaultTheme;
+const { align, text, border, margin, colors, padding, borderRadius, width } = defaultTheme;
 
 export const HeaderStyle = styled.div`
-    display: block;
-    right: 0;
-    width: ${props => !props.showDrawer ? '45	px' : '90 % '};
-    height: 4em;
-    background-color: #fff;
+    display: flex;
+    position: fixed;
     justify-content: ${align.spaceBetween};
     align-items: ${align.center};
-    position: fixed;
+    right: 0;
+    
+    height: 4em;
+    background-color: #fff;
     border-bottom: ${border.header};
     z-index: 10;
+    
+    ${(props) => props.drawerOpen 
+        ? `width: calc(100% - ${width.sidebarOpen})` 
+        : `width: calc(100% - ${width.sidebarClosed})`
+    };
 `;
 
 export const HeaderTitle = styled.p`

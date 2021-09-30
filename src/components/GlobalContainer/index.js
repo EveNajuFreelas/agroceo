@@ -1,24 +1,22 @@
-import { Container, Drawer } from "@material-ui/core";
-import React, { useState, Fragment } from "react"
+import { Container } from "@material-ui/core";
+import React, { Fragment } from "react"
 import { Header } from "../../components/Header";
 import Sidebar from "../../components/Sidebar";
-import { useStyles } from "./styles";
+import { usePageContext } from "../../context/pageContext";
+import { defaultTheme } from "../../theme";
 
 export const GlobalContainer = ({ children }) => {
-  const [showDrawer, setShowDrawer] = useState(false);
-  const classes = useStyles();
-
-  const toggleDrawer = () => setShowDrawer(state => !state)
+  const { drawerOpen } = usePageContext();
+  const width = drawerOpen ?
+    `calc(100% - ${defaultTheme.width.sidebarOpen})` 
+    : `calc(100% - ${defaultTheme.width.sidebarClosed})`;
   
   return (
     <Fragment>
-      {}
-      {}
-      <Header />
       <Sidebar />
-      <Container style={{ paddingTop: 80 }}>
+      <Header />
+      <Container style={{ paddingTop: 80, marginRight: 0, width: width}}>
         {children}
       </Container>
     </Fragment>
-  )
-}
+)};

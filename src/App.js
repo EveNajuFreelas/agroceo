@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router, Route, Switch, Redirect
 } from 'react-router-dom';
 import { MainContainer } from './styles/styles';
-import { LoggedRoute, NotLoggedRoute } from "./components/routes"
+import { NotLoggedRoute } from "./components/routes"
 import Home from './pages/Home';
 import Login from './pages/Login';
 

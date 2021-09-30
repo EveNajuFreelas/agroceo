@@ -1,5 +1,5 @@
-import { Icon } from "../Icons";
-import { iconList } from '../Icons/icon-list';
+import { Icon } from "../assets/Icons";
+import { iconList } from '../assets/Icons/icon-list';
 
 export const menuItems = [
         {

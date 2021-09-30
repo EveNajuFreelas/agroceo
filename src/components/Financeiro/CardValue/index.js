@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Calendar from '../../../utils/image/Icons/Calendar.svg';
+import Calendar from '../../../utils/image/Calendar.svg';
 import {
 	CardValueContainer,
 	ValueCard,

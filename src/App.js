@@ -14,6 +14,7 @@ import Login from './pages/Login';
 import Despesas from './pages/Financeiro/Despesas';
 import Investimento from './pages/Financeiro/Investimento';
 import Receitas from './pages/Financeiro/Receitas';
+import Combustivel from './pages/Manejo/Combustivel';
 
 export function App() {
 	return (
@@ -27,6 +28,7 @@ export function App() {
 					/>
 					<NotLoggedRoute path='/app/login' exact component={Login} />
 					<NotLoggedRoute path='/app' exact component={Dashboard} />
+
 					<NotLoggedRoute
 						path='/financeiro/despesas'
 						exact
@@ -41,6 +43,12 @@ export function App() {
 						path='/financeiro/receitas'
 						exact
 						component={Receitas}
+					/>
+
+					<NotLoggedRoute
+						path='/manejo/combustivel'
+						exact
+						component={Combustivel}
 					/>
 				</Switch>
 			</Router>

@@ -8,7 +8,8 @@ export const TableHeaderContainer = styled.div`
 	padding: 15px;
 	display: grid;
 	grid-template-columns: 8% 50% 42%;
-	border-bottom: 1px solid #ebebeb;
+	border: 1px solid #ebebeb;
+	border-radius: 10px 10px 0px 0px;
 	align-items: center;
 `;
 export const ButtonContainer = styled.div`

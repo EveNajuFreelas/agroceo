@@ -7,7 +7,7 @@ const { colors, text } = defaultTheme;
 export const StyledTableContainer = styled(TableContainer)`
 	&.MuiTableContainer-root {
 		border: 1px solid #ebebeb;
-		border-radius: 10px 10px 0px 0px;
+		border-radius: 0px 0px 10px 10px;
 		width: 100%;
 	}
 

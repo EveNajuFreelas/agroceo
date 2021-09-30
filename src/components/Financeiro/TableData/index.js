@@ -30,8 +30,6 @@ const TableData = ({ data, columns }) => {
 
 	return (
 		<StyledTableContainer>
-			<TableHeader />
-
 			<Table>
 				<TableHead>
 					<TableRow style={{ height: '50px' }}>

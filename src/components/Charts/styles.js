@@ -8,13 +8,6 @@ export const ChartContainer = styled.div`
 	flex-direction: 'row';
 `;
 
-export const TitleSection = styled.span`
-	display: flex;
-	gap: 30px;
-	font-size: ${text.size.large};
-	color: ${colors.neutralDark};
-`;
-
 export const PaperChart = styled.div`
 	padding: 20px;
 	width: 528px;

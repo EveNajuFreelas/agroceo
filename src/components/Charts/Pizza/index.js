@@ -1,6 +1,8 @@
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
-import { ChartContainer, PaperChart, TitleSection } from '../styles';
+import { ChartContainer, PaperChart } from '../styles';
+import { TitleSection } from '../../styles';
+
 import {
 	PizzaContainer,
 	LegendPizzaContainer,

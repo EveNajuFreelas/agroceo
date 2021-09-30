@@ -7,34 +7,43 @@ import {
 } from 'react-router-dom';
 import { MainContainer } from './styles/styles';
 import { LoggedRoute, NotLoggedRoute } from './routes';
+import { ThemeProvider } from '@material-ui/styles';
+
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
-import { ThemeProvider } from '@material-ui/styles';
+import Despesas from './pages/Financeiro/Despesas';
+import Investimento from './pages/Financeiro/Investimento';
+import Receitas from './pages/Financeiro/Receitas';
 
 export function App() {
 	return (
 		<ThemeProvider>
-			<MainContainer>
-				<Router>
-					<Switch>
-						<Route
-							path='/'
-							exact
-							component={() => <Redirect to='/app' />}
-						/>
-						<NotLoggedRoute
-							path='/app/login'
-							exact
-							component={Login}
-						/>
-						<NotLoggedRoute
-							path='/app'
-							exact
-							component={Dashboard}
-						/>
-					</Switch>
-				</Router>
-			</MainContainer>
+			<Router>
+				<Switch>
+					<Route
+						path='/'
+						exact
+						component={() => <Redirect to='/app' />}
+					/>
+					<NotLoggedRoute path='/app/login' exact component={Login} />
+					<NotLoggedRoute path='/app' exact component={Dashboard} />
+					<NotLoggedRoute
+						path='/financeiro/despesas'
+						exact
+						component={Despesas}
+					/>
+					<NotLoggedRoute
+						path='/financeiro/investimentos'
+						exact
+						component={Investimento}
+					/>
+					<NotLoggedRoute
+						path='/financeiro/receitas'
+						exact
+						component={Receitas}
+					/>
+				</Switch>
+			</Router>
 		</ThemeProvider>
 	);
 }

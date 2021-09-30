@@ -15,33 +15,32 @@ import Despesas from '../../utils/image/Despesas.svg';
 import Receitas from '../../utils/image/Receitas.svg';
 import Investimentos from '../../utils/image/Investimentos.svg';
 import { defaultTheme } from '../../theme';
+import Filter from '../Filter/index.js';
+import {
+	itensMenuMonth,
+	itensMenuYear,
+} from '../../utils/dataMock/itensMenu.js';
 const { colors } = defaultTheme;
 
 const OverviewFinancial = () => {
+	const filter = mes => {
+		console.log(mes);
+	};
+
 	return (
 		<>
 			<FilterFinancial>
 				<FilterLabel>Financeiro</FilterLabel>
-				<Select
-					labelId='yearLabel'
-					value={2021}
-					backgroundColor={`${colors.primary}`}
-					//onChange={handleChange}
-					label='year'
-				>
-					<MenuItem value={2020}>2020</MenuItem>
-					<MenuItem value={2021}>2021</MenuItem>
-				</Select>
-				<Select
-					labelId='monthLabel'
-					value={'Setembro'}
-					color={`${colors.primary}`}
-					//onChange={handleChange}
-					label='month'
-				>
-					<MenuItem value={'outubro'}>outubro</MenuItem>
-					<MenuItem value={'novembro'}>novembro</MenuItem>
-				</Select>
+				<Filter
+					label={'2021'}
+					itensMenu={itensMenuYear}
+					clickFunction={filter}
+				/>
+				<Filter
+					label={'Setembro'}
+					itensMenu={itensMenuMonth}
+					clickFunction={filter}
+				/>
 			</FilterFinancial>
 			<CardTab>
 				<CardFinancial

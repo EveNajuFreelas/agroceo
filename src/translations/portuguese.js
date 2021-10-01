@@ -1,4 +1,20 @@
 export const portuguese = {
-    "greeting": "Oi!",
-    "date": "pt-br",
-}
+	'greeting': 'Oi!',
+	'date': 'pt-br',
+	'to pay': 'A pagar',
+	'overdue': 'Em atraso',
+	'paid': 'Pago',
+	'expense date': 'Data da despesa',
+	'description': 'Descrição',
+	'invoice': 'Nota Fiscal',
+	'payment': 'Forma de pagamento',
+	'instalment': 'Parcela',
+	'first instalment': 'Data 1ª parcela',
+	'% by property': '% por Propriedade',
+	'document photo': 'Foto do documento',
+	'search prescription': 'Pesquisar prescrição',
+	'rescued': 'Resgatado',
+	'invested': 'Investido',
+	'receivable': 'A receber',
+	'received': 'Recebido',
+};

@@ -1,4 +1,20 @@
 export const english = {
-    "greeting": "Hi!",
-    "date": "en",
-}
+	'greeting': 'Hi!',
+	'date': 'en',
+	'to pay': 'To pay',
+	'overdue': 'Overdue',
+	'paid': 'Paid',
+	'expense date': 'Expense date',
+	'description': 'Description',
+	'invoice': 'Invoice',
+	'payment': 'Payment method',
+	'instalment': 'Instalment',
+	'first instalment': 'first instalment',
+	'% by property': '% by property',
+	'document photo': 'document photo',
+	'search prescription': 'search prescription',
+	'rescued': 'Rescued',
+	'invested': 'Invested',
+	'receivable': 'Receivable',
+	'received': 'Received',
+};

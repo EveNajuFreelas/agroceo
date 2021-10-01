@@ -1,7 +1,7 @@
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import { ChartContainer, PaperChart } from '../styles';
-import { TitleSection } from '../../styles';
+import { TitleSection } from '../../Geral/styles';
 
 import {
 	PizzaContainer,

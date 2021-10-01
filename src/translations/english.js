@@ -23,4 +23,10 @@ export const english = {
 	'driver': 'Driver',
 	'vehicle': 'Vehicle',
 	'dateTime': 'Data and Time',
+	'brand': 'Brand',
+	'model': 'Model',
+	'color': 'Color',
+	'board': 'Board',
+	'owner': 'Vehicle owner',
+	'lastRevision ': 'Date of last review ',
 };

@@ -8,7 +8,7 @@ import {
 	LegendBarLabel,
 } from './styles';
 import { ChartContainer, PaperChart } from '../styles';
-import { TitleSection } from '../../styles';
+import { TitleSection } from '../../Geral/styles';
 
 import { animais } from '../../../utils/dataMock/mock';
 import { defaultTheme } from '../../../theme';

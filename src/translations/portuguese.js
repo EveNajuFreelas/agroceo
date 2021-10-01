@@ -23,4 +23,10 @@ export const portuguese = {
 	'driver': 'Motorista',
 	'vehicle': 'Veículo',
 	'dateTime': 'Data e Hora',
+	'brand': 'Marca',
+	'model': 'Modelo',
+	'color': 'Cor',
+	'board': 'Placa',
+	'owner': 'Proprietário do veículo',
+	'lastRevision ': 'Data da última revisão',
 };

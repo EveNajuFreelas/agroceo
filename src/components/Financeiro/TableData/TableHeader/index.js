@@ -1,12 +1,13 @@
-import { Button, InputAdornment } from '@material-ui/core';
+import { InputAdornment } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import { defaultTheme } from '../../../../theme';
+
 import Filter from '../../../Filter';
+import ButtonIconAdd from '../../../Geral/ButtonIcon';
 
 import Pdf from '../../../../utils/image/Pdf.svg';
 import Print from '../../../../utils/image/Print.svg';
 import SearchIcon from '../../../../utils/image/Search.svg';
-import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
 
 import {
 	TableHeaderContainer,
@@ -72,22 +73,11 @@ const TableHeader = () => {
 						clickFunction={filter}
 					/>
 				</FilterContainer>
-
-				<Button
-					variant='contained'
-					startIcon={
-						<AddCircleOutlineOutlinedIcon
-							style={{ color: '#fff' }}
-						/>
-					}
-					style={{
-						backgroundColor: `${colors.primary}`,
-						color: '#fff',
-						boxShadow: 'none',
-					}}
-				>
-					Registro
-				</Button>
+				<ButtonIconAdd
+					color={colors.neutral0}
+					backgroundColor={colors.primary}
+					text='Registo'
+				/>
 			</ContainerRight>
 		</TableHeaderContainer>
 	);

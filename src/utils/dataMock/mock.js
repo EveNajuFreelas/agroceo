@@ -121,3 +121,26 @@ export const manejoCombustivel = [
 		Data: '-',
 	},
 ];
+
+export const manejoVeiculos = [
+	{
+		id: '00004',
+		Description: 'Caminhonete',
+		Marca: 'Ford',
+		Modelo: 'Ranger Raptor',
+		Cor: 'Prata',
+		Placa: 'ABC1D23',
+		Proprietario: 'Terceiros',
+		Data: '18/09/2021',
+	},
+	{
+		id: '00005',
+		Description: 'Moto',
+		Marca: 'Honda',
+		Modelo: 'NXR 160 Bros',
+		Cor: 'Vermelha',
+		Placa: 'ZXY9W87',
+		Proprietario: 'Fazenda',
+		Data: '05/04/2020',
+	},
+];

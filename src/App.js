@@ -15,6 +15,7 @@ import Despesas from './pages/Financeiro/Despesas';
 import Investimento from './pages/Financeiro/Investimento';
 import Receitas from './pages/Financeiro/Receitas';
 import Combustivel from './pages/Manejo/Combustivel';
+import Veiculos from './pages/Manejo/Veiculos';
 
 export function App() {
 	return (
@@ -49,6 +50,12 @@ export function App() {
 						path='/manejo/combustivel'
 						exact
 						component={Combustivel}
+					/>
+
+					<NotLoggedRoute
+						path='/manejo/veiculos'
+						exact
+						component={Veiculos}
 					/>
 				</Switch>
 			</Router>

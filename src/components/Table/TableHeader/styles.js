@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { defaultTheme } from '../../../../theme';
+import { defaultTheme } from '../../../theme';
 import { TextField } from '@material-ui/core';
 
 const { colors } = defaultTheme;

@@ -1,15 +1,14 @@
 import styled from 'styled-components';
-import { defaultTheme } from '../../../../theme';
+import { defaultTheme } from '../../theme';
 
 const { text } = defaultTheme;
 
 export const ItemDescription = styled.div`
-	display: grid;
-	grid-template-columns: 0.5fr 1fr 2fr;
-	width: 251px;
-
-	border-radius: 16px;
+	display: flex;
+	gap: 15px;
 	align-items: center;
+	//width: 200px;
+	justify-content: ${props => (props.justifyEnd ? 'end' : 'start')};
 `;
 export const IconItemDescription = styled.img`
 	width: 25px;

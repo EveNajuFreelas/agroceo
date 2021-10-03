@@ -1,13 +1,13 @@
 import { InputAdornment } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
-import { defaultTheme } from '../../../../theme';
+import { defaultTheme } from '../../../theme';
 
-import Filter from '../../../Filter';
-import ButtonIconAdd from '../../../Geral/ButtonIcon';
+import Filter from '../../Filter';
+import ButtonIconAdd from '../../Geral/ButtonIcon';
 
-import Pdf from '../../../../utils/image/Pdf.svg';
-import Print from '../../../../utils/image/Print.svg';
-import SearchIcon from '../../../../utils/image/Search.svg';
+import Pdf from '../../../utils/image/Pdf.svg';
+import Print from '../../../utils/image/Print.svg';
+import SearchIcon from '../../../utils/image/Search.svg';
 
 import {
 	TableHeaderContainer,
@@ -22,7 +22,7 @@ import {
 import {
 	itensMenuYear,
 	itensMenuMonth,
-} from '../../../../utils/dataMock/itensMenu';
+} from '../../../utils/dataMock/itensMenu';
 
 const TableHeader = () => {
 	const { t } = useTranslation();

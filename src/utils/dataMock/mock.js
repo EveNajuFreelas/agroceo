@@ -144,3 +144,47 @@ export const manejoVeiculos = [
 		Data: '05/04/2020',
 	},
 ];
+
+export const manejoTratores = [
+	{
+		id: '00004',
+		Description: 'Caminhonete',
+		Marca: 'Ford',
+		Modelo: 'Ranger Raptor',
+		Cor: 'Prata',
+		Ano: '2012',
+		Placa: 'ABC1D23',
+		Proprietario: 'Terceiros',
+		Data: '18/09/2021',
+	},
+	{
+		id: '00005',
+		Description: 'Moto',
+		Marca: 'Honda',
+		Modelo: 'NXR 160 Bros',
+		Cor: 'Vermelha',
+		Ano: '2015',
+		Placa: 'ZXY9W87',
+		Proprietario: 'Fazenda',
+		Data: '05/04/2020',
+	},
+];
+
+export const manejoMaoFuncionario = [
+	{
+		id: '00004',
+		Nome: 'Benedito Candido Gomes',
+		Apelido: 'Dito',
+		Funcao: 'Ordenhador',
+		Contato: '(62) 9 9123-4567',
+		Tipo: 'Permanente',
+	},
+	{
+		id: '00004',
+		Nome: 'Benedito Candido Gomes',
+		Apelido: 'Dito',
+		Funcao: 'Ordenhador',
+		Contato: '(62) 9 9123-4567',
+		Tipo: 'Permanente',
+	},
+];

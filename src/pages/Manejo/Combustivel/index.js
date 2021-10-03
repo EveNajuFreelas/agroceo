@@ -5,7 +5,7 @@ import { HeadSection } from '../styles';
 import { useTranslation } from 'react-i18next';
 import { defaultTheme } from '../../../theme';
 
-import TableData from '../../../components/Financeiro/TableData';
+import TableWithDescriptionIcon from '../../../components/Table/TableDescriptionWithIcon';
 import Filter from '../../../components/Filter';
 import { itensMenuCombustivel } from '../../../utils/dataMock/itensMenu';
 import { manejoCombustivel } from '../../../utils/dataMock/mock';
@@ -50,7 +50,10 @@ const Combustivel = () => {
 				/>
 			</HeadSection>
 			<div>
-				<TableData data={manejoCombustivel} columns={columns} />
+				<TableWithDescriptionIcon
+					data={manejoCombustivel}
+					columns={columns}
+				/>
 			</div>
 		</>
 	);

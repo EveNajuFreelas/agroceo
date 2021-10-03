@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { defaultTheme } from '../../../theme';
-import DescriptionTable from './DescriptionTable';
+import LabelWithIcon from '../../LabelWithIcon';
 import { useTranslation } from 'react-i18next';
 
 import {
@@ -13,13 +13,12 @@ import {
 	Checkbox,
 } from '@material-ui/core';
 
-import { StyledTableContainer } from './styles';
-import TableHeader from './TableHeader';
+import { StyledTableContainer } from '../styles';
 
 import Edit from '../../../utils/image/Edit.svg';
 import Delete from '../../../utils/image/Delete.svg';
 
-const TableData = ({ data, columns }) => {
+const TableWithDescriptionIcon = ({ data, columns }) => {
 	const { t } = useTranslation();
 	const { colors, text } = defaultTheme;
 	//const [selected, setSelected] = React.useState([]);
@@ -67,13 +66,16 @@ const TableData = ({ data, columns }) => {
 									/>
 								</TableCell>
 
-								<TableCell style={{ color: colors.neutral6 }}>
+								<TableCell
+									width='50px'
+									style={{ color: colors.neutral6 }}
+								>
 									{row.id}
 								</TableCell>
 
-								<TableCell align='left'>
-									<DescriptionTable
-										description={'Insumos'}
+								<TableCell align='left' width='200px'>
+									<LabelWithIcon
+										iconName={'Insumos'}
 										title={row.Description}
 									/>
 								</TableCell>
@@ -109,4 +111,4 @@ const TableData = ({ data, columns }) => {
 	);
 };
 
-export default TableData;
+export default TableWithDescriptionIcon;

@@ -1,25 +1,18 @@
 import React, { useState } from 'react';
-import {
-	CardTab,
-	OverviewFinancialContainer,
-	CardList,
-	FilterFinancial,
-	FilterLabel,
-} from './styles.js';
-import { Select, MenuItem, InputLabel } from '@material-ui/core';
+import { CardTab, CardList, FilterFinancial, FilterLabel } from './styles.js';
 
-import CardFinancial from './CardFinancial';
-import CardListItem from './CardListItem';
+import CardFinancial from '../../Card/CardFinancial';
+import CardListItem from '../../Card/CardListItem';
 
-import Despesas from '../../utils/image/Despesas.svg';
-import Receitas from '../../utils/image/Receitas.svg';
-import Investimentos from '../../utils/image/Investimentos.svg';
-import { defaultTheme } from '../../theme';
-import Filter from '../Filter/index.js';
+import Despesas from '../../../utils/image/Despesas.svg';
+import Receitas from '../../../utils/image/Receitas.svg';
+import Investimentos from '../../../utils/image/Investimentos.svg';
+import { defaultTheme } from '../../../theme';
+import Filter from '../../Filter/index.js';
 import {
 	itensMenuMonth,
 	itensMenuYear,
-} from '../../utils/dataMock/itensMenu.js';
+} from '../../../utils/dataMock/itensMenu.js';
 const { colors } = defaultTheme;
 
 const OverviewFinancial = () => {

@@ -29,4 +29,11 @@ export const english = {
 	'board': 'Board',
 	'owner': 'Vehicle owner',
 	'lastRevision ': 'Date of last review ',
+	'employees': 'Employees',
+	'roles': 'Roles',
+	'manufacture': 'Year of manufacture',
+	'name': 'Name',
+	'surname': 'Surname',
+	'contact': 'Contact',
+	'occupation': 'Occupation',
 };

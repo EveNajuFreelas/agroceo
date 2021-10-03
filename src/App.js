@@ -16,6 +16,8 @@ import Investimento from './pages/Financeiro/Investimento';
 import Receitas from './pages/Financeiro/Receitas';
 import Combustivel from './pages/Manejo/Combustivel';
 import Veiculos from './pages/Manejo/Veiculos';
+import MaoObra from './pages/Manejo/MaoObra';
+import Tratores from './pages/Manejo/Tratores';
 
 export function App() {
 	return (
@@ -27,8 +29,12 @@ export function App() {
 						exact
 						component={() => <Redirect to='/app' />}
 					/>
-					<NotLoggedRoute path='/app/login' exact component={Login} />
-					<NotLoggedRoute path='/app' exact component={Dashboard} />
+					<NotLoggedRoute path='/login' exact component={Login} />
+					<NotLoggedRoute
+						path='/dashboard'
+						exact
+						component={Dashboard}
+					/>
 
 					<NotLoggedRoute
 						path='/financeiro/despesas'
@@ -56,6 +62,18 @@ export function App() {
 						path='/manejo/veiculos'
 						exact
 						component={Veiculos}
+					/>
+
+					<NotLoggedRoute
+						path='/manejo/maodeobra'
+						exact
+						component={MaoObra}
+					/>
+
+					<NotLoggedRoute
+						path='/manejo/tratores'
+						exact
+						component={Tratores}
 					/>
 				</Switch>
 			</Router>

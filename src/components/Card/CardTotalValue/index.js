@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import DespesaAzul from '../../../utils/image/DespesaAzul.svg';
 import {
 	CardSummaryContainer,
@@ -9,7 +9,6 @@ import {
 	ValueTotalCard,
 	DateTotalCard,
 } from './styles';
-import { defaultTheme } from '../../../theme';
 
 const CardTotalValue = ({ value, mes, ano }) => {
 	return (

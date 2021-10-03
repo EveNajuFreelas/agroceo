@@ -6,17 +6,15 @@ import { useTranslation } from 'react-i18next';
 import { defaultTheme } from '../../../theme';
 
 import { itensMenuCombustivel } from '../../../utils/dataMock/itensMenu';
-import { manejoVeiculos } from '../../../utils/dataMock/mock';
+import { manejoTratores } from '../../../utils/dataMock/mock';
 
 import Filter from '../../../components/Filter';
 import ButtonIconAdd from '../../../components/Geral/ButtonIcon';
 import TablePutIncon from '../../../components/Table/TablePutIcon';
 
-const Veiculos = () => {
+const Tratores = () => {
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
-
-	let keys = Object.keys(manejoVeiculos[0]);
 
 	const columns = [
 		'ID',
@@ -24,6 +22,7 @@ const Veiculos = () => {
 		t('brand'),
 		t('model'),
 		t('color'),
+		t('manufacture'),
 		t('board'),
 		t('owner'),
 		t('lastRevision'),
@@ -37,7 +36,7 @@ const Veiculos = () => {
 		<>
 			<HeadSection>
 				<TitleSection>
-					Veículos
+					Tratores
 					<Filter
 						label={'Todos'}
 						itensMenu={itensMenuCombustivel}
@@ -51,9 +50,9 @@ const Veiculos = () => {
 					marginBottom={true}
 				/>
 			</HeadSection>
-			<TablePutIncon data={manejoVeiculos} columns={columns} />
+			<TablePutIncon data={manejoTratores} columns={columns} />
 		</>
 	);
 };
 
-export default Veiculos;
+export default Tratores;

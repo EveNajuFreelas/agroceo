@@ -29,4 +29,12 @@ export const portuguese = {
 	'board': 'Placa',
 	'owner': 'Proprietário do veículo',
 	'lastRevision ': 'Data da última revisão',
+	'employees': 'Funcionários',
+	'roles': 'Funções',
+	'manufacture': 'Ano de fabricação',
+	'name': 'Nome',
+	'surname': 'Apelido',
+	'contact': 'Contato',
+	'typeContract': 'Tipo de contrato',
+	'occupation': 'Função',
 };

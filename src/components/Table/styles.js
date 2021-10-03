@@ -1,6 +1,6 @@
 import { TableContainer } from '@material-ui/core';
 import styled from 'styled-components';
-import { defaultTheme } from '../../../theme';
+import { defaultTheme } from '../../theme';
 
 const { colors, text } = defaultTheme;
 

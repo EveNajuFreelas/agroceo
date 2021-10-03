@@ -7,11 +7,11 @@ import {
 import { useTranslation } from 'react-i18next';
 import { defaultTheme } from '../../../theme';
 
-import CardValue from '../../../components/Financeiro/CardValue';
-import CardTotalValue from '../../../components/Financeiro/CardTotalValue';
-import TableData from '../../../components/Financeiro/TableData';
+import CardValue from '../../../components/Card/CardValue';
+import CardTotalValue from '../../../components/Card/CardTotalValue';
+import TableWithDescriptionIcon from '../../../components/Table/TableDescriptionWithIcon';
 import { financeiroData } from '../../../utils/dataMock/mock';
-import TableHeader from '../../../components/Financeiro/TableData/TableHeader';
+import TableHeader from '../../../components/Table/TableHeader';
 const Investimento = () => {
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
@@ -51,7 +51,10 @@ const Investimento = () => {
 			</SummaryContainer>
 			<div>
 				<TableHeader />
-				<TableData data={financeiroData} columns={columnsFinancial} />
+				<TableWithDescriptionIcon
+					data={financeiroData}
+					columns={columnsFinancial}
+				/>
 			</div>
 		</FinancialOverview>
 	);

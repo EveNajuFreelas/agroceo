@@ -18,6 +18,7 @@ import Combustivel from './pages/Manejo/Combustivel';
 import Veiculos from './pages/Manejo/Veiculos';
 import MaoObra from './pages/Manejo/MaoObra';
 import Tratores from './pages/Manejo/Tratores';
+import Insumos from './pages/Manejo/Insumos';
 
 export function App() {
 	return (
@@ -27,7 +28,7 @@ export function App() {
 					<Route
 						path='/'
 						exact
-						component={() => <Redirect to='/app' />}
+						component={() => <Redirect to='/dashboard' />}
 					/>
 					<NotLoggedRoute path='/login' exact component={Login} />
 					<NotLoggedRoute
@@ -74,6 +75,12 @@ export function App() {
 						path='/manejo/tratores'
 						exact
 						component={Tratores}
+					/>
+
+					<NotLoggedRoute
+						path='/manejo/insumos'
+						exact
+						component={Insumos}
 					/>
 				</Switch>
 			</Router>

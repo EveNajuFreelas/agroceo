@@ -1,9 +1,17 @@
 import React from 'react';
 import { Button } from '@material-ui/core';
+import { defaultTheme } from '../../theme';
 
 import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
 
-const ButtonIconAdd = ({ color, backgroundColor, text, marginBottom }) => {
+const ButtonIconAdd = ({
+	color,
+	backgroundColor,
+	textButton,
+	marginBottom,
+}) => {
+	const { colors, text } = defaultTheme;
+
 	return (
 		<Button
 			variant='contained'
@@ -15,10 +23,12 @@ const ButtonIconAdd = ({ color, backgroundColor, text, marginBottom }) => {
 				color: `${color}`,
 				boxShadow: 'none',
 				marginBottom: marginBottom ? 15 : 0,
-				borderColor: `${color}`,
+				border: `1px solid ${colors.primary}`,
+				textTransform: 'capitalize',
+				fontWeight: 700,
 			}}
 		>
-			{text}
+			{textButton}
 		</Button>
 	);
 };

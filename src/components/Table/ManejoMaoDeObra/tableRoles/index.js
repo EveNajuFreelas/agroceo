@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { defaultTheme } from '../../../theme';
+import { defaultTheme } from '../../../../theme';
 import { useTranslation } from 'react-i18next';
 
 import {
@@ -12,13 +12,13 @@ import {
 	Checkbox,
 } from '@material-ui/core';
 
-import { StyledTableContainer } from '../../Table/styles';
+import { StyledTableContainer } from '../../styles';
 
-import Edit from '../../../utils/image/Edit.svg';
-import Delete from '../../../utils/image/Delete.svg';
-import LabelWithIcon from '../../LabelWithIcon';
+import Edit from '../../../../utils/image/Edit.svg';
+import Delete from '../../../../utils/image/Delete.svg';
+import TableChip from '../../TableChip';
 
-const TableEmployees = ({ data }) => {
+const TableRoles = ({ data }) => {
 	const { t } = useTranslation();
 
 	const { colors, text } = defaultTheme;
@@ -29,14 +29,7 @@ const TableEmployees = ({ data }) => {
 
 	let keys = Object.keys(data[0]);
 
-	const columns = [
-		'ID',
-		t('name'),
-		t('surname'),
-		t('occupation'),
-		t('contact'),
-		t('typeContract'),
-	];
+	const columns = ['ID', t('functionName'), t('obligations'), t('daysWeek')];
 
 	return (
 		<StyledTableContainer>
@@ -53,8 +46,7 @@ const TableEmployees = ({ data }) => {
 							/>
 						</TableCell>
 						{columns.map((column, index) => {
-							console.log(column, index);
-							return index === 0 || index === 1 ? (
+							return index != 3 ? (
 								<TableCell align='left'>{column}</TableCell>
 							) : (
 								<TableCell align='right'>{column}</TableCell>
@@ -84,35 +76,15 @@ const TableEmployees = ({ data }) => {
 									{row.id}
 								</TableCell>
 
-								<TableCell width='200px'>{row.Nome}</TableCell>
-								{keys.map((column, index) => {
-									if (index == 4) {
-										return (
-											<TableCell
-												align='right'
-												key={index}
-												width='300px'
-											>
-												<LabelWithIcon
-													title={row[column]}
-													iconName={'Brasil'}
-													justifyEnd={true}
-												/>
-											</TableCell>
-										);
-									} else {
-										return (
-											index > 1 && (
-												<TableCell
-													align='right'
-													key={index}
-												>
-													{row[column]}
-												</TableCell>
-											)
-										);
-									}
-								})}
+								<TableCell width={200}>{row.Funcao}</TableCell>
+
+								<TableCell>
+									<TableChip obligations={row.Obligations} />
+								</TableCell>
+
+								<TableCell align='right'>
+									{row.Days.join(', ')}
+								</TableCell>
 
 								<TableCell align='center'>
 									<img
@@ -132,4 +104,4 @@ const TableEmployees = ({ data }) => {
 	);
 };
 
-export default TableEmployees;
+export default TableRoles;

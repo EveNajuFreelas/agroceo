@@ -8,23 +8,21 @@ import { defaultTheme } from '../../../theme';
 import TableWithDescriptionIcon from '../../../components/Table/TableDescriptionWithIcon';
 import Filter from '../../../components/Filter';
 import { itensMenuCombustivel } from '../../../utils/dataMock/itensMenu';
-import { manejoCombustivel } from '../../../utils/dataMock/mock';
+import { manejoInsumos } from '../../../utils/dataMock/mock';
 import ButtonIconAdd from '../../../components/Geral/ButtonIcon';
 
-const Combustivel = () => {
+const Insumos = () => {
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
 
 	const columns = [
 		'ID',
-		t('description'),
+		t('supplies'),
 		t('quantity'),
-		t('supplier'),
-		t('payment'),
-		t('supplyLocation'),
-		t('driver'),
-		t('vehicle'),
-		t('dateTime'),
+		t('unitMeasurement'),
+		t('presentation'),
+		t('document'),
+		t('whoReceived'),
 	];
 
 	const filter = mes => {
@@ -35,7 +33,7 @@ const Combustivel = () => {
 		<>
 			<HeadSection>
 				<TitleSection>
-					Resgistros de Combustível
+					Insumos
 					<Filter
 						label={'Todos'}
 						itensMenu={itensMenuCombustivel}
@@ -51,7 +49,7 @@ const Combustivel = () => {
 			</HeadSection>
 			<div>
 				<TableWithDescriptionIcon
-					data={manejoCombustivel}
+					data={manejoInsumos}
 					columns={columns}
 				/>
 			</div>
@@ -59,4 +57,4 @@ const Combustivel = () => {
 	);
 };
 
-export default Combustivel;
+export default Insumos;

@@ -188,3 +188,45 @@ export const manejoMaoFuncionario = [
 		Tipo: 'Permanente',
 	},
 ];
+
+export const manejoMaoFuncoes = [
+	{
+		id: '00004',
+		Funcao: 'Ordenhador',
+		Obligations: [
+			'Higienizar equipamento',
+			'Apartar Gado',
+			'Ordenhar',
+			'Armazenar Leite',
+			'Something else',
+		],
+		Days: ['Segunda-feira(manhã), Terça-feira(manhã), Quarta-Feira(tarde)'],
+	},
+	{
+		id: '00006',
+		Funcao: 'Ordenhador',
+		Obligations: ['Apartar Gado', 'Ordenhar', 'Armazenar Leite'],
+		Days: ['Segunda-feira(manhã), Quarta-Feira(tarde)'],
+	},
+];
+
+export const manejoInsumos = [
+	{
+		id: '00004',
+		Description: 'Adubo',
+		Quantidade: '60',
+		Medida: 'Kg',
+		Apresentacao: 'Sacos de 20kg',
+		Documento: 'Não',
+		Quem: 'José da Silva',
+	},
+	{
+		id: '00004',
+		Description: 'Adubo',
+		Quantidade: '10',
+		Medida: 'Kg',
+		Apresentacao: 'Sacos de 20kg',
+		Documento: 'Não',
+		Quem: 'José da Silva',
+	},
+];

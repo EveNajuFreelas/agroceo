@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { defaultTheme } from '../../../theme';
-import LabelWithIcon from '../../LabelWithIcon';
+import { defaultTheme } from '../../../../theme';
 import { useTranslation } from 'react-i18next';
 
 import {
@@ -13,19 +12,31 @@ import {
 	Checkbox,
 } from '@material-ui/core';
 
-import { StyledTableContainer } from '../styles';
+import { StyledTableContainer } from '../../styles';
 
-import Edit from '../../../utils/image/Edit.svg';
-import Delete from '../../../utils/image/Delete.svg';
+import Edit from '../../../../utils/image/Edit.svg';
+import Delete from '../../../../utils/image/Delete.svg';
+import LabelWithIcon from '../../../LabelWithIcon';
 
-const TableWithDescriptionIcon = ({ data, columns }) => {
+const TableEmployees = ({ data }) => {
 	const { t } = useTranslation();
+
 	const { colors, text } = defaultTheme;
+
 	//const [selected, setSelected] = React.useState([]);
 
 	//const isSelected = name => selected.indexOf(name) !== -1;
 
 	let keys = Object.keys(data[0]);
+
+	const columns = [
+		'ID',
+		t('name'),
+		t('surname'),
+		t('occupation'),
+		t('contact'),
+		t('typeContract'),
+	];
 
 	return (
 		<StyledTableContainer>
@@ -73,24 +84,34 @@ const TableWithDescriptionIcon = ({ data, columns }) => {
 									{row.id}
 								</TableCell>
 
-								<TableCell align='left' width='200px'>
-									<LabelWithIcon
-										iconName={'Insumos'}
-										title={row.Description}
-									/>
-								</TableCell>
-
+								<TableCell width='200px'>{row.Nome}</TableCell>
 								{keys.map((column, index) => {
-									return (
-										index > 1 && (
+									if (index == 4) {
+										return (
 											<TableCell
 												align='right'
 												key={index}
+												width='300px'
 											>
-												{row[column]}
+												<LabelWithIcon
+													title={row[column]}
+													iconName={'Brasil'}
+													justifyEnd={true}
+												/>
 											</TableCell>
-										)
-									);
+										);
+									} else {
+										return (
+											index > 1 && (
+												<TableCell
+													align='right'
+													key={index}
+												>
+													{row[column]}
+												</TableCell>
+											)
+										);
+									}
 								})}
 
 								<TableCell align='center'>
@@ -111,4 +132,4 @@ const TableWithDescriptionIcon = ({ data, columns }) => {
 	);
 };
 
-export default TableWithDescriptionIcon;
+export default TableEmployees;

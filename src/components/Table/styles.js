@@ -19,4 +19,22 @@ export const StyledTableContainer = styled(TableContainer)`
 	&.MuiTableContainer-root .MuiTableRow-root {
 		height: 68px;
 	}
+
+	&.MuiTableContainer-root
+		.MuiTable-root
+		.MuiTableHead-root
+		.MuiTableRow-head
+		.MuiTableCell-head {
+		font-size: 14px;
+		font-family: ${text.fontFamily.bold};
+	}
+
+	&.MuiTableContainer-root
+		.MuiTable-root
+		.MuiTableBody-root
+		.MuiTableRow-root
+		.MuiTableCell-root {
+		font-size: 16px;
+		font-family: ${text.fontFamily.regular};
+	}
 `;

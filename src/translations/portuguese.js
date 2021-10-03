@@ -37,4 +37,12 @@ export const portuguese = {
 	'contact': 'Contato',
 	'typeContract': 'Tipo de contrato',
 	'occupation': 'Função',
+	'functionName': 'Nome da função',
+	'obligations': 'Lista de obrigações',
+	'daysWeek': 'Dias da semana',
+	'supplies': 'Insumos',
+	'unitMeasurement': 'Unidade de Medida',
+	'presentation': 'Apresentação',
+	'document': 'Documento',
+	'whoReceived': 'Quem recebeu',
 };

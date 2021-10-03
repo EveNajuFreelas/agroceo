@@ -47,7 +47,7 @@ const Veiculos = () => {
 				<ButtonIconAdd
 					color={colors.neutral0}
 					backgroundColor={colors.primary}
-					text='Cadastrar'
+					textButton='Cadastrar'
 					marginBottom={true}
 				/>
 			</HeadSection>

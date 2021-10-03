@@ -47,7 +47,7 @@ export const defaultTheme = {
 		},
 		fontFamily: {
 			bold: 'Inter-Bold',
-			regular: 'Inter-Regular',
+			regular: 'Inter',
 		},
 		weight: {
 			thin: 200,

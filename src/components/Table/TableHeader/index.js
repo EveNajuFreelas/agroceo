@@ -76,7 +76,7 @@ const TableHeader = () => {
 				<ButtonIconAdd
 					color={colors.neutral0}
 					backgroundColor={colors.primary}
-					text='Registo'
+					textButton='Registro'
 				/>
 			</ContainerRight>
 		</TableHeaderContainer>

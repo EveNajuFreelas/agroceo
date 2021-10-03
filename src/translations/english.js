@@ -36,4 +36,12 @@ export const english = {
 	'surname': 'Surname',
 	'contact': 'Contact',
 	'occupation': 'Occupation',
+	'functionName': 'Function Name',
+	'obligations': 'List of obligations',
+	'daysWeek': 'Days of the week',
+	'supplies': 'Supplies',
+	'unitMeasurement': 'Unit of Measurement',
+	'presentation': 'Presentation',
+	'document': 'Document',
+	'whoReceived': 'Who received',
 };

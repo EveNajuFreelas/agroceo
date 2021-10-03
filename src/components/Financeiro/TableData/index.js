@@ -45,7 +45,6 @@ const TableData = ({ data, columns }) => {
 							/>
 						</TableCell>
 						{columns.map((column, index) => {
-							console.log(column, index);
 							return index === 0 || index === 1 ? (
 								<TableCell align='left'>{column}</TableCell>
 							) : (

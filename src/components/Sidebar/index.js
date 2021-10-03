@@ -2,10 +2,10 @@ import { List } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import { usePageContext } from '../../context/pageContext';
 import { menuItems } from '../../utils/navigationItems';
-import { SidebarWrapper, ListItemWrapper, SidebarHeader } from './styles';
+import { SidebarWrapper, ListItemWrapper, SidebarHeader, SidebarIcon, ListExpandButton } from './styles';
 
 const Sidebar = () => {
-    const { drawerOpen, sidebarSize, handleSidebarSize } = usePageContext();
+    const { drawerOpen, changeDrawerState } = usePageContext();
     const history = useHistory();
 
     const navigateTo = (path) => {
@@ -19,14 +19,15 @@ const Sidebar = () => {
             variant="permanent"
         >
             <SidebarHeader>
-                AGROCEO
+                <SidebarIcon onClick={changeDrawerState} />
+                {drawerOpen && "AGROCEO"}
             </SidebarHeader>
             <List>
-                {sidebarSize}
                 {menuItems.map(m => 
                     <ListItemWrapper key={m.id} onClick={() => navigateTo(m.url)}>
                         {m.icon}
-                        {m.name}
+                        {drawerOpen && m.name}
+                        {m.menuItems && <ListExpandButton />}
                     </ListItemWrapper>
                 )}
             </List>

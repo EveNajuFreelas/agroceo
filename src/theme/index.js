@@ -80,7 +80,7 @@ export const defaultTheme = {
 		sm: '4px',
 		md: '8px',
 		lg: '12px',
-    xg: '24px',
+    	xg: '24px',
 	},
 	opacity: {
 		low: '.9',
@@ -91,6 +91,7 @@ export const defaultTheme = {
 		buttonSuccess: `2px solid #005500`,
 		buttonError: `2px solid #550000`,
 		header: `1px solid #EBEBEB`,
+		menu:  `1px solid #FFFFFF`,
 	},
 	align: {
 		center: 'center',
@@ -99,7 +100,7 @@ export const defaultTheme = {
 		flexEnd: 'flex-end',
 	},
   width: {
-    sidebarOpen: '20%',
-    sidebarClosed: '5%',
+    sidebarOpen: '256px',
+    sidebarClosed: '97px',
   },
 };

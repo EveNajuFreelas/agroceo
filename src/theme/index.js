@@ -81,6 +81,7 @@ export const defaultTheme = {
 		md: '8px',
 		lg: '12px',
     	xg: '24px',
+		exg: '32px',
 	},
 	opacity: {
 		low: '.9',
@@ -102,5 +103,6 @@ export const defaultTheme = {
   width: {
     sidebarOpen: '256px',
     sidebarClosed: '97px',
+	subSidebar: '206px',
   },
 };

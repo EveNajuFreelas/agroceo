@@ -1,4 +1,4 @@
-import { Drawer, ListItem } from '@material-ui/core';
+import { Drawer, List, ListItem } from '@material-ui/core';
 import styled from 'styled-components'
 import { defaultTheme } from '../../theme';
 import { iconList } from '../../assets/Icons/icon-list';
@@ -18,6 +18,10 @@ export const SidebarWrapper = styled(Drawer)`
 		border: none;
 		border-radius: 0 ${borderRadius.md} ${borderRadius.md} 0;
 	}
+`;
+
+export const ListWrapper = styled(List)`
+	margin-top: ${margin.exg};
 `;
 
 export const ListItemWrapper = styled(ListItem)`
@@ -53,4 +57,25 @@ export const SidebarIcon = styled(iconList.menu)`
 
 export const ListExpandButton = styled(ChevronRight)`
 	color: white;
+`;
+
+export const ListItemName = styled.div`
+	width: 80%;
+	padding-left: ${padding.md};
+	color: white;
+`;
+
+export const SubSidebar = styled(Drawer)`
+	.MuiPaper-root {
+		margin-left: ${(props) => props.isOpen ? width.sidebarOpen : width.sidebarClosed};
+		padding-right: 0;
+		padding-left: ${padding.lg};
+		width: ${width.subSidebar};
+		z-index: 1100;
+	}
+
+	.MuiDrawer-paperAnchorDockedLeft {
+		border: none;
+		border-radius: 0 ${borderRadius.md} ${borderRadius.md} 0;
+	}
 `;

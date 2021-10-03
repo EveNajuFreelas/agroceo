@@ -3,80 +3,95 @@ import { iconList } from '../assets/Icons/icon-list';
 
 export const menuItems = [
         {
-            id: 1,
+            id: 0,
             name: 'Inicio',
             icon: <Icon name={iconList.finance} size={25} color='white'></Icon>,
             url: "/app",
         },
         {
-            id: 2,
+            id: 1,
             name: 'Financeiro',
             icon: <Icon name={iconList.finance} size={25} color='white'></Icon>,
             url: "/app",
-            menuItems: [{
+            items: [{
+                id: 1.1,
                 text: 'Receita',
                 url: "/app"
             }, {
+                id: 1.2,
                 text: 'Despesa',
                 url: "/app",
             }, {
+                id: 1.3,
                 text: 'Investimento',
                 url: "/app",
             }]
         },
         {
-            id: 3,
+            id: 2,
             name: 'Manejo',
             icon: <Icon name={iconList.farm} size={25}></Icon>,
             url: "/app",
-            menuItems: [{
+            items: [{
+                id: 2.1,
                 text: 'Combustível',
                 url: "/app/pessoas/cadastro"
             }, {
+                id: 2.2,
                 text: 'Mão de Obra',
                 url: "/app/pessoas/cadastro"
             }, {
+                id: 2.3,
                 text: 'Veículos',
                 url: "/app/pessoas/cadastro"
             }, {
+                id: 2.4,
                 text: 'Áreas',
                 url: "/app/pessoas/cadastro"
             }, {
+                id: 2.5,
                 text: 'Lavoura',
                 url: "/app/pessoas/funcao",
             }, {
+                id: 2.6,
                 text: 'Animais',
                 url: "/app/pessoas/obrigacao",
             }, {
+                id: 2.7,
                 text: 'Tarefas',
                 url: "/app/pessoas/obrigacao",
             }, {
+                id: 2.8,
                 text: 'Demandas',
                 url: "/app/pessoas/obrigacao",
             }]
         }, 
         {
-            id: 4,
+            id: 3,
             name: 'Relatórios',
             icon: <Icon name={iconList.farm} size={25}></Icon>,
             url: "/",
-            menuItems: [{
+            items: [{
+                id: 3.1,
                 text: 'Financeiro',
                 url: "/app/pessoas/cadastro"
             }, {
+                id: 3.2,
                 text: 'Demandas',
                 url: "/app/pessoas/cadastro"
             }, {
+                id: 3.3,
                 text: "Propriedades",
                 url: "/app/propriedades"
             }]
         }, 
         {
-            id: 5,
+            id: 4,
             name: 'Configurações',
             icon: <Icon name={iconList.farm} size={25}></Icon>,
             url: "/",
-            menuItems: [{
+            items: [{
+                id: 4.1,
                 text: 'Perfil',
                 url: "/"
             }]

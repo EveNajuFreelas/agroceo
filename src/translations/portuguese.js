@@ -33,7 +33,7 @@ export const portuguese = {
 	'roles': 'Funções',
 	'manufacture': 'Ano de fabricação',
 	'name': 'Nome',
-	'surname': 'Apelido',
+	'nickname': 'Apelido',
 	'contact': 'Contato',
 	'typeContract': 'Tipo de contrato',
 	'occupation': 'Função',

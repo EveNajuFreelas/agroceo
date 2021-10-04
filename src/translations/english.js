@@ -33,7 +33,7 @@ export const english = {
 	'roles': 'Roles',
 	'manufacture': 'Year of manufacture',
 	'name': 'Name',
-	'surname': 'Surname',
+	'nickname': 'Nickname',
 	'contact': 'Contact',
 	'occupation': 'Occupation',
 	'functionName': 'Function Name',

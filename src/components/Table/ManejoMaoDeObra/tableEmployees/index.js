@@ -32,7 +32,7 @@ const TableEmployees = ({ data }) => {
 	const columns = [
 		'ID',
 		t('name'),
-		t('surname'),
+		t('nickname'),
 		t('occupation'),
 		t('contact'),
 		t('typeContract'),

@@ -2,11 +2,12 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { usePageContext } from '../../context/pageContext';
 import { menuItems } from '../../utils/navigationItems';
+import { useTranslation } from "react-i18next";
 import { 
     SidebarWrapper, 
     ListItemWrapper, 
     SidebarHeader, 
-    SidebarIcon, 
+    SidebarIcon,
     ListExpandButton,
     SubSidebar,
     ListItemName,
@@ -15,6 +16,7 @@ import {
 } from './styles';
 
 const Sidebar = () => {
+    const { t } = useTranslation();
     const { drawerOpen, changeDrawerState } = usePageContext();
     const history = useHistory();
     const [activeId, setActiveId] = useState(-1);
@@ -37,7 +39,7 @@ const Sidebar = () => {
             onClick={() => navigateTo(i.url)}
             isSubSidebar
         >
-            <ListItemName isSubSidebar>{i.text}</ListItemName>
+            <ListItemName isSubSidebar>{t(i.text)}</ListItemName>
         </ListItemWrapper>
     ));
     
@@ -51,7 +53,7 @@ const Sidebar = () => {
         >
             <SidebarHeader>
                 <SidebarIcon onClick={changeDrawerState} />
-                {drawerOpen && "AGROCEO"}
+                {drawerOpen && 'AGROCEO'}
             </SidebarHeader>
             <ListWrapper>
                 {menuItems.map(m => 
@@ -62,7 +64,7 @@ const Sidebar = () => {
                         onMouseLeave={() => handleHover(-1)}
                     >
                         {m.icon}
-                        {drawerOpen && <ListItemName>{m.name}</ListItemName>}
+                        {drawerOpen && <ListItemName>{t(m.name)}</ListItemName>}
                         {m.items && <ListExpandButton />}
                     </ListItemWrapper>
                 )}
@@ -78,7 +80,7 @@ const Sidebar = () => {
                 PaperProps={{ elevation: 8 }}
             >
                <ListWrapper>
-                    <SubSidebarHeader isSubSidebar>{menuItems[activeId].name}</SubSidebarHeader>
+                    <SubSidebarHeader isSubSidebar>{t(menuItems[activeId].name)}</SubSidebarHeader>
                     {renderSubItems(menuItems[activeId].items)}
                 </ListWrapper>
             </SubSidebar>

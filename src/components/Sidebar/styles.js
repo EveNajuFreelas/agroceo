@@ -8,6 +8,7 @@ const { borderRadius, colors, padding, width, text, margin, border } = defaultTh
 
 export const SidebarWrapper = styled(Drawer)`
 	.MuiPaper-root {
+		transition: width 0.4s ease;
 		background-color: ${colors.primary};
 		padding: ${padding.sm};
 		padding-right: 0;
@@ -55,6 +56,9 @@ export const SubSidebarHeader = styled.div`
 `;
 
 export const SidebarIcon = styled(iconList.menu)`
+	cursor: pointer;
+	display: flex;
+	flex-shrink: 0;
 	margin-right: ${margin.lg};
 	border-radius: ${borderRadius.md};
 	border: ${border.menu};

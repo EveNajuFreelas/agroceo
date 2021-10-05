@@ -4,95 +4,95 @@ import { iconList } from '../assets/Icons/icon-list';
 export const menuItems = [
         {
             id: 0,
-            name: 'Inicio',
+            name: 'home',
             icon: <Icon name={iconList.home} size={20} color="white" />,
             url: "/app",
         },
         {
             id: 1,
-            name: 'Financeiro',
+            name: 'financial',
             icon: <Icon name={iconList.finance} size={20} color="white" />,
             url: "/app",
             items: [{
                 id: 1.1,
-                text: 'Receita',
+                text: 'income',
                 url: "/app"
             }, {
                 id: 1.2,
-                text: 'Despesas',
+                text: 'expenses',
                 url: "/app/financeiro/despesas",
             }, {
                 id: 1.3,
-                text: 'Investimento',
+                text: 'investments',
                 url: "/app/financeiro/investimentos",
             }]
         },
         {
             id: 2,
-            name: 'Manejo',
+            name: 'management',
             icon: <Icon name={iconList.farm} size={20} />,
             url: "/app",
             items: [{
                 id: 2.1,
-                text: 'Combustível',
+                text: 'fuel',
                 url: "/app/pessoas/cadastro"
             }, {
                 id: 2.2,
-                text: 'Mão de Obra',
+                text: 'manpower',
                 url: "/app/pessoas/cadastro"
             }, {
                 id: 2.3,
-                text: 'Veículos',
+                text: 'vehicles',
                 url: "/app/pessoas/cadastro"
             }, {
                 id: 2.4,
-                text: 'Áreas',
+                text: 'areas',
                 url: "/app/pessoas/cadastro"
             }, {
                 id: 2.5,
-                text: 'Lavoura',
+                text: 'agriculture',
                 url: "/app/pessoas/funcao",
             }, {
                 id: 2.6,
-                text: 'Animais',
+                text: 'animals',
                 url: "/app/pessoas/obrigacao",
             }, {
                 id: 2.7,
-                text: 'Tarefas',
+                text: 'assignments',
                 url: "/app/pessoas/obrigacao",
             }, {
                 id: 2.8,
-                text: 'Demandas',
+                text: 'demand',
                 url: "/app/pessoas/obrigacao",
             }]
         }, 
         {
             id: 3,
-            name: 'Relatórios',
+            name: 'reports',
             icon: <Icon name={iconList.farm} size={20} />,
             url: "/",
             items: [{
                 id: 3.1,
-                text: 'Financeiro',
+                text: 'financial',
                 url: "/app/pessoas/cadastro"
             }, {
                 id: 3.2,
-                text: 'Demandas',
+                text: 'demand',
                 url: "/app/pessoas/cadastro"
             }, {
                 id: 3.3,
-                text: "Propriedades",
+                text: "properties",
                 url: "/app/propriedades"
             }]
         }, 
         {
             id: 4,
-            name: 'Configurações',
+            name: 'settings',
             icon: <Icon name={iconList.farm} size={20} />,
             url: "/",
             items: [{
                 id: 4.1,
-                text: 'Perfil',
+                text: 'profile',
                 url: "/"
             }]
         }

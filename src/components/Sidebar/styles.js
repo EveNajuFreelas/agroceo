@@ -28,11 +28,11 @@ export const ListItemWrapper = styled(ListItem)`
 	cursor: pointer; 
 	
 	.MuiListItem-gutters {
-		padding:  ${padding.lg};
+		padding: ${(props) => props.isSubSidebar ? 0 : padding.lg};
 	}
 
 	&:hover{
-		background-color: ${colors.events.onHover};
+		background-color: ${(props) => props.isSubSidebar ? colors.events.onHoverSubmenu : colors.events.onHover};
 		border-radius: ${borderRadius.lg} 0 0 ${borderRadius.lg};
 	} 
 `;
@@ -44,7 +44,14 @@ export const SidebarHeader = styled.div`
 	font-size: ${text.size.h5};
 	font-weight: ${text.weight.semiBold};
 	color: white;
-	margin: ${margin.lg};
+	margin: ${padding.lg};
+`;
+
+export const SubSidebarHeader = styled.div`
+	font-size: ${text.size.large};
+	font-weight: ${text.weight.bold};
+	margin: ${margin.lg} auto;
+	padding: ${padding.lg};
 `;
 
 export const SidebarIcon = styled(iconList.menu)`
@@ -62,7 +69,7 @@ export const ListExpandButton = styled(ChevronRight)`
 export const ListItemName = styled.div`
 	width: 80%;
 	padding-left: ${padding.md};
-	color: white;
+	color: ${(props) => props.isSubSidebar ? colors.darkerGreen : 'white'};
 `;
 
 export const SubSidebar = styled(Drawer)`

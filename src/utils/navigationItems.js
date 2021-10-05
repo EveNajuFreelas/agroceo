@@ -5,13 +5,13 @@ export const menuItems = [
         {
             id: 0,
             name: 'Inicio',
-            icon: <Icon name={iconList.finance} size={25} color='white'></Icon>,
+            icon: <Icon name={iconList.home} size={20} color="white" />,
             url: "/app",
         },
         {
             id: 1,
             name: 'Financeiro',
-            icon: <Icon name={iconList.finance} size={25} color='white'></Icon>,
+            icon: <Icon name={iconList.finance} size={20} color="white" />,
             url: "/app",
             items: [{
                 id: 1.1,
@@ -19,18 +19,18 @@ export const menuItems = [
                 url: "/app"
             }, {
                 id: 1.2,
-                text: 'Despesa',
-                url: "/app",
+                text: 'Despesas',
+                url: "/app/financeiro/despesas",
             }, {
                 id: 1.3,
                 text: 'Investimento',
-                url: "/app",
+                url: "/app/financeiro/investimentos",
             }]
         },
         {
             id: 2,
             name: 'Manejo',
-            icon: <Icon name={iconList.farm} size={25}></Icon>,
+            icon: <Icon name={iconList.farm} size={20} />,
             url: "/app",
             items: [{
                 id: 2.1,
@@ -69,7 +69,7 @@ export const menuItems = [
         {
             id: 3,
             name: 'Relatórios',
-            icon: <Icon name={iconList.farm} size={25}></Icon>,
+            icon: <Icon name={iconList.farm} size={20} />,
             url: "/",
             items: [{
                 id: 3.1,
@@ -88,7 +88,7 @@ export const menuItems = [
         {
             id: 4,
             name: 'Configurações',
-            icon: <Icon name={iconList.farm} size={25}></Icon>,
+            icon: <Icon name={iconList.farm} size={20} />,
             url: "/",
             items: [{
                 id: 4.1,

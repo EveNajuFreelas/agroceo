@@ -1,4 +1,3 @@
-import { List } from '@material-ui/core';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { usePageContext } from '../../context/pageContext';
@@ -12,6 +11,7 @@ import {
     SubSidebar,
     ListItemName,
     ListWrapper,
+    SubSidebarHeader,
 } from './styles';
 
 const Sidebar = () => {
@@ -30,6 +30,16 @@ const Sidebar = () => {
             setActiveId(-1);
         }
     }
+
+    const renderSubItems = (items) => items.map(i => (
+        <ListItemWrapper
+            key={i.id}
+            onClick={() => navigateTo(i.url)}
+            isSubSidebar
+        >
+            <ListItemName isSubSidebar>{i.text}</ListItemName>
+        </ListItemWrapper>
+    ));
     
     return (
         <>
@@ -67,16 +77,9 @@ const Sidebar = () => {
                 onMouseLeave={() => handleHover(-1)}
                 PaperProps={{ elevation: 8 }}
             >
-                <ListWrapper>
-                    <SidebarHeader>{menuItems[activeId].name}</SidebarHeader>
-                    {menuItems[activeId].items.map(i => {
-                        <ListItemWrapper
-                            key={i.id}
-                            onClick={() => navigateTo(i.url)}
-                        >
-                            {i.text}
-                        </ListItemWrapper>
-                    })}
+               <ListWrapper>
+                    <SubSidebarHeader isSubSidebar>{menuItems[activeId].name}</SubSidebarHeader>
+                    {renderSubItems(menuItems[activeId].items)}
                 </ListWrapper>
             </SubSidebar>
         }

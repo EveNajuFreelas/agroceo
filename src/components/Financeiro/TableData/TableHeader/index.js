@@ -3,9 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { defaultTheme } from '../../../../theme';
 import Filter from '../../../Filter';
 
-import Pdf from '../../../../utils/image/Pdf.svg';
-import Print from '../../../../utils/image/Print.svg';
-import SearchIcon from '../../../../utils/image/Search.svg';
+import { iconList } from '../../../../assets/Icons/icon-list';
 import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
 
 import {
@@ -35,10 +33,10 @@ const TableHeader = () => {
 		<TableHeaderContainer>
 			<ButtonContainer>
 				<ButtonWrapper>
-					<ButtonIcon src={Print} />
+					<ButtonIcon src={iconList.Print} />
 				</ButtonWrapper>
 				<ButtonWrapper>
-					<ButtonIcon src={Pdf} />
+					<ButtonIcon src={iconList.Pdf} />
 				</ButtonWrapper>
 			</ButtonContainer>
 			<SearchInput
@@ -48,7 +46,7 @@ const TableHeader = () => {
 				InputProps={{
 					endAdornment: (
 						<InputAdornment position='end'>
-							<img src={SearchIcon} />
+							<img src={iconList.SearchIcon} />
 						</InputAdornment>
 					),
 				}}

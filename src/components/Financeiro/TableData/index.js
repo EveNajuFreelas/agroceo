@@ -16,8 +16,7 @@ import {
 import { StyledTableContainer } from './styles';
 import TableHeader from './TableHeader';
 
-import Edit from '../../../utils/image/Edit.svg';
-import Delete from '../../../utils/image/Delete.svg';
+import { iconList } from '../../../assets/Icons/icon-list';
 
 const TableData = ({ data, columns }) => {
 	const { t } = useTranslation();
@@ -97,9 +96,9 @@ const TableData = ({ data, columns }) => {
 										style={{
 											marginRight: 10,
 										}}
-										src={Edit}
+										src={iconList.edit}
 									/>
-									<img src={Delete} />
+									<img src={iconList.Delete} />
 								</TableCell>
 							</TableRow>
 						);

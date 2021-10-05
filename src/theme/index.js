@@ -22,10 +22,11 @@ export const defaultTheme = {
 		neutral5: '#212121',
 		neutral6: '#A3A3A3',
 		neutralDark: '#525252',
-		anotherGreen: '#02733E',
+		darkerGreen: '#02733E',
 		greenLight: '#7AC743',
     events: {
       onHover: 'rgba(255, 255, 255, 0.3)',
+	  onHoverSubmenu: 'rgba(4, 241, 130, 0.3)',
     },
 	},
 	text: {

@@ -26,17 +26,17 @@ export function App() {
 				<NotLoggedRoute path='/app/login' exact component={Login} />
 				<NotLoggedRoute path='/app' exact component={Dashboard} />
 				<NotLoggedRoute
-					path='/financeiro/despesas'
+					path='/app/financeiro/despesas'
 					exact
 					component={Despesas}
 				/>
 				<NotLoggedRoute
-					path='/financeiro/investimentos'
+					path='/app/financeiro/investimentos'
 					exact
 					component={Investimento}
 				/>
 				<NotLoggedRoute
-					path='/financeiro/receitas'
+					path='/app/financeiro/receitas'
 					exact
 					component={Receitas}
 				/>

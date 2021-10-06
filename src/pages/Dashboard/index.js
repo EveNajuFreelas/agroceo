@@ -1,7 +1,7 @@
 import React from 'react';
 import BarChart from '../../components/Charts/Bar';
 import PizzaChart from '../../components/Charts/Pizza';
-import OverviewFinancial from '../../components/OverviewFinancial';
+import OverviewFinancial from '../../components/Financeiro/OverviewFinancial';
 import {
 	ContainerDashboard,
 	ChartSection,

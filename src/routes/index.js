@@ -12,7 +12,7 @@ export function LoggedRoute({ isAdmin, component: Component, ...rest }) {
 				{...rest}
 				render={props => {
 					if (!user) {
-						return <Redirect to='/app/login' />;
+						return <Redirect to='/login' />;
 					}
 
 					return <Component {...rest} />;
@@ -32,7 +32,7 @@ export function NotLoggedRoute({ component: Component, ...rest }) {
 				{...rest}
 				render={props => {
 					if (user) {
-						return <Redirect to='/app' />;
+						return <Redirect to='/dashboard' />;
 					}
 					return <Component {...rest} />;
 				}}

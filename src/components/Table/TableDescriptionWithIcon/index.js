@@ -15,8 +15,8 @@ import {
 
 import { StyledTableContainer } from '../styles';
 
-import Edit from '../../../utils/image/Edit.svg';
-import Delete from '../../../utils/image/Delete.svg';
+import Edit from '../../../utils/Icons/Edit.svg';
+import Delete from '../../../utils/Icons/Delete.svg';
 
 const TableWithDescriptionIcon = ({ data, columns }) => {
 	const { t } = useTranslation();

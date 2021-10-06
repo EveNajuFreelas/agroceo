@@ -14,11 +14,11 @@ import {
 
 import { StyledTableContainer } from '../styles';
 
-import Edit from '../../../utils/image/Edit.svg';
-import Delete from '../../../utils/image/Delete.svg';
-import PutIn from '../../../utils/image/PutIn.svg';
+import Edit from '../../../utils/Icons/Edit.svg';
+import Delete from '../../../utils/Icons/Delete.svg';
+import PutIn from '../../../utils/Icons/PutIn.svg';
 
-const TablePutIcon = ({ data, columns }) => {
+const TablePutIcon = ({ data, columns, putInIcon }) => {
 	const { colors, text } = defaultTheme;
 
 	//const [selected, setSelected] = React.useState([]);
@@ -42,7 +42,6 @@ const TablePutIcon = ({ data, columns }) => {
 							/>
 						</TableCell>
 						{columns.map((column, index) => {
-							console.log(column, index);
 							return index === 0 || index === 1 ? (
 								<TableCell align='left'>{column}</TableCell>
 							) : (
@@ -89,12 +88,14 @@ const TablePutIcon = ({ data, columns }) => {
 								})}
 
 								<TableCell align='center'>
-									<img
-										style={{
-											marginRight: 10,
-										}}
-										src={PutIn}
-									/>
+									{putInIcon && (
+										<img
+											style={{
+												marginRight: 10,
+											}}
+											src={PutIn}
+										/>
+									)}
 									<img
 										style={{
 											marginRight: 10,

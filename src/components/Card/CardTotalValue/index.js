@@ -1,5 +1,5 @@
 import React from 'react';
-import DespesaAzul from '../../../utils/image/DespesaAzul.svg';
+import DespesaAzul from '../../../utils/Icons/DespesaAzul.svg';
 import {
 	CardSummaryContainer,
 	FirstColumn,

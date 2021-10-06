@@ -5,9 +5,9 @@ import { defaultTheme } from '../../../theme';
 import Filter from '../../Filter';
 import ButtonIconAdd from '../../Geral/ButtonIcon';
 
-import Pdf from '../../../utils/image/Pdf.svg';
-import Print from '../../../utils/image/Print.svg';
-import SearchIcon from '../../../utils/image/Search.svg';
+import Pdf from '../../../utils/Icons/Pdf.svg';
+import Print from '../../../utils/Icons/Print.svg';
+import SearchIcon from '../../../utils/Icons/Search.svg';
 
 import {
 	TableHeaderContainer,

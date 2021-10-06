@@ -4,9 +4,9 @@ import { CardTab, CardList, FilterFinancial, FilterLabel } from './styles.js';
 import CardFinancial from '../../Card/CardFinancial';
 import CardListItem from '../../Card/CardListItem';
 
-import Despesas from '../../../utils/image/Despesas.svg';
-import Receitas from '../../../utils/image/Receitas.svg';
-import Investimentos from '../../../utils/image/Investimentos.svg';
+import Despesas from '../../../utils/Icons/Despesas.svg';
+import Receitas from '../../../utils/Icons/Receitas.svg';
+import Investimentos from '../../../utils/Icons/Investimentos.svg';
 import { defaultTheme } from '../../../theme';
 import Filter from '../../Filter/index.js';
 import {

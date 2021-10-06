@@ -45,4 +45,8 @@ export const portuguese = {
 	'presentation': 'Apresentação',
 	'document': 'Documento',
 	'whoReceived': 'Quem recebeu',
+	'subarea': 'Sub-áreas',
+	'modules': 'Módulos',
+	'areaSize': 'Tamanho da área',
+	'destination': 'Destinação',
 };

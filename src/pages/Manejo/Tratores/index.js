@@ -50,7 +50,11 @@ const Tratores = () => {
 					marginBottom={true}
 				/>
 			</HeadSection>
-			<TablePutIncon data={manejoTratores} columns={columns} />
+			<TablePutIncon
+				data={manejoTratores}
+				columns={columns}
+				putInIcon={true}
+			/>
 		</>
 	);
 };

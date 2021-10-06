@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { TitleSection } from '../../../components/Geral/styles';
 import { HeadSection } from '../styles';
 
@@ -6,17 +6,25 @@ import { useTranslation } from 'react-i18next';
 import { defaultTheme } from '../../../theme';
 
 import { itensMenuCombustivel } from '../../../utils/dataMock/itensMenu';
-import { manejoVeiculos } from '../../../utils/dataMock/mock';
+import {
+	manejoCombustivel,
+	manejoVeiculos,
+} from '../../../utils/dataMock/mock';
 
 import Filter from '../../../components/Filter';
 import ButtonIconAdd from '../../../components/Geral/ButtonIcon';
 import TablePutIncon from '../../../components/Table/TablePutIcon';
+import { useVehicle } from '../../../context/Vehicles';
 
 const Veiculos = () => {
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
+	const { isLoading, getVehicle, vehicle } = useVehicle();
 
-	let keys = Object.keys(manejoVeiculos[0]);
+	useEffect(() => {
+		getVehicle(2);
+		console.log('entrou');
+	}, []);
 
 	const columns = [
 		'ID',
@@ -51,7 +59,17 @@ const Veiculos = () => {
 					marginBottom={true}
 				/>
 			</HeadSection>
-			<TablePutIncon data={manejoVeiculos} columns={columns} />
+			<div>
+				{isLoading ? (
+					<span>carregando...</span>
+				) : (
+					<TablePutIncon
+						data={vehicle}
+						columns={columns}
+						putInIcon={true}
+					/>
+				)}
+			</div>
 		</>
 	);
 };

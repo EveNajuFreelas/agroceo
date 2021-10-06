@@ -19,6 +19,7 @@ import Veiculos from './pages/Manejo/Veiculos';
 import MaoObra from './pages/Manejo/MaoObra';
 import Tratores from './pages/Manejo/Tratores';
 import Insumos from './pages/Manejo/Insumos';
+import Areas from './pages/Manejo/Areas';
 
 export function App() {
 	return (
@@ -81,6 +82,12 @@ export function App() {
 						path='/manejo/insumos'
 						exact
 						component={Insumos}
+					/>
+
+					<NotLoggedRoute
+						path='/manejo/areas'
+						exact
+						component={Areas}
 					/>
 				</Switch>
 			</Router>

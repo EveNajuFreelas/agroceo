@@ -14,7 +14,7 @@ import {
 import Filter from '../../../components/Filter';
 import ButtonIconAdd from '../../../components/Geral/ButtonIcon';
 import TablePutIncon from '../../../components/Table/TablePutIcon';
-import { useVehicle } from '../../../context/Vehicles';
+import { useVehicle } from '../../../context/vehiclesContext';
 
 const Veiculos = () => {
 	const { t } = useTranslation();
@@ -67,6 +67,7 @@ const Veiculos = () => {
 						data={vehicle}
 						columns={columns}
 						putInIcon={true}
+						description={true}
 					/>
 				)}
 			</div>

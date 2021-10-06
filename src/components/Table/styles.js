@@ -9,6 +9,7 @@ export const StyledTableContainer = styled(TableContainer)`
 		border: 1px solid #ebebeb;
 		border-radius: 0px 0px 10px 10px;
 		width: 100%;
+		margin-bottom: 5vh;
 	}
 
 	&.MuiTableContainer-root .MuiTableCell-body {

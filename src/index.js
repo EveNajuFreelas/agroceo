@@ -14,7 +14,9 @@ import { AuthenticationContainer } from './context/authContext';
 // import { ListPropertieContext } from './context/properties/list';
 // import { GlobalLoadingContext } from "./context/loader"
 import './i18n';
-import { VehicleContainer } from './context/Vehicles';
+import { VehicleContainer } from './context/vehiclesContext';
+import { AreasContainer } from './context/areasContext';
+import { TractorContainer } from './context/tractorContext';
 
 const queryClient = new QueryClient();
 
@@ -29,13 +31,17 @@ ReactDOM.render(
 				<AuthenticationContainer.Provider>
 					<RegisterContainer.Provider>
 						<VehicleContainer.Provider>
-							{/* <PopoverContainer.Provider> */}
-							{/* <ListPropertieContext.Provider> */}
-							{/* <PropertyContext.Provider> */}
-							<App />
-							{/* </PropertyContext.Provider> */}
-							{/* </ListPropertieContext.Provider> */}
-							{/* </PopoverContainer.Provider> */}
+							<AreasContainer.Provider>
+								<TractorContainer.Provider>
+									{/* <PopoverContainer.Provider> */}
+									{/* <ListPropertieContext.Provider> */}
+									{/* <PropertyContext.Provider> */}
+									<App />
+									{/* </PropertyContext.Provider> */}
+									{/* </ListPropertieContext.Provider> */}
+									{/* </PopoverContainer.Provider> */}
+								</TractorContainer.Provider>
+							</AreasContainer.Provider>
 						</VehicleContainer.Provider>
 					</RegisterContainer.Provider>
 				</AuthenticationContainer.Provider>

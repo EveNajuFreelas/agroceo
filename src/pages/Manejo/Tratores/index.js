@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { TitleSection } from '../../../components/Geral/styles';
 import { HeadSection } from '../styles';
 
@@ -11,14 +11,19 @@ import { manejoTratores } from '../../../utils/dataMock/mock';
 import Filter from '../../../components/Filter';
 import ButtonIconAdd from '../../../components/Geral/ButtonIcon';
 import TablePutIncon from '../../../components/Table/TablePutIcon';
+import { useTractor } from '../../../context/tractorContext';
 
 const Tratores = () => {
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
+	const { isLoading, tractor, getTractor } = useTractor();
+
+	useEffect(() => {
+		getTractor(2);
+	}, []);
 
 	const columns = [
 		'ID',
-		t('description'),
 		t('brand'),
 		t('model'),
 		t('color'),
@@ -50,11 +55,16 @@ const Tratores = () => {
 					marginBottom={true}
 				/>
 			</HeadSection>
-			<TablePutIncon
-				data={manejoTratores}
-				columns={columns}
-				putInIcon={true}
-			/>
+			{isLoading ? (
+				<span>Carregando...</span>
+			) : (
+				<TablePutIncon
+					data={tractor}
+					columns={columns}
+					putInIcon={true}
+					description={false}
+				/>
+			)}
 		</>
 	);
 };

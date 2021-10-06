@@ -18,8 +18,9 @@ import Edit from '../../../utils/Icons/Edit.svg';
 import Delete from '../../../utils/Icons/Delete.svg';
 import PutIn from '../../../utils/Icons/PutIn.svg';
 
-const TablePutIcon = ({ data, columns, putInIcon }) => {
+const TablePutIcon = ({ data, columns, putInIcon, description }) => {
 	const { colors, text } = defaultTheme;
+	const COLUMN_INITIAL = description ? 1 : 0;
 
 	//const [selected, setSelected] = React.useState([]);
 
@@ -72,13 +73,20 @@ const TablePutIcon = ({ data, columns, putInIcon }) => {
 									{row.id}
 								</TableCell>
 
-								<TableCell>{row.Description}</TableCell>
+								{description && (
+									<TableCell>{row.description}</TableCell>
+								)}
 
 								{keys.map((column, index) => {
 									return (
-										index > 1 && (
+										//tem alguma forma de fazer melhor certeza k k k k
+										index > COLUMN_INITIAL && (
 											<TableCell
-												align='right'
+												align={
+													description || index != 1
+														? 'right'
+														: 'left'
+												}
 												key={index}
 											>
 												{row[column]}

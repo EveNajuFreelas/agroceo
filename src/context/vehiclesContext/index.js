@@ -7,8 +7,6 @@ const useVehicleContainer = () => {
 	const [isLoading, setLoading] = useState(true);
 
 	const getVehicle = id => {
-		//setLoading(true);
-
 		api.get(`/GetVehicle/${id}`)
 			.then(res => {
 				console.log(formatResponse(res.data.vehicles));
@@ -24,7 +22,6 @@ const useVehicleContainer = () => {
 		vehicle,
 		getVehicle,
 		isLoading,
-		setLoading,
 	};
 };
 
@@ -33,7 +30,7 @@ const formatResponse = response => {
 	response.forEach(res => {
 		tempArray.push({
 			id: res.id,
-			nickname: res.nickname,
+			description: res.nickname,
 			brand: res.brand,
 			model: res.model,
 			color: res.color,

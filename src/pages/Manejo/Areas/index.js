@@ -1,27 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { TabStyled, TabsStyled, HeadSection, ButtonSection } from './styles';
 import { useTranslation } from 'react-i18next';
-
-import {
-	manejoMaoFuncionario,
-	manejoMaoFuncoes,
-} from '../../../utils/dataMock/mock';
 
 import ButtonIconAdd from '../../../components/Geral/ButtonIcon';
 
 import { defaultTheme } from '../../../theme';
 import TablePutIcon from '../../../components/Table/TablePutIcon';
+import { useArea } from '../../../context/areasContext';
 
 const Areas = () => {
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
+	const { isLoading, areas, modules, getAreasAndModules } = useArea();
 
 	const [value, setValue] = React.useState(0);
 
+	useEffect(() => {
+		getAreasAndModules(2);
+	}, []);
+
 	const handleChange = (event, newValue) => {
 		setValue(newValue);
-		console.log(value);
 	};
 
 	let columnsSubAreas = [
@@ -38,7 +38,9 @@ const Areas = () => {
 		t('destination'),
 	];
 
-	return (
+	return isLoading ? (
+		<span>carregando...</span>
+	) : (
 		<>
 			<HeadSection>
 				<TabsStyled value={value} onChange={handleChange}>
@@ -56,16 +58,18 @@ const Areas = () => {
 			</HeadSection>
 			{value === 0 && (
 				<TablePutIcon
-					data={manejoMaoFuncionario}
+					data={areas}
 					columns={columnsSubAreas}
 					putInIcon={false}
+					description={false}
 				/>
 			)}
 			{value === 1 && (
 				<TablePutIcon
-					data={manejoMaoFuncoes}
+					data={modules}
 					columns={columnsModules}
 					putInIcon={false}
+					description={false}
 				/>
 			)}
 		</>

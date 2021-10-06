@@ -148,7 +148,7 @@ export const manejoVeiculos = [
 export const manejoTratores = [
 	{
 		id: '00004',
-		Description: 'Caminhonete',
+		description: 'Caminhonete',
 		Marca: 'Ford',
 		Modelo: 'Ranger Raptor',
 		Cor: 'Prata',
@@ -159,7 +159,7 @@ export const manejoTratores = [
 	},
 	{
 		id: '00005',
-		Description: 'Moto',
+		description: 'Moto',
 		Marca: 'Honda',
 		Modelo: 'NXR 160 Bros',
 		Cor: 'Vermelha',

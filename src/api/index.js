@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import axios from 'axios';
-import { getObject } from '../storage';
+import { getObject } from '../utils/storage';
 
 const AccessToken = '@agroceo/accessToken';
 

@@ -15,8 +15,7 @@ import {
 
 import { StyledTableContainer } from '../styles';
 
-import Edit from '../../../utils/Icons/Edit.svg';
-import Delete from '../../../utils/Icons/Delete.svg';
+import { iconList } from '../../../assets/Icons/icon-list';
 
 const TableWithDescriptionIcon = ({ data, columns }) => {
 	const { t } = useTranslation();
@@ -42,7 +41,6 @@ const TableWithDescriptionIcon = ({ data, columns }) => {
 							/>
 						</TableCell>
 						{columns.map((column, index) => {
-							console.log(column, index);
 							return index === 0 || index === 1 ? (
 								<TableCell align='left'>{column}</TableCell>
 							) : (
@@ -98,9 +96,9 @@ const TableWithDescriptionIcon = ({ data, columns }) => {
 										style={{
 											marginRight: 10,
 										}}
-										src={Edit}
+										src={iconList.edit}
 									/>
-									<img src={Delete} />
+									<img src={iconList.Delete} />
 								</TableCell>
 							</TableRow>
 						);

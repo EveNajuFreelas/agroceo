@@ -5,9 +5,7 @@ import { defaultTheme } from '../../../theme';
 import Filter from '../../Filter';
 import ButtonIconAdd from '../../Geral/ButtonIcon';
 
-import Pdf from '../../../utils/Icons/Pdf.svg';
-import Print from '../../../utils/Icons/Print.svg';
-import SearchIcon from '../../../utils/Icons/Search.svg';
+import { iconList } from '../../../../assets/Icons/icon-list';
 
 import {
 	TableHeaderContainer,
@@ -36,10 +34,10 @@ const TableHeader = () => {
 		<TableHeaderContainer>
 			<ButtonContainer>
 				<ButtonWrapper>
-					<ButtonIcon src={Print} />
+					<ButtonIcon src={iconList.Print} />
 				</ButtonWrapper>
 				<ButtonWrapper>
-					<ButtonIcon src={Pdf} />
+					<ButtonIcon src={iconList.Pdf} />
 				</ButtonWrapper>
 			</ButtonContainer>
 			<SearchInput
@@ -49,7 +47,7 @@ const TableHeader = () => {
 				InputProps={{
 					endAdornment: (
 						<InputAdornment position='end'>
-							<img src={SearchIcon} />
+							<img src={iconList.SearchIcon} />
 						</InputAdornment>
 					),
 				}}

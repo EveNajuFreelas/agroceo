@@ -3,18 +3,24 @@ import { defaultTheme } from '../../theme';
 import { Select, MenuItem } from "@material-ui/core";
 import { ExpandMore } from '@material-ui/icons';
 
-const { align, text, border, margin, colors, padding, borderRadius } = defaultTheme;
+const { align, text, border, margin, colors, padding, borderRadius, width } = defaultTheme;
 
 export const HeaderStyle = styled.div`
     display: flex;
-    width: 100%;
-    height: 4em;
-    background-color: #fff;
+    position: fixed;
     justify-content: ${align.spaceBetween};
     align-items: ${align.center};
-    position: fixed;
+    right: 0;
+    
+    height: 4em;
+    background-color: #fff;
     border-bottom: ${border.header};
     z-index: 10;
+    
+    ${(props) => props.drawerOpen 
+        ? `width: calc(100% - ${width.sidebarOpen})` 
+        : `width: calc(100% - ${width.sidebarClosed})`
+    };
 `;
 
 export const HeaderTitle = styled.p`
@@ -62,4 +68,23 @@ export const StyledMenuItem = styled(MenuItem)`
         color: ${colors.green};
         background-color: white;
     }
+`;
+
+export const MenuToggleButton = styled.div`
+  height: 1.5em;
+  width:  2em;
+  display: flex;
+  align-items: ${defaultTheme.align.center};
+  border-radius: ${defaultTheme.borderRadius.md};
+  padding: ${defaultTheme.padding.sm};
+  margin: 1.2em ${defaultTheme.margin.lg};
+  cursor: pointer;
+  
+  &:hover{
+    background-color: ${defaultTheme.colors.greyLight};
+    opacity: .8;
+  }
+  &:active{
+    opacity: .9;
+  }
 `;

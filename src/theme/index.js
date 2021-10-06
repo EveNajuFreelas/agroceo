@@ -22,8 +22,12 @@ export const defaultTheme = {
 		neutral5: '#212121',
 		neutral6: '#A3A3A3',
 		neutralDark: '#525252',
-		anotherGreen: '#02733E',
+		darkerGreen: '#02733E',
 		greenLight: '#7AC743',
+    events: {
+      onHover: 'rgba(255, 255, 255, 0.3)',
+	  onHoverSubmenu: 'rgba(4, 241, 130, 0.3)',
+    },
 	},
 	text: {
 		size: {
@@ -52,6 +56,7 @@ export const defaultTheme = {
 		weight: {
 			thin: 200,
 			normal: 400,
+      semiBold: 500,
 			bold: 700,
 		},
 	},
@@ -76,6 +81,8 @@ export const defaultTheme = {
 		sm: '4px',
 		md: '8px',
 		lg: '12px',
+    	xg: '24px',
+		exg: '32px',
 	},
 	opacity: {
 		low: '.9',
@@ -86,6 +93,7 @@ export const defaultTheme = {
 		buttonSuccess: `2px solid #005500`,
 		buttonError: `2px solid #550000`,
 		header: `1px solid #EBEBEB`,
+		menu:  `1px solid #FFFFFF`,
 	},
 	align: {
 		center: 'center',
@@ -93,4 +101,9 @@ export const defaultTheme = {
 		spaceBetween: 'space-between',
 		flexEnd: 'flex-end',
 	},
+  width: {
+    sidebarOpen: '256px',
+    sidebarClosed: '97px',
+	subSidebar: '206px',
+  },
 };

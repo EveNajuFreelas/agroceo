@@ -4,11 +4,9 @@ import { CardTab, CardList, FilterFinancial, FilterLabel } from './styles.js';
 import CardFinancial from '../../Card/CardFinancial';
 import CardListItem from '../../Card/CardListItem';
 
-import Despesas from '../../../utils/Icons/Despesas.svg';
-import Receitas from '../../../utils/Icons/Receitas.svg';
-import Investimentos from '../../../utils/Icons/Investimentos.svg';
-import { defaultTheme } from '../../../theme';
-import Filter from '../../Filter/index.js';
+import { iconList } from '../../assets/Icons/icon-list.js';
+import { defaultTheme } from '../../theme';
+import Filter from '../Filter/index.js';
 import {
 	itensMenuMonth,
 	itensMenuYear,
@@ -39,19 +37,19 @@ const OverviewFinancial = () => {
 				<CardFinancial
 					value={'R$ 40.000'}
 					month={'setembro'}
-					icon={Despesas}
+					icon={iconList.Despesas}
 					description={'Despesas'}
 				/>
 				<CardFinancial
 					value={'R$ 60.000'}
 					month={'setembro'}
-					icon={Receitas}
+					icon={iconList.Receitas}
 					description={'Receitas'}
 				/>
 				<CardFinancial
 					value={'R$ 7.000'}
 					month={'setembro'}
-					icon={Investimentos}
+					icon={iconList.Investimentos}
 					description={'Investimentos'}
 				/>
 			</CardTab>

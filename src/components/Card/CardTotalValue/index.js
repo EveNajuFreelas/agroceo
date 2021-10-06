@@ -1,5 +1,5 @@
 import React from 'react';
-import DespesaAzul from '../../../utils/Icons/DespesaAzul.svg';
+import { iconList } from '../../../assets/Icons/icon-list';
 import {
 	CardSummaryContainer,
 	FirstColumn,
@@ -15,7 +15,7 @@ const CardTotalValue = ({ value, mes, ano }) => {
 		<CardSummaryContainer>
 			<FirstColumn>
 				<TitleColumn>Total</TitleColumn>
-				<IconFirstColumn src={DespesaAzul} />
+				<IconFirstColumn src={iconList.DespesaAzul} />
 			</FirstColumn>
 			<SecondColumn>
 				<ValueTotalCard>{value}</ValueTotalCard>

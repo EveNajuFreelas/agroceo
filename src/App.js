@@ -5,8 +5,7 @@ import {
 	Switch,
 	Redirect,
 } from 'react-router-dom';
-import { MainContainer } from './styles/styles';
-import { LoggedRoute, NotLoggedRoute } from './routes';
+import { NotLoggedRoute } from './routes';
 import { ThemeProvider } from '@material-ui/styles';
 
 import Dashboard from './pages/Dashboard';

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { TitleSection } from '../../../components/Geral/styles';
 import { HeadSection } from '../styles';
 
@@ -10,10 +10,16 @@ import Filter from '../../../components/Filter';
 import { itensMenuCombustivel } from '../../../utils/dataMock/itensMenu';
 import { manejoInsumos } from '../../../utils/dataMock/mock';
 import ButtonIconAdd from '../../../components/Geral/ButtonIcon';
+import { useInput } from '../../../context/inputsContext';
 
 const Insumos = () => {
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
+	const { inputs, getInputs, isLoading } = useInput();
+
+	useEffect(() => {
+		getInputs(2);
+	}, []);
 
 	const columns = [
 		'ID',
@@ -47,12 +53,13 @@ const Insumos = () => {
 					marginBottom={true}
 				/>
 			</HeadSection>
-			<div>
-				<TableWithDescriptionIcon
-					data={manejoInsumos}
-					columns={columns}
-				/>
-			</div>
+			{isLoading ? (
+				<span>Carregando...</span>
+			) : (
+				<div>
+					<TableWithDescriptionIcon data={inputs} columns={columns} />
+				</div>
+			)}
 		</>
 	);
 };

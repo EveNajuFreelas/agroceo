@@ -7,7 +7,6 @@ import {
 	Table,
 	TableBody,
 	TableCell,
-	TableHead,
 	TableRow,
 	Checkbox,
 } from '@material-ui/core';
@@ -15,6 +14,7 @@ import {
 import { StyledTableContainer } from '../styles';
 
 import { iconList } from '../../../assets/Icons/icon-list';
+import TableHeadDefault from '../TableHead';
 
 const TableWithDescriptionIcon = ({ data, columns }) => {
 	const { colors } = defaultTheme;
@@ -24,21 +24,7 @@ const TableWithDescriptionIcon = ({ data, columns }) => {
 	return (
 		<StyledTableContainer>
 			<Table>
-				<TableHead>
-					<TableRow style={{ height: '50px' }}>
-						<TableCell padding='checkbox'>
-							<Checkbox style={{ color: 'green' }} />
-						</TableCell>
-						{columns.map((column, index) => {
-							return index === 0 || index === 1 ? (
-								<TableCell align='left'>{column}</TableCell>
-							) : (
-								<TableCell align='right'>{column}</TableCell>
-							);
-						})}
-						<TableCell />
-					</TableRow>
-				</TableHead>
+				<TableHeadDefault columns={columns} />
 				<TableBody>
 					{data.map(row => {
 						return (
@@ -63,7 +49,7 @@ const TableWithDescriptionIcon = ({ data, columns }) => {
 								<TableCell align='left' width='200px'>
 									<LabelWithIcon
 										iconName={'Insumos'}
-										title={row.Description}
+										title={row.description}
 									/>
 								</TableCell>
 

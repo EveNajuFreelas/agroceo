@@ -12,6 +12,7 @@ import {
 
 import { StyledTableContainer } from '../styles';
 import { iconList } from '../../../assets/Icons/icon-list';
+import TableHeadDefault from '../TableHead';
 
 const TablePutIcon = ({ data, columns, putInIcon, description }) => {
 	const { colors } = defaultTheme;
@@ -22,21 +23,7 @@ const TablePutIcon = ({ data, columns, putInIcon, description }) => {
 	return (
 		<StyledTableContainer>
 			<Table>
-				<TableHead>
-					<TableRow style={{ height: '50px' }}>
-						<TableCell padding='checkbox'>
-							<Checkbox style={{ color: 'green' }} />
-						</TableCell>
-						{columns.map((column, index) => {
-							return index === 0 || index === 1 ? (
-								<TableCell align='left'>{column}</TableCell>
-							) : (
-								<TableCell align='right'>{column}</TableCell>
-							);
-						})}
-						<TableCell />
-					</TableRow>
-				</TableHead>
+				<TableHeadDefault columns={columns} />
 				<TableBody>
 					{data.map(row => {
 						return (

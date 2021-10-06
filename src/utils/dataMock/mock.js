@@ -22,7 +22,7 @@ export const demandas = {
 	datasets: [
 		{
 			data: [13, 15, 72],
-			backgroundColor: ['#F2B705', `${colors.anotherGreen}`, '#13ABCD'],
+			backgroundColor: ['#F2B705', `${colors.darkerGreen}`, '#13ABCD'],
 		},
 	],
 };

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { createContainer, useContainer } from "unstated-next";
-import { clear, getObject, saveObject } from "../../storage";
+import { clear, getObject, saveObject } from "../../utils/storage";
 import { useMutation } from "react-query";
 import api from "../../api";
 
@@ -19,11 +19,9 @@ const useAuthenticationContainer = () => {
     isSuccess,
     isError
   } = useMutation((user) => {
-    console.log("tentou")
     return api.post("/Auth", user)
   }, {
     onSuccess: async (result) => {
-      console.log("onSuccess");
       await saveObject(User, result.data);
       await saveObject(Properties, result.data.properties);
       await saveObject(AccessToken, result.data.token);
@@ -32,7 +30,7 @@ const useAuthenticationContainer = () => {
       setReady(true);
     },
     onError: (error) => {
-      console.log("onError", error);
+      console.error("onError", error);
     },
   }
   );

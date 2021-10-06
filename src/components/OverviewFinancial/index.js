@@ -11,9 +11,7 @@ import { Select, MenuItem, InputLabel } from '@material-ui/core';
 import CardFinancial from './CardFinancial';
 import CardListItem from './CardListItem';
 
-import Despesas from '../../utils/image/Despesas.svg';
-import Receitas from '../../utils/image/Receitas.svg';
-import Investimentos from '../../utils/image/Investimentos.svg';
+import { iconList } from '../../assets/Icons/icon-list.js';
 import { defaultTheme } from '../../theme';
 import Filter from '../Filter/index.js';
 import {
@@ -46,19 +44,19 @@ const OverviewFinancial = () => {
 				<CardFinancial
 					value={'R$ 40.000'}
 					month={'setembro'}
-					icon={Despesas}
+					icon={iconList.Despesas}
 					description={'Despesas'}
 				/>
 				<CardFinancial
 					value={'R$ 60.000'}
 					month={'setembro'}
-					icon={Receitas}
+					icon={iconList.Receitas}
 					description={'Receitas'}
 				/>
 				<CardFinancial
 					value={'R$ 7.000'}
 					month={'setembro'}
-					icon={Investimentos}
+					icon={iconList.Investimentos}
 					description={'Investimentos'}
 				/>
 			</CardTab>

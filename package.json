@@ -47,6 +47,7 @@
     ]
   },
   "devDependencies": {
+    "@types/styled-components": "^5.1.14",
     "i18next": "^21.0.1",
     "react-i18next": "^11.12.0"
   }

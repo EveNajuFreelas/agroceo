@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import DespesaAzul from '../../../utils/image/DespesaAzul.svg';
+import React from 'react';
+import { iconList } from '../../../assets/Icons/icon-list';
 import {
 	CardSummaryContainer,
 	FirstColumn,
@@ -9,14 +9,13 @@ import {
 	ValueTotalCard,
 	DateTotalCard,
 } from './styles';
-import { defaultTheme } from '../../../theme';
 
 const CardTotalValue = ({ value, mes, ano }) => {
 	return (
 		<CardSummaryContainer>
 			<FirstColumn>
 				<TitleColumn>Total</TitleColumn>
-				<IconFirstColumn src={DespesaAzul} />
+				<IconFirstColumn src={iconList.DespesaAzul} />
 			</FirstColumn>
 			<SecondColumn>
 				<ValueTotalCard>{value}</ValueTotalCard>

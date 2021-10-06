@@ -1,6 +1,6 @@
-import Box from './image/Icons/Box.svg';
-import Trator from './image/Icons/Trator.svg';
-import Home from './image/Icons/Home.svg';
+import Box from './icons/Box.svg';
+import Trator from './icons/Trator.svg';
+import Home from './icons/Home.svg';
 
 export function icon(subtitle) {
 	const icons = {

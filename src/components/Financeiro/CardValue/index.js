@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import Calendar from '../../../utils/image/Icons/Calendar.svg';
+import React from 'react';
+import { iconList } from '../../../assets/Icons/icon-list';
 import {
 	CardValueContainer,
 	ValueCard,
@@ -12,7 +12,7 @@ const CardValue = ({ value, colorText, text }) => {
 	const { colors } = defaultTheme;
 	return (
 		<CardValueContainer>
-			<IconCardValue src={Calendar} />
+			<IconCardValue src={iconList.calendar} />
 			<TextCard colorText={colorText}>{text}</TextCard>
 			<ValueCard>{value}</ValueCard>
 		</CardValueContainer>

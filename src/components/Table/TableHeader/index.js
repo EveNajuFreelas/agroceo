@@ -5,8 +5,6 @@ import { defaultTheme } from '../../../theme';
 import Filter from '../../Filter';
 import ButtonIconAdd from '../../Geral/ButtonIcon';
 
-import { iconList } from '../../../../assets/Icons/icon-list';
-
 import {
 	TableHeaderContainer,
 	ButtonContainer,
@@ -21,6 +19,7 @@ import {
 	itensMenuYear,
 	itensMenuMonth,
 } from '../../../utils/dataMock/itensMenu';
+import { iconList } from '../../../assets/Icons/icon-list';
 
 const TableHeader = () => {
 	const { t } = useTranslation();
@@ -34,10 +33,10 @@ const TableHeader = () => {
 		<TableHeaderContainer>
 			<ButtonContainer>
 				<ButtonWrapper>
-					<ButtonIcon src={iconList.Print} />
+					<ButtonIcon src={iconList.print} />
 				</ButtonWrapper>
 				<ButtonWrapper>
-					<ButtonIcon src={iconList.Pdf} />
+					<ButtonIcon src={iconList.pdf} />
 				</ButtonWrapper>
 			</ButtonContainer>
 			<SearchInput
@@ -47,7 +46,7 @@ const TableHeader = () => {
 				InputProps={{
 					endAdornment: (
 						<InputAdornment position='end'>
-							<img src={iconList.SearchIcon} />
+							<img alt='icon search' src={iconList.searchIcon} />
 						</InputAdornment>
 					),
 				}}

@@ -1,10 +1,11 @@
 import { Drawer, List, ListItem } from '@material-ui/core';
-import styled from 'styled-components'
+import styled from 'styled-components';
 import { defaultTheme } from '../../theme';
 import { iconList } from '../../assets/Icons/icon-list';
 import { ChevronRight } from '@material-ui/icons';
 
-const { borderRadius, colors, padding, width, text, margin, border } = defaultTheme;
+const { borderRadius, colors, padding, width, text, margin, border } =
+	defaultTheme;
 
 export const SidebarWrapper = styled(Drawer)`
 	.MuiPaper-root {
@@ -12,7 +13,8 @@ export const SidebarWrapper = styled(Drawer)`
 		background-color: ${colors.primary};
 		padding: ${padding.sm};
 		padding-right: 0;
-		width: ${(props) => props.isOpen ? width.sidebarOpen : width.sidebarClosed};
+		width: ${props =>
+			props.isOpen ? width.sidebarOpen : width.sidebarClosed};
 	}
 
 	.MuiDrawer-paperAnchorDockedLeft {
@@ -26,16 +28,19 @@ export const ListWrapper = styled(List)`
 `;
 
 export const ListItemWrapper = styled(ListItem)`
-	cursor: pointer; 
-	
+	cursor: pointer;
+
 	.MuiListItem-gutters {
-		padding: ${(props) => props.isSubSidebar ? 0 : padding.lg};
+		padding: ${props => (props.isSubSidebar ? 0 : padding.lg)};
 	}
 
-	&:hover{
-		background-color: ${(props) => props.isSubSidebar ? colors.events.onHoverSubmenu : colors.events.onHover};
+	&:hover {
+		background-color: ${props =>
+			props.isSubSidebar
+				? colors.events.onHoverSubmenu
+				: colors.events.onHover};
 		border-radius: ${borderRadius.lg} 0 0 ${borderRadius.lg};
-	} 
+	}
 `;
 
 export const SidebarHeader = styled.div`
@@ -55,7 +60,7 @@ export const SubSidebarHeader = styled.div`
 	padding: ${padding.lg};
 `;
 
-export const SidebarIcon = styled(iconList.menu)`
+export const SidebarIcon = styled(iconList.iconMenu)`
 	cursor: pointer;
 	display: flex;
 	flex-shrink: 0;
@@ -73,12 +78,13 @@ export const ListExpandButton = styled(ChevronRight)`
 export const ListItemName = styled.div`
 	width: 80%;
 	padding-left: ${padding.md};
-	color: ${(props) => props.isSubSidebar ? colors.darkerGreen : 'white'};
+	color: ${props => (props.isSubSidebar ? colors.darkerGreen : 'white')};
 `;
 
 export const SubSidebar = styled(Drawer)`
 	.MuiPaper-root {
-		margin-left: ${(props) => props.isOpen ? width.sidebarOpen : width.sidebarClosed};
+		margin-left: ${props =>
+			props.isOpen ? width.sidebarOpen : width.sidebarClosed};
 		padding-right: 0;
 		padding-left: ${padding.lg};
 		width: ${width.subSidebar};

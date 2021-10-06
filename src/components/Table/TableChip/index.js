@@ -13,7 +13,7 @@ const TableChip = ({ obligations }) => {
 	useEffect(() => {
 		let arrayTemp = [];
 
-		obligations.map((label, index) => {
+		obligations.forEach((label, index) => {
 			arrayTemp.push({ key: index, label: label });
 		});
 

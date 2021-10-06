@@ -67,4 +67,6 @@ export const portuguese = {
 	'demand': 'Demandas',
 	'properties': 'Propriedades',
 	'expenses': 'Despesas',
+	'tractor': 'Tractors',
+	'input': 'Insumos',
 };

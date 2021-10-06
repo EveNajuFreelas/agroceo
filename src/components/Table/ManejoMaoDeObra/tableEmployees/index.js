@@ -14,18 +14,13 @@ import {
 
 import { StyledTableContainer } from '../../styles';
 
-import Edit from '../../../../utils/Icons/Edit.svg';
-import Delete from '../../../../utils/Icons/Delete.svg';
 import LabelWithIcon from '../../../LabelWithIcon';
+import { iconList } from '../../../../assets/Icons/icon-list';
 
 const TableEmployees = ({ data }) => {
 	const { t } = useTranslation();
 
-	const { colors, text } = defaultTheme;
-
-	//const [selected, setSelected] = React.useState([]);
-
-	//const isSelected = name => selected.indexOf(name) !== -1;
+	const { colors } = defaultTheme;
 
 	let keys = Object.keys(data[0]);
 
@@ -44,13 +39,7 @@ const TableEmployees = ({ data }) => {
 				<TableHead>
 					<TableRow style={{ height: '50px' }}>
 						<TableCell padding='checkbox'>
-							<Checkbox
-								style={{ color: 'green' }}
-								//checked={isItemSelected}
-								// inputProps={{
-								// 	'aria-labelledby': row.id,
-								// }}
-							/>
+							<Checkbox style={{ color: 'green' }} />
 						</TableCell>
 						{columns.map((column, index) => {
 							console.log(column, index);
@@ -86,7 +75,7 @@ const TableEmployees = ({ data }) => {
 
 								<TableCell width='200px'>{row.Nome}</TableCell>
 								{keys.map((column, index) => {
-									if (index == 4) {
+									if (index === 4) {
 										return (
 											<TableCell
 												align='right'
@@ -116,12 +105,16 @@ const TableEmployees = ({ data }) => {
 
 								<TableCell align='center'>
 									<img
+										alt='icon edit'
 										style={{
 											marginRight: 10,
 										}}
-										src={Edit}
+										src={iconList.edit}
 									/>
-									<img src={Delete} />
+									<img
+										alt='icon delete'
+										src={iconList.deleteIcon}
+									/>
 								</TableCell>
 							</TableRow>
 						);

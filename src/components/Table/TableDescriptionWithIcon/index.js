@@ -2,7 +2,6 @@ import React from 'react';
 
 import { defaultTheme } from '../../../theme';
 import LabelWithIcon from '../../LabelWithIcon';
-import { useTranslation } from 'react-i18next';
 
 import {
 	Table,
@@ -18,11 +17,7 @@ import { StyledTableContainer } from '../styles';
 import { iconList } from '../../../assets/Icons/icon-list';
 
 const TableWithDescriptionIcon = ({ data, columns }) => {
-	const { t } = useTranslation();
-	const { colors, text } = defaultTheme;
-	//const [selected, setSelected] = React.useState([]);
-
-	//const isSelected = name => selected.indexOf(name) !== -1;
+	const { colors } = defaultTheme;
 
 	let keys = Object.keys(data[0]);
 
@@ -32,13 +27,7 @@ const TableWithDescriptionIcon = ({ data, columns }) => {
 				<TableHead>
 					<TableRow style={{ height: '50px' }}>
 						<TableCell padding='checkbox'>
-							<Checkbox
-								style={{ color: 'green' }}
-								//checked={isItemSelected}
-								// inputProps={{
-								// 	'aria-labelledby': row.id,
-								// }}
-							/>
+							<Checkbox style={{ color: 'green' }} />
 						</TableCell>
 						{columns.map((column, index) => {
 							return index === 0 || index === 1 ? (
@@ -93,12 +82,16 @@ const TableWithDescriptionIcon = ({ data, columns }) => {
 
 								<TableCell align='center'>
 									<img
+										alt='icon edit'
 										style={{
 											marginRight: 10,
 										}}
 										src={iconList.edit}
 									/>
-									<img src={iconList.Delete} />
+									<img
+										alt='icon delete'
+										src={iconList.deleteIcon}
+									/>
 								</TableCell>
 							</TableRow>
 						);

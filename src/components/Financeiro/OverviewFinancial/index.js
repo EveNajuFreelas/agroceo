@@ -1,17 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { CardTab, CardList, FilterFinancial, FilterLabel } from './styles.js';
 
 import CardFinancial from '../../Card/CardFinancial';
 import CardListItem from '../../Card/CardListItem';
 
-import { iconList } from '../../assets/Icons/icon-list.js';
-import { defaultTheme } from '../../theme';
-import Filter from '../Filter/index.js';
+import { iconList } from '../../../assets/Icons/icon-list.js';
+import Filter from '../../Filter';
 import {
 	itensMenuMonth,
 	itensMenuYear,
 } from '../../../utils/dataMock/itensMenu.js';
-const { colors } = defaultTheme;
 
 const OverviewFinancial = () => {
 	const filter = mes => {
@@ -37,19 +35,19 @@ const OverviewFinancial = () => {
 				<CardFinancial
 					value={'R$ 40.000'}
 					month={'setembro'}
-					icon={iconList.Despesas}
+					icon={iconList.despesas}
 					description={'Despesas'}
 				/>
 				<CardFinancial
 					value={'R$ 60.000'}
 					month={'setembro'}
-					icon={iconList.Receitas}
+					icon={iconList.receitas}
 					description={'Receitas'}
 				/>
 				<CardFinancial
 					value={'R$ 7.000'}
 					month={'setembro'}
-					icon={iconList.Investimentos}
+					icon={iconList.investimentos}
 					description={'Investimentos'}
 				/>
 			</CardTab>

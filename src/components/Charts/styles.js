@@ -1,7 +1,4 @@
 import styled from 'styled-components';
-import { defaultTheme } from '../../theme';
-
-const { text, colors } = defaultTheme;
 
 export const ChartContainer = styled.div`
 	display: 'flex';

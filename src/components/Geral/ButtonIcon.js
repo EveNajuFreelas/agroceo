@@ -10,7 +10,7 @@ const ButtonIconAdd = ({
 	textButton,
 	marginBottom,
 }) => {
-	const { colors, text } = defaultTheme;
+	const { colors } = defaultTheme;
 
 	return (
 		<Button

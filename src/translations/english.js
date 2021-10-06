@@ -66,4 +66,6 @@ export const english = {
 	'demand': 'Demands',
 	'properties': 'Properties',
 	'expenses': 'Expenses',
+	'tractor': 'Tractors',
+	'input': 'Inputs',
 };

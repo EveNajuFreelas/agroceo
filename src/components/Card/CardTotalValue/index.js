@@ -15,7 +15,7 @@ const CardTotalValue = ({ value, mes, ano }) => {
 		<CardSummaryContainer>
 			<FirstColumn>
 				<TitleColumn>Total</TitleColumn>
-				<IconFirstColumn src={iconList.DespesaAzul} />
+				<IconFirstColumn src={iconList.despesaAzul} />
 			</FirstColumn>
 			<SecondColumn>
 				<ValueTotalCard>{value}</ValueTotalCard>

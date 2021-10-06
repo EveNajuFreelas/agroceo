@@ -6,7 +6,6 @@ import { useTranslation } from 'react-i18next';
 import { defaultTheme } from '../../../theme';
 
 import { itensMenuCombustivel } from '../../../utils/dataMock/itensMenu';
-import { manejoTratores } from '../../../utils/dataMock/mock';
 
 import Filter from '../../../components/Filter';
 import ButtonIconAdd from '../../../components/Geral/ButtonIcon';

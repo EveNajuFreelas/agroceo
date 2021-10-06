@@ -1,7 +1,5 @@
 import React from 'react';
-
 import { defaultTheme } from '../../../theme';
-import { useTranslation } from 'react-i18next';
 
 import {
 	Table,
@@ -13,18 +11,11 @@ import {
 } from '@material-ui/core';
 
 import { StyledTableContainer } from '../styles';
-
-import Edit from '../../../utils/Icons/Edit.svg';
-import Delete from '../../../utils/Icons/Delete.svg';
-import PutIn from '../../../utils/Icons/PutIn.svg';
+import { iconList } from '../../../assets/Icons/icon-list';
 
 const TablePutIcon = ({ data, columns, putInIcon, description }) => {
-	const { colors, text } = defaultTheme;
+	const { colors } = defaultTheme;
 	const COLUMN_INITIAL = description ? 1 : 0;
-
-	//const [selected, setSelected] = React.useState([]);
-
-	//const isSelected = name => selected.indexOf(name) !== -1;
 
 	let keys = Object.keys(data[0]);
 
@@ -34,13 +25,7 @@ const TablePutIcon = ({ data, columns, putInIcon, description }) => {
 				<TableHead>
 					<TableRow style={{ height: '50px' }}>
 						<TableCell padding='checkbox'>
-							<Checkbox
-								style={{ color: 'green' }}
-								//checked={isItemSelected}
-								// inputProps={{
-								// 	'aria-labelledby': row.id,
-								// }}
-							/>
+							<Checkbox style={{ color: 'green' }} />
 						</TableCell>
 						{columns.map((column, index) => {
 							return index === 0 || index === 1 ? (
@@ -83,7 +68,7 @@ const TablePutIcon = ({ data, columns, putInIcon, description }) => {
 										index > COLUMN_INITIAL && (
 											<TableCell
 												align={
-													description || index != 1
+													description || index !== 1
 														? 'right'
 														: 'left'
 												}
@@ -98,19 +83,24 @@ const TablePutIcon = ({ data, columns, putInIcon, description }) => {
 								<TableCell align='center'>
 									{putInIcon && (
 										<img
+											alt='icon put in'
 											style={{
 												marginRight: 10,
 											}}
-											src={PutIn}
+											src={iconList.putIn}
 										/>
 									)}
 									<img
+										alt='icon edit'
 										style={{
 											marginRight: 10,
 										}}
-										src={Edit}
+										src={iconList.edit}
 									/>
-									<img src={Delete} />
+									<img
+										alt='icon delete'
+										src={iconList.deleteIcon}
+									/>
 								</TableCell>
 							</TableRow>
 						);

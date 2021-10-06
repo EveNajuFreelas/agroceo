@@ -13,21 +13,13 @@ import {
 } from '@material-ui/core';
 
 import { StyledTableContainer } from '../../styles';
-
-import Edit from '../../../../utils/Icons/Edit.svg';
-import Delete from '../../../../utils/Icons/Delete.svg';
 import TableChip from '../../TableChip';
+import { iconList } from '../../../../assets/Icons/icon-list';
 
 const TableRoles = ({ data }) => {
 	const { t } = useTranslation();
 
-	const { colors, text } = defaultTheme;
-
-	//const [selected, setSelected] = React.useState([]);
-
-	//const isSelected = name => selected.indexOf(name) !== -1;
-
-	let keys = Object.keys(data[0]);
+	const { colors } = defaultTheme;
 
 	const columns = ['ID', t('functionName'), t('obligations'), t('daysWeek')];
 
@@ -37,16 +29,10 @@ const TableRoles = ({ data }) => {
 				<TableHead>
 					<TableRow style={{ height: '50px' }}>
 						<TableCell padding='checkbox'>
-							<Checkbox
-								style={{ color: 'green' }}
-								//checked={isItemSelected}
-								// inputProps={{
-								// 	'aria-labelledby': row.id,
-								// }}
-							/>
+							<Checkbox style={{ color: 'green' }} />
 						</TableCell>
 						{columns.map((column, index) => {
-							return index != 3 ? (
+							return index !== 3 ? (
 								<TableCell align='left'>{column}</TableCell>
 							) : (
 								<TableCell align='right'>{column}</TableCell>
@@ -88,12 +74,16 @@ const TableRoles = ({ data }) => {
 
 								<TableCell align='center'>
 									<img
+										alt='icon edit'
 										style={{
 											marginRight: 10,
 										}}
-										src={Edit}
+										src={iconList.edit}
 									/>
-									<img src={Delete} />
+									<img
+										alt='icon delete'
+										src={iconList.deleteIcon}
+									/>
 								</TableCell>
 							</TableRow>
 						);

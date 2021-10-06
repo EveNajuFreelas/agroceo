@@ -6,10 +6,8 @@ import {
 	TextCard,
 	IconCardValue,
 } from './styles';
-import { defaultTheme } from '../../../theme';
 
 const CardValue = ({ value, colorText, text }) => {
-	const { colors } = defaultTheme;
 	return (
 		<CardValueContainer>
 			<IconCardValue src={iconList.calendar} />

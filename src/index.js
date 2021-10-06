@@ -13,8 +13,8 @@ import { AuthenticationContainer } from './context/authContext';
 // import { PropertyContext } from './context/properties';
 // import { ListPropertieContext } from './context/properties/list';
 // import { GlobalLoadingContext } from "./context/loader"
-import { PageContainer } from './context/pageContext';
 import './i18n';
+import { PageContainer } from './context/pageContext';
 import { VehicleContainer } from './context/vehiclesContext';
 import { AreasContainer } from './context/areasContext';
 import { TractorContainer } from './context/tractorContext';
@@ -31,19 +31,21 @@ ReactDOM.render(
 				{/* <GlobalLoadingContext.Provider> */}
 				<AuthenticationContainer.Provider>
 					<RegisterContainer.Provider>
-						<VehicleContainer.Provider>
-							<AreasContainer.Provider>
-								<TractorContainer.Provider>
-									{/* <PopoverContainer.Provider> */}
-									{/* <ListPropertieContext.Provider> */}
-									{/* <PropertyContext.Provider> */}
-									<App />
-									{/* </PropertyContext.Provider> */}
-									{/* </ListPropertieContext.Provider> */}
-									{/* </PopoverContainer.Provider> */}
-								</TractorContainer.Provider>
-							</AreasContainer.Provider>
-						</VehicleContainer.Provider>
+						<PageContainer.Provider>
+							<VehicleContainer.Provider>
+								<AreasContainer.Provider>
+									<TractorContainer.Provider>
+										{/* <PopoverContainer.Provider> */}
+										{/* <ListPropertieContext.Provider> */}
+										{/* <PropertyContext.Provider> */}
+										<App />
+										{/* </PropertyContext.Provider> */}
+										{/* </ListPropertieContext.Provider> */}
+										{/* </PopoverContainer.Provider> */}
+									</TractorContainer.Provider>
+								</AreasContainer.Provider>
+							</VehicleContainer.Provider>
+						</PageContainer.Provider>
 					</RegisterContainer.Provider>
 				</AuthenticationContainer.Provider>
 				{/* </GlobalLoadingContext.Provider> */}

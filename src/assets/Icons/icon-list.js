@@ -27,12 +27,12 @@ import searchIcon from '../../utils/Icons/search.svg';
 import deleteIcon from '../../utils/Icons/delete.svg';
 import trator from '../../utils/Icons/trator.svg';
 import box from '../../utils/Icons/box.svg';
-import entrada from '../../utils/Icons/entrada.svg';
-import saida from '../../utils/Icons/saida.svg';
+import { ReactComponent as entrada } from '../../utils/Icons/Entrada.svg';
+import { ReactComponent as saida } from '../../utils/Icons/Saida.svg';
 import Brasil from '../../utils/Icons/Brasil.svg';
 import Usa from '../../utils/Icons/Estados Unidos.svg';
 import Australia from '../../utils/Icons/Australia.svg';
-import putIn from '../../utils/Icons/putIn.svg';
+import { ReactComponent as putIn } from '../../utils/Icons/PutIn.svg';
 
 export const iconList = {
 	add_a_photo,

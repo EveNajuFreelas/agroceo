@@ -12,6 +12,8 @@ import CardTotalValue from '../../../components/Card/CardTotalValue';
 import TableWithDescriptionIcon from '../../../components/Table/TableDescriptionWithIcon';
 import { financeiroData } from '../../../utils/dataMock/mock';
 import TableHeader from '../../../components/Table/TableHeader';
+import { ModalShell } from '../../../components/Modal/index';
+
 const Despesas = () => {
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
@@ -29,6 +31,10 @@ const Despesas = () => {
 	];
 
 	return (
+		<>
+		<ModalShell open={true}>
+			lolsss
+		</ModalShell>
 		<FinancialOverview>
 			<SummaryContainer>
 				<CardValueContainer>
@@ -62,6 +68,7 @@ const Despesas = () => {
 				/>
 			</div>
 		</FinancialOverview>
+		</>
 	);
 };
 

@@ -83,7 +83,7 @@ export const menuItems = [
 				url: '/dashboard',
 			},
 			{
-				id: 2.1,
+				id: 2.01,
 				text: 'demand',
 				url: '/dashboard',
 			},

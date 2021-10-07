@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { usePageContext } from '../../context/pageContext';
 import { menuItems } from '../../utils/navigationItems';
@@ -20,6 +20,13 @@ const Sidebar = () => {
     const { drawerOpen, changeDrawerState } = usePageContext();
     const history = useHistory();
     const [activeId, setActiveId] = useState(-1);
+    const [activeSubmenu, setActiveSubmenu] = useState([]);
+
+    useEffect(() => {
+        if(activeId !== -1) {
+            setActiveSubmenu(menuItems[activeId]?.items);
+        }
+    }, [activeId])
 
     const navigateTo = (path) => {
         history.push(path);
@@ -28,12 +35,12 @@ const Sidebar = () => {
     const handleHover = (id) => {
         if(menuItems[id]?.items?.length > 0) {
             setActiveId(id);
-        } else {
+        } else if(id === -1) {
             setActiveId(-1);
         }
     }
 
-    const renderSubItems = (items) => items.map(i => (
+    const renderSubItems = () => activeSubmenu.map(i => (
         <ListItemWrapper
             key={i.id}
             onClick={() => navigateTo(i.url)}
@@ -55,13 +62,14 @@ const Sidebar = () => {
                 <SidebarIcon onClick={changeDrawerState} />
                 {drawerOpen && 'AGROCEO'}
             </SidebarHeader>
-            <ListWrapper>
+            <ListWrapper
+                onMouseLeave={() => handleHover(-1)}
+            >
                 {menuItems.map(m => 
                     <ListItemWrapper 
                         key={m.id} 
                         onClick={() => navigateTo(m.url)}
                         onMouseEnter={() => handleHover(m.id)}
-                        onMouseLeave={() => handleHover(-1)}
                     >
                         {m.icon}
                         {drawerOpen && <ListItemName>{t(m.name)}</ListItemName>}
@@ -81,7 +89,7 @@ const Sidebar = () => {
             >
                <ListWrapper>
                     <SubSidebarHeader isSubSidebar>{t(menuItems[activeId].name)}</SubSidebarHeader>
-                    {renderSubItems(menuItems[activeId].items)}
+                    {renderSubItems()}
                 </ListWrapper>
             </SubSidebar>
         }

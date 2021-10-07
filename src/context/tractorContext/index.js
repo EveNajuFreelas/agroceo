@@ -9,8 +9,8 @@ const useTractorContainer = () => {
 	const getTractor = id => {
 		api.get(`/tractor/${id}`)
 			.then(res => {
-				console.log(formatResponse(res.data.tractors));
-				setTractor(formatResponse(res.data.tractors));
+				console.log(formatResponse(res.data));
+				setTractor(formatResponse(res.data));
 				setLoading(false);
 			})
 			.catch(err => {
@@ -34,7 +34,7 @@ const formatResponse = response => {
 			model: res.model,
 			color: res.color,
 			tractorYear: res.tractorYear,
-			plate: res.plate,
+			place: res.place,
 			tractorOwner: res.tractorOwner,
 			dateOfLastRevision: res.dateOfLastRevision,
 		});

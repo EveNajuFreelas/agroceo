@@ -9,8 +9,10 @@ const useInputContainer = () => {
 	const getInputs = id => {
 		api.get(`/inputs/${id}`)
 			.then(res => {
-				console.log(formatResponse(res.data.inputs));
-				setInputs(formatResponse(res.data.inputs));
+				console.log(res.data);
+
+				console.log(formatResponse(res.data));
+				setInputs(formatResponse(res.data));
 				setLoading(false);
 			})
 			.catch(err => {
@@ -27,19 +29,30 @@ const useInputContainer = () => {
 
 const formatResponse = response => {
 	let tempArray = [];
-	response.forEach(res => {
+	response.map(res => {
 		tempArray.push({
-			id: res.id,
-			description: res.name,
-			quantity: res.theAmount,
-			unit: res.unitOfMeasurement,
-			apresentation: res.presentation,
-			document: res.urlDoc ? true : false,
-			whoReceived: res.whoReceivedPeople.name,
+			data: {
+				id: res.id,
+				description: res.name,
+				quantity: res.theAmount,
+				unit: res.unitOfMeasurement,
+				apresentation: res.presentation,
+				document: res.urlDoc ? true : false,
+				whoReceived: res.whoReceivedPeople || '--',
+			},
+			extras: {
+				image: res.image,
+				direction: defineDirection(res.direction),
+			},
 		});
 	});
 
 	return tempArray;
+};
+
+const defineDirection = response => {
+	if (response === 1) return 'entrada';
+	if (response === 2) return 'saida';
 };
 
 export const InputContainer = createContainer(useInputContainer);

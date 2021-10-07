@@ -18,7 +18,7 @@ const Insumos = () => {
 	const { inputs, getInputs, isLoading } = useInput();
 
 	useEffect(() => {
-		getInputs(2);
+		getInputs(1);
 	}, []);
 
 	const columns = [
@@ -57,7 +57,12 @@ const Insumos = () => {
 				<span>Carregando...</span>
 			) : (
 				<div>
-					<TableWithDescriptionIcon data={inputs} columns={columns} />
+					<TableWithDescriptionIcon
+						data={inputs}
+						columns={columns}
+						yesNo={true}
+						columnYesNo={'document'}
+					/>
 				</div>
 			)}
 		</>

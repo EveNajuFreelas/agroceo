@@ -68,4 +68,6 @@ export const english = {
 	'expenses': 'Expenses',
 	'tractor': 'Tractors',
 	'input': 'Inputs',
+	'yes': 'Yes',
+	'no': 'No',
 };

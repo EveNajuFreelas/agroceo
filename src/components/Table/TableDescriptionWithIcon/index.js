@@ -15,11 +15,13 @@ import { StyledTableContainer } from '../styles';
 
 import { iconList } from '../../../assets/Icons/icon-list';
 import TableHeadDefault from '../TableHead';
+import YesNo from '../yesNo';
 
-const TableWithDescriptionIcon = ({ data, columns }) => {
+const TableWithDescriptionIcon = ({ data, columns, columnYesNo, yesNo }) => {
 	const { colors } = defaultTheme;
 
-	let keys = Object.keys(data[0]);
+	let keys = Object.keys(data[0].data);
+	console.log(keys);
 
 	return (
 		<StyledTableContainer>
@@ -27,14 +29,15 @@ const TableWithDescriptionIcon = ({ data, columns }) => {
 				<TableHeadDefault columns={columns} />
 				<TableBody>
 					{data.map(row => {
+						console.log('image', row.extras.image);
 						return (
-							<TableRow key={row.id}>
+							<TableRow key={row.data.id}>
 								<TableCell padding='checkbox'>
 									<Checkbox
 										style={{ color: 'green' }}
 										//checked={isItemSelected}
 										inputProps={{
-											'aria-labelledby': row.id,
+											'aria-labelledby': row.data.id,
 										}}
 									/>
 								</TableCell>
@@ -43,13 +46,15 @@ const TableWithDescriptionIcon = ({ data, columns }) => {
 									width='50px'
 									style={{ color: colors.neutral6 }}
 								>
-									{row.id}
+									{row.data.id}
 								</TableCell>
 
 								<TableCell align='left' width='200px'>
 									<LabelWithIcon
-										iconName={'Insumos'}
-										title={row.description}
+										iconSrc={
+											row.extras.image || iconList.box
+										}
+										title={row.data.description}
 									/>
 								</TableCell>
 
@@ -60,7 +65,14 @@ const TableWithDescriptionIcon = ({ data, columns }) => {
 												align='right'
 												key={index}
 											>
-												{row[column]}
+												{yesNo &&
+												column === columnYesNo ? (
+													<YesNo
+														text={row.data[column]}
+													/>
+												) : (
+													row.data[column]
+												)}
 											</TableCell>
 										)
 									);

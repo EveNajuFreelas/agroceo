@@ -27,7 +27,7 @@ const useVehicleContainer = () => {
 
 const formatResponse = response => {
 	let tempArray = [];
-	response.forEach(res => {
+	response.map(res => {
 		tempArray.push({
 			id: res.id,
 			description: res.nickname,

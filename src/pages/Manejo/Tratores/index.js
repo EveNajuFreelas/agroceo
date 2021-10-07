@@ -18,7 +18,7 @@ const Tratores = () => {
 	const { isLoading, tractor, getTractor } = useTractor();
 
 	useEffect(() => {
-		getTractor(2);
+		getTractor(1);
 	}, []);
 
 	const columns = [

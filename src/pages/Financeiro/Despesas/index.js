@@ -59,6 +59,7 @@ const Despesas = () => {
 				<TableWithDescriptionIcon
 					data={financeiroData}
 					columns={columnsFinancial}
+					yesNo={false}
 				/>
 			</div>
 		</FinancialOverview>

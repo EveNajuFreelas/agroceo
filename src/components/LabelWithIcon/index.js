@@ -1,10 +1,11 @@
 import { ItemDescription, IconItemDescription, TitleItem } from './styles';
 import { icon } from '../../utils/functions';
 
-const LabelWithIcon = ({ title, iconName, justifyEnd }) => {
+const LabelWithIcon = ({ title, iconSrc, justifyEnd }) => {
+	console.log(iconSrc);
 	return (
 		<ItemDescription justifyEnd={justifyEnd}>
-			<IconItemDescription src={icon(iconName)} />
+			<IconItemDescription src={iconSrc} />
 			<TitleItem>{title}</TitleItem>
 		</ItemDescription>
 	);

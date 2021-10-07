@@ -54,6 +54,7 @@ const Investimento = () => {
 				<TableWithDescriptionIcon
 					data={financeiroData}
 					columns={columnsFinancial}
+					yesNo={false}
 				/>
 			</div>
 		</FinancialOverview>

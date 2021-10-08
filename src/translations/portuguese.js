@@ -69,4 +69,6 @@ export const portuguese = {
 	'expenses': 'Despesas',
 	'tractor': 'Tractors',
 	'input': 'Insumos',
+	'cancel': 'Cancelar',
+	'save': 'Salvar',
 };

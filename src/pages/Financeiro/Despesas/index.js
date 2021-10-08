@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
 	FinancialOverview,
 	SummaryContainer,
@@ -17,6 +17,7 @@ import { ModalShell } from '../../../components/Modal/index';
 const Despesas = () => {
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
+	const [openModal, setOpenModal] = useState(true);
 
 	const columnsFinancial = [
 		'ID',
@@ -32,9 +33,26 @@ const Despesas = () => {
 
 	return (
 		<>
-		<ModalShell open={true}>
-			lolsss
-		</ModalShell>
+		<ModalShell 
+			open={openModal}
+			handleClose={() => setOpenModal(false)}
+			title="expenses"
+			breadcrumbs={['financial', 'expenses']}
+			actionButtons={[
+				{
+					onClick: () => setOpenModal(false),
+					title: 'cancel',
+					color: 'secondary',
+					variant: 'outlined',
+				},
+				{
+					onClick: () => setOpenModal(false),
+					title: 'save',
+					color: 'primary',
+					variant: 'contained',
+				}
+			]}
+		/>
 		<FinancialOverview>
 			<SummaryContainer>
 				<CardValueContainer>

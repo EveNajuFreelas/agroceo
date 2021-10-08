@@ -27,6 +27,7 @@ export const defaultTheme = {
     events: {
       onHover: 'rgba(255, 255, 255, 0.3)',
 	  onHoverSubmenu: 'rgba(4, 241, 130, 0.3)',
+	  onHoverPrimaryButton: 'rgba(3, 181, 98, 0.9)',
     },
 	},
 	text: {
@@ -56,7 +57,7 @@ export const defaultTheme = {
 		weight: {
 			thin: 200,
 			normal: 400,
-      semiBold: 500,
+      		semiBold: 500,
 			bold: 700,
 		},
 	},
@@ -76,6 +77,7 @@ export const defaultTheme = {
 		sm: '4px',
 		md: '8px',
 		lg: '12px',
+		xg: '20px',
 	},
 	margin: {
 		sm: '4px',
@@ -105,5 +107,8 @@ export const defaultTheme = {
     sidebarOpen: '256px',
     sidebarClosed: '97px',
 	subSidebar: '206px',
+	globalWidthOpen: '270px',
+	globalWidthClosed: '105px',
+	actionButtons: '130px',
   },
 };

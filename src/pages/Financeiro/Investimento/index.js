@@ -50,7 +50,11 @@ const Investimento = () => {
 				/>
 			</SummaryContainer>
 			<div>
-				<TableHeader />
+				<TableHeader
+					data={financeiroData}
+					columns={columnsFinancial}
+					title={'Financeiro - Investimentos'}
+				/>
 				<TableWithDescriptionIcon
 					data={financeiroData}
 					columns={columnsFinancial}

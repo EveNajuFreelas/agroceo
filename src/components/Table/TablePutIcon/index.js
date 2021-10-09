@@ -5,7 +5,6 @@ import {
 	Table,
 	TableBody,
 	TableCell,
-	TableHead,
 	TableRow,
 	Checkbox,
 } from '@material-ui/core';

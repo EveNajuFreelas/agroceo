@@ -56,11 +56,16 @@ const Receitas = () => {
 				/>
 			</SummaryContainer>
 			<div>
-				<TableHeader />
+				<TableHeader
+					data={financeiroData}
+					columns={columnsFinancial}
+					title={'Financeiro - Receitas'}
+				/>
 				<TableWithDescriptionIcon
 					data={financeiroData}
 					columns={columnsFinancial}
-					yesNo={false}
+					yesNo={true}
+					columnYesNo={'Invoice'}
 				/>
 			</div>
 		</FinancialOverview>

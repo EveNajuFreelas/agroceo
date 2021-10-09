@@ -70,4 +70,7 @@ export const english = {
 	'input': 'Inputs',
 	'cancel': 'Cancel',
 	'save': 'Save',
+	'totalValue': 'Total Value',
+	'expensesDate': 'Expense Date',
+	'receipt': 'Receipt',
 };

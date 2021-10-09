@@ -15,6 +15,7 @@ export const ModalShell = ({
     breadcrumbs, 
     handleClose,
     actionButtons,
+    children
 }) => {
     const { t } = useTranslation();
 
@@ -36,7 +37,7 @@ export const ModalShell = ({
             </div>
             <CloseModal onClick={handleClose} />
         </ModalHeader>
-        la la la al alla
+        {children}
         {actionButtons && (<ModalFooter>
             {actionButtons.map(ab => (
                 <Button {...ab}>{t(ab.title)}</Button>

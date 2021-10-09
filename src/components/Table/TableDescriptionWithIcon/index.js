@@ -1,8 +1,6 @@
 import React from 'react';
-
 import { defaultTheme } from '../../../theme';
 import LabelWithIcon from '../../LabelWithIcon';
-
 import {
 	Table,
 	TableBody,
@@ -10,16 +8,22 @@ import {
 	TableHead,
 	TableRow,
 	Checkbox,
+	Link,
 } from '@material-ui/core';
-
 import { StyledTableContainer } from '../styles';
-
 import { iconList } from '../../../assets/Icons/icon-list';
+import { useExpensesContainer } from '../../../context/financesContext/expensesContext';
 
 const TableWithDescriptionIcon = ({ data, columns }) => {
+	const { setActiveContent, setModalState } = useExpensesContainer();
 	const { colors } = defaultTheme;
 
 	let keys = Object.keys(data[0]);
+
+	const handleClick = () => {
+		setActiveContent(data);
+		setModalState(true);
+	}
 
 	return (
 		<StyledTableContainer>
@@ -61,10 +65,12 @@ const TableWithDescriptionIcon = ({ data, columns }) => {
 								</TableCell>
 
 								<TableCell align='left' width='200px'>
-									<LabelWithIcon
-										iconName={'Insumos'}
-										title={row.Description}
-									/>
+									<Link component='button' color='inherit' onClick={handleClick}>
+										<LabelWithIcon
+											iconName={'Insumos'}
+											title={row.Description}
+										/>
+									</Link>
 								</TableCell>
 
 								{keys.map((column, index) => {

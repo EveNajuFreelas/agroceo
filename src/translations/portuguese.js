@@ -71,4 +71,7 @@ export const portuguese = {
 	'input': 'Insumos',
 	'cancel': 'Cancelar',
 	'save': 'Salvar',
+	'totalValue': 'Valor Total',
+	'expensesDate': 'Data da Despesa',
+	'receipt': 'Nota Fiscal',
 };

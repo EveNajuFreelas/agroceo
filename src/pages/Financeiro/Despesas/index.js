@@ -12,12 +12,11 @@ import CardTotalValue from '../../../components/Card/CardTotalValue';
 import TableWithDescriptionIcon from '../../../components/Table/TableDescriptionWithIcon';
 import { financeiroData } from '../../../utils/dataMock/mock';
 import TableHeader from '../../../components/Table/TableHeader';
-import { ModalShell } from '../../../components/Modal/index';
+import { ExpensesModal } from '../../../components/Modals/Financial/Expenses/index';
 
 const Despesas = () => {
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
-	const [openModal, setOpenModal] = useState(true);
 
 	const columnsFinancial = [
 		'ID',
@@ -33,26 +32,7 @@ const Despesas = () => {
 
 	return (
 		<>
-		<ModalShell 
-			open={openModal}
-			handleClose={() => setOpenModal(false)}
-			title="expenses"
-			breadcrumbs={['financial', 'expenses']}
-			actionButtons={[
-				{
-					onClick: () => setOpenModal(false),
-					title: 'cancel',
-					color: 'secondary',
-					variant: 'outlined',
-				},
-				{
-					onClick: () => setOpenModal(false),
-					title: 'save',
-					color: 'primary',
-					variant: 'contained',
-				}
-			]}
-		/>
+		<ExpensesModal />
 		<FinancialOverview>
 			<SummaryContainer>
 				<CardValueContainer>

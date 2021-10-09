@@ -111,4 +111,7 @@ export const defaultTheme = {
 	globalWidthClosed: '105px',
 	actionButtons: '130px',
   },
+  height: {
+	input: '40px',
+  }
 };

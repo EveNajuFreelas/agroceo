@@ -48,7 +48,7 @@ const PizzaChart = () => {
 									<LegendName>
 										{demandas.labels[index]}
 									</LegendName>
-									<LegendPercent>{`${demanda} %`}</LegendPercent>
+									<LegendPercent>{`${demanda}%`}</LegendPercent>
 								</LegendPizzaLabel>
 							</LegendPizzaItem>
 						))}

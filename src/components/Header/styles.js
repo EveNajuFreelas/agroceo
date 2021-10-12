@@ -17,7 +17,8 @@ export const HeaderStyle = styled.div`
 	background-color: #fff;
 	border-bottom: ${border.header};
 	z-index: 10;
-
+	
+	transition: width 0.3s ease-out;
 	${props =>
 		props.drawerOpen
 			? `width: calc(100% - ${width.sidebarOpen})`

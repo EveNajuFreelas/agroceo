@@ -1,16 +1,16 @@
-import { useState } from "react";
-import { createContainer, useContainer } from "unstated-next";
+import { useState } from 'react';
+import { createContainer, useContainer } from 'unstated-next';
 
 const PageContextContainer = () => {
-    const [drawerOpen, setDrawerOpen] = useState(true);
+	const [drawerOpen, setDrawerOpen] = useState(false);
 
-    const changeDrawerState = () => setDrawerOpen(current => !current);
+	const changeDrawerState = () => setDrawerOpen(current => !current);
 
-    return {
-        drawerOpen,
-        changeDrawerState,
-    };
-}
+	return {
+		drawerOpen,
+		changeDrawerState,
+	};
+};
 
 export const PageContainer = createContainer(PageContextContainer);
 

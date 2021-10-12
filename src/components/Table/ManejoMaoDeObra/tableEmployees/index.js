@@ -54,6 +54,8 @@ const TableEmployees = ({ data }) => {
 				</TableHead>
 				<TableBody>
 					{data.map(row => {
+						row = row.data;
+						console.log(row);
 						return (
 							<TableRow key={row.id}>
 								<TableCell padding='checkbox'>
@@ -73,35 +75,31 @@ const TableEmployees = ({ data }) => {
 									{row.id}
 								</TableCell>
 
-								<TableCell width='200px'>{row.Nome}</TableCell>
-								{keys.map((column, index) => {
-									if (index === 4) {
-										return (
-											<TableCell
-												align='right'
-												key={index}
-												width='300px'
-											>
-												<LabelWithIcon
-													title={row[column]}
-													iconName={'Brasil'}
-													justifyEnd={true}
-												/>
-											</TableCell>
-										);
-									} else {
-										return (
-											index > 1 && (
-												<TableCell
-													align='right'
-													key={index}
-												>
-													{row[column]}
-												</TableCell>
-											)
-										);
-									}
-								})}
+								<TableCell width='200px'>{row.name}</TableCell>
+
+								<TableCell align='right'>
+									{row.surName}
+								</TableCell>
+
+								<TableCell align='right'>
+									{row.role || '--'}
+								</TableCell>
+
+								<TableCell
+									align='right'
+									key={row.id}
+									width='300px'
+								>
+									<LabelWithIcon
+										title={row.phone}
+										iconName={'Brasil'}
+										justifyEnd={true}
+									/>
+								</TableCell>
+
+								<TableCell align='right'>
+									{row.contract}
+								</TableCell>
 
 								<TableCell align='center'>
 									<img

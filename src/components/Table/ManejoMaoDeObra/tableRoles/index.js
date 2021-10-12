@@ -19,6 +19,8 @@ import { iconList } from '../../../../assets/Icons/icon-list';
 const TableRoles = ({ data }) => {
 	const { t } = useTranslation();
 
+	console.log('data', data.data);
+
 	const { colors } = defaultTheme;
 
 	const columns = ['ID', t('functionName'), t('obligations'), t('daysWeek')];
@@ -43,6 +45,7 @@ const TableRoles = ({ data }) => {
 				</TableHead>
 				<TableBody>
 					{data.map(row => {
+						row = row.data;
 						return (
 							<TableRow key={row.id}>
 								<TableCell padding='checkbox'>
@@ -62,14 +65,14 @@ const TableRoles = ({ data }) => {
 									{row.id}
 								</TableCell>
 
-								<TableCell width={200}>{row.Funcao}</TableCell>
+								<TableCell width={200}>{row.name}</TableCell>
 
 								<TableCell>
-									<TableChip obligations={row.Obligations} />
+									<TableChip obligations={row.obligations} />
 								</TableCell>
 
 								<TableCell align='right'>
-									{row.Days.join(', ')}
+									{row.days.join(', ')}
 								</TableCell>
 
 								<TableCell align='center'>

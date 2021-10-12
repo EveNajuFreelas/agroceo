@@ -5,7 +5,7 @@ import { getObject } from '../utils/storage';
 const AccessToken = '@agroceo/accessToken';
 
 const principal = 'https://apiv1.agroceo.app';
-const localhost = 'http://localhost:3333';
+const localhost = 'http://localhost:3335';
 
 const api = axios.create({
 	baseURL: localhost,

@@ -9,6 +9,7 @@ const useVehicleContainer = () => {
 	const getVehicle = id => {
 		api.get(`/GetVehicle/${id}`)
 			.then(res => {
+				console.log(res);
 				console.log(formatResponse(res.data.vehicles));
 				setVehicle(formatResponse(res.data.vehicles));
 				setLoading(false);
@@ -28,6 +29,7 @@ const useVehicleContainer = () => {
 const formatResponse = response => {
 	let tempArray = [];
 	response.map(res => {
+		console.log(res.updated_at.substring(0, res.updated_at.indexOf('T')));
 		tempArray.push({
 			id: res.id,
 			description: res.nickname,
@@ -36,7 +38,10 @@ const formatResponse = response => {
 			color: res.color,
 			board: res.board,
 			vehicleOwner: res.vehicleOwner,
-			updated_at: res.updated_at,
+			updated_at: res.updated_at.substring(
+				0,
+				res.updated_at.indexOf('T')
+			),
 		});
 	});
 

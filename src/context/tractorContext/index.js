@@ -36,7 +36,10 @@ const formatResponse = response => {
 			tractorYear: res.tractorYear,
 			place: res.place,
 			tractorOwner: res.tractorOwner,
-			dateOfLastRevision: res.dateOfLastRevision,
+			dateOfLastRevision: res.dateOfLastRevision.substring(
+				0,
+				res.dateOfLastRevision.indexOf('T')
+			),
 		});
 	});
 

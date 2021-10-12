@@ -12,6 +12,7 @@ const useAuthenticationContainer = () => {
 	const [ready, setReady] = useState(false);
 	const [user, setUser] = useState(localStorage.getItem('@agroceo/user'));
 	const [properties, setProperties] = useState();
+	const [propertiesSelected, setPropertiesSelected] = useState(5);
 
 	const { isLoading, mutateAsync, isSuccess, isError } = useMutation(
 		user => {
@@ -78,6 +79,7 @@ const useAuthenticationContainer = () => {
 		signOut,
 		loadUser,
 		properties,
+		propertiesSelected,
 	};
 };
 

@@ -29,6 +29,7 @@ const useVehicleContainer = () => {
 const formatResponse = response => {
 	let tempArray = [];
 	response.map(res => {
+		console.log(res);
 		console.log(res.updated_at.substring(0, res.updated_at.indexOf('T')));
 		tempArray.push({
 			id: res.id,
@@ -36,12 +37,14 @@ const formatResponse = response => {
 			brand: res.brand,
 			model: res.model,
 			color: res.color,
-			board: res.board,
+			board: res.board.toUpperCase(),
 			vehicleOwner: res.vehicleOwner,
-			updated_at: res.updated_at.substring(
-				0,
-				res.updated_at.indexOf('T')
-			),
+			lastRevision: res.dateOfLastRevision
+				? res.dateOfLastRevision.substring(
+						0,
+						res.dateOfLastRevision.indexOf('T')
+				  )
+				: '--',
 		});
 	});
 

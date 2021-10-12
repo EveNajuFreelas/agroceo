@@ -22,8 +22,6 @@ const TableEmployees = ({ data }) => {
 
 	const { colors } = defaultTheme;
 
-	let keys = Object.keys(data[0]);
-
 	const columns = [
 		'ID',
 		t('name'),
@@ -42,7 +40,6 @@ const TableEmployees = ({ data }) => {
 							<Checkbox style={{ color: 'green' }} />
 						</TableCell>
 						{columns.map((column, index) => {
-							console.log(column, index);
 							return index === 0 || index === 1 ? (
 								<TableCell align='left'>{column}</TableCell>
 							) : (
@@ -55,7 +52,6 @@ const TableEmployees = ({ data }) => {
 				<TableBody>
 					{data.map(row => {
 						row = row.data;
-						console.log(row);
 						return (
 							<TableRow key={row.id}>
 								<TableCell padding='checkbox'>
@@ -92,7 +88,7 @@ const TableEmployees = ({ data }) => {
 								>
 									<LabelWithIcon
 										title={row.phone}
-										iconName={'Brasil'}
+										iconSrc={iconList['Brasil']}
 										justifyEnd={true}
 									/>
 								</TableCell>

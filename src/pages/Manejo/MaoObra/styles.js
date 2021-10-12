@@ -13,8 +13,8 @@ export const TabStyled = styled(Tab)`
 	}
 
 	&.Mui-selected {
-		color: ${colors.anotherGreen};
-		border: 1px solid ${colors.anotherGreen};
+		color: ${colors.darkerGreen};
+		border: 1px solid ${colors.darkerGreen};
 		border-bottom: none;
 	}
 `;

@@ -10,7 +10,6 @@ const useRoleContainer = () => {
 	const getRolesAndEmployees = id => {
 		api.get(`/offices/${id}`)
 			.then(res => {
-				console.log(formatResponseRole(res.data.office));
 				setRoles(formatResponseRole(res.data.office));
 			})
 			.catch(err => {
@@ -19,7 +18,6 @@ const useRoleContainer = () => {
 
 		api.get(`/people/${id}`)
 			.then(res => {
-				console.log(formatResponseEmployee(res.data.people));
 				setEmployees(formatResponseEmployee(res.data.people));
 				setLoading(false);
 			})
@@ -46,22 +44,20 @@ const formatResponseEmployee = response => {
 				role: res.office.length === 0 ? null : res.office[0].name,
 				phone: res.phone,
 				contract: res.contract,
+				country: res.country,
 			},
 		});
 	});
-	console.log(tempArray);
 	return tempArray;
 };
 const formatResponseRole = response => {
 	let tempArray = [];
 	response.map(res => {
 		tempArray.push({
-			data: {
-				id: res.id,
-				name: res.name,
-				days: formatDays(res.days.days.days),
-				obligations: formatObligations(res.obligations),
-			},
+			id: res.id,
+			roleName: res.name,
+			obligations: formatObligations(res.obligations),
+			daysWeek: formatDays(res.days.days.days),
 		});
 	});
 

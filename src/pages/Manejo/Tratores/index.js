@@ -9,7 +9,7 @@ import { itensMenuCombustivel } from '../../../utils/dataMock/itensMenu';
 
 import Filter from '../../../components/Filter';
 import ButtonIconAdd from '../../../components/Geral/ButtonIcon';
-import TablePutIncon from '../../../components/Table/TablePutIcon';
+import TableNormal from '../../../components/Table/TableNormal';
 import { useTractor } from '../../../context/tractorContext';
 
 const Tratores = () => {
@@ -18,7 +18,7 @@ const Tratores = () => {
 	const { isLoading, tractor, getTractor } = useTractor();
 
 	useEffect(() => {
-		getTractor(1);
+		getTractor();
 	}, []);
 
 	const columns = [
@@ -57,7 +57,7 @@ const Tratores = () => {
 			{isLoading ? (
 				<span>Carregando...</span>
 			) : (
-				<TablePutIncon
+				<TableNormal
 					data={tractor}
 					columns={columns}
 					putInIcon={true}

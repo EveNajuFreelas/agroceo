@@ -1,29 +1,28 @@
 import React from 'react';
-
-import { defaultTheme } from '../../../../theme';
-import { useTranslation } from 'react-i18next';
+import { defaultTheme } from '../../../theme';
 
 import {
 	Table,
 	TableBody,
 	TableCell,
-	TableHead,
 	TableRow,
 	Checkbox,
+	TableHead,
 } from '@material-ui/core';
 
-import { StyledTableContainer } from '../../styles';
-import TableChip from '../../TableChip';
-import { iconList } from '../../../../assets/Icons/icon-list';
+import { StyledTableContainer } from '../styles';
+import { iconList } from '../../../assets/Icons/icon-list';
+import TableHeadDefault from '../TableHead';
+import ChipTable from '../Chip';
 
-const TableRoles = ({ data }) => {
-	const { t } = useTranslation();
-
-	console.log('data', data.data);
-
+const TableWithChip = ({ data, columns }) => {
 	const { colors } = defaultTheme;
 
-	const columns = ['ID', t('functionName'), t('obligations'), t('daysWeek')];
+	console.log('data', data);
+	console.log('columns', columns);
+
+	let keys = Object.keys(data[0]);
+	const lastColumn = keys.length - 1;
 
 	return (
 		<StyledTableContainer>
@@ -34,10 +33,10 @@ const TableRoles = ({ data }) => {
 							<Checkbox style={{ color: 'green' }} />
 						</TableCell>
 						{columns.map((column, index) => {
-							return index !== 3 ? (
-								<TableCell align='left'>{column}</TableCell>
-							) : (
+							return lastColumn === index ? (
 								<TableCell align='right'>{column}</TableCell>
+							) : (
+								<TableCell align='left'>{column}</TableCell>
 							);
 						})}
 						<TableCell />
@@ -45,7 +44,6 @@ const TableRoles = ({ data }) => {
 				</TableHead>
 				<TableBody>
 					{data.map(row => {
-						row = row.data;
 						return (
 							<TableRow key={row.id}>
 								<TableCell padding='checkbox'>
@@ -65,15 +63,33 @@ const TableRoles = ({ data }) => {
 									{row.id}
 								</TableCell>
 
-								<TableCell width={200}>{row.name}</TableCell>
+								{keys.map((column, index) => {
+									//console.log('content', row[column]);
+									return (
+										//tem alguma forma de fazer melhor certeza k k k k
 
-								<TableCell>
-									<TableChip obligations={row.obligations} />
-								</TableCell>
-
-								<TableCell align='right'>
-									{row.days.join(', ')}
-								</TableCell>
+										index > 0 && (
+											<TableCell
+												width={index === 1 && 200}
+												align={
+													lastColumn === index
+														? 'right'
+														: 'left'
+												}
+												key={index}
+											>
+												{index === keys.length - 2 &&
+												row[column] ? (
+													<ChipTable
+														items={row[column]}
+													/>
+												) : (
+													row[column] || '--'
+												)}
+											</TableCell>
+										)
+									);
+								})}
 
 								<TableCell align='center'>
 									<img
@@ -97,4 +113,4 @@ const TableRoles = ({ data }) => {
 	);
 };
 
-export default TableRoles;
+export default TableWithChip;

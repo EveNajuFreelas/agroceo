@@ -9,7 +9,7 @@ import { itensMenuCombustivel } from '../../../utils/dataMock/itensMenu';
 
 import Filter from '../../../components/Filter';
 import ButtonIconAdd from '../../../components/Geral/ButtonIcon';
-import TablePutIncon from '../../../components/Table/TablePutIcon';
+import TableNormal from '../../../components/Table/TableNormal';
 import { useVehicle } from '../../../context/vehiclesContext';
 
 const Veiculos = () => {
@@ -18,8 +18,7 @@ const Veiculos = () => {
 	const { isLoading, getVehicle, vehicle } = useVehicle();
 
 	useEffect(() => {
-		getVehicle(2);
-		console.log('entrou');
+		getVehicle(5);
 	}, []);
 
 	const columns = [
@@ -34,7 +33,7 @@ const Veiculos = () => {
 	];
 
 	const filter = mes => {
-		console.log(mes);
+		//console.log(mes);
 	};
 
 	return (
@@ -59,7 +58,7 @@ const Veiculos = () => {
 				{isLoading ? (
 					<span>carregando...</span>
 				) : (
-					<TablePutIncon
+					<TableNormal
 						data={vehicle}
 						columns={columns}
 						putInIcon={true}

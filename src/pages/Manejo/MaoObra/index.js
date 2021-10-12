@@ -5,25 +5,27 @@ import { useTranslation } from 'react-i18next';
 
 import ButtonIconAdd from '../../../components/Geral/ButtonIcon';
 import TableEmployees from '../../../components/Table/ManejoMaoDeObra/tableEmployees';
-import TableRoles from '../../../components/Table/ManejoMaoDeObra/tableRoles';
 
 import { defaultTheme } from '../../../theme';
 import { useRole } from '../../../context/rolesContext';
+import { useAuthentication } from '../../../context/authContext';
+import TableWithChip from '../../../components/Table/TableWithChip';
 
 const MaoObra = () => {
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
 	const { roles, employees, getRolesAndEmployees, isLoading } = useRole();
+	const { propertiesSelected } = useAuthentication();
 
-	const [value, setValue] = useState(1);
+	const [value, setValue] = useState(0);
+	let columnsRoles = ['ID', t('roleName'), t('obligations'), t('daysWeek')];
 
 	useEffect(() => {
-		getRolesAndEmployees(5);
+		getRolesAndEmployees(propertiesSelected);
 	}, []);
 
 	const handleChange = (event, newValue) => {
 		setValue(newValue);
-		console.log(value);
 	};
 
 	return isLoading ? (
@@ -53,7 +55,9 @@ const MaoObra = () => {
 			</HeadSection>
 
 			{value === 0 && <TableEmployees data={employees} />}
-			{value === 1 && <TableRoles data={roles} />}
+			{value === 1 && (
+				<TableWithChip data={roles} columns={columnsRoles} />
+			)}
 		</>
 	);
 };

@@ -6,8 +6,9 @@ import { useTranslation } from 'react-i18next';
 import ButtonIconAdd from '../../../components/Geral/ButtonIcon';
 
 import { defaultTheme } from '../../../theme';
-import TablePutIcon from '../../../components/Table/TablePutIcon';
+import TableNormal from '../../../components/Table/TableNormal';
 import { useArea } from '../../../context/areasContext';
+import TableWithChip from '../../../components/Table/TableWithChip';
 
 const Areas = () => {
 	const { t } = useTranslation();
@@ -17,7 +18,7 @@ const Areas = () => {
 	const [value, setValue] = React.useState(0);
 
 	useEffect(() => {
-		getAreasAndModules(2);
+		getAreasAndModules();
 	}, []);
 
 	const handleChange = (event, newValue) => {
@@ -34,7 +35,7 @@ const Areas = () => {
 		'ID',
 		t('name'),
 		t('nickname'),
-		t('areaSize'),
+		t('pastures'),
 		t('destination'),
 	];
 
@@ -57,7 +58,7 @@ const Areas = () => {
 				</ButtonSection>
 			</HeadSection>
 			{value === 0 && (
-				<TablePutIcon
+				<TableNormal
 					data={areas}
 					columns={columnsSubAreas}
 					putInIcon={false}
@@ -65,12 +66,7 @@ const Areas = () => {
 				/>
 			)}
 			{value === 1 && (
-				<TablePutIcon
-					data={modules}
-					columns={columnsModules}
-					putInIcon={false}
-					description={false}
-				/>
+				<TableWithChip data={modules} columns={columnsModules} />
 			)}
 		</>
 	);

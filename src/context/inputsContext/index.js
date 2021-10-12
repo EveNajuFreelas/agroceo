@@ -1,13 +1,15 @@
 import { useState } from 'react';
 import { createContainer, useContainer } from 'unstated-next';
 import api from '../../api';
+import { useAuthentication } from '../authContext';
 
 const useInputContainer = () => {
 	const [inputs, setInputs] = useState([]);
 	const [isLoading, setLoading] = useState(true);
+	const { propertiesSelected } = useAuthentication();
 
-	const getInputs = id => {
-		api.get(`/inputs/${id}`)
+	const getInputs = () => {
+		api.get(`/inputs/${propertiesSelected}`)
 			.then(res => {
 				console.log(res.data);
 
@@ -38,7 +40,7 @@ const formatResponse = response => {
 				unit: res.unitOfMeasurement,
 				apresentation: res.presentation,
 				document: res.urlDoc ? true : false,
-				whoReceived: res.whoReceivedPeople || '--',
+				whoReceived: res.whoReceivedPeople.name || '--',
 			},
 			extras: {
 				image: res.image,

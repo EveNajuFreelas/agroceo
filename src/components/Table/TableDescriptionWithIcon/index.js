@@ -19,10 +19,7 @@ import YesNo from '../yesNo';
 
 const TableWithDescriptionIcon = ({ data, columns, columnYesNo, yesNo }) => {
 	const { colors } = defaultTheme;
-
-	console.log(data);
 	let keys = Object.keys(data[0].data);
-	console.log(keys);
 
 	return (
 		<StyledTableContainer>

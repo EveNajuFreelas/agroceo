@@ -1,13 +1,15 @@
 import { useState } from 'react';
 import { createContainer, useContainer } from 'unstated-next';
 import api from '../../api';
+import { useAuthentication } from '../authContext';
 
 const useTractorContainer = () => {
 	const [tractor, setTractor] = useState([]);
 	const [isLoading, setLoading] = useState(true);
+	const { propertiesSelected } = useAuthentication();
 
-	const getTractor = id => {
-		api.get(`/tractor/${id}`)
+	const getTractor = () => {
+		api.get(`/tractor/${propertiesSelected}`)
 			.then(res => {
 				console.log(formatResponse(res.data));
 				setTractor(formatResponse(res.data));
@@ -34,7 +36,7 @@ const formatResponse = response => {
 			model: res.model,
 			color: res.color,
 			tractorYear: res.tractorYear,
-			place: res.place,
+			board: res.board,
 			tractorOwner: res.tractorOwner,
 			dateOfLastRevision: res.dateOfLastRevision.substring(
 				0,

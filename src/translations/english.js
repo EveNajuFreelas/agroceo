@@ -36,7 +36,7 @@ export const english = {
 	'nickname': 'Apelido',
 	'contact': 'Contact',
 	'occupation': 'Occupation',
-	'functionName': 'Function Name',
+	'roleName': 'Function Name',
 	'obligations': 'List of obligations',
 	'daysWeek': 'Days of the week',
 	'supplies': 'Supplies',
@@ -70,4 +70,5 @@ export const english = {
 	'input': 'Inputs',
 	'yes': 'Yes',
 	'no': 'No',
+	'pastures': 'Pastures',
 };

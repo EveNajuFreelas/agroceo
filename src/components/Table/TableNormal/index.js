@@ -13,10 +13,11 @@ import { StyledTableContainer } from '../styles';
 import { iconList } from '../../../assets/Icons/icon-list';
 import TableHeadDefault from '../TableHead';
 
-const TablePutIcon = ({ data, columns, putInIcon, description }) => {
+const TableNormal = ({ data, columns, putInIcon, description }) => {
 	const { colors } = defaultTheme;
 	const COLUMN_INITIAL = description ? 1 : 0;
 
+	console.log(data);
 	let keys = Object.keys(data[0]);
 
 	return (
@@ -97,4 +98,4 @@ const TablePutIcon = ({ data, columns, putInIcon, description }) => {
 	);
 };
 
-export default TablePutIcon;
+export default TableNormal;

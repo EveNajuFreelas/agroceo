@@ -37,7 +37,7 @@ export const portuguese = {
 	'contact': 'Contato',
 	'typeContract': 'Tipo de contrato',
 	'occupation': 'Função',
-	'functionName': 'Nome da função',
+	'roleName': 'Nome da função',
 	'obligations': 'Lista de obrigações',
 	'daysWeek': 'Dias da semana',
 	'supplies': 'Insumos',
@@ -71,4 +71,5 @@ export const portuguese = {
 	'input': 'Insumos',
 	'yes': 'Sim',
 	'no': 'Não',
+	'pastures': 'Pastos',
 };

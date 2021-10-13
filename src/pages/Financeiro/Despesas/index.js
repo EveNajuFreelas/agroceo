@@ -55,10 +55,15 @@ const Despesas = () => {
 				/>
 			</SummaryContainer>
 			<div>
-				<TableHeader />
+				<TableHeader
+					data={financeiroData}
+					columns={columnsFinancial}
+					title={'Financeiro - Despesas'}
+				/>
 				<TableWithDescriptionIcon
 					data={financeiroData}
 					columns={columnsFinancial}
+					yesNo={false}
 				/>
 			</div>
 		</FinancialOverview>

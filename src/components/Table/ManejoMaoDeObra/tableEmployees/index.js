@@ -16,13 +16,16 @@ import { StyledTableContainer } from '../../styles';
 
 import LabelWithIcon from '../../../LabelWithIcon';
 import { iconList } from '../../../../assets/Icons/icon-list';
+import { useRole } from '../../../../context/rolesContext';
 
 const TableEmployees = ({ data }) => {
 	const { t } = useTranslation();
-
+	const { deleteEmployee } = useRole();
 	const { colors } = defaultTheme;
 
-	let keys = Object.keys(data[0]);
+	if (data.length === 0) {
+		return <span>Sem registros</span>;
+	}
 
 	const columns = [
 		'ID',
@@ -42,7 +45,6 @@ const TableEmployees = ({ data }) => {
 							<Checkbox style={{ color: 'green' }} />
 						</TableCell>
 						{columns.map((column, index) => {
-							console.log(column, index);
 							return index === 0 || index === 1 ? (
 								<TableCell align='left'>{column}</TableCell>
 							) : (
@@ -54,6 +56,7 @@ const TableEmployees = ({ data }) => {
 				</TableHead>
 				<TableBody>
 					{data.map(row => {
+						row = row.data;
 						return (
 							<TableRow key={row.id}>
 								<TableCell padding='checkbox'>
@@ -73,37 +76,33 @@ const TableEmployees = ({ data }) => {
 									{row.id}
 								</TableCell>
 
-								<TableCell width='200px'>{row.Nome}</TableCell>
-								{keys.map((column, index) => {
-									if (index === 4) {
-										return (
-											<TableCell
-												align='right'
-												key={index}
-												width='300px'
-											>
-												<LabelWithIcon
-													title={row[column]}
-													iconName={'Brasil'}
-													justifyEnd={true}
-												/>
-											</TableCell>
-										);
-									} else {
-										return (
-											index > 1 && (
-												<TableCell
-													align='right'
-													key={index}
-												>
-													{row[column]}
-												</TableCell>
-											)
-										);
-									}
-								})}
+								<TableCell width='200px'>{row.name}</TableCell>
 
-								<TableCell align='center'>
+								<TableCell align='right'>
+									{row.surName}
+								</TableCell>
+
+								<TableCell align='right'>
+									{row.role || '--'}
+								</TableCell>
+
+								<TableCell
+									align='right'
+									key={row.id}
+									width='300px'
+								>
+									<LabelWithIcon
+										title={row.phone}
+										iconSrc={iconList[row.country]}
+										justifyEnd={true}
+									/>
+								</TableCell>
+
+								<TableCell align='right'>
+									{row.contract}
+								</TableCell>
+
+								<TableCell width={60} align='center'>
 									<img
 										alt='icon edit'
 										style={{
@@ -114,6 +113,10 @@ const TableEmployees = ({ data }) => {
 									<img
 										alt='icon delete'
 										src={iconList.deleteIcon}
+										style={{
+											cursor: 'pointer',
+										}}
+										onClick={() => deleteEmployee(row.id)}
 									/>
 								</TableCell>
 							</TableRow>

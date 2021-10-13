@@ -1,17 +1,31 @@
 import { useState } from 'react';
 import { createContainer, useContainer } from 'unstated-next';
 import api from '../../api';
+import { useAuthentication } from '../authContext';
 
 const useTractorContainer = () => {
 	const [tractor, setTractor] = useState([]);
 	const [isLoading, setLoading] = useState(true);
+	const { propertiesSelected, token } = useAuthentication();
 
-	const getTractor = id => {
-		api.get(`/tractor/${id}`)
+	const getTractor = () => {
+		api.get(`/tractor/${propertiesSelected}`)
 			.then(res => {
-				console.log(formatResponse(res.data.tractors));
-				setTractor(formatResponse(res.data.tractors));
+				console.log(formatResponse(res.data));
+				setTractor(formatResponse(res.data));
 				setLoading(false);
+			})
+			.catch(err => {
+				console.log(err);
+			});
+	};
+
+	const deleteTractor = id => {
+		setLoading(true);
+		api.defaults.headers.authorization = `Bearer ${token}`;
+		api.delete(`/destroytractor/${id}`)
+			.then(res => {
+				getTractor();
 			})
 			.catch(err => {
 				console.log(err);
@@ -22,6 +36,7 @@ const useTractorContainer = () => {
 		tractor,
 		getTractor,
 		isLoading,
+		deleteTractor,
 	};
 };
 
@@ -34,9 +49,12 @@ const formatResponse = response => {
 			model: res.model,
 			color: res.color,
 			tractorYear: res.tractorYear,
-			plate: res.plate,
+			board: res.board,
 			tractorOwner: res.tractorOwner,
-			dateOfLastRevision: res.dateOfLastRevision,
+			dateOfLastRevision: res.dateOfLastRevision.substring(
+				0,
+				res.dateOfLastRevision.indexOf('T')
+			),
 		});
 	});
 

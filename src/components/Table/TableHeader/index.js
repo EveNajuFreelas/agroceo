@@ -22,22 +22,54 @@ import {
 } from '../../../utils/dataMock/itensMenu';
 import { iconList } from '../../../assets/Icons/icon-list';
 
-const TableHeader = () => {
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
+
+const TableHeader = ({ data, columns, title }) => {
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
+	const doc = new jsPDF();
 
 	const filter = mes => {
 		console.log(mes);
+	};
+
+	const createPDF = () => {
+		doc.text(title, 15, 10);
+
+		doc.autoTableSetDefaults({
+			headStyles: { fillColor: colors.primary },
+		});
+
+		let dados = [];
+		data.map(item => {
+			dados.push(Object.values(item.data));
+		});
+
+		doc.autoTable({
+			head: [columns],
+			body: dados,
+		});
+	};
+
+	const generatePDF = () => {
+		createPDF();
+		doc.save(`${title}.pdf`);
+	};
+
+	const printOutPDF = () => {
+		createPDF();
+		doc.output('dataurlnewwindow', `${title}.pdf`);
 	};
 
 	return (
 		<TableHeaderContainer>
 			<ButtonContainer>
 				<ButtonWrapper>
-					<ButtonIcon src={iconList.print} />
+					<ButtonIcon src={iconList.print} onClick={printOutPDF} />
 				</ButtonWrapper>
 				<ButtonWrapper>
-					<ButtonIcon src={iconList.pdf} />
+					<ButtonIcon src={iconList.pdf} onClick={generatePDF} />
 				</ButtonWrapper>
 			</ButtonContainer>
 			<SearchInput

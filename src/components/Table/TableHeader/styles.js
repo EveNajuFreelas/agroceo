@@ -29,6 +29,7 @@ export const ButtonContainer = styled.div`
 export const ButtonIcon = styled.img`
 	width: 20px;
 	padding: 10px;
+	cursor: pointer;
 `;
 
 export const ButtonWrapper = styled.button`

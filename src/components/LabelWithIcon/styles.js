@@ -12,6 +12,7 @@ export const ItemDescription = styled.div`
 `;
 export const IconItemDescription = styled.img`
 	width: 25px;
+	height: 25px;
 `;
 
 export const TitleItem = styled.span`

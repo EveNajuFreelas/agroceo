@@ -5,38 +5,36 @@ import {
 	Table,
 	TableBody,
 	TableCell,
-	TableHead,
 	TableRow,
 	Checkbox,
 } from '@material-ui/core';
 
 import { StyledTableContainer } from '../styles';
 import { iconList } from '../../../assets/Icons/icon-list';
+import TableHeadDefault from '../TableHead';
 
-const TablePutIcon = ({ data, columns, putInIcon, description }) => {
+const TableNormal = ({
+	data,
+	columns,
+	putInIcon,
+	description,
+	deleteFunction,
+}) => {
 	const { colors } = defaultTheme;
 	const COLUMN_INITIAL = description ? 1 : 0;
+
+	console.log(data.length != 0);
+
+	if (data.length === 0) {
+		return <span>Sem registros</span>;
+	}
 
 	let keys = Object.keys(data[0]);
 
 	return (
 		<StyledTableContainer>
 			<Table>
-				<TableHead>
-					<TableRow style={{ height: '50px' }}>
-						<TableCell padding='checkbox'>
-							<Checkbox style={{ color: 'green' }} />
-						</TableCell>
-						{columns.map((column, index) => {
-							return index === 0 || index === 1 ? (
-								<TableCell align='left'>{column}</TableCell>
-							) : (
-								<TableCell align='right'>{column}</TableCell>
-							);
-						})}
-						<TableCell />
-					</TableRow>
-				</TableHead>
+				<TableHeadDefault columns={columns} />
 				<TableBody>
 					{data.map(row => {
 						return (
@@ -80,7 +78,7 @@ const TablePutIcon = ({ data, columns, putInIcon, description }) => {
 									);
 								})}
 
-								<TableCell align='center'>
+								<TableCell width={100} align='center'>
 									{putInIcon && (
 										<img
 											alt='icon put in'
@@ -94,12 +92,17 @@ const TablePutIcon = ({ data, columns, putInIcon, description }) => {
 										alt='icon edit'
 										style={{
 											marginRight: 10,
+											cursor: 'pointer',
 										}}
 										src={iconList.edit}
 									/>
 									<img
 										alt='icon delete'
+										style={{
+											cursor: 'pointer',
+										}}
 										src={iconList.deleteIcon}
+										onClick={() => deleteFunction(row.id)}
 									/>
 								</TableCell>
 							</TableRow>
@@ -111,4 +114,4 @@ const TablePutIcon = ({ data, columns, putInIcon, description }) => {
 	);
 };
 
-export default TablePutIcon;
+export default TableNormal;

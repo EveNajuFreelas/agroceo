@@ -6,6 +6,7 @@ const { margin } = defaultTheme;
 export const CardTab = styled.div`
 	display: flex;
 	gap: 5px;
+	margin-bottom: ${margin.lg} ;
 `;
 
 export const CardList = styled.ul`

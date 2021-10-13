@@ -28,7 +28,7 @@ export const english = {
 	'color': 'Color',
 	'board': 'Board',
 	'owner': 'Vehicle owner',
-	'lastRevision ': 'Date of last review',
+	'lastRevision': 'Date of last review',
 	'employees': 'Employees',
 	'roles': 'Roles',
 	'manufacture': 'Year of manufacture',
@@ -71,4 +71,6 @@ export const english = {
 	'yes': 'Yes',
 	'no': 'No',
 	'pastures': 'Pastures',
+	'movimentation': 'Movimentation',
+	'weighings': 'Weighings',
 };

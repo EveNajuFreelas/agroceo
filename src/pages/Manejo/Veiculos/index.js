@@ -15,10 +15,10 @@ import { useVehicle } from '../../../context/vehiclesContext';
 const Veiculos = () => {
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
-	const { isLoading, getVehicle, vehicle } = useVehicle();
+	const { isLoading, getVehicle, vehicle, deleteVehicle } = useVehicle();
 
 	useEffect(() => {
-		getVehicle(5);
+		getVehicle();
 	}, []);
 
 	const columns = [
@@ -63,6 +63,7 @@ const Veiculos = () => {
 						columns={columns}
 						putInIcon={true}
 						description={true}
+						deleteFunction={deleteVehicle}
 					/>
 				)}
 			</div>

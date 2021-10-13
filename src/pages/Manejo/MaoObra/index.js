@@ -14,7 +14,8 @@ import TableWithChip from '../../../components/Table/TableWithChip';
 const MaoObra = () => {
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
-	const { roles, employees, getRolesAndEmployees, isLoading } = useRole();
+	const { roles, employees, getRolesAndEmployees, isLoading, deleteRole } =
+		useRole();
 	const { propertiesSelected } = useAuthentication();
 
 	const [value, setValue] = useState(0);
@@ -54,9 +55,18 @@ const MaoObra = () => {
 				</ButtonSection>
 			</HeadSection>
 
-			{value === 0 && <TableEmployees data={employees} />}
+			{value === 0 &&
+				(employees ? (
+					<TableEmployees data={employees} />
+				) : (
+					<span>carregando...</span>
+				))}
 			{value === 1 && (
-				<TableWithChip data={roles} columns={columnsRoles} />
+				<TableWithChip
+					data={roles}
+					columns={columnsRoles}
+					deleteFunction={deleteRole}
+				/>
 			)}
 		</>
 	);

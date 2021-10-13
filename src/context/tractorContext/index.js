@@ -6,7 +6,7 @@ import { useAuthentication } from '../authContext';
 const useTractorContainer = () => {
 	const [tractor, setTractor] = useState([]);
 	const [isLoading, setLoading] = useState(true);
-	const { propertiesSelected } = useAuthentication();
+	const { propertiesSelected, token } = useAuthentication();
 
 	const getTractor = () => {
 		api.get(`/tractor/${propertiesSelected}`)
@@ -20,10 +20,23 @@ const useTractorContainer = () => {
 			});
 	};
 
+	const deleteTractor = id => {
+		setLoading(true);
+		api.defaults.headers.authorization = `Bearer ${token}`;
+		api.delete(`/destroytractor/${id}`)
+			.then(res => {
+				getTractor();
+			})
+			.catch(err => {
+				console.log(err);
+			});
+	};
+
 	return {
 		tractor,
 		getTractor,
 		isLoading,
+		deleteTractor,
 	};
 };
 

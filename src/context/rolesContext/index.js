@@ -1,14 +1,17 @@
 import { useState } from 'react';
 import { createContainer, useContainer } from 'unstated-next';
 import api from '../../api';
+import { useAuthentication } from '../authContext';
 
 const useRoleContainer = () => {
+	const { propertiesSelected, token } = useAuthentication();
+
 	const [roles, setRoles] = useState([]);
 	const [employees, setEmployees] = useState([]);
 	const [isLoading, setLoading] = useState(true);
 
-	const getRolesAndEmployees = id => {
-		api.get(`/offices/${id}`)
+	const getRolesAndEmployees = () => {
+		api.get(`/offices/${propertiesSelected}`)
 			.then(res => {
 				setRoles(formatResponseRole(res.data.office));
 			})
@@ -16,10 +19,38 @@ const useRoleContainer = () => {
 				console.log(err);
 			});
 
-		api.get(`/people/${id}`)
+		api.get(`/people/${propertiesSelected}`)
 			.then(res => {
 				setEmployees(formatResponseEmployee(res.data.people));
 				setLoading(false);
+			})
+			.catch(err => {
+				console.log(err);
+			});
+	};
+
+	const deleteEmployee = id => {
+		setLoading(true);
+		api.defaults.headers.authorization = `Bearer ${token}`;
+		api.delete(`/people/${id}`, {
+			id: id,
+		})
+			.then(res => {
+				getRolesAndEmployees();
+			})
+			.catch(err => {
+				console.log(err);
+			});
+	};
+
+	const deleteRole = id => {
+		setLoading(true);
+		api.defaults.headers.authorization = `Bearer ${token}`;
+		api.delete(`/office/${id}`, {
+			id: id,
+		})
+			.then(res => {
+				getRolesAndEmployees();
 			})
 			.catch(err => {
 				console.log(err);
@@ -31,11 +62,14 @@ const useRoleContainer = () => {
 		employees,
 		getRolesAndEmployees,
 		isLoading,
+		deleteRole,
+		deleteEmployee,
 	};
 };
 const formatResponseEmployee = response => {
 	let tempArray = [];
 	response.map(res => {
+		console.log(res);
 		tempArray.push({
 			data: {
 				id: res.id,
@@ -44,7 +78,7 @@ const formatResponseEmployee = response => {
 				role: res.office.length === 0 ? null : res.office[0].name,
 				phone: res.phone,
 				contract: res.contract,
-				country: res.country,
+				country: res.country || 'Brasil',
 			},
 		});
 	});

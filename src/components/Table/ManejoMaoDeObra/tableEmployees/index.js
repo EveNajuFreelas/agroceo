@@ -16,11 +16,16 @@ import { StyledTableContainer } from '../../styles';
 
 import LabelWithIcon from '../../../LabelWithIcon';
 import { iconList } from '../../../../assets/Icons/icon-list';
+import { useRole } from '../../../../context/rolesContext';
 
 const TableEmployees = ({ data }) => {
 	const { t } = useTranslation();
-
+	const { deleteEmployee } = useRole();
 	const { colors } = defaultTheme;
+
+	if (data.length === 0) {
+		return <span>Sem registros</span>;
+	}
 
 	const columns = [
 		'ID',
@@ -88,7 +93,7 @@ const TableEmployees = ({ data }) => {
 								>
 									<LabelWithIcon
 										title={row.phone}
-										iconSrc={iconList['Brasil']}
+										iconSrc={iconList[row.country]}
 										justifyEnd={true}
 									/>
 								</TableCell>
@@ -97,7 +102,7 @@ const TableEmployees = ({ data }) => {
 									{row.contract}
 								</TableCell>
 
-								<TableCell align='center'>
+								<TableCell width={60} align='center'>
 									<img
 										alt='icon edit'
 										style={{
@@ -108,6 +113,10 @@ const TableEmployees = ({ data }) => {
 									<img
 										alt='icon delete'
 										src={iconList.deleteIcon}
+										style={{
+											cursor: 'pointer',
+										}}
+										onClick={() => deleteEmployee(row.id)}
 									/>
 								</TableCell>
 							</TableRow>

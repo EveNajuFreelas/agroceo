@@ -15,7 +15,7 @@ import { iconList } from '../../../assets/Icons/icon-list';
 import TableHeadDefault from '../TableHead';
 import ChipTable from '../Chip';
 
-const TableWithChip = ({ data, columns }) => {
+const TableWithChip = ({ data, columns, deleteFunction }) => {
 	const { colors } = defaultTheme;
 
 	console.log('data', data);
@@ -91,17 +91,20 @@ const TableWithChip = ({ data, columns }) => {
 									);
 								})}
 
-								<TableCell align='center'>
+								<TableCell width={60} align='center'>
 									<img
 										alt='icon edit'
 										style={{
 											marginRight: 10,
+											cursor: 'pointer',
 										}}
 										src={iconList.edit}
 									/>
 									<img
 										alt='icon delete'
+										style={{ cursor: 'pointer' }}
 										src={iconList.deleteIcon}
+										onClick={() => deleteFunction(row.id)}
 									/>
 								</TableCell>
 							</TableRow>

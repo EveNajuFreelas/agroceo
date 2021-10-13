@@ -76,7 +76,7 @@ const TableWithDescriptionIcon = ({ data, columns, columnYesNo, yesNo }) => {
 									);
 								})}
 
-								<TableCell align='center'>
+								<TableCell width={60} align='center'>
 									<img
 										alt='icon edit'
 										style={{

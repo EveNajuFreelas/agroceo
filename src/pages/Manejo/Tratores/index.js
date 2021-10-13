@@ -15,7 +15,7 @@ import { useTractor } from '../../../context/tractorContext';
 const Tratores = () => {
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
-	const { isLoading, tractor, getTractor } = useTractor();
+	const { isLoading, tractor, getTractor, deleteTractor } = useTractor();
 
 	useEffect(() => {
 		getTractor();
@@ -62,6 +62,7 @@ const Tratores = () => {
 					columns={columns}
 					putInIcon={true}
 					description={false}
+					deleteFunction={deleteTractor}
 				/>
 			)}
 		</>

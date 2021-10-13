@@ -28,7 +28,7 @@ export const portuguese = {
 	'color': 'Cor',
 	'board': 'Placa',
 	'owner': 'Proprietário do veículo',
-	'lastRevision ': 'Data da última revisão',
+	'lastRevision': 'Data da última revisão',
 	'employees': 'Funcionários',
 	'roles': 'Funções',
 	'manufacture': 'Ano de fabricação',
@@ -72,4 +72,6 @@ export const portuguese = {
 	'yes': 'Sim',
 	'no': 'Não',
 	'pastures': 'Pastos',
+	'movimentation': 'Movimentações',
+	'weighings': 'Pesagens',
 };

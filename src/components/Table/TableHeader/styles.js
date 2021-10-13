@@ -7,11 +7,20 @@ const { colors } = defaultTheme;
 export const TableHeaderContainer = styled.div`
 	padding: 15px;
 	display: grid;
-	grid-template-columns: 8% 50% 42%;
+	grid-template-columns: 8% 37% 47% 8%;
 	border: 1px solid #ebebeb;
 	border-radius: 10px 10px 0px 0px;
 	align-items: center;
+	
+	@media (max-width: 1445px){
+		grid-template-columns: 15% 25% 48% 12%;
+	}
+	
+	@media (max-width: 1025px){
+		grid-template-columns: 15% 25% 45% 15%;
+	}
 `;
+
 export const ButtonContainer = styled.div`
 	display: flex;
 	gap: 10px;
@@ -39,13 +48,34 @@ export const SearchInput = styled(TextField)`
 		width: 45%;
 		display: flex;
 		color: green;
+		
+		@media (max-width: 1445px){
+			margin: auto;
+			width: 100%;	
+		}
+		
+		@media (max-width: 1025px){
+			margin: auto;
+			width: 100%;	
+		}
 	}
 
 	&.MuiTextField-root .MuiInputLabel-root {
 		color: ${colors.neutral};
 	}
 `;
+
 export const ContainerRight = styled.div`
+	display: flex;
+	justify-content: space-evenly;
+	@media (max-width: 1025px){
+		margin: auto;
+		justify-content: center;
+		width: 100%;	
+	}
+`;
+
+export const ButtonRight = styled.div`
 	display: flex;
 	justify-content: space-between;
 `;

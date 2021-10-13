@@ -27,6 +27,7 @@ export const LegendPizzaItem = styled.div`
 
 export const LegendPizzaLabel = styled.div`
 	display: flex;
+	margin-right: auto;
 	gap: 5px;
 	align-items: center;
 	justify-content: center;

@@ -73,4 +73,6 @@ export const english = {
 	'totalValue': 'Total Value',
 	'expensesDate': 'Expense Date',
 	'receipt': 'Receipt',
+	'firstParcel': 'First Parcel',
+	'select': 'Select',
 };

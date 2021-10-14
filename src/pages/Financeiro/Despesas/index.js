@@ -12,7 +12,7 @@ import CardTotalValue from '../../../components/Card/CardTotalValue';
 import TableWithDescriptionIcon from '../../../components/Table/TableDescriptionWithIcon';
 import { financeiroData } from '../../../utils/dataMock/mock';
 import TableHeader from '../../../components/Table/TableHeader';
-import { ExpensesModal } from '../../../components/Modals/Financial/Expenses/index';
+import { FinancialModal } from '../../../components/Modals/Financial/index';
 
 const Despesas = () => {
 	const { t } = useTranslation();
@@ -32,7 +32,7 @@ const Despesas = () => {
 
 	return (
 		<>
-		<ExpensesModal />
+		<FinancialModal />
 		<FinancialOverview>
 			<SummaryContainer>
 				<CardValueContainer>

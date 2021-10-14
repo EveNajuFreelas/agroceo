@@ -83,6 +83,7 @@ export const defaultTheme = {
 		sm: '4px',
 		md: '8px',
 		lg: '12px',
+		lg2: '18px',
     	xg: '24px',
 		exg: '32px',
 	},
@@ -96,6 +97,7 @@ export const defaultTheme = {
 		buttonError: `2px solid #550000`,
 		header: `1px solid #EBEBEB`,
 		menu:  `1px solid #FFFFFF`,
+		input: `1px solid #A3A3A3`,
 	},
 	align: {
 		center: 'center',

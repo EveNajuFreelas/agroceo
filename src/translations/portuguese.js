@@ -74,4 +74,6 @@ export const portuguese = {
 	'totalValue': 'Valor Total',
 	'expensesDate': 'Data da Despesa',
 	'receipt': 'Nota Fiscal',
+	'firstParcel': 'Primeira Parcela',
+	'select': 'Selecionar',
 };

@@ -1,10 +1,10 @@
-import { makeStyles } from "@material-ui/core";
+import { makeStyles } from '@material-ui/core';
 import styled from 'styled-components';
 
 const drawerWidth = 260;
 
 export const Body = styled.div`
-    width: 100%;
+	width: 100%;
 `;
 
 export const useStyles = makeStyles((theme) => ({

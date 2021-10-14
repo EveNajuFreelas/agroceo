@@ -13,6 +13,7 @@ import { AuthenticationContainer } from './context/authContext';
 // import { PropertyContext } from './context/properties';
 // import { ListPropertieContext } from './context/properties/list';
 // import { GlobalLoadingContext } from "./context/loader"
+import { PageContainer } from './context/pageContext';
 import './i18n';
 
 const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ ReactDOM.render(
           {/* <GlobalLoadingContext.Provider> */}
             <AuthenticationContainer.Provider>
               <RegisterContainer.Provider>
+                <PageContainer.Provider>
                 {/* <PopoverContainer.Provider> */}
                   {/* <ListPropertieContext.Provider> */}
                     {/* <PropertyContext.Provider> */}
@@ -35,6 +37,7 @@ ReactDOM.render(
                     {/* </PropertyContext.Provider> */}
                   {/* </ListPropertieContext.Provider> */}
                 {/* </PopoverContainer.Provider> */}
+                </PageContainer.Provider>
               </RegisterContainer.Provider>
             </AuthenticationContainer.Provider>
           {/* </GlobalLoadingContext.Provider> */}

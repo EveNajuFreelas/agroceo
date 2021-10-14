@@ -1,85 +1,92 @@
+import { Drawer, List, ListItem } from '@material-ui/core';
 import styled from 'styled-components'
 import { defaultTheme } from '../../theme';
+import { iconList } from '../../assets/Icons/icon-list';
+import { ChevronRight } from '@material-ui/icons';
 
-export const SidebarDiv = styled.div`
-	position: fixed;
-	top: 0;
-	width: ${props => !props.isOpen ? '220px' : '80px'};
-	transition: width 0.4s ease-out;
-	height: 100%;
-	padding:  ${defaultTheme.padding.sm} 0 ${defaultTheme.padding.sm} ${defaultTheme.padding.sm};
-	border-radius: 0 ${defaultTheme.borderRadius.md} ${defaultTheme.borderRadius.md} 0;
-	z-index: 11;
-	background-color: ${defaultTheme.colors.green};
-`;
+const { borderRadius, colors, padding, width, text, margin, border } = defaultTheme;
 
-export const ListItemWrapper = styled.div`
-	display: flex;
-	align-items: ${defaultTheme.align.center};
-	margin: ${defaultTheme.margin.md} ${defaultTheme.margin.sm};
-	border-radius: ${defaultTheme.borderRadius.md};
-	padding:  ${defaultTheme.padding.lg};
-    transition: width 0.4s ease-out;
-	cursor: pointer;	
-	background-color: ${defaultTheme.colors.green};
-	&:hover{
-		background-color: ${defaultTheme.colors.neutral3};
-		margin-right: 0;
-		border-radius: ${defaultTheme.borderRadius.lg} 0 0 ${defaultTheme.borderRadius.lg};
+export const SidebarWrapper = styled(Drawer)`
+	.MuiPaper-root {
+		transition: width 0.4s ease;
+		background-color: ${colors.primary};
+		padding: ${padding.sm};
+		padding-right: 0;
+		width: ${(props) => props.isOpen ? width.sidebarOpen : width.sidebarClosed};
+	}
+
+	.MuiDrawer-paperAnchorDockedLeft {
+		border: none;
+		border-radius: 0 ${borderRadius.md} ${borderRadius.md} 0;
 	}
 `;
 
-export const SidebarListItem = styled.span`
-	position: fixed;
-	left: ${props => !props.isOpen ? '55px' : '-200%'};
-	flex: 0;
-	font-size: ${defaultTheme.text.size.medium};
-	color: ${defaultTheme.colors.neutral0};
-	border-radius: ${defaultTheme.borderRadius.md};
-	margin-left: ${defaultTheme.margin.lg};
-	opacity: ${props => !props.isOpen ? '1' : '0'};
+export const ListWrapper = styled(List)`
+	margin-top: ${margin.exg};
 `;
 
-export const ListIconWrapper = styled.div`
-	border-radius: ${defaultTheme.borderRadius.md};
-`;
-
-export const SidebarTitle = styled.span`
-	display: block;
-	top: 25px;
-	font-size: ${defaultTheme.text.size.h5};
-	color: ${defaultTheme.colors.neutral0};
-	border-radius: ${defaultTheme.borderRadius.md};
-	margin-left: ${defaultTheme.margin.lg};
-	opacity: ${props => !props.isOpen ? '1' : '0'};
-	position: fixed;
-	left: ${props => !props.isOpen ? '55px' : '-200%'};
-	flex: 0;
-	cursor: default;
-`;
-
-export const DropRightDiv = styled.div`
-	width: 400px;
-	height: 100%;
-	padding:  ${defaultTheme.padding.sm} 0 ${defaultTheme.padding.sm} ${defaultTheme.padding.sm};
-	border-radius: 0 ${defaultTheme.borderRadius.lg} ${defaultTheme.borderRadius.lg} 0;
-	z-index: 12;
-	background-color: red;
-	opacity: 1;
-`;
-
-export const DropRightIconOptionWrapper = styled.div`
-	flex: 1;
-	display: flex;
-	justify-content: ${defaultTheme.align.flexEnd};
-
-	path {
-		fill: white;
+export const ListItemWrapper = styled(ListItem)`
+	cursor: pointer; 
+	
+	.MuiListItem-gutters {
+		padding: ${(props) => props.isSubSidebar ? 0 : padding.lg};
 	}
 
 	&:hover{
-		span{
-			color:  ${defaultTheme.colors.primary};
-		}
+		background-color: ${(props) => props.isSubSidebar ? colors.events.onHoverSubmenu : colors.events.onHover};
+		border-radius: ${borderRadius.lg} 0 0 ${borderRadius.lg};
+	} 
+`;
+
+export const SidebarHeader = styled.div`
+	display: flex;
+	align-items: center;
+
+	font-size: ${text.size.h5};
+	font-weight: ${text.weight.semiBold};
+	color: white;
+	margin: ${padding.lg};
+`;
+
+export const SubSidebarHeader = styled.div`
+	font-size: ${text.size.large};
+	font-weight: ${text.weight.bold};
+	margin: ${margin.lg} auto;
+	padding: ${padding.lg};
+`;
+
+export const SidebarIcon = styled(iconList.menu)`
+	cursor: pointer;
+	display: flex;
+	flex-shrink: 0;
+	margin-right: ${margin.lg};
+	border-radius: ${borderRadius.md};
+	border: ${border.menu};
+	color: white;
+	padding: ${padding.sm};
+`;
+
+export const ListExpandButton = styled(ChevronRight)`
+	color: white;
+`;
+
+export const ListItemName = styled.div`
+	width: 80%;
+	padding-left: ${padding.md};
+	color: ${(props) => props.isSubSidebar ? colors.darkerGreen : 'white'};
+`;
+
+export const SubSidebar = styled(Drawer)`
+	.MuiPaper-root {
+		margin-left: ${(props) => props.isOpen ? width.sidebarOpen : width.sidebarClosed};
+		padding-right: 0;
+		padding-left: ${padding.lg};
+		width: ${width.subSidebar};
+		z-index: 1100;
+	}
+
+	.MuiDrawer-paperAnchorDockedLeft {
+		border: none;
+		border-radius: 0 ${borderRadius.md} ${borderRadius.md} 0;
 	}
 `;

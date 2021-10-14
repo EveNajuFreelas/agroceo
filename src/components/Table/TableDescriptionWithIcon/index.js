@@ -50,7 +50,8 @@ const TableWithDescriptionIcon = ({ data, columns, columnYesNo, yesNo }) => {
 								<TableCell align='left' width='200px'>
 									<LabelWithIcon
 										iconSrc={
-											row.extras.image || iconList.box
+											iconList[row.extras.image] ||
+											iconList.box
 										}
 										title={row.data.description}
 									/>

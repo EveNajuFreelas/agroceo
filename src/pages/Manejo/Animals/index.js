@@ -10,7 +10,14 @@ import TableNormal from '../../../components/Table/TableNormal';
 import { useArea } from '../../../context/areasContext';
 import TableWithChip from '../../../components/Table/TableWithChip';
 import TableWithDescriptionIcon from '../../../components/Table/TableDescriptionWithIcon';
-import { manejoCombustivel } from '../../../utils/dataMock/mock';
+import {
+	animaisData,
+	animaisLots,
+	animaisMoviment,
+	animaisWeighings,
+	manejoCombustivel,
+} from '../../../utils/dataMock/mock';
+import TableCollapse from '../../../components/Table/TableCollapse';
 
 const Animals = () => {
 	const { t } = useTranslation();
@@ -27,30 +34,42 @@ const Animals = () => {
 		setValue(newValue);
 	};
 
-	const columns = [
+	let columnsRegisteredAnimals = [
 		'ID',
-		t('description'),
+		t('raceSpecies'),
+		t('type'),
+		t('sex'),
+		t('age'),
 		t('quantity'),
-		t('supplier'),
-		t('payment'),
-		t('supplyLocation'),
-		t('driver'),
-		t('vehicle'),
-		t('dateTime'),
 	];
 
-	let columnsSubAreas = [
+	let columnsLotsAnimals = [
 		'ID',
-		t('nickname'),
-		t('areaSize'),
-		t('destination'),
+		t('lot'),
+		t('nameLot'),
+		t('subarea'),
+		t('totalAnimals'),
 	];
-	let columnsModules = [
+
+	let columnsMovimentation = [
 		'ID',
-		t('name'),
-		t('nickname'),
-		t('pastures'),
-		t('destination'),
+		t('recordType'),
+		t('quantity'),
+		t('specie'),
+		t('category'),
+		t('sex'),
+		t('age'),
+		t('weightAverage'),
+	];
+
+	let columnsWeighings = [
+		'ID',
+		t('lot'),
+		t('qntdAnimals'),
+		t('%AnimalsWeighed'),
+		t('averageWeight'),
+		t('lastWeighing'),
+		t('subarea'),
 	];
 
 	return isLoading ? (
@@ -59,8 +78,8 @@ const Animals = () => {
 		<>
 			<HeadSection>
 				<TabsStyled value={value} onChange={handleChange}>
-					<TabStyled label={t('subareas')} />
-					<TabStyled label={t('modules')} />
+					<TabStyled label={t('registeredAnimals')} />
+					<TabStyled label={t('lotsAnimals')} />
 					<TabStyled label={t('movimentation')} />
 					<TabStyled label={t('weighings')} />
 				</TabsStyled>
@@ -75,27 +94,31 @@ const Animals = () => {
 			</HeadSection>
 			{value === 0 && (
 				<TableNormal
-					data={areas}
-					columns={columnsSubAreas}
+					data={animaisData}
+					columns={columnsRegisteredAnimals}
 					putInIcon={false}
 					description={false}
 				/>
 			)}
 			{value === 1 && (
-				<TableWithChip data={modules} columns={columnsModules} />
+				<TableCollapse
+					data={animaisLots}
+					columns={columnsLotsAnimals}
+				/>
 			)}
 			{value === 2 && (
 				<TableWithDescriptionIcon
-					data={manejoCombustivel}
-					columns={columns}
+					data={animaisMoviment}
+					columns={columnsMovimentation}
 					yesNo={false}
 				/>
 			)}
 			{value === 3 && (
-				<TableWithDescriptionIcon
-					data={manejoCombustivel}
-					columns={columns}
-					yesNo={false}
+				<TableNormal
+					data={animaisWeighings}
+					columns={columnsWeighings}
+					putInIcon={false}
+					description={false}
 				/>
 			)}
 		</>

@@ -254,3 +254,118 @@ export const manejoInsumos = [
 		Quem: 'José da Silva',
 	},
 ];
+
+export const animaisData = [
+	{
+		id: '002',
+		specie: 'Bovino',
+		type: 'Corte',
+		sex: 'Macho',
+		age: '12 meses',
+		quantity: 340,
+	},
+	{
+		id: '002',
+		specie: 'Bovino',
+		type: 'Leite',
+		sex: 'Fêmea',
+		age: '24 meses',
+		quantity: 158,
+	},
+];
+
+export const animaisMoviment = [
+	{
+		data: {
+			id: '00004',
+			description: 'Compra',
+			quantidade: 60,
+			specie: 'Bovinos',
+			category: 'Corte',
+			sex: 'Macho',
+			age: '18 meses',
+			weightAverage: '200 kg',
+		},
+		extras: {
+			image: 'entrada',
+		},
+	},
+	{
+		data: {
+			id: '00004',
+			description: 'Morte',
+			quantidade: 10,
+			specie: 'Bovinos',
+			category: 'Leite',
+			sex: 'Fêmea',
+			age: '32 meses',
+			weightAverage: '390 kg',
+		},
+		extras: {
+			image: 'saida',
+		},
+	},
+];
+
+export const animaisWeighings = [
+	{
+		id: '002',
+		lot: '1 - Lote de Engorda',
+		qntdAnimals: '100',
+		animalsWeighed: '30%',
+		averageWeight: '260 kg',
+		lastWeighing: '10/10/2021',
+		subarea: '1 - Pasto da onça',
+	},
+	{
+		id: '004',
+		lot: '1 - Lote de Engorda',
+		qntdAnimals: '100',
+		animalsWeighed: '30%',
+		averageWeight: '260 kg',
+		lastWeighing: '10/10/2021',
+		subarea: '1 - Pasto da onça',
+	},
+];
+
+export const animaisLots = [
+	{
+		id: '002',
+		lot: 'Lote 1',
+		nameLot: 'Lote de Engorda',
+		subarea: 'Sub-área 1 “Pasto da onça”',
+		total: '100',
+		content: [
+			{
+				raceSpecies: 'Bovino',
+				type: 'Corte',
+				sex: 'Macho',
+				age: '12 meses',
+				quantity: 10,
+			},
+			{
+				raceSpecies: 'Bovino',
+				type: 'Corte',
+				sex: 'Macho',
+				age: '12 meses',
+				quantity: 10,
+			},
+		],
+	},
+	{
+		id: '004',
+		lot: 'Lote 1',
+		nameLot: 'Lote de Engorda',
+		subarea: 'Sub-área 1 “Pasto da onça”',
+		total: '100',
+		content: [
+			{
+				raceSpecies: 'Bovino',
+				type: 'Corte',
+				sex: 'Macho',
+				age: '12 meses',
+				quantity: 10,
+			},
+		],
+	},
+];

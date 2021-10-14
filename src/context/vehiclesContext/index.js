@@ -35,11 +35,24 @@ const useVehicleContainer = () => {
 			});
 	};
 
+	const postVehicle = data => {
+		api.defaults.headers.authorization = `Bearer ${token}`;
+		api.post(`/NewVehicle`, data)
+			.then(res => {
+				console.log(res);
+				getVehicle();
+			})
+			.catch(err => {
+				console.log(err);
+			});
+	};
+
 	return {
 		vehicle,
 		getVehicle,
 		isLoading,
 		deleteVehicle,
+		postVehicle,
 	};
 };
 

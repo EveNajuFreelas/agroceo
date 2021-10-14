@@ -11,8 +11,6 @@ export const SummaryContainer = styled.div`
 	gap: 20px;
 `;
 
-export const TableContainer = styled.div``;
-
 export const CardValueContainer = styled.div`
 	display: flex;
 	flex-direction: column;

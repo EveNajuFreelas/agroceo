@@ -1,56 +1,73 @@
-import { ReactComponent as footerMountains } from '../../utils/icons/greenMountains.svg';
-import { ReactComponent as arrowCarrotRight } from '../../utils/icons/arrowCarrotRight.svg';
-import { ReactComponent as finance } from '../../utils/icons/finance.svg';
-import { ReactComponent as farm } from '../../utils/icons/farm.svg';
-import { ReactComponent as report } from '../../utils/icons/report.svg';
-import { ReactComponent as settings } from '../../utils/icons/settings.svg';
-import { ReactComponent as menu } from '../../utils/icons/menu.svg';
-import { ReactComponent as add_a_photo } from '../../utils/icons/add_a_photo.svg';
-import { ReactComponent as expand_more } from '../../utils/icons/expand_more.svg';
-import { ReactComponent as home } from '../../utils/icons/Home.svg';
-import { ReactComponent as despesa } from '../../utils/icons/despesa.svg';
-import { ReactComponent as investimento } from '../../utils/icons/investimento.svg';
-import { ReactComponent as receita } from '../../utils/icons/receita.svg';
-import { ReactComponent as barn } from '../../utils/icons/barn.svg';
-import { ReactComponent as addCircleOutline } from '../../utils/icons/add_circle_outline.svg';
-import { ReactComponent as checkCircleOutline } from '../../utils/icons/check_circle_outline.svg';
-import { ReactComponent as calendar } from '../../utils/icons/Calendar.svg';
-import { ReactComponent as edit } from '../../utils/icons/Edit.svg';
-import { ReactComponent as Delete } from '../../utils/icons/Delete.svg';
-import { ReactComponent as DespesaAzul } from '../../utils/icons/DespesaAzul.svg';
-import { ReactComponent as Despesas} from '../../utils/icons/Despesas.svg';
-import { ReactComponent as Receitas } from '../../utils/icons/Receitas.svg';
-import { ReactComponent as Investimentos } from '../../utils/icons/Investimentos.svg';
-import { ReactComponent as Pdf } from '../../utils/icons/Pdf.svg';
-import { ReactComponent as Print } from '../../utils/icons/Print.svg';
-import { ReactComponent as SearchIcon } from '../../utils/icons/Search.svg';
-
+import footerMountains from '../../utils/Icons/greenMountains.svg';
+import arrowCarrotRight from '../../utils/Icons/arrowCarrotRight.svg';
+import { ReactComponent as finance } from '../../utils/Icons/finance.svg';
+import { ReactComponent as farm } from '../../utils/Icons/farm.svg';
+import report from '../../utils/Icons/report.svg';
+import settings from '../../utils/Icons/settings.svg';
+import { ReactComponent as iconMenu } from '../../utils/Icons/iconMenu.svg';
+import add_a_photo from '../../utils/Icons/add_a_photo.svg';
+import expand_more from '../../utils/Icons/expand_more.svg';
+import { ReactComponent as homeMenu } from '../../utils/Icons/homeMenu.svg';
+import homeRecurso from '../../utils/Icons/homeRecurso.svg';
+import despesa from '../../utils/Icons/despesas.svg';
+import investimento from '../../utils/Icons/investimentos.svg';
+import receita from '../../utils/Icons/receita.svg';
+import barn from '../../utils/Icons/barn.svg';
+import addCircleOutline from '../../utils/Icons/add_circle_outline.svg';
+import checkCircleOutline from '../../utils/Icons/check_circle_outline.svg';
+import calendar from '../../utils/Icons/calendar.svg';
+import edit from '../../utils/Icons/edit.svg';
+import despesaAzul from '../../utils/Icons/despesaAzul.svg';
+import despesas from '../../utils/Icons/despesas.svg';
+import receitas from '../../utils/Icons/receitas.svg';
+import investimentos from '../../utils/Icons/investimentos.svg';
+import pdf from '../../utils/Icons/pdf.svg';
+import print from '../../utils/Icons/print.svg';
+import searchIcon from '../../utils/Icons/search.svg';
+import deleteIcon from '../../utils/Icons/delete.svg';
+import trator from '../../utils/Icons/trator.svg';
+import box from '../../utils/Icons/box.svg';
+import entrada from '../../utils/Icons/entrada.svg';
+import saida from '../../utils/Icons/saida.svg';
+import Brasil from '../../utils/Icons/Brasil.svg';
+import Usa from '../../utils/Icons/Estados Unidos.svg';
+import Australia from '../../utils/Icons/Australia.svg';
+import putIn from '../../utils/Icons/putIn.svg';
 
 export const iconList = {
-  add_a_photo,
-  arrowCarrotRight,
-  farm,
-  finance,
-  footerMountains,
-  menu,
-  report,
-  settings,
-  expand_more,
-  despesa,
-  investimento,
-  receita,
-  barn,
-  addCircleOutline,
-  checkCircleOutline,
-  home,
-  calendar,
-  edit,
-  Delete,
-  DespesaAzul,
-  Despesas,
-  Receitas,
-  Investimentos,
-  Pdf,
-  Print,
-  SearchIcon
+	add_a_photo,
+	arrowCarrotRight,
+	farm,
+	finance,
+	footerMountains,
+	iconMenu,
+	report,
+	settings,
+	expand_more,
+	despesa,
+	investimento,
+	receita,
+	barn,
+	addCircleOutline,
+	checkCircleOutline,
+	homeMenu,
+	calendar,
+	edit,
+	deleteIcon,
+	despesaAzul,
+	despesas,
+	receitas,
+	investimentos,
+	pdf,
+	print,
+	searchIcon,
+	trator,
+	box,
+	entrada,
+	saida,
+	Brasil,
+	Usa,
+	Australia,
+	putIn,
+	homeRecurso,
 };

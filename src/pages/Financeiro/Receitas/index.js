@@ -2,76 +2,31 @@ import React from 'react';
 import {
 	FinancialOverview,
 	SummaryContainer,
-	TableContainer,
 	CardValueContainer,
 } from '../styles';
 import { useTranslation } from 'react-i18next';
 import { defaultTheme } from '../../../theme';
 
-import CardValue from '../../../components/Financeiro/CardValue';
-import CardTotalValue from '../../../components/Financeiro/CardTotalValue';
-import TableData from '../../../components/Financeiro/TableData';
+import CardValue from '../../../components/Card/CardValue';
+import CardTotalValue from '../../../components/Card/CardTotalValue';
+import TableWithDescriptionIcon from '../../../components/Table/TableDescriptionWithIcon';
+import { financeiroData } from '../../../utils/dataMock/mock';
+import TableHeader from '../../../components/Table/TableHeader';
+
 const Receitas = () => {
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
 
-	const rows = [
-		{
-			id: '0001',
-			Description: ('ração', 'insumos'),
-			DateDespesa: '08/09/2021',
-			Invoice: 'Sim',
-			Payment: 'Cartão de crédito',
-			Parcela: '10x',
-			FirstParcela: '09/11/2021',
-			Percent: '100% Fazenda Recanto do Sabiá',
-			DocumentPicture: '--',
-		},
-		{
-			id: '0002',
-			Description: ('ração', 'insumos'),
-			DateDespesa: '08/09/2021',
-			Invoice: 'Sim',
-			Payment: 'Cartão de crédito',
-			Parcela: '10x',
-			FirstParcela: '09/11/2021',
-			Percent: '100% Fazenda Recanto do Sabiá',
-			DocumentPicture: '--',
-		},
-		{
-			id: '0003',
-			Description: ('ração', 'insumos'),
-			DateDespesa: '08/09/2021',
-			Invoice: 'Sim',
-			Payment: 'Cartão de crédito',
-			Parcela: '10x',
-			FirstParcela: '09/11/2021',
-			Percent: '100% Fazenda Recanto do Sabiá',
-			DocumentPicture: '--',
-		},
-		{
-			id: '0004',
-			Description: ('ração', 'insumos'),
-			DateDespesa: '08/09/2021',
-			Invoice: 'Sim',
-			Payment: 'Cartão de crédito',
-			Parcela: '10x',
-			FirstParcela: '09/11/2021',
-			Percent: '100% Fazenda Recanto do Sabiá',
-			DocumentPicture: '--',
-		},
-	];
-
-	const columns = [
+	const columnsFinancial = [
 		'ID',
 		t('description'),
 		t('expense date'),
 		t('invoice'),
 		t('payment'),
 		t('instalment'),
-		t('first instalment'),
-		t('% by property'),
-		t('document photo'),
+		t('firstInstalment'),
+		t('%ByProperty'),
+		t('documentPhoto'),
 	];
 
 	return (
@@ -100,9 +55,19 @@ const Receitas = () => {
 					ano={2021}
 				/>
 			</SummaryContainer>
-			<TableContainer>
-				<TableData data={rows} columns={columns} />
-			</TableContainer>
+			<div>
+				<TableHeader
+					data={financeiroData}
+					columns={columnsFinancial}
+					title={'Financeiro - Receitas'}
+				/>
+				<TableWithDescriptionIcon
+					data={financeiroData}
+					columns={columnsFinancial}
+					yesNo={true}
+					columnYesNo={'Invoice'}
+				/>
+			</div>
 		</FinancialOverview>
 	);
 };

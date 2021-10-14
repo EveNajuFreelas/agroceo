@@ -1,12 +1,15 @@
-import Box from './icons/Box.svg';
-import Trator from './icons/Trator.svg';
-import Home from './icons/Home.svg';
+import { iconList } from '../assets/Icons/icon-list';
 
 export function icon(subtitle) {
 	const icons = {
-		Veículos: Trator,
-		Insumos: Box,
-		Infraestrutura: Home,
+		Veículos: iconList.trator,
+		Insumos: iconList.box,
+		Infraestrutura: iconList.homeRecurso,
+		Entrada: iconList.entrada,
+		Saida: iconList.saida,
+		Brasil: iconList.Brasil,
+		Australia: iconList.Australia,
+		EUA: iconList.Usa,
 	};
 
 	return icons[subtitle];

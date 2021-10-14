@@ -13,37 +13,51 @@ import { AuthenticationContainer } from './context/authContext';
 // import { PropertyContext } from './context/properties';
 // import { ListPropertieContext } from './context/properties/list';
 // import { GlobalLoadingContext } from "./context/loader"
-import { PageContainer } from './context/pageContext';
 import './i18n';
+import { PageContainer } from './context/pageContext';
+import { VehicleContainer } from './context/vehiclesContext';
+import { AreasContainer } from './context/areasContext';
+import { TractorContainer } from './context/tractorContext';
+import { InputContainer } from './context/inputsContext';
+import { RoleContainer } from './context/rolesContext';
 
 const queryClient = new QueryClient();
 
 dotenv.config();
 
 ReactDOM.render(
-  <React.StrictMode>
-
-    <ThemeProvider theme={defaultTheme}>
-      <QueryClientProvider client={queryClient}>
-        {/* <SnackbarProvider maxSnack={3}> */}
-          {/* <GlobalLoadingContext.Provider> */}
-            <AuthenticationContainer.Provider>
-              <RegisterContainer.Provider>
-                <PageContainer.Provider>
-                {/* <PopoverContainer.Provider> */}
-                  {/* <ListPropertieContext.Provider> */}
-                    {/* <PropertyContext.Provider> */}
-                      <App />
-                    {/* </PropertyContext.Provider> */}
-                  {/* </ListPropertieContext.Provider> */}
-                {/* </PopoverContainer.Provider> */}
-                </PageContainer.Provider>
-              </RegisterContainer.Provider>
-            </AuthenticationContainer.Provider>
-          {/* </GlobalLoadingContext.Provider> */}
-        {/* </SnackbarProvider> */}
-      </QueryClientProvider>
-    </ThemeProvider>
-  </React.StrictMode>,
-  document.getElementById('root')
+	<React.StrictMode>
+		<ThemeProvider theme={defaultTheme}>
+			<QueryClientProvider client={queryClient}>
+				{/* <SnackbarProvider maxSnack={3}> */}
+				{/* <GlobalLoadingContext.Provider> */}
+				<AuthenticationContainer.Provider>
+					<RegisterContainer.Provider>
+						<PageContainer.Provider>
+							<VehicleContainer.Provider>
+								<AreasContainer.Provider>
+									<TractorContainer.Provider>
+										<InputContainer.Provider>
+											<RoleContainer.Provider>
+												{/* <PopoverContainer.Provider> */}
+												{/* <ListPropertieContext.Provider> */}
+												{/* <PropertyContext.Provider> */}
+												<App />
+												{/* </PropertyContext.Provider> */}
+												{/* </ListPropertieContext.Provider> */}
+												{/* </PopoverContainer.Provider> */}
+											</RoleContainer.Provider>
+										</InputContainer.Provider>
+									</TractorContainer.Provider>
+								</AreasContainer.Provider>
+							</VehicleContainer.Provider>
+						</PageContainer.Provider>
+					</RegisterContainer.Provider>
+				</AuthenticationContainer.Provider>
+				{/* </GlobalLoadingContext.Provider> */}
+				{/* </SnackbarProvider> */}
+			</QueryClientProvider>
+		</ThemeProvider>
+	</React.StrictMode>,
+	document.getElementById('root')
 );

@@ -1,45 +1,57 @@
 import React from 'react';
 import { defaultTheme } from '../../../theme';
-import LabelWithIcon from '../../LabelWithIcon';
+
 import {
 	Table,
 	TableBody,
 	TableCell,
 	TableRow,
 	Checkbox,
-	Link,
+	TableHead,
 } from '@material-ui/core';
+
 import { StyledTableContainer } from '../styles';
 import { iconList } from '../../../assets/Icons/icon-list';
-import { useExpensesContainer } from '../../../context/financesContext/expensesContext';
 import TableHeadDefault from '../TableHead';
-import YesNo from '../yesNo';
-	
-const TableWithDescriptionIcon = ({ data, columns, columnYesNo, yesNo }) => {
-	const { setActiveContent, setModalState } = useExpensesContainer();
-	const { colors } = defaultTheme;
-	let keys = Object.keys(data[0].data);
+import ChipTable from '../Chip';
 
-	const handleClick = () => {
-		setActiveContent(data);
-		setModalState(true);
-	}
+const TableWithChip = ({ data, columns, deleteFunction }) => {
+	const { colors } = defaultTheme;
+
+	console.log('data', data);
+	console.log('columns', columns);
+
+	let keys = Object.keys(data[0]);
+	const lastColumn = keys.length - 1;
 
 	return (
 		<StyledTableContainer>
 			<Table>
-				<TableHeadDefault columns={columns} />
+				<TableHead>
+					<TableRow style={{ height: '50px' }}>
+						<TableCell padding='checkbox'>
+							<Checkbox style={{ color: 'green' }} />
+						</TableCell>
+						{columns.map((column, index) => {
+							return lastColumn === index ? (
+								<TableCell align='right'>{column}</TableCell>
+							) : (
+								<TableCell align='left'>{column}</TableCell>
+							);
+						})}
+						<TableCell />
+					</TableRow>
+				</TableHead>
 				<TableBody>
 					{data.map(row => {
-						console.log('image', row.extras.image);
 						return (
-							<TableRow key={row.data.id}>
+							<TableRow key={row.id}>
 								<TableCell padding='checkbox'>
 									<Checkbox
 										style={{ color: 'green' }}
 										//checked={isItemSelected}
 										inputProps={{
-											'aria-labelledby': row.data.id,
+											'aria-labelledby': row.id,
 										}}
 									/>
 								</TableCell>
@@ -48,32 +60,31 @@ const TableWithDescriptionIcon = ({ data, columns, columnYesNo, yesNo }) => {
 									width='50px'
 									style={{ color: colors.neutral6 }}
 								>
-									{row.data.id}
-								</TableCell>
-
-								<TableCell align='left' width='200px'>
-									<Link component='button' color='inherit' onClick={handleClick}>
-										<LabelWithIcon
-											iconName={'Insumos'}
-											title={row.Description}
-										/>
-									</Link>
+									{row.id}
 								</TableCell>
 
 								{keys.map((column, index) => {
+									//console.log('content', row[column]);
 									return (
-										index > 1 && (
+										//tem alguma forma de fazer melhor certeza k k k k
+
+										index > 0 && (
 											<TableCell
-												align='right'
+												width={index === 1 && 200}
+												align={
+													lastColumn === index
+														? 'right'
+														: 'left'
+												}
 												key={index}
 											>
-												{yesNo &&
-												column === columnYesNo ? (
-													<YesNo
-														text={row.data[column]}
+												{index === keys.length - 2 &&
+												row[column] ? (
+													<ChipTable
+														items={row[column]}
 													/>
 												) : (
-													row.data[column]
+													row[column] || '--'
 												)}
 											</TableCell>
 										)
@@ -85,12 +96,15 @@ const TableWithDescriptionIcon = ({ data, columns, columnYesNo, yesNo }) => {
 										alt='icon edit'
 										style={{
 											marginRight: 10,
+											cursor: 'pointer',
 										}}
 										src={iconList.edit}
 									/>
 									<img
 										alt='icon delete'
+										style={{ cursor: 'pointer' }}
 										src={iconList.deleteIcon}
+										onClick={() => deleteFunction(row.id)}
 									/>
 								</TableCell>
 							</TableRow>
@@ -102,4 +116,4 @@ const TableWithDescriptionIcon = ({ data, columns, columnYesNo, yesNo }) => {
 	);
 };
 
-export default TableWithDescriptionIcon;
+export default TableWithChip;

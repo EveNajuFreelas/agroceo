@@ -24,11 +24,11 @@ export const defaultTheme = {
 		neutralDark: '#525252',
 		darkerGreen: '#02733E',
 		greenLight: '#7AC743',
-    events: {
-      onHover: 'rgba(255, 255, 255, 0.3)',
-	  onHoverSubmenu: 'rgba(4, 241, 130, 0.3)',
-	  onHoverPrimaryButton: 'rgba(3, 181, 98, 0.9)',
-    },
+		events: {
+		onHover: 'rgba(255, 255, 255, 0.3)',
+		onHoverSubmenu: 'rgba(4, 241, 130, 0.3)',
+		onHoverPrimaryButton: 'rgba(3, 181, 98, 0.9)',
+		},
 	},
 	text: {
 		size: {

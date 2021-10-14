@@ -19,6 +19,8 @@ import { VehicleContainer } from './context/vehiclesContext';
 import { AreasContainer } from './context/areasContext';
 import { TractorContainer } from './context/tractorContext';
 import { ExpensesContainer } from './context/financesContext/expensesContext';
+import { InputContainer } from './context/inputsContext';
+import { RoleContainer } from './context/rolesContext';
 
 const queryClient = new QueryClient();
 
@@ -37,13 +39,17 @@ ReactDOM.render(
 								<AreasContainer.Provider>
 									<TractorContainer.Provider>
 										<ExpensesContainer.Provider>
-										{/* <PopoverContainer.Provider> */}
-										{/* <ListPropertieContext.Provider> */}
-										{/* <PropertyContext.Provider> */}
-											<App />
-										{/* </PropertyContext.Provider> */}
-										{/* </ListPropertieContext.Provider> */}
-										{/* </PopoverContainer.Provider> */}
+											<InputContainer.Provider>
+												<RoleContainer.Provider>
+												{/* <PopoverContainer.Provider> */}
+												{/* <ListPropertieContext.Provider> */}
+												{/* <PropertyContext.Provider> */}
+													<App />
+												{/* </PropertyContext.Provider> */}
+												{/* </ListPropertieContext.Provider> */}
+												{/* </PopoverContainer.Provider> */}
+												</RoleContainer.Provider>
+											</InputContainer.Provider>
 										</ExpensesContainer.Provider>
 									</TractorContainer.Provider>
 								</AreasContainer.Provider>

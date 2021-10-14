@@ -53,6 +53,7 @@ const Combustivel = () => {
 				<TableWithDescriptionIcon
 					data={manejoCombustivel}
 					columns={columns}
+					yesNo={false}
 				/>
 			</div>
 		</>

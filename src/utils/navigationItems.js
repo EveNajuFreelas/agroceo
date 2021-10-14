@@ -75,7 +75,7 @@ export const menuItems = [
 			{
 				id: 2.8,
 				text: 'animals',
-				url: '/dashboard',
+				url: '/manejo/animais',
 			},
 			{
 				id: 2.9,

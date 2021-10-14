@@ -9,8 +9,10 @@ import { defaultTheme } from '../../../theme';
 import TableNormal from '../../../components/Table/TableNormal';
 import { useArea } from '../../../context/areasContext';
 import TableWithChip from '../../../components/Table/TableWithChip';
+import TableWithDescriptionIcon from '../../../components/Table/TableDescriptionWithIcon';
+import { manejoCombustivel } from '../../../utils/dataMock/mock';
 
-const Areas = () => {
+const Animals = () => {
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
 	const { isLoading, areas, modules, getAreasAndModules } = useArea();
@@ -24,6 +26,18 @@ const Areas = () => {
 	const handleChange = (event, newValue) => {
 		setValue(newValue);
 	};
+
+	const columns = [
+		'ID',
+		t('description'),
+		t('quantity'),
+		t('supplier'),
+		t('payment'),
+		t('supplyLocation'),
+		t('driver'),
+		t('vehicle'),
+		t('dateTime'),
+	];
 
 	let columnsSubAreas = [
 		'ID',
@@ -47,6 +61,8 @@ const Areas = () => {
 				<TabsStyled value={value} onChange={handleChange}>
 					<TabStyled label={t('subareas')} />
 					<TabStyled label={t('modules')} />
+					<TabStyled label={t('movimentation')} />
+					<TabStyled label={t('weighings')} />
 				</TabsStyled>
 				<ButtonSection>
 					<ButtonIconAdd
@@ -68,8 +84,22 @@ const Areas = () => {
 			{value === 1 && (
 				<TableWithChip data={modules} columns={columnsModules} />
 			)}
+			{value === 2 && (
+				<TableWithDescriptionIcon
+					data={manejoCombustivel}
+					columns={columns}
+					yesNo={false}
+				/>
+			)}
+			{value === 3 && (
+				<TableWithDescriptionIcon
+					data={manejoCombustivel}
+					columns={columns}
+					yesNo={false}
+				/>
+			)}
 		</>
 	);
 };
 
-export default Areas;
+export default Animals;

@@ -12,8 +12,9 @@ import {
     SelectField,
     StyledMenuItem,
     UploadField,
+    StyledSlider,
 } from '../inputsStyles';
-import { Checkbox, Input, Slider } from '@material-ui/core';
+import { Checkbox, Input } from '@material-ui/core';
 
 export const FinancialModal = ({ title }) => {
     const { modalState, setModalState, activeContent } = useExpensesContainer();
@@ -39,7 +40,7 @@ export const FinancialModal = ({ title }) => {
                 <PropertiesField key={prop.id}>
                     <Checkbox />
                     <p>{prop.name}</p>
-                    <Slider
+                    <StyledSlider
                         defaultValue={prop.percentage}
                         onChange={e => handlePropertiesInput(e.target.value, e.target.name, prop.id)}
                     />
@@ -83,7 +84,7 @@ export const FinancialModal = ({ title }) => {
                     <InputField
                         label={t('description')}
                         name='Description'
-                        defaultValue={currentInfo.Description}
+                        defaultValue={currentInfo.data.description}
                         onChange={e => handleInput(e.target.value, e.target.name)}
                     />
                     <InputField
@@ -101,9 +102,10 @@ export const FinancialModal = ({ title }) => {
                         InputLabelProps={{ shrink: true }}
                     />
                     <UploadField 
-                        //label={t('receipt')}
-                        //type='file'
-                        writtenField="field lalal"
+                        label={t('receipt')}
+                        docName={currentInfo.data.DocumentPicture !== '--' 
+                            ? currentInfo.data.DocumentPicture 
+                            : null}
                         name='Receipt'
                         buttonName={t('select')}
                         onChange={e => handleInput(e.target.value, e.target.name)}
@@ -114,16 +116,16 @@ export const FinancialModal = ({ title }) => {
                     <SelectField
                         label={t('payment')}
                         name='Payment'
-                        value={currentInfo.Payment}
+                        value={currentInfo.data.Payment}
                         onChange={e => handleInput(e.target.value, e.target.name)}
                         InputLabelProps={{ shrink: true }}
                     >
-                        <StyledMenuItem value="Credit Card">Cartão de Crédito</StyledMenuItem>
+                        <StyledMenuItem value="Cartão de crédito">Cartão de Crédito</StyledMenuItem>
                     </SelectField>
                     <SelectField
                         label={t('parcels')}
                         name='Parcela'
-                        value={currentInfo.Parcela}
+                        value={currentInfo.data.Parcela}
                         onChange={e => handleInput(e.target.value, e.target.name)}
                         InputLabelProps={{ shrink: true }}
                     >

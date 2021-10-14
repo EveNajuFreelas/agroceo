@@ -55,7 +55,7 @@ const TableWithDescriptionIcon = ({ data, columns, columnYesNo, yesNo }) => {
 									<Link component='button' color='inherit' onClick={handleClick}>
 										<LabelWithIcon
 											iconName={'Insumos'}
-											title={row.Description}
+											title={row.data.description}
 										/>
 									</Link>
 								</TableCell>

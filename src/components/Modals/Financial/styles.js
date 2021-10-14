@@ -10,4 +10,7 @@ export const PropertyDivisionWrapper = styled.div`
 export const PropertiesField = styled(Grid)`
     display: flex;
     margin: ${margin.lg} 0;
+    
+    align-items: center;
+    justify-content: space-evenly;
 `;

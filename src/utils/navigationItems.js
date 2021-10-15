@@ -85,7 +85,7 @@ export const menuItems = [
 			{
 				id: 2.1,
 				text: 'demand',
-				url: '/dashboard',
+				url: '/manejo/demandas',
 			},
 		],
 	},

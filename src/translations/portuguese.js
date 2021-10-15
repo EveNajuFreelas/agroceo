@@ -91,4 +91,8 @@ export const portuguese = {
 	'qntdAnimals': 'Qntd. Animais',
 	'%AnimalsWeighed': '% Animais Pesados',
 	'lastWeighing': 'Data da última pesagem',
+	'demand': 'Demanda',
+	'createBy': 'Criada por',
+	'demandPhoto': 'Foto da demanda',
+	'task': 'Tarefa',
 };

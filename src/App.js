@@ -20,6 +20,7 @@ import Tratores from './pages/Manejo/Tratores';
 import Insumos from './pages/Manejo/Insumos';
 import Areas from './pages/Manejo/Areas';
 import Animals from './pages/Manejo/Animals';
+import Demandas from './pages/Manejo/Demandas';
 
 export function App() {
 	return (
@@ -94,6 +95,12 @@ export function App() {
 						path='/manejo/animais'
 						exact
 						component={Animals}
+					/>
+
+					<NotLoggedRoute
+						path='/manejo/demandas'
+						exact
+						component={Demandas}
 					/>
 				</Switch>
 			</Router>

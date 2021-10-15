@@ -90,4 +90,8 @@ export const english = {
 	'qntdAnimals': 'Qntd. Animals',
 	'%AnimalsWeighed': '% Animals Weighed',
 	'lastWeighing': 'Last Weighing Date',
+	'demand': 'Demand',
+	'createBy': 'Create by',
+	'demandPhoto': 'Demand photo',
+	'task': 'Task',
 };

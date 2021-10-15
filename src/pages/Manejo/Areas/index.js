@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import { TabStyled, TabsStyled, HeadSection, ButtonSection } from './styles';
+import { TabStyled, TabsStyled, HeadSection, ButtonSection } from '../styles';
 import { useTranslation } from 'react-i18next';
 
 import ButtonIconAdd from '../../../components/Geral/ButtonIcon';

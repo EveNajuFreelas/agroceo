@@ -369,3 +369,20 @@ export const animaisLots = [
 		],
 	},
 ];
+
+export const manejoDemandas = [
+	{
+		id: '000004',
+		demand: 'Cerca quebrada no pasto da onça',
+		createBy: 'Dito (Benedito)',
+		demandPhoto: 'https://www.google.com/',
+		task: true,
+	},
+	{
+		id: '000018',
+		demand: 'Cerca quebrada no pasto da onça',
+		createBy: 'Dito (Benedito)',
+		demandPhoto: 'https://www.google.com/',
+		task: false,
+	},
+];

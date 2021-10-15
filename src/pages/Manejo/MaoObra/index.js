@@ -4,11 +4,10 @@ import { TabStyled, TabsStyled, HeadSection, ButtonSection } from './styles';
 import { useTranslation } from 'react-i18next';
 
 import ButtonIconAdd from '../../../components/Geral/ButtonIcon';
-import TableEmployees from '../../../components/Table/ManejoMaoDeObra/tableEmployees';
+import TableEmployees from '../../../components/Table/Manejo/tableEmployees';
 
 import { defaultTheme } from '../../../theme';
 import { useRole } from '../../../context/rolesContext';
-import { useAuthentication } from '../../../context/authContext';
 import TableWithChip from '../../../components/Table/TableWithChip';
 
 const MaoObra = () => {
@@ -16,13 +15,12 @@ const MaoObra = () => {
 	const { colors } = defaultTheme;
 	const { roles, employees, getRolesAndEmployees, isLoading, deleteRole } =
 		useRole();
-	const { propertiesSelected } = useAuthentication();
 
 	const [value, setValue] = useState(0);
 	let columnsRoles = ['ID', t('roleName'), t('obligations'), t('daysWeek')];
 
 	useEffect(() => {
-		getRolesAndEmployees(propertiesSelected);
+		getRolesAndEmployees();
 	}, []);
 
 	const handleChange = (event, newValue) => {

@@ -13,6 +13,7 @@ import {
     StyledMenuItem,
     UploadField,
     StyledSlider,
+    ControlledInput
 } from '../inputsStyles';
 import { Checkbox, Input } from '@material-ui/core';
 
@@ -26,12 +27,13 @@ export const FinancialModal = ({ title }) => {
     }
 
     const handlePropertiesInput = (info, inputName, id) => {
+        console.log(inputName);
         const newArray = [...currentInfo.Properties];
         newArray[id] = {
             ...currentInfo.Properties[id],
             [inputName]: info,
         };
-
+        console.log(newArray[id]);
         setCurrentInfo(curr => ({...curr, Properties: newArray}));
     }
 
@@ -41,18 +43,18 @@ export const FinancialModal = ({ title }) => {
                     <Checkbox />
                     <p>{prop.name}</p>
                     <StyledSlider
-                        defaultValue={prop.percentage}
-                        onChange={e => handlePropertiesInput(e.target.value, e.target.name, prop.id)}
+                        value={prop.percentage}
+                        onChangeCommitted={(e, val) => handlePropertiesInput(Number(val), "percentage", prop.id)}
                     />
-                    <Input 
-                        variant='outlined'
-                        defaultValue={prop.percentage}
-                        onChange={e => handlePropertiesInput(e.target.value, e.target.name, prop.id)}
+                    <ControlledInput
+                        value={prop.percentage}
+                        onChange={e => handlePropertiesInput(Number(e.target.value), 'percentage', prop.id)}
+                        type="number"
                     />
-                    <Input
-                        variant='outlined'
+                    <ControlledInput
                         defaultValue={prop.value} 
-                        onChange={e => handlePropertiesInput(e.target.value, e.target.name, prop.id)}
+                        onChange={e => handlePropertiesInput(Number(e.target.value), e.target.name, prop.id)}
+                        type="number"
                     />
                 </PropertiesField>
             ))
@@ -99,7 +101,6 @@ export const FinancialModal = ({ title }) => {
                         name='DateDespesa'
                         type='date'
                         onChange={e => handleInput(e.target.value, e.target.name)}
-                        InputLabelProps={{ shrink: true }}
                     />
                     <UploadField 
                         label={t('receipt')}
@@ -109,7 +110,6 @@ export const FinancialModal = ({ title }) => {
                         name='Receipt'
                         buttonName={t('select')}
                         onChange={e => handleInput(e.target.value, e.target.name)}
-                        //InputLabelProps={{ shrink: true }}
                     />
                 </div>
                 <div style={{ width: '50%' }}>

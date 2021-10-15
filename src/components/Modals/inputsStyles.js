@@ -12,7 +12,7 @@ export const InputFieldsWrapper = styled.div`
     margin-bottom: ${margin.xg};
 `;
 
-export const InputField = styled(props => <TextField variant='outlined' {...props} />)`
+export const InputField = styled(props => <TextField variant='outlined' InputLabelProps={{ shrink: true }}  {...props} />)`
     .MuiInputBase-root {
         margin-bottom: ${margin.lg};
     }
@@ -31,7 +31,7 @@ export const InputField = styled(props => <TextField variant='outlined' {...prop
 `;
 
 export const SelectField = styled(props => (<div style={{ marginBottom: margin.lg }}>
-    <Select {...props} label={props.label} variant='outlined' IconComponent={ExpandMore} />
+    <Select {...props} variant='outlined' IconComponent={ExpandMore} />
     </div>))`
     .MuiSelect-select {
         min-width: 254px;
@@ -91,8 +91,9 @@ export const UploadButton = styled(props => (<label className={props.className}>
 
 export const StyledSlider = styled(Slider)`
     margin: 0 ${padding.md};
+    color: ${colors.primary};
+`;
 
-    .MuiSlider-root .MuiSlider-colorPrimary {
-        color: ${colors.primary}; //doesnt work!
-    }
+export const ControlledInput = styled(props => <TextField {...props} variant='outlined' />)`
+
 `;

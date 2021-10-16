@@ -8,5 +8,9 @@ export const TitleSection = styled.span`
 	gap: 30px;
 	font-size: ${text.size.large};
 	color: ${colors.neutralDark};
-	margin-bottom: 20px;
+	margin-bottom: 12px;
+	
+	@media (max-width: 1025px){
+		font-size: ${text.size.medium};
+	}
 `;

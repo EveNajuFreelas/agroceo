@@ -13,12 +13,14 @@ import { TitleSection } from '../../Geral/styles';
 import { animais } from '../../../utils/dataMock/mock';
 import { defaultTheme } from '../../../theme';
 import Filter from '../../Filter';
+import { usePageContext } from "../../../context/pageContext/index.js";
 import {
 	itensMenuMonth,
 	itensMenuYear,
 } from '../../../utils/dataMock/itensMenu';
 
 const BarChart = () => {
+	const { drawerOpen } = usePageContext();
 	const { colors } = defaultTheme;
 
 	const options = {
@@ -83,7 +85,7 @@ const BarChart = () => {
 					clickFunction={filter}
 				/>
 			</TitleSection>
-			<PaperChart>
+			<PaperChart drawerOpen={drawerOpen}>
 				<BarContainer>
 					<LegendBarContanier>
 						{animais.datasets.map(data => (

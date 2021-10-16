@@ -95,4 +95,9 @@ export const portuguese = {
 	'createBy': 'Criada por',
 	'demandPhoto': 'Foto da demanda',
 	'task': 'Tarefa',
+	'title': 'Título',
+	'expectateStartDate': 'Data prevista de início',
+	'costCenters': 'Centros de custos',
+	'status': 'Status',
+	'responsible': 'Responsável',
 };

@@ -32,7 +32,7 @@ import saida from '../../utils/Icons/saida.svg';
 import Brasil from '../../utils/Icons/Brasil.svg';
 import Usa from '../../utils/Icons/Estados Unidos.svg';
 import Australia from '../../utils/Icons/Australia.svg';
-import putIn from '../../utils/Icons/PutIn.svg';
+import putIn from '../../utils/Icons/putIn.svg';
 
 export const iconList = {
 	add_a_photo,

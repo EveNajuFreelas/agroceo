@@ -13,14 +13,15 @@ import TableWithChip from '../../../components/Table/TableWithChip';
 const MaoObra = () => {
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
-	const { roles, employees, getRolesAndEmployees, isLoading, deleteRole } =
+	const { roles, employees, getRoles, getEmployees, isLoading, deleteRole } =
 		useRole();
 
 	const [value, setValue] = useState(0);
 	let columnsRoles = ['ID', t('roleName'), t('obligations'), t('daysWeek')];
 
 	useEffect(() => {
-		getRolesAndEmployees();
+		getRoles();
+		getEmployees();
 	}, []);
 
 	const handleChange = (event, newValue) => {

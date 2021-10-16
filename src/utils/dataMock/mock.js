@@ -386,3 +386,46 @@ export const manejoDemandas = [
 		task: false,
 	},
 ];
+
+export const manejoTask = [
+	{
+		id: '000004',
+		title: 'Porteira da sede quebrada',
+		startDate: '13/10/2021',
+		cost: 'Animais, Lavoura',
+		status: 'Iniciada',
+		responsible: 'Rodrigo Alves de Souza',
+	},
+	{
+		id: '000004',
+		title: 'Concertar colchete do retiro',
+		startDate: '13/10/2021',
+		cost: 'Infraestrutura',
+		status: 'Recusada',
+		responsible: 'José da Silva',
+	},
+	{
+		id: '000004',
+		title: 'Porteira da sede quebrada',
+		startDate: '13/10/2021',
+		cost: null || '-',
+		status: 'Concluída',
+		responsible: 'Rodrigo Alves de Souza',
+	},
+	{
+		id: '000004',
+		title: 'Concertar colchete do retiro',
+		startDate: '13/10/2021',
+		cost: 'Infraestrutura',
+		status: 'Não iniciada',
+		responsible: 'José da Silva',
+	},
+	{
+		id: '000004',
+		title: 'Porteira da sede quebrada',
+		startDate: '13/10/2021',
+		cost: 'Animais, Lavoura',
+		status: 'Demanda',
+		responsible: null || '-',
+	},
+];

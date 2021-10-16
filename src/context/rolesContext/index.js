@@ -5,7 +5,6 @@ import { useAuthentication } from '../authContext';
 
 const useRoleContainer = () => {
 	const { propertiesSelected, token } = useAuthentication();
-
 	const [roles, setRoles] = useState([]);
 	const [employees, setEmployees] = useState([]);
 	const [isLoading, setLoading] = useState(true);
@@ -68,6 +67,7 @@ const useRoleContainer = () => {
 };
 const formatResponseEmployee = response => {
 	let tempArray = [];
+	console.log();
 	response.map(res => {
 		console.log(res);
 		tempArray.push({
@@ -84,6 +84,7 @@ const formatResponseEmployee = response => {
 	});
 	return tempArray;
 };
+
 const formatResponseRole = response => {
 	let tempArray = [];
 	response.map(res => {

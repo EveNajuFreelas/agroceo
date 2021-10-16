@@ -94,4 +94,9 @@ export const english = {
 	'createBy': 'Create by',
 	'demandPhoto': 'Demand photo',
 	'task': 'Task',
+	'title': 'Title',
+	'expectateStartDate': 'Expected start date',
+	'costCenters': 'Cost Centers',
+	'status': 'Status',
+	'responsible': 'Responsible',
 };

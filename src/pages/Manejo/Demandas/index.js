@@ -1,46 +1,38 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { TitleSection } from '../../../components/Geral/styles';
 import { HeadSection } from '../styles';
 
 import { useTranslation } from 'react-i18next';
 import { defaultTheme } from '../../../theme';
 
+import TableDemandas from '../../../components/Table/Manejo/tableDemandas';
+import Filter from '../../../components/Filter';
+import { manejoDemandas } from '../../../utils/dataMock/mock';
+import ButtonIconAdd from '../../../components/Geral/ButtonIcon';
 import { itensMenuCombustivel } from '../../../utils/dataMock/itensMenu';
 
-import Filter from '../../../components/Filter';
-import ButtonIconAdd from '../../../components/Geral/ButtonIcon';
-import TableNormal from '../../../components/Table/TableNormal';
-import { useTractor } from '../../../context/tractorContext';
-
-const Tratores = () => {
+const Demandas = () => {
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
-	const { isLoading, tractor, getTractor, deleteTractor } = useTractor();
-
-	useEffect(() => {
-		getTractor();
-	}, []);
 
 	const columns = [
 		'ID',
-		t('brand'),
-		t('model'),
-		t('color'),
-		t('manufacture'),
-		t('board'),
-		t('owner'),
-		t('lastRevision'),
+		t('demand'),
+		t('createBy'),
+		t('demandPhoto'),
+		t('task'),
 	];
 
 	const filter = mes => {
 		console.log(mes);
 	};
 
+	const deleteDemanda = id => {};
 	return (
 		<>
 			<HeadSection>
 				<TitleSection>
-					{t('tractor')}
+					{t('demand')}
 					<Filter
 						label={'Todos'}
 						itensMenu={itensMenuCombustivel}
@@ -50,23 +42,19 @@ const Tratores = () => {
 				<ButtonIconAdd
 					color={colors.neutral0}
 					backgroundColor={colors.primary}
-					textButton='Cadastrar'
+					textButton='Registro'
 					marginBottom={true}
 				/>
 			</HeadSection>
-			{isLoading ? (
-				<span>Carregando...</span>
-			) : (
-				<TableNormal
-					data={tractor}
+			<div>
+				<TableDemandas
+					data={manejoDemandas}
 					columns={columns}
-					putInIcon={true}
-					description={false}
-					deleteFunction={deleteTractor}
+					deleteFunction={deleteDemanda}
 				/>
-			)}
+			</div>
 		</>
 	);
 };
 
-export default Tratores;
+export default Demandas;

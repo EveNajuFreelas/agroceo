@@ -9,38 +9,35 @@ import { itensMenuCombustivel } from '../../../utils/dataMock/itensMenu';
 
 import Filter from '../../../components/Filter';
 import ButtonIconAdd from '../../../components/Geral/ButtonIcon';
-import TableNormal from '../../../components/Table/TableNormal';
-import { useTractor } from '../../../context/tractorContext';
+import TableTarefas from '../../../components/Table/Manejo/tableTarefas';
+import { manejoTask } from '../../../utils/dataMock/mock';
 
-const Tratores = () => {
+const Tarefas = () => {
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
-	const { isLoading, tractor, getTractor, deleteTractor } = useTractor();
 
-	useEffect(() => {
-		getTractor();
-	}, []);
+	useEffect(() => {}, []);
 
 	const columns = [
 		'ID',
-		t('brand'),
-		t('model'),
-		t('color'),
-		t('manufacture'),
-		t('board'),
-		t('owner'),
-		t('lastRevision'),
+		t('title'),
+		t('expectateStartDate'),
+		t('costCenters'),
+		t('status'),
+		t('responsible'),
 	];
 
 	const filter = mes => {
 		console.log(mes);
 	};
 
+	const deleteTask = id => {};
+
 	return (
 		<>
 			<HeadSection>
 				<TitleSection>
-					{t('tractor')}
+					{t('assignments')}
 					<Filter
 						label={'Todos'}
 						itensMenu={itensMenuCombustivel}
@@ -54,19 +51,17 @@ const Tratores = () => {
 					marginBottom={true}
 				/>
 			</HeadSection>
-			{isLoading ? (
+			{/* {isLoading ? (
 				<span>Carregando...</span>
-			) : (
-				<TableNormal
-					data={tractor}
-					columns={columns}
-					putInIcon={true}
-					description={false}
-					deleteFunction={deleteTractor}
-				/>
-			)}
+			) : ( */}
+			<TableTarefas
+				data={manejoTask}
+				columns={columns}
+				deleteFunction={deleteTask}
+			/>
+			{/* )} */}
 		</>
 	);
 };
 
-export default Tratores;
+export default Tarefas;

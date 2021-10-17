@@ -32,6 +32,18 @@ const useTractorContainer = () => {
 			});
 	};
 
+	const postTractor = data => {
+		api.defaults.headers.authorization = `Bearer ${token}`;
+		api.post(`/NewTractor`, data)
+			.then(res => {
+				console.log(res);
+				getTractor();
+			})
+			.catch(err => {
+				console.log(err);
+			});
+	};
+
 	return {
 		tractor,
 		getTractor,

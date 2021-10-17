@@ -40,7 +40,7 @@ const Veiculos = () => {
 		<>
 			<HeadSection>
 				<TitleSection>
-					Veículos
+					{t('vehicle')}
 					<Filter
 						label={'Todos'}
 						itensMenu={itensMenuCombustivel}

@@ -22,6 +22,7 @@ import Areas from './pages/Manejo/Areas';
 import Animals from './pages/Manejo/Animals';
 import Demandas from './pages/Manejo/Demandas';
 import Tarefas from './pages/Manejo/Tarefas';
+import Lavouras from './pages/Manejo/Lavouras';
 
 export function App() {
 	return (
@@ -90,6 +91,12 @@ export function App() {
 						path='/manejo/areas'
 						exact
 						component={Areas}
+					/>
+
+					<NotLoggedRoute
+						path='/manejo/lavouras'
+						exact
+						component={Lavouras}
 					/>
 
 					<NotLoggedRoute

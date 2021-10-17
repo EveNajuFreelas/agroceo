@@ -37,7 +37,7 @@ const Tarefas = () => {
 		<>
 			<HeadSection>
 				<TitleSection>
-					Tarefas
+					{t('assignments')}
 					<Filter
 						label={'Todos'}
 						itensMenu={itensMenuCombustivel}

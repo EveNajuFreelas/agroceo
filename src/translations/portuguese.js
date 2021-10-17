@@ -67,7 +67,7 @@ export const portuguese = {
 	'demand': 'Demandas',
 	'properties': 'Propriedades',
 	'expenses': 'Despesas',
-	'tractor': 'Tractors',
+	'tractor': 'Tratores',
 	'input': 'Insumos',
 	'yes': 'Sim',
 	'no': 'Não',
@@ -100,4 +100,8 @@ export const portuguese = {
 	'costCenters': 'Centros de custos',
 	'status': 'Status',
 	'responsible': 'Responsável',
+	'typeAgriculture': 'Tipo de Lavoura',
+	'numberBags': 'Quantidade de Sacos',
+	'weightPerBag': 'Peso por saco',
+	'fuelRecords': 'Registro de combustível',
 };

@@ -429,3 +429,20 @@ export const manejoTask = [
 		responsible: null || '-',
 	},
 ];
+
+export const manejoLavouras = [
+	{
+		id: '000004',
+		typeAgriculture: 'Arroz',
+		subarea: 'Sub-área 9 “Antiga matinha” - 60 ha',
+		numberBags: '100 sacos',
+		weightPerBag: '50 kg',
+	},
+	{
+		id: '000018',
+		typeAgriculture: 'Soja',
+		subarea: 'Sub-área 10 “Área do córrego” - 50 ha',
+		numberBags: '90 sacos',
+		weightPerBag: '45 kg',
+	},
+];

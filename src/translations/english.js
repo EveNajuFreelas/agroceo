@@ -99,4 +99,8 @@ export const english = {
 	'costCenters': 'Cost Centers',
 	'status': 'Status',
 	'responsible': 'Responsible',
+	'typeAgriculture': 'Type of Agriculture',
+	'numberBags': 'Number of Bags',
+	'weightPerBag': 'Weight per Bag',
+	'fuelRecords': 'Fuel records',
 };

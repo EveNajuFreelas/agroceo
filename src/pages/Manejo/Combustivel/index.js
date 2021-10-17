@@ -35,7 +35,7 @@ const Combustivel = () => {
 		<>
 			<HeadSection>
 				<TitleSection>
-					Resgistros de Combustível
+					{t('fuelRecords')}
 					<Filter
 						label={'Todos'}
 						itensMenu={itensMenuCombustivel}

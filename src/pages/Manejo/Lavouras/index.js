@@ -11,8 +11,9 @@ import Filter from '../../../components/Filter';
 import ButtonIconAdd from '../../../components/Geral/ButtonIcon';
 import TableNormal from '../../../components/Table/TableNormal';
 import { useTractor } from '../../../context/tractorContext';
+import { manejoLavouras } from '../../../utils/dataMock/mock';
 
-const Tratores = () => {
+const Lavouras = () => {
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
 	const { isLoading, tractor, getTractor, deleteTractor } = useTractor();
@@ -23,13 +24,10 @@ const Tratores = () => {
 
 	const columns = [
 		'ID',
-		t('brand'),
-		t('model'),
-		t('color'),
-		t('manufacture'),
-		t('board'),
-		t('owner'),
-		t('lastRevision'),
+		t('typeAgriculture'),
+		t('subarea'),
+		t('numberBags'),
+		t('weightPerBag'),
 	];
 
 	const filter = mes => {
@@ -40,7 +38,7 @@ const Tratores = () => {
 		<>
 			<HeadSection>
 				<TitleSection>
-					{t('tractor')}
+					{t('agriculture')}
 					<Filter
 						label={'Todos'}
 						itensMenu={itensMenuCombustivel}
@@ -50,7 +48,7 @@ const Tratores = () => {
 				<ButtonIconAdd
 					color={colors.neutral0}
 					backgroundColor={colors.primary}
-					textButton='Cadastrar'
+					textButton='Registro'
 					marginBottom={true}
 				/>
 			</HeadSection>
@@ -58,9 +56,9 @@ const Tratores = () => {
 				<span>Carregando...</span>
 			) : (
 				<TableNormal
-					data={tractor}
+					data={manejoLavouras}
 					columns={columns}
-					putInIcon={true}
+					putInIcon={false}
 					description={false}
 					deleteFunction={deleteTractor}
 				/>
@@ -69,4 +67,4 @@ const Tratores = () => {
 	);
 };
 
-export default Tratores;
+export default Lavouras;

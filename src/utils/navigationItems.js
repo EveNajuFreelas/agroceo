@@ -70,7 +70,7 @@ export const menuItems = [
 			{
 				id: 2.7,
 				text: 'agriculture',
-				url: '/dashboard',
+				url: '/manejo/lavouras',
 			},
 			{
 				id: 2.8,

@@ -13,6 +13,7 @@ import {
 	ButtonIcon,
 	ButtonWrapper,
 	FilterContainer,
+	ButtonRight,
 } from './styles';
 
 import {
@@ -102,12 +103,14 @@ const TableHeader = ({ data, columns, title }) => {
 						clickFunction={filter}
 					/>
 				</FilterContainer>
+			</ContainerRight>
+			<ButtonRight>
 				<ButtonIconAdd
 					color={colors.neutral0}
 					backgroundColor={colors.primary}
 					textButton='Registro'
 				/>
-			</ContainerRight>
+			</ButtonRight>
 		</TableHeaderContainer>
 	);
 };

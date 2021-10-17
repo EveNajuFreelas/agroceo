@@ -19,7 +19,7 @@ export const LegendPizzaContainer = styled.div`
 export const LegendPizzaItem = styled.div`
 	padding: ${padding.lg};
 	height: 20px;
-	width: 6vw;
+	width: fit-content;
 	text-align: center;
 	color: #fff;
 	border-radius: 20px;
@@ -27,6 +27,7 @@ export const LegendPizzaItem = styled.div`
 
 export const LegendPizzaLabel = styled.div`
 	display: flex;
+	margin-right: auto;
 	gap: 5px;
 	align-items: center;
 	justify-content: center;

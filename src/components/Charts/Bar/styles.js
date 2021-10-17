@@ -4,7 +4,7 @@ import { defaultTheme } from '../../../theme';
 const { text } = defaultTheme;
 
 const BarContainer = styled.div`
-	width: 528px;
+	width: 100%;
 	height: 340px;
 `;
 

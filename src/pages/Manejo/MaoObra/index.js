@@ -9,6 +9,8 @@ import TableEmployees from '../../../components/Table/Manejo/tableEmployees';
 import { defaultTheme } from '../../../theme';
 import { useRole } from '../../../context/rolesContext';
 import TableWithChip from '../../../components/Table/TableWithChip';
+import { CircularProgress } from '@material-ui/core';
+import { ProgressContainer } from '../styles';
 
 const MaoObra = () => {
 	const { t } = useTranslation();
@@ -29,7 +31,9 @@ const MaoObra = () => {
 	};
 
 	return isLoading ? (
-		<span>Carregando...</span>
+		<ProgressContainer>
+			<CircularProgress style={{ color: colors.primary }} />
+		</ProgressContainer>
 	) : (
 		<>
 			<HeadSection>
@@ -58,7 +62,9 @@ const MaoObra = () => {
 				(employees ? (
 					<TableEmployees data={employees} />
 				) : (
-					<span>carregando...</span>
+					<ProgressContainer>
+						<CircularProgress style={{ color: colors.primary }} />
+					</ProgressContainer>
 				))}
 			{value === 1 && (
 				<TableWithChip

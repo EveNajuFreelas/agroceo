@@ -14,6 +14,7 @@ const Filter = ({ label, itensMenu, clickFunction }) => {
 
 	useEffect(() => {
 		handleClose();
+		console.log(labelSelected);
 		clickFunction(labelSelected);
 	}, [labelSelected]);
 

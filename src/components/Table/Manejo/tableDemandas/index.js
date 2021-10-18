@@ -13,6 +13,7 @@ import { StyledTableContainer } from '../../styles';
 import { iconList } from '../../../../assets/Icons/icon-list';
 import TableHeadDefault from '../../TableHead';
 import YesNo from '../../yesNo';
+import NoRegister from '../../../NoRegistry';
 
 const TableDemandas = ({ data, columns, deleteFunction }) => {
 	const { colors } = defaultTheme;
@@ -20,10 +21,11 @@ const TableDemandas = ({ data, columns, deleteFunction }) => {
 	console.log(data.length != 0);
 
 	if (data.length === 0) {
-		return <span>Sem registros</span>;
+		return <NoRegister />;
 	}
 
-	let keys = Object.keys(data[0]);
+	console.log(columns);
+	console.log(data);
 
 	return (
 		<StyledTableContainer>
@@ -49,7 +51,9 @@ const TableDemandas = ({ data, columns, deleteFunction }) => {
 									{row.id}
 								</TableCell>
 
-								<TableCell align='left'>{row.demand}</TableCell>
+								<TableCell align='left'>
+									{row.description}
+								</TableCell>
 
 								<TableCell align='right'>
 									{row.createBy}
@@ -57,7 +61,7 @@ const TableDemandas = ({ data, columns, deleteFunction }) => {
 
 								<TableCell align='right'>
 									<a
-										href={row.demandPhoto}
+										href={row.photo}
 										style={{ color: `${colors.primary}` }}
 									>
 										Link da foto

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { TitleSection } from '../../../components/Geral/styles';
-import { HeadSection } from '../styles';
+import { HeadSection, ProgressContainer } from '../styles';
 
 import { useTranslation } from 'react-i18next';
 import { defaultTheme } from '../../../theme';
@@ -11,14 +11,15 @@ import { itensMenuCombustivel } from '../../../utils/dataMock/itensMenu';
 import { manejoInsumos } from '../../../utils/dataMock/mock';
 import ButtonIconAdd from '../../../components/Geral/ButtonIcon';
 import { useInput } from '../../../context/inputsContext';
+import { CircularProgress } from '@material-ui/core';
 
 const Insumos = () => {
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
-	const { inputs, getInputs, isLoading } = useInput();
+	const { inputs, getInputs, isLoading, filter } = useInput();
 
 	useEffect(() => {
-		getInputs(1);
+		getInputs();
 	}, []);
 
 	const columns = [
@@ -30,10 +31,6 @@ const Insumos = () => {
 		t('document'),
 		t('whoReceived'),
 	];
-
-	const filter = mes => {
-		console.log(mes);
-	};
 
 	return (
 		<>
@@ -54,7 +51,9 @@ const Insumos = () => {
 				/>
 			</HeadSection>
 			{isLoading ? (
-				<span>Carregando...</span>
+				<ProgressContainer>
+					<CircularProgress style={{ color: colors.primary }} />
+				</ProgressContainer>
 			) : (
 				<div>
 					<TableWithDescriptionIcon

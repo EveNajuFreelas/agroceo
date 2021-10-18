@@ -36,3 +36,11 @@ export const ButtonSection = styled.div`
 	gap: 20px;
 	margin-bottom: 10px;
 `;
+
+export const ProgressContainer = styled.div`
+	width: 100%;
+	height: 20vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+`;

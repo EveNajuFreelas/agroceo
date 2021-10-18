@@ -4,6 +4,7 @@ import api from '../../api';
 import { useAuthentication } from '../authContext';
 
 const useInputContainer = () => {
+	const [inputsAll, setInputsAll] = useState([]);
 	const [inputs, setInputs] = useState([]);
 	const [isLoading, setLoading] = useState(true);
 	const { propertiesSelected } = useAuthentication();
@@ -11,9 +12,7 @@ const useInputContainer = () => {
 	const getInputs = () => {
 		api.get(`/inputs/${propertiesSelected}`)
 			.then(res => {
-				console.log(res.data);
-
-				console.log(formatResponse(res.data));
+				setInputsAll(formatResponse(res.data));
 				setInputs(formatResponse(res.data));
 				setLoading(false);
 			})
@@ -22,10 +21,22 @@ const useInputContainer = () => {
 			});
 	};
 
+	const filter = direction => {
+		direction = direction.toLowerCase();
+
+		if (direction === 'todos') {
+			setInputs(inputsAll);
+		}
+
+		setInputs(inputsAll.filter(obj => obj.extras.direction == direction));
+	};
+
 	return {
 		inputs,
 		getInputs,
 		isLoading,
+		filter,
+		inputsAll,
 	};
 };
 
@@ -54,7 +65,7 @@ const formatResponse = response => {
 
 const defineDirection = response => {
 	if (response === 1) return 'entrada';
-	if (response === 2) return 'saida';
+	if (response === 2) return 'saída';
 };
 
 export const InputContainer = createContainer(useInputContainer);

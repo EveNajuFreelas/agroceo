@@ -20,6 +20,10 @@ import { AreasContainer } from './context/areasContext';
 import { TractorContainer } from './context/tractorContext';
 import { InputContainer } from './context/inputsContext';
 import { RoleContainer } from './context/rolesContext';
+import { DemandContainer } from './context/demandContext';
+import { TaskContainer } from './context/taskContext';
+import { TillageContainer } from './context/tillageContext';
+import { AnimalsContainer } from './context/animalsContext';
 
 const queryClient = new QueryClient();
 
@@ -34,23 +38,31 @@ ReactDOM.render(
 				<AuthenticationContainer.Provider>
 					<RegisterContainer.Provider>
 						<PageContainer.Provider>
-							<VehicleContainer.Provider>
-								<AreasContainer.Provider>
-									<TractorContainer.Provider>
-										<InputContainer.Provider>
-											<RoleContainer.Provider>
-												{/* <PopoverContainer.Provider> */}
-												{/* <ListPropertieContext.Provider> */}
-												{/* <PropertyContext.Provider> */}
-												<App />
-												{/* </PropertyContext.Provider> */}
-												{/* </ListPropertieContext.Provider> */}
-												{/* </PopoverContainer.Provider> */}
-											</RoleContainer.Provider>
-										</InputContainer.Provider>
-									</TractorContainer.Provider>
-								</AreasContainer.Provider>
-							</VehicleContainer.Provider>
+							<AnimalsContainer.Provider>
+								<TillageContainer.Provider>
+									<TaskContainer.Provider>
+										<VehicleContainer.Provider>
+											<AreasContainer.Provider>
+												<DemandContainer.Provider>
+													<TractorContainer.Provider>
+														<InputContainer.Provider>
+															<RoleContainer.Provider>
+																{/* <PopoverContainer.Provider> */}
+																{/* <ListPropertieContext.Provider> */}
+																{/* <PropertyContext.Provider> */}
+																<App />
+																{/* </PropertyContext.Provider> */}
+																{/* </ListPropertieContext.Provider> */}
+																{/* </PopoverContainer.Provider> */}
+															</RoleContainer.Provider>
+														</InputContainer.Provider>
+													</TractorContainer.Provider>
+												</DemandContainer.Provider>
+											</AreasContainer.Provider>
+										</VehicleContainer.Provider>
+									</TaskContainer.Provider>
+								</TillageContainer.Provider>
+							</AnimalsContainer.Provider>
 						</PageContainer.Provider>
 					</RegisterContainer.Provider>
 				</AuthenticationContainer.Provider>

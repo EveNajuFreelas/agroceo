@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { TitleSection } from '../../../components/Geral/styles';
-import { HeadSection } from '../styles';
+import { HeadSection, ProgressContainer } from '../styles';
 
 import { useTranslation } from 'react-i18next';
 import { defaultTheme } from '../../../theme';
@@ -11,6 +11,7 @@ import Filter from '../../../components/Filter';
 import ButtonIconAdd from '../../../components/Geral/ButtonIcon';
 import TableNormal from '../../../components/Table/TableNormal';
 import { useTractor } from '../../../context/tractorContext';
+import { CircularProgress } from '@material-ui/core';
 
 const Tratores = () => {
 	const { t } = useTranslation();
@@ -55,7 +56,9 @@ const Tratores = () => {
 				/>
 			</HeadSection>
 			{isLoading ? (
-				<span>Carregando...</span>
+				<ProgressContainer>
+					<CircularProgress style={{ color: colors.primary }} />
+				</ProgressContainer>
 			) : (
 				<TableNormal
 					data={tractor}

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { TitleSection } from '../../../components/Geral/styles';
-import { HeadSection } from '../styles';
+import { HeadSection, ProgressContainer } from '../styles';
 
 import { useTranslation } from 'react-i18next';
 import { defaultTheme } from '../../../theme';
@@ -12,14 +12,16 @@ import ButtonIconAdd from '../../../components/Geral/ButtonIcon';
 import TableNormal from '../../../components/Table/TableNormal';
 import { useTractor } from '../../../context/tractorContext';
 import { manejoLavouras } from '../../../utils/dataMock/mock';
+import { useTillage } from '../../../context/tillageContext';
+import { CircularProgress } from '@material-ui/core';
 
 const Lavouras = () => {
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
-	const { isLoading, tractor, getTractor, deleteTractor } = useTractor();
+	const { isLoading, tillage, getTillage, deleteTillage } = useTillage();
 
 	useEffect(() => {
-		getTractor();
+		getTillage();
 	}, []);
 
 	const columns = [
@@ -53,14 +55,16 @@ const Lavouras = () => {
 				/>
 			</HeadSection>
 			{isLoading ? (
-				<span>Carregando...</span>
+				<ProgressContainer>
+					<CircularProgress style={{ color: colors.primary }} />
+				</ProgressContainer>
 			) : (
 				<TableNormal
-					data={manejoLavouras}
+					data={tillage}
 					columns={columns}
 					putInIcon={false}
 					description={false}
-					deleteFunction={deleteTractor}
+					deleteFunction={deleteTillage}
 				/>
 			)}
 		</>

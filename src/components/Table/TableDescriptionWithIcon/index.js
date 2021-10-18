@@ -16,9 +16,13 @@ import { StyledTableContainer } from '../styles';
 import { iconList } from '../../../assets/Icons/icon-list';
 import TableHeadDefault from '../TableHead';
 import YesNo from '../yesNo';
+import NoRegister from '../../NoRegistry';
 
 const TableWithDescriptionIcon = ({ data, columns, columnYesNo, yesNo }) => {
 	const { colors } = defaultTheme;
+	console.log(data);
+
+	if (data.length === 0) return <NoRegister />;
 	let keys = Object.keys(data[0].data);
 
 	return (
@@ -27,7 +31,6 @@ const TableWithDescriptionIcon = ({ data, columns, columnYesNo, yesNo }) => {
 				<TableHeadDefault columns={columns} />
 				<TableBody>
 					{data.map(row => {
-						console.log('image', row.extras.image);
 						return (
 							<TableRow key={row.data.id}>
 								<TableCell padding='checkbox'>
@@ -50,8 +53,7 @@ const TableWithDescriptionIcon = ({ data, columns, columnYesNo, yesNo }) => {
 								<TableCell align='left' width='200px'>
 									<LabelWithIcon
 										iconSrc={
-											iconList[row.extras.image] ||
-											iconList.box
+											row.extras.image || iconList.box
 										}
 										title={row.data.description}
 									/>

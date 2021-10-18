@@ -1,34 +1,39 @@
 import React, { useEffect } from 'react';
 
-import { TabStyled, TabsStyled, HeadSection, ButtonSection } from '../styles';
+import {
+	TabStyled,
+	TabsStyled,
+	HeadSection,
+	ButtonSection,
+	ProgressContainer,
+} from '../styles';
 import { useTranslation } from 'react-i18next';
 
 import ButtonIconAdd from '../../../components/Geral/ButtonIcon';
 
 import { defaultTheme } from '../../../theme';
 import TableNormal from '../../../components/Table/TableNormal';
-import { useArea } from '../../../context/areasContext';
 import TableWithDescriptionIcon from '../../../components/Table/TableDescriptionWithIcon';
 import {
-	animaisData,
 	animaisLots,
 	animaisMoviment,
 	animaisWeighings,
 } from '../../../utils/dataMock/mock';
-import { TableBody, Table } from '@material-ui/core';
+import { TableBody, Table, CircularProgress } from '@material-ui/core';
 import CollapseRow from '../../../components/Table/CollapseRow';
 import { StyledTableContainer } from '../../../components/Table/styles';
 import TableHeadDefault from '../../../components/Table/TableHead';
+import { useAnimals } from '../../../context/animalsContext';
 
 const Animals = () => {
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
-	const { isLoading, areas, modules, getAreasAndModules } = useArea();
+	const { isLoading, animals, getAnimals, deleteAnimals } = useAnimals();
 
 	const [value, setValue] = React.useState(0);
 
 	useEffect(() => {
-		getAreasAndModules();
+		getAnimals();
 	}, []);
 
 	const handleChange = (event, newValue) => {
@@ -83,7 +88,9 @@ const Animals = () => {
 	];
 
 	return isLoading ? (
-		<span>carregando...</span>
+		<ProgressContainer>
+			<CircularProgress style={{ color: colors.primary }} />
+		</ProgressContainer>
 	) : (
 		<>
 			<HeadSection>
@@ -104,10 +111,11 @@ const Animals = () => {
 			</HeadSection>
 			{value === 0 && (
 				<TableNormal
-					data={animaisData}
+					data={animals}
 					columns={columnsRegisteredAnimals}
 					putInIcon={false}
 					description={false}
+					deleteFunction={deleteAnimals}
 				/>
 			)}
 			{value === 1 && (

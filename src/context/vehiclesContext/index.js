@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { createContainer, useContainer } from 'unstated-next';
 import api from '../../api';
 import { useAuthentication } from '../authContext';
+import { formatResponseVehicle } from './formatVehicle';
 
 const useVehicleContainer = () => {
 	const { propertiesSelected, token } = useAuthentication();
@@ -10,15 +11,16 @@ const useVehicleContainer = () => {
 	const [isLoading, setLoading] = useState(true);
 
 	const getVehicle = () => {
-		setLoading(true);
-		api.get(`/GetVehicle/${propertiesSelected}`)
-			.then(res => {
-				setVehicle(formatResponseVehicle(res.data.vehicles));
-				setLoading(false);
-			})
-			.catch(err => {
-				console.log(err);
-			});
+		propertiesSelected.map(property => {
+			api.get(`/GetVehicle/${propertiesSelected}`)
+				.then(res => {
+					setVehicle(formatResponseVehicle(res.data.vehicles));
+					setLoading(false);
+				})
+				.catch(err => {
+					console.log(err);
+				});
+		});
 	};
 
 	const deleteVehicle = id => {
@@ -54,31 +56,6 @@ const useVehicleContainer = () => {
 		deleteVehicle,
 		postVehicle,
 	};
-};
-
-const formatResponseVehicle = response => {
-	let tempArray = [];
-	response.map(res => {
-		console.log(res);
-		console.log(res.updated_at.substring(0, res.updated_at.indexOf('T')));
-		tempArray.push({
-			id: res.id,
-			description: res.nickname,
-			brand: res.brand,
-			model: res.model,
-			color: res.color,
-			board: res.board.toUpperCase(),
-			vehicleOwner: res.vehicleOwner,
-			lastRevision: res.dateOfLastRevision
-				? res.dateOfLastRevision.substring(
-						0,
-						res.dateOfLastRevision.indexOf('T')
-				  )
-				: '--',
-		});
-	});
-
-	return tempArray;
 };
 
 export const VehicleContainer = createContainer(useVehicleContainer);

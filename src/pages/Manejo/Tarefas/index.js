@@ -41,7 +41,6 @@ const Tarefas = () => {
 				<TitleSection>
 					{t('assignments')}
 					<Filter
-						label={'Todos'}
 						itensMenu={itensMenuCombustivel}
 						clickFunction={filter}
 					/>

@@ -39,7 +39,6 @@ const Demandas = () => {
 				<TitleSection>
 					{t('demand')}
 					<Filter
-						label={'Todos'}
 						itensMenu={itensMenuCombustivel}
 						clickFunction={filter}
 					/>

@@ -37,7 +37,6 @@ const Combustivel = () => {
 				<TitleSection>
 					{t('fuelRecords')}
 					<Filter
-						label={'Todos'}
 						itensMenu={itensMenuCombustivel}
 						clickFunction={filter}
 					/>

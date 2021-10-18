@@ -43,7 +43,6 @@ const Veiculos = () => {
 				<TitleSection>
 					{t('vehicle')}
 					<Filter
-						label={'Todos'}
 						itensMenu={itensMenuCombustivel}
 						clickFunction={filter}
 					/>

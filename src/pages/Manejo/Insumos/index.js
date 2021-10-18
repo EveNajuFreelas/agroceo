@@ -38,7 +38,6 @@ const Insumos = () => {
 				<TitleSection>
 					{t('input')}
 					<Filter
-						label={'Todos'}
 						itensMenu={itensMenuCombustivel}
 						clickFunction={filter}
 					/>

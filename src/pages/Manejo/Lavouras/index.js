@@ -42,7 +42,6 @@ const Lavouras = () => {
 				<TitleSection>
 					{t('agriculture')}
 					<Filter
-						label={'Todos'}
 						itensMenu={itensMenuCombustivel}
 						clickFunction={filter}
 					/>

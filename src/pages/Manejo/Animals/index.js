@@ -8,21 +8,22 @@ import {
 	ProgressContainer,
 } from '../styles';
 import { useTranslation } from 'react-i18next';
-
-import ButtonIconAdd from '../../../components/Geral/ButtonIcon';
-
 import { defaultTheme } from '../../../theme';
+
 import TableNormal from '../../../components/Table/TableNormal';
 import TableWithDescriptionIcon from '../../../components/Table/TableDescriptionWithIcon';
+import ButtonIconAdd from '../../../components/Geral/ButtonIcon';
+import CollapseRow from '../../../components/Table/CollapseRow';
+import TableHeadDefault from '../../../components/Table/TableHead';
+
 import {
 	animaisLots,
 	animaisMoviment,
 	animaisWeighings,
 } from '../../../utils/dataMock/mock';
+
 import { TableBody, Table, CircularProgress } from '@material-ui/core';
-import CollapseRow from '../../../components/Table/CollapseRow';
 import { StyledTableContainer } from '../../../components/Table/styles';
-import TableHeadDefault from '../../../components/Table/TableHead';
 import { useAnimals } from '../../../context/animalsContext';
 
 const Animals = () => {
@@ -56,7 +57,6 @@ const Animals = () => {
 		t('age'),
 		t('quantity'),
 	];
-	console.log(columnTableCollapse);
 
 	let columnsLotsAnimals = [
 		'ID',

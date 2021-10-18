@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { createContainer, useContainer } from 'unstated-next';
 import api from '../../api';
 import { useAuthentication } from '../authContext';
+import { formatResponseArea, formatResponseModule } from './formatAreas';
 
 const useAreaContainer = () => {
 	const { propertiesSelected } = useAuthentication();
@@ -11,24 +12,24 @@ const useAreaContainer = () => {
 	const [isLoading, setLoading] = useState(true);
 
 	const getAreasAndModules = () => {
-		api.get(`/subareas/${2}`)
-			.then(res => {
-				console.log('subareas', formatResponseArea(res.data));
-				setAreas(formatResponseArea(res.data));
-			})
-			.catch(err => {
-				console.log(err);
-			});
+		propertiesSelected.map(property => {
+			api.get(`/subareas/${2}`)
+				.then(res => {
+					setAreas(formatResponseArea(res.data));
+				})
+				.catch(err => {
+					console.log(err);
+				});
 
-		api.get(`/modules/${propertiesSelected}`)
-			.then(res => {
-				console.log(formatResponseModule(res.data.modules));
-				setModules(formatResponseModule(res.data.modules));
-				setLoading(false);
-			})
-			.catch(err => {
-				console.log(err);
-			});
+			api.get(`/modules/${property}`)
+				.then(res => {
+					setModules(formatResponseModule(res.data.modules));
+					setLoading(false);
+				})
+				.catch(err => {
+					console.log(err);
+				});
+		});
 	};
 
 	return {
@@ -38,37 +39,6 @@ const useAreaContainer = () => {
 		getAreasAndModules,
 	};
 };
-
-const formatResponseArea = response => {
-	let tempArray = [];
-	response.forEach(res => {
-		tempArray.push({
-			id: res.id,
-			name: res.name,
-			size: `${res.size} ha`,
-			destination: res.destination.name,
-		});
-	});
-
-	return tempArray;
-};
-
-const formatResponseModule = response => {
-	let tempArray = [];
-	response.forEach(res => {
-		tempArray.push({
-			id: res.id,
-			name: res.name,
-			nickname: res.surName,
-			pastures: subareas || null,
-			destination: res.destination.name,
-		});
-	});
-
-	return tempArray;
-};
-
-const subareas = ['Pasto da onça', 'Pasto da Vaca Louca'];
 
 export const AreasContainer = createContainer(useAreaContainer);
 

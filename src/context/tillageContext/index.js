@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { createContainer, useContainer } from 'unstated-next';
 import api from '../../api';
 import { useAuthentication } from '../authContext';
+import { formatResponseTillage } from './formatTillage';
 
 const useTillageContainer = () => {
 	const [tillage, setTillage] = useState([]);
@@ -12,8 +13,7 @@ const useTillageContainer = () => {
 		propertiesSelected.map(each => {
 			api.get(`/tillages/${each}`)
 				.then(res => {
-					console.log(formatResponse(res.data.tillage));
-					setTillage(formatResponse(res.data.tillage));
+					setTillage(formatResponseTillage(res.data.tillage));
 					setLoading(false);
 				})
 				.catch(err => {
@@ -50,21 +50,6 @@ const useTillageContainer = () => {
 		isLoading,
 		deleteTillage,
 	};
-};
-
-const formatResponse = response => {
-	let tempArray = [];
-	response.forEach(res => {
-		tempArray.push({
-			id: res.id,
-			type: res.typeTillage,
-			subarea: res.subArea || 'Sub-área 9 “Antiga matinha” - 60 ha',
-			sackQuantity: res.sackQuantity,
-			weightPerSack: res.weightPerSack,
-		});
-	});
-
-	return tempArray;
 };
 
 export const TillageContainer = createContainer(useTillageContainer);

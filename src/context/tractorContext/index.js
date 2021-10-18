@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { createContainer, useContainer } from 'unstated-next';
 import api from '../../api';
 import { useAuthentication } from '../authContext';
+import { formatResponseTractor } from './formatTractor';
 
 const useTractorContainer = () => {
 	const [tractor, setTractor] = useState([]);
@@ -9,15 +10,16 @@ const useTractorContainer = () => {
 	const { propertiesSelected, token } = useAuthentication();
 
 	const getTractor = () => {
-		api.get(`/tractor/${propertiesSelected}`)
-			.then(res => {
-				console.log(formatResponse(res.data));
-				setTractor(formatResponse(res.data));
-				setLoading(false);
-			})
-			.catch(err => {
-				console.log(err);
-			});
+		propertiesSelected.map(property => {
+			api.get(`/tractor/${property}`)
+				.then(res => {
+					setTractor(formatResponseTractor(res.data));
+					setLoading(false);
+				})
+				.catch(err => {
+					console.log(err);
+				});
+		});
 	};
 
 	const deleteTractor = id => {
@@ -50,27 +52,6 @@ const useTractorContainer = () => {
 		isLoading,
 		deleteTractor,
 	};
-};
-
-const formatResponse = response => {
-	let tempArray = [];
-	response.forEach(res => {
-		tempArray.push({
-			id: res.id,
-			brand: res.brand,
-			model: res.model,
-			color: res.color,
-			tractorYear: res.tractorYear,
-			board: res.board,
-			tractorOwner: res.tractorOwner,
-			dateOfLastRevision: res.dateOfLastRevision.substring(
-				0,
-				res.dateOfLastRevision.indexOf('T')
-			),
-		});
-	});
-
-	return tempArray;
 };
 
 export const TractorContainer = createContainer(useTractorContainer);

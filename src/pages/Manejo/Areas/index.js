@@ -1,12 +1,6 @@
-import React, { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
-import {
-	TabStyled,
-	TabsStyled,
-	HeadSection,
-	ButtonSection,
-	ProgressContainer,
-} from '../styles';
+import { TabStyled, TabsStyled, HeadSection, ButtonSection } from '../styles';
 import { useTranslation } from 'react-i18next';
 
 import ButtonIconAdd from '../../../components/Geral/ButtonIcon';
@@ -15,14 +9,14 @@ import { defaultTheme } from '../../../theme';
 import TableNormal from '../../../components/Table/TableNormal';
 import { useArea } from '../../../context/areasContext';
 import TableWithChip from '../../../components/Table/TableWithChip';
-import { CircularProgress } from '@material-ui/core';
+import CircleLoading from '../../../components/LoadingCircle';
 
 const Areas = () => {
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
 	const { isLoading, areas, modules, getAreasAndModules } = useArea();
 
-	const [value, setValue] = React.useState(0);
+	const [value, setValue] = useState(0);
 
 	useEffect(() => {
 		getAreasAndModules();
@@ -47,9 +41,7 @@ const Areas = () => {
 	];
 
 	return isLoading ? (
-		<ProgressContainer>
-			<CircularProgress style={{ color: colors.primary }} />
-		</ProgressContainer>
+		<CircleLoading />
 	) : (
 		<>
 			<HeadSection>

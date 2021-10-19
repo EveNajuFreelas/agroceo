@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { TitleSection } from '../../../components/Geral/styles';
 import { HeadSection, ProgressContainer } from '../styles';
 
@@ -11,7 +11,7 @@ import Filter from '../../../components/Filter';
 import ButtonIconAdd from '../../../components/Geral/ButtonIcon';
 import TableNormal from '../../../components/Table/TableNormal';
 import { useTractor } from '../../../context/tractorContext';
-import { CircularProgress } from '@material-ui/core';
+import CircleLoading from '../../../components/LoadingCircle';
 
 const Tratores = () => {
 	const { t } = useTranslation();
@@ -55,9 +55,7 @@ const Tratores = () => {
 				/>
 			</HeadSection>
 			{isLoading ? (
-				<ProgressContainer>
-					<CircularProgress style={{ color: colors.primary }} />
-				</ProgressContainer>
+				<CircleLoading />
 			) : (
 				<TableNormal
 					data={tractor}

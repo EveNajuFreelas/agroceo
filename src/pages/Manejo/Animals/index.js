@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import {
 	TabStyled,
@@ -22,16 +22,17 @@ import {
 	animaisWeighings,
 } from '../../../utils/dataMock/mock';
 
-import { TableBody, Table, CircularProgress } from '@material-ui/core';
+import { TableBody, Table } from '@material-ui/core';
 import { StyledTableContainer } from '../../../components/Table/styles';
 import { useAnimals } from '../../../context/animalsContext';
+import CircleLoading from '../../../components/LoadingCircle';
 
 const Animals = () => {
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
 	const { isLoading, animals, getAnimals, deleteAnimals } = useAnimals();
 
-	const [value, setValue] = React.useState(0);
+	const [value, setValue] = useState(0);
 
 	useEffect(() => {
 		getAnimals();
@@ -88,9 +89,7 @@ const Animals = () => {
 	];
 
 	return isLoading ? (
-		<ProgressContainer>
-			<CircularProgress style={{ color: colors.primary }} />
-		</ProgressContainer>
+		<CircleLoading />
 	) : (
 		<>
 			<HeadSection>

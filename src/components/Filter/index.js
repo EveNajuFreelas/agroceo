@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, MenuItem } from '@material-ui/core/';
 
 import { LabelFilter, LabelContainer } from './styles';
@@ -14,7 +14,6 @@ const Filter = ({ itensMenu, clickFunction }) => {
 
 	useEffect(() => {
 		handleClose();
-		console.log(labelSelected);
 		clickFunction(labelSelected);
 	}, [labelSelected]);
 

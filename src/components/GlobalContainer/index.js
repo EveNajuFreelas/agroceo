@@ -1,5 +1,5 @@
 import { Container } from '@material-ui/core';
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import { Header } from '../../components/Header';
 import Sidebar from '../../components/Sidebar';
 import { usePageContext } from '../../context/pageContext';

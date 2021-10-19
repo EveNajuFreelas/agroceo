@@ -11,12 +11,12 @@ export const TableHeaderContainer = styled.div`
 	border: 1px solid #ebebeb;
 	border-radius: 10px 10px 0px 0px;
 	align-items: center;
-	
-	@media (max-width: 1445px){
+
+	@media (max-width: 1445px) {
 		grid-template-columns: 15% 25% 48% 12%;
 	}
-	
-	@media (max-width: 1025px){
+
+	@media (max-width: 1025px) {
 		grid-template-columns: 15% 25% 45% 15%;
 	}
 `;
@@ -49,15 +49,15 @@ export const SearchInput = styled(TextField)`
 		width: 45%;
 		display: flex;
 		color: green;
-		
-		@media (max-width: 1445px){
+
+		@media (max-width: 1445px) {
 			margin: auto;
-			width: 100%;	
+			width: 100%;
 		}
-		
-		@media (max-width: 1025px){
+
+		@media (max-width: 1025px) {
 			margin: auto;
-			width: 100%;	
+			width: 100%;
 		}
 	}
 
@@ -69,10 +69,10 @@ export const SearchInput = styled(TextField)`
 export const ContainerRight = styled.div`
 	display: flex;
 	justify-content: space-evenly;
-	@media (max-width: 1025px){
+	@media (max-width: 1025px) {
 		margin: auto;
 		justify-content: center;
-		width: 100%;	
+		width: 100%;
 	}
 `;
 
@@ -82,7 +82,7 @@ export const ButtonRight = styled.div`
 `;
 
 export const FilterContainer = styled.div`
-	width: 75%;
+	width: 90%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;

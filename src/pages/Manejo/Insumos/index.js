@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { TitleSection } from '../../../components/Geral/styles';
 import { HeadSection, ProgressContainer } from '../styles';
 
@@ -8,10 +8,9 @@ import { defaultTheme } from '../../../theme';
 import TableWithDescriptionIcon from '../../../components/Table/TableDescriptionWithIcon';
 import Filter from '../../../components/Filter';
 import { itensMenuCombustivel } from '../../../utils/dataMock/itensMenu';
-import { manejoInsumos } from '../../../utils/dataMock/mock';
 import ButtonIconAdd from '../../../components/Geral/ButtonIcon';
 import { useInput } from '../../../context/inputsContext';
-import { CircularProgress } from '@material-ui/core';
+import CircleLoading from '../../../components/LoadingCircle';
 
 const Insumos = () => {
 	const { t } = useTranslation();
@@ -50,9 +49,7 @@ const Insumos = () => {
 				/>
 			</HeadSection>
 			{isLoading ? (
-				<ProgressContainer>
-					<CircularProgress style={{ color: colors.primary }} />
-				</ProgressContainer>
+				<CircleLoading />
 			) : (
 				<div>
 					<TableWithDescriptionIcon

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import { TabStyled, TabsStyled, HeadSection, ButtonSection } from './styles';
+import { TabStyled, TabsStyled, HeadSection, ButtonSection } from '../styles';
 import { useTranslation } from 'react-i18next';
 
 import ButtonIconAdd from '../../../components/Geral/ButtonIcon';
@@ -9,16 +9,16 @@ import TableEmployees from '../../../components/Table/Manejo/tableEmployees';
 import { defaultTheme } from '../../../theme';
 import { useRole } from '../../../context/rolesContext';
 import TableWithChip from '../../../components/Table/TableWithChip';
-import { CircularProgress } from '@material-ui/core';
-import { ProgressContainer } from '../styles';
+import CircleLoading from '../../../components/LoadingCircle';
 
-const MaoObra = () => {
+const MaoDeObra = () => {
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
 	const { roles, employees, getRoles, getEmployees, isLoading, deleteRole } =
 		useRole();
 
 	const [value, setValue] = useState(0);
+
 	let columnsRoles = ['ID', t('roleName'), t('obligations'), t('daysWeek')];
 
 	useEffect(() => {
@@ -30,11 +30,7 @@ const MaoObra = () => {
 		setValue(newValue);
 	};
 
-	return isLoading ? (
-		<ProgressContainer>
-			<CircularProgress style={{ color: colors.primary }} />
-		</ProgressContainer>
-	) : (
+	return (
 		<>
 			<HeadSection>
 				<TabsStyled value={value} onChange={handleChange}>
@@ -58,14 +54,7 @@ const MaoObra = () => {
 				</ButtonSection>
 			</HeadSection>
 
-			{value === 0 &&
-				(employees ? (
-					<TableEmployees data={employees} />
-				) : (
-					<ProgressContainer>
-						<CircularProgress style={{ color: colors.primary }} />
-					</ProgressContainer>
-				))}
+			{value === 0 && <TableEmployees data={employees} />}
 			{value === 1 && (
 				<TableWithChip
 					data={roles}
@@ -77,4 +66,4 @@ const MaoObra = () => {
 	);
 };
 
-export default MaoObra;
+export default MaoDeObra;

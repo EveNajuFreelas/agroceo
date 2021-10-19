@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { TitleSection } from '../../../components/Geral/styles';
 import { HeadSection, ProgressContainer } from '../styles';
 
@@ -11,7 +11,7 @@ import Filter from '../../../components/Filter';
 import ButtonIconAdd from '../../../components/Geral/ButtonIcon';
 import TableTarefas from '../../../components/Table/Manejo/tableTarefas';
 import { useTask } from '../../../context/taskContext';
-import { CircularProgress } from '@material-ui/core';
+import CircleLoading from '../../../components/LoadingCircle';
 
 const Tarefas = () => {
 	const { t } = useTranslation();
@@ -53,9 +53,7 @@ const Tarefas = () => {
 				/>
 			</HeadSection>
 			{isLoading ? (
-				<ProgressContainer>
-					<CircularProgress style={{ color: colors.primary }} />
-				</ProgressContainer>
+				<CircleLoading />
 			) : (
 				<TableTarefas
 					data={tasks}

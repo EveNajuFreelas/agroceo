@@ -19,8 +19,13 @@ export const GlobalContainer = ({ children }) => {
 			<Sidebar />
 			<Header />
 			<Container
-				style={{ paddingTop: 80, maxWidth: '90%', width: width, marginLeft: marginLeft, 
-				transition: 'all 0.4s ease-out'}}
+				style={{
+					paddingTop: 80,
+					maxWidth: '90%',
+					width: width,
+					marginLeft: marginLeft,
+					transition: 'all 0.4s ease-out',
+				}}
 			>
 				{children}
 			</Container>

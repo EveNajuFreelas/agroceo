@@ -1,19 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { TitleSection } from '../../../components/Geral/styles';
-import { HeadSection } from '../styles';
+import { HeadSection, ProgressContainer } from '../styles';
 
 import { useTranslation } from 'react-i18next';
 import { defaultTheme } from '../../../theme';
 
 import TableDemandas from '../../../components/Table/Manejo/tableDemandas';
 import Filter from '../../../components/Filter';
-import { manejoDemandas } from '../../../utils/dataMock/mock';
 import ButtonIconAdd from '../../../components/Geral/ButtonIcon';
 import { itensMenuCombustivel } from '../../../utils/dataMock/itensMenu';
+import { useDemand } from '../../../context/demandContext';
+import { CircularProgress } from '@material-ui/core';
 
 const Demandas = () => {
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
+	const { demands, deleteDemands, getDemands, isLoading } = useDemand();
+
+	useEffect(() => {
+		getDemands();
+	}, []);
 
 	const columns = [
 		'ID',
@@ -27,14 +33,12 @@ const Demandas = () => {
 		console.log(mes);
 	};
 
-	const deleteDemanda = id => {};
 	return (
 		<>
 			<HeadSection>
 				<TitleSection>
 					{t('demand')}
 					<Filter
-						label={'Todos'}
 						itensMenu={itensMenuCombustivel}
 						clickFunction={filter}
 					/>
@@ -46,13 +50,17 @@ const Demandas = () => {
 					marginBottom={true}
 				/>
 			</HeadSection>
-			<div>
+			{isLoading ? (
+				<ProgressContainer>
+					<CircularProgress style={{ color: colors.primary }} />
+				</ProgressContainer>
+			) : (
 				<TableDemandas
-					data={manejoDemandas}
+					data={demands}
 					columns={columns}
-					deleteFunction={deleteDemanda}
+					deleteFunction={deleteDemands}
 				/>
-			</div>
+			)}
 		</>
 	);
 };

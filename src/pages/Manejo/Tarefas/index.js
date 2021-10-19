@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { TitleSection } from '../../../components/Geral/styles';
-import { HeadSection } from '../styles';
+import { HeadSection, ProgressContainer } from '../styles';
 
 import { useTranslation } from 'react-i18next';
 import { defaultTheme } from '../../../theme';
@@ -10,13 +10,17 @@ import { itensMenuCombustivel } from '../../../utils/dataMock/itensMenu';
 import Filter from '../../../components/Filter';
 import ButtonIconAdd from '../../../components/Geral/ButtonIcon';
 import TableTarefas from '../../../components/Table/Manejo/tableTarefas';
-import { manejoTask } from '../../../utils/dataMock/mock';
+import { useTask } from '../../../context/taskContext';
+import { CircularProgress } from '@material-ui/core';
 
 const Tarefas = () => {
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
+	const { getTasks, tasks, deleteTasks, isLoading } = useTask();
 
-	useEffect(() => {}, []);
+	useEffect(() => {
+		getTasks();
+	}, []);
 
 	const columns = [
 		'ID',
@@ -31,15 +35,12 @@ const Tarefas = () => {
 		console.log(mes);
 	};
 
-	const deleteTask = id => {};
-
 	return (
 		<>
 			<HeadSection>
 				<TitleSection>
 					{t('assignments')}
 					<Filter
-						label={'Todos'}
 						itensMenu={itensMenuCombustivel}
 						clickFunction={filter}
 					/>
@@ -51,15 +52,17 @@ const Tarefas = () => {
 					marginBottom={true}
 				/>
 			</HeadSection>
-			{/* {isLoading ? (
-				<span>Carregando...</span>
-			) : ( */}
-			<TableTarefas
-				data={manejoTask}
-				columns={columns}
-				deleteFunction={deleteTask}
-			/>
-			{/* )} */}
+			{isLoading ? (
+				<ProgressContainer>
+					<CircularProgress style={{ color: colors.primary }} />
+				</ProgressContainer>
+			) : (
+				<TableTarefas
+					data={tasks}
+					columns={columns}
+					deleteFunction={deleteTasks}
+				/>
+			)}
 		</>
 	);
 };

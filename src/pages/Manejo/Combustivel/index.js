@@ -19,8 +19,8 @@ const Combustivel = () => {
 		'ID',
 		t('description'),
 		t('quantity'),
+		t('invoice'),
 		t('supplier'),
-		t('payment'),
 		t('supplyLocation'),
 		t('driver'),
 		t('vehicle'),
@@ -37,7 +37,6 @@ const Combustivel = () => {
 				<TitleSection>
 					{t('fuelRecords')}
 					<Filter
-						label={'Todos'}
 						itensMenu={itensMenuCombustivel}
 						clickFunction={filter}
 					/>
@@ -53,7 +52,8 @@ const Combustivel = () => {
 				<TableWithDescriptionIcon
 					data={manejoCombustivel}
 					columns={columns}
-					yesNo={false}
+					yesNo={true}
+					columnYesNo={'invoice'}
 				/>
 			</div>
 		</>

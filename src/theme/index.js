@@ -19,11 +19,12 @@ export const defaultTheme = {
 		neutral2: '#E5E5E5',
 		neutral3: '#C0C0C0',
 		neutral4: '#7C7B7B',
-		neutral5: '#212121',
+		neutral5: '#272727',
 		neutral6: '#A3A3A3',
 		neutralDark: '#525252',
 		darkerGreen: '#02733E',
 		greenLight: '#7AC743',
+		loginImgOverlay: 'rgba(4, 241, 130, 0.3)',
 		events: {
 			onHover: 'rgba(255, 255, 255, 0.3)',
 			onHoverSubmenu: 'rgba(4, 241, 130, 0.3)',
@@ -71,11 +72,13 @@ export const defaultTheme = {
 		md: '5px',
 		lg: '10px',
 		xl: '10em',
+		xl1: '20px',
 	},
 	padding: {
 		sm: '4px',
 		md: '8px',
 		lg: '12px',
+		exg: '45px',
 	},
 	margin: {
 		sm: '4px',

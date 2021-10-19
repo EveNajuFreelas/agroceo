@@ -12,38 +12,23 @@ import {
 import { StyledTableContainer } from '../../styles';
 import { iconList } from '../../../../assets/Icons/icon-list';
 import TableHeadDefault from '../../TableHead';
-import YesNo from '../../yesNo';
+import NoRegister from '../../../NoRegistry';
+import { useTranslation } from 'react-i18next';
 
 const TableTarefas = ({ data, columns, deleteFunction }) => {
 	const { colors } = defaultTheme;
-
-	console.log(data.length != 0);
+	const { t } = useTranslation();
 
 	if (data.length === 0) {
-		return <span>Sem registros</span>;
+		return <NoRegister />;
 	}
 
-	let keys = Object.keys(data[0]);
-
-	const getColor = name => {
-		switch (name) {
-			case 'Iniciada':
-				return '#13ABCD';
-				break;
-			case 'Recusada':
-				return colors.auxiliar;
-				break;
-			case 'Concluída':
-				return colors.primary;
-				break;
-			case 'Não iniciada':
-				return '#F2B705';
-				break;
-			case 'Demanda':
-				return '#013C21';
-				break;
-		}
-	};
+	const getColor = Object.freeze({
+		open: '#13ABCD',
+		refused: colors.auxiliar,
+		done: colors.primary,
+		unstarted: '#F2B705',
+	});
 
 	return (
 		<StyledTableContainer>
@@ -72,16 +57,18 @@ const TableTarefas = ({ data, columns, deleteFunction }) => {
 								<TableCell align='left'>{row.title}</TableCell>
 
 								<TableCell align='right'>
-									{row.startDate}
+									{row.expected}
 								</TableCell>
 
-								<TableCell align='right'>{row.cost}</TableCell>
+								<TableCell align='right'>
+									{row.centers}
+								</TableCell>
 
 								<TableCell
 									align='right'
-									style={{ color: getColor(row.status) }}
+									style={{ color: getColor[row.status] }}
 								>
-									{row.status}
+									{t(row.status)}
 								</TableCell>
 
 								<TableCell align='right'>

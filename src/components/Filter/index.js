@@ -4,9 +4,9 @@ import { Menu, MenuItem } from '@material-ui/core/';
 import { LabelFilter, LabelContainer } from './styles';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 
-const Filter = ({ label, itensMenu, clickFunction }) => {
+const Filter = ({ itensMenu, clickFunction }) => {
 	const [anchorEl, setAnchorEl] = useState(null);
-	const [labelSelected, setLabelSelected] = useState(label);
+	const [labelSelected, setLabelSelected] = useState(itensMenu[0]);
 
 	const handleClick = event => {
 		setAnchorEl(event.currentTarget);
@@ -14,6 +14,7 @@ const Filter = ({ label, itensMenu, clickFunction }) => {
 
 	useEffect(() => {
 		handleClose();
+		console.log(labelSelected);
 		clickFunction(labelSelected);
 	}, [labelSelected]);
 

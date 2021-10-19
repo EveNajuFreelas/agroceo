@@ -17,6 +17,7 @@ import { StyledTableContainer } from '../../styles';
 import LabelWithIcon from '../../../LabelWithIcon';
 import { iconList } from '../../../../assets/Icons/icon-list';
 import { useRole } from '../../../../context/rolesContext';
+import NoRegister from '../../../NoRegistry';
 
 const TableEmployees = ({ data }) => {
 	const { t } = useTranslation();
@@ -24,7 +25,7 @@ const TableEmployees = ({ data }) => {
 	const { colors } = defaultTheme;
 
 	if (data.length === 0) {
-		return <span>Sem registros</span>;
+		return <NoRegister />;
 	}
 
 	const columns = [

@@ -12,6 +12,8 @@ import CardTotalValue from '../../../components/Card/CardTotalValue';
 import TableWithDescriptionIcon from '../../../components/Table/TableDescriptionWithIcon';
 import { financeiroData } from '../../../utils/dataMock/mock';
 import TableHeader from '../../../components/Table/TableHeader';
+import { FinancialModal } from '../../../components/Modals/Financial/index';
+
 const Investimento = () => {
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
@@ -29,6 +31,8 @@ const Investimento = () => {
 	];
 
 	return (
+		<>
+		<FinancialModal title={t('newInvestment')} breadcrumbs={['financial', 'investments']} />
 		<FinancialOverview>
 			<SummaryContainer>
 				<CardValueContainer>
@@ -62,6 +66,7 @@ const Investimento = () => {
 				/>
 			</div>
 		</FinancialOverview>
+		</>
 	);
 };
 

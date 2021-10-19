@@ -254,3 +254,30 @@ export const manejoInsumos = [
 		Quem: 'José da Silva',
 	},
 ];
+
+export const fuelTypes = [
+    {
+        value: 'common-diesel',
+        name: 'commonDiesel'
+    },
+    {
+        value: 's10-diesel',
+        name: 's10Diesel'
+    },
+    {
+        value: 'common-gasoline',
+        name: 'commonGasoline'
+    },
+    {
+        value: 'gasoline-additive',
+        name: 'gasolineAdditive'
+    },
+    {
+        value: 'common-diesel',
+        name: 'commonDiesel'
+    },
+    {
+        value: 'ethanol',
+        name: 'ethanol'
+    },
+]

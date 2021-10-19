@@ -10,8 +10,13 @@ import Filter from '../../../components/Filter';
 import { itensMenuCombustivel } from '../../../utils/dataMock/itensMenu';
 import { manejoCombustivel } from '../../../utils/dataMock/mock';
 import ButtonIconAdd from '../../../components/Geral/ButtonIcon';
+import { useManagementContainer } from '../../../context/managementContext';
+import { InitialManagementModal } from '../../../components/Modals/Management';
+import { EntranceManagementModal } from '../../../components/Modals/Management/entranceModal/index';
+import { ExitManagementModal } from '../../../components/Modals/Management/exitModal/index';
 
 const Combustivel = () => {
+    const { openInitialModal } = useManagementContainer();
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
 
@@ -33,6 +38,9 @@ const Combustivel = () => {
 
 	return (
 		<>
+			<InitialManagementModal />
+			<EntranceManagementModal />
+			<ExitManagementModal />
 			<HeadSection>
 				<TitleSection>
 					Resgistros de Combustível
@@ -47,6 +55,7 @@ const Combustivel = () => {
 					backgroundColor={colors.primary}
 					textButton='Registro'
 					marginBottom={true}
+					onClick={openInitialModal}
 				/>
 			</HeadSection>
 			<div>

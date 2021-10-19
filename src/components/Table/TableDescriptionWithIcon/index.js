@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { defaultTheme } from '../../../theme';
 import LabelWithIcon from '../../LabelWithIcon';
 import {
@@ -16,12 +16,12 @@ import TableHeadDefault from '../TableHead';
 import YesNo from '../yesNo';
 	
 const TableWithDescriptionIcon = ({ data, columns, columnYesNo, yesNo }) => {
-	const { setActiveContent, setModalState } = useExpensesContainer();
+	const { editActiveContent, setModalState } = useExpensesContainer();
 	const { colors } = defaultTheme;
 	let keys = Object.keys(data[0].data);
 
-	const handleClick = () => {
-		setActiveContent(data);
+	const handleClick = (info) => {
+		editActiveContent(info);
 		setModalState(true);
 	}
 
@@ -31,7 +31,6 @@ const TableWithDescriptionIcon = ({ data, columns, columnYesNo, yesNo }) => {
 				<TableHeadDefault columns={columns} />
 				<TableBody>
 					{data.map(row => {
-						console.log('image', row.extras.image);
 						return (
 							<TableRow key={row.data.id}>
 								<TableCell padding='checkbox'>
@@ -52,7 +51,7 @@ const TableWithDescriptionIcon = ({ data, columns, columnYesNo, yesNo }) => {
 								</TableCell>
 
 								<TableCell align='left' width='200px'>
-									<Link component='button' color='inherit' onClick={handleClick}>
+									<Link component='button' color='inherit' onClick={() => handleClick(row.data)}>
 										<LabelWithIcon
 											iconName={'Insumos'}
 											title={row.data.description}

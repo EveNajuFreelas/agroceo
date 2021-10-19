@@ -1,10 +1,8 @@
 import { useState } from "react";
 import { createContainer, useContainer } from "unstated-next";
-import { financeiroData } from "../../utils/dataMock/mock";
 
 const ExpensesContext = () => {
-    const [activeContent, setActiveContent] = useState({
-        ...financeiroData[0], 
+    const extraMockedInfo = {
         TotalValue: 1000,
         AccountPlan: 'Combustivel',
         Properties: [
@@ -21,15 +19,19 @@ const ExpensesContext = () => {
                 value: 800
             }
         ],
-    });
+    };
+
+    const [activeContent, setActiveContent] = useState(extraMockedInfo);
     const [modalState, setModalState] = useState(false);
+
+    const editActiveContent = (data) => setActiveContent(data);
     
     const clearContent = () => setActiveContent({});
     
     return {
         activeContent,
         modalState,
-        setActiveContent,
+        editActiveContent,
         setModalState,
         clearContent,
     }

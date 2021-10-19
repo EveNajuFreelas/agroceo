@@ -4,6 +4,7 @@ import { defaultTheme } from '../../../theme';
 
 import Filter from '../../Filter';
 import ButtonIconAdd from '../../Geral/ButtonIcon';
+import { useExpensesContainer } from '../../../context/financesContext/expensesContext';
 
 import {
 	TableHeaderContainer,
@@ -25,6 +26,7 @@ import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 
 const TableHeader = ({ data, columns, title }) => {
+	const { clearContent, setModalState } = useExpensesContainer();
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
 	const doc = new jsPDF();
@@ -60,6 +62,11 @@ const TableHeader = ({ data, columns, title }) => {
 		createPDF();
 		doc.output('dataurlnewwindow', `${title}.pdf`);
 	};
+
+	const handleClick = () => {
+		clearContent();
+		setModalState(true);
+	}
 
 	return (
 		<TableHeaderContainer>
@@ -103,6 +110,7 @@ const TableHeader = ({ data, columns, title }) => {
 					/>
 				</FilterContainer>
 				<ButtonIconAdd
+					onClick={handleClick}
 					color={colors.neutral0}
 					backgroundColor={colors.primary}
 					textButton='Registro'

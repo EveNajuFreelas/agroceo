@@ -9,11 +9,13 @@ const ButtonIconAdd = ({
 	backgroundColor,
 	textButton,
 	marginBottom,
+	...props
 }) => {
 	const { colors } = defaultTheme;
 
 	return (
 		<Button
+			{...props}
 			variant='contained'
 			startIcon={
 				<AddCircleOutlineOutlinedIcon style={{ color: `${color}` }} />

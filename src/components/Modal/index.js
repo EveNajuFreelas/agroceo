@@ -15,12 +15,14 @@ export const ModalShell = ({
     breadcrumbs, 
     handleClose,
     actionButtons,
-    children
+    children,
+    ...props
 }) => {
     const { t } = useTranslation();
 
     return (
     <ModalWrapper
+        {...props}
         open={open}
         onClose={handleClose}
         aria-labelledby='alert-dialog-slide-title'

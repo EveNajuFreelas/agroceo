@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ModalShell } from '../../Modal/index';
 import { useTranslation } from 'react-i18next';
 import { useExpensesContainer } from '../../../context/financesContext/expensesContext';
@@ -15,25 +15,30 @@ import {
     StyledSlider,
     ControlledInput
 } from '../inputsStyles';
-import { Checkbox, Input } from '@material-ui/core';
+import { Checkbox, InputLabel } from '@material-ui/core';
 
-export const FinancialModal = ({ title }) => {
-    const { modalState, setModalState, activeContent } = useExpensesContainer();
+export const FinancialModal = ({ title, breadcrumbs }) => {
+    const { modalState, setModalState, activeContent, editActiveContent } = useExpensesContainer();
     const { t } = useTranslation();
     const [currentInfo, setCurrentInfo] = useState(activeContent);
+
+    useEffect(() => {
+        setCurrentInfo(activeContent);
+    }, [activeContent]);
 
     const handleInput = (info, inputName) => {
         setCurrentInfo(curr => ({ ...curr, [inputName]: info}));
     }
 
     const handlePropertiesInput = (info, inputName, id) => {
-        console.log(inputName);
+        if(inputName == 'percentage') {
+            // fazer equivalência valor total -> porcentagem aqui
+        }
         const newArray = [...currentInfo.Properties];
         newArray[id] = {
             ...currentInfo.Properties[id],
             [inputName]: info,
         };
-        console.log(newArray[id]);
         setCurrentInfo(curr => ({...curr, Properties: newArray}));
     }
 
@@ -44,7 +49,7 @@ export const FinancialModal = ({ title }) => {
                     <p>{prop.name}</p>
                     <StyledSlider
                         value={prop.percentage}
-                        onChangeCommitted={(e, val) => handlePropertiesInput(Number(val), "percentage", prop.id)}
+                        onChange={(e, val) => handlePropertiesInput(Number(val), "percentage", prop.id)}
                     />
                     <ControlledInput
                         value={prop.percentage}
@@ -53,7 +58,7 @@ export const FinancialModal = ({ title }) => {
                     />
                     <ControlledInput
                         defaultValue={prop.value} 
-                        onChange={e => handlePropertiesInput(Number(e.target.value), e.target.name, prop.id)}
+                        onChange={e => handlePropertiesInput(Number(e.target.value), 'value', prop.id)}
                         type="number"
                     />
                 </PropertiesField>
@@ -64,8 +69,8 @@ export const FinancialModal = ({ title }) => {
         <ModalShell 
             open={modalState}
             handleClose={() => setModalState(false)}
-            title={title || "expenses"}
-            breadcrumbs={['financial', 'expenses']}
+            title={title}
+            breadcrumbs={breadcrumbs}
             actionButtons={[
                 {
                     onClick: () => setModalState(false),
@@ -83,29 +88,33 @@ export const FinancialModal = ({ title }) => {
         >
             <InputFieldsWrapper>
                 <div style={{ width: '50%'}}>
+                    <InputLabel htmlFor="description">{t('description')}</InputLabel>
                     <InputField
-                        label={t('description')}
+                        id='description'
                         name='Description'
-                        defaultValue={currentInfo.data.description}
+                        defaultValue={currentInfo?.description}
                         onChange={e => handleInput(e.target.value, e.target.name)}
                     />
+                    <InputLabel htmlFor="totalValue">{t('totalValue')}</InputLabel>
                     <InputField
-                        label={t('totalValue')}
+                        id='totalValue'
                         name='TotalValue'
                         type='money'
-                        defaultValue={currentInfo.TotalValue}
+                        defaultValue={currentInfo?.TotalValue}
                         onChange={e => handleInput(e.target.value, e.target.name)}
                     />
+                    <InputLabel htmlFor="expensesDate">{t('expensesDate')}</InputLabel>
                     <InputField 
-                        label={t('expensesDate')}
+                        id='expensesDate'
                         name='DateDespesa'
                         type='date'
                         onChange={e => handleInput(e.target.value, e.target.name)}
                     />
-                    <UploadField 
-                        label={t('receipt')}
-                        docName={currentInfo.data.DocumentPicture !== '--' 
-                            ? currentInfo.data.DocumentPicture 
+                    <InputLabel htmlFor="receipt">{t('receipt')}</InputLabel>
+                    <UploadField
+                        id='receipt'
+                        docName={currentInfo?.DocumentPicture !== '--' 
+                            ? currentInfo?.DocumentPicture 
                             : null}
                         name='Receipt'
                         buttonName={t('select')}
@@ -113,37 +122,37 @@ export const FinancialModal = ({ title }) => {
                     />
                 </div>
                 <div style={{ width: '50%' }}>
+                    <InputLabel htmlFor="payment">{t('payment')}</InputLabel>
                     <SelectField
-                        label={t('payment')}
+                        id='payment'
                         name='Payment'
-                        value={currentInfo.data.Payment}
+                        value={currentInfo?.Payment}
                         onChange={e => handleInput(e.target.value, e.target.name)}
-                        InputLabelProps={{ shrink: true }}
                     >
                         <StyledMenuItem value="Cartão de crédito">Cartão de Crédito</StyledMenuItem>
                     </SelectField>
+                    <InputLabel htmlFor="parcels">{t('parcels')}</InputLabel>
                     <SelectField
-                        label={t('parcels')}
+                        id='parcels'
                         name='Parcela'
-                        value={currentInfo.data.Parcela}
+                        value={currentInfo?.Parcela}
                         onChange={e => handleInput(e.target.value, e.target.name)}
-                        InputLabelProps={{ shrink: true }}
                     >
                         <StyledMenuItem value="10x">10x</StyledMenuItem>
                     </SelectField>
+                    <InputLabel htmlFor="firstParcel">{t('firstParcel')}</InputLabel>
                     <InputField 
-                        label={t('firstParcel')}
+                        id='firstParcel'
                         type='date'
                         name='FirstParcela'
                         onChange={e => handleInput(e.target.value, e.target.name)}
-                        InputLabelProps={{ shrink: true }}
                     />
+                    <InputLabel htmlFor="accountPlan">{t('AccountPlan')}</InputLabel>
                     <SelectField
-                        label={t('AccountPlan')}
+                        id='AccountPlan'
                         name='AccountPlan'
-                        value={currentInfo.AccountPlan}
+                        value={currentInfo?.AccountPlan}
                         onChange={e => handleInput(e.target.value, e.target.name)}
-                        InputLabelProps={{ shrink: true }}
                     >
                         <StyledMenuItem value="Combustivel">Combustível</StyledMenuItem>
                     </SelectField>

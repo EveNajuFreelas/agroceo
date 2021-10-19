@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { createContainer, useContainer } from 'unstated-next';
 
 const PageContextContainer = () => {
-	const [drawerOpen, setDrawerOpen] = useState(false);
+	const [drawerOpen, setDrawerOpen] = useState(true);
 
 	const changeDrawerState = () => setDrawerOpen(current => !current);
 

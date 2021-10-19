@@ -32,7 +32,7 @@ const Despesas = () => {
 
 	return (
 		<>
-		<FinancialModal />
+		<FinancialModal title={t('newExpenses')} breadcrumbs={['financial', 'expenses']} />
 		<FinancialOverview>
 			<SummaryContainer>
 				<CardValueContainer>

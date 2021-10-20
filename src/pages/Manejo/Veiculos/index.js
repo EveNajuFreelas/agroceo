@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { TitleSection } from '../../../components/Geral/styles';
-import { HeadSection } from '../styles';
+import { HeadSection, ProgressContainer } from '../styles';
 
 import { useTranslation } from 'react-i18next';
 import { defaultTheme } from '../../../theme';
@@ -11,6 +11,7 @@ import Filter from '../../../components/Filter';
 import ButtonIconAdd from '../../../components/Geral/ButtonIcon';
 import TableNormal from '../../../components/Table/TableNormal';
 import { useVehicle } from '../../../context/vehiclesContext';
+import CircleLoading from '../../../components/LoadingCircle';
 
 const Veiculos = () => {
 	const { t } = useTranslation();
@@ -40,9 +41,8 @@ const Veiculos = () => {
 		<>
 			<HeadSection>
 				<TitleSection>
-					Veículos
+					{t('vehicle')}
 					<Filter
-						label={'Todos'}
 						itensMenu={itensMenuCombustivel}
 						clickFunction={filter}
 					/>
@@ -56,7 +56,7 @@ const Veiculos = () => {
 			</HeadSection>
 			<div>
 				{isLoading ? (
-					<span>carregando...</span>
+					<CircleLoading />
 				) : (
 					<TableNormal
 						data={vehicle}

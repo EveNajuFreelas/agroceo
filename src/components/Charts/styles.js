@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const ChartContainer = styled.div`
 	display: 'flex';
+	width: 100%;
 	flex-direction: 'row';
 `;
 
@@ -11,5 +12,8 @@ export const PaperChart = styled.div`
 	height: 400px;
 	box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.09);
 	border-radius: 16px;
-	margin-top: 25px;
+
+	@media (max-width: 1024px){
+		width: ${props => props.drawerOpen ? `92%` : `95%`};
+	}
 `;

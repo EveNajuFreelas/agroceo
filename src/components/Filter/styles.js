@@ -11,4 +11,8 @@ export const LabelContainer = styled.div`
 
 export const LabelFilter = styled.span`
 	font-size: ${text.size.large};
+	
+	@media (max-width: 1025px){
+		font-size: ${text.size.medium};
+	}
 `;

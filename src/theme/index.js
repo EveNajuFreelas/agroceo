@@ -19,15 +19,16 @@ export const defaultTheme = {
 		neutral2: '#E5E5E5',
 		neutral3: '#C0C0C0',
 		neutral4: '#7C7B7B',
-		neutral5: '#212121',
+		neutral5: '#272727',
 		neutral6: '#A3A3A3',
 		neutralDark: '#525252',
 		darkerGreen: '#02733E',
 		greenLight: '#7AC743',
+		loginImgOverlay: 'rgba(4, 241, 130, 0.3)',
 		events: {
-		onHover: 'rgba(255, 255, 255, 0.3)',
-		onHoverSubmenu: 'rgba(4, 241, 130, 0.3)',
-		onHoverPrimaryButton: 'rgba(3, 181, 98, 0.9)',
+			onHover: 'rgba(255, 255, 255, 0.3)',
+			onHoverSubmenu: 'rgba(4, 241, 130, 0.3)',
+			onHoverPrimaryButton: 'rgba(3, 181, 98, 0.9)',
 		},
 	},
 	text: {
@@ -57,7 +58,7 @@ export const defaultTheme = {
 		weight: {
 			thin: 200,
 			normal: 400,
-      		semiBold: 500,
+			semiBold: 500,
 			bold: 700,
 		},
 	},
@@ -72,19 +73,21 @@ export const defaultTheme = {
 		md: '5px',
 		lg: '10px',
 		xl: '10em',
+		xl1: '20px',
 	},
 	padding: {
 		sm: '4px',
 		md: '8px',
 		lg: '12px',
 		xg: '20px',
+		exg: '45px',
 	},
 	margin: {
 		sm: '4px',
 		md: '8px',
 		lg: '12px',
 		lg2: '18px',
-    	xg: '24px',
+		xg: '24px',
 		exg: '32px',
 	},
 	opacity: {
@@ -96,7 +99,7 @@ export const defaultTheme = {
 		buttonSuccess: `2px solid #005500`,
 		buttonError: `2px solid #550000`,
 		header: `1px solid #EBEBEB`,
-		menu:  `1px solid #FFFFFF`,
+		menu: `1px solid #FFFFFF`,
 		input: `1px solid #A3A3A3`,
 	},
 	align: {
@@ -105,15 +108,15 @@ export const defaultTheme = {
 		spaceBetween: 'space-between',
 		flexEnd: 'flex-end',
 	},
-  width: {
-    sidebarOpen: '256px',
-    sidebarClosed: '97px',
-	subSidebar: '206px',
-	globalWidthOpen: '270px',
-	globalWidthClosed: '105px',
-	actionButtons: '130px',
-  },
-  height: {
-	input: '40px',
-  }
+	width: {
+		sidebarOpen: '256px',
+		sidebarClosed: '97px',
+		subSidebar: '206px',
+		globalWidthOpen: '270px',
+		globalWidthClosed: '105px',
+		actionButtons: '130px',
+	},
+	height: {
+		input: '40px',
+	},
 };

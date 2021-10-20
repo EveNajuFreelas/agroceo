@@ -101,7 +101,7 @@ export const manejoCombustivel = [
 			id: '00004',
 			description: 'Diesel Comum',
 			quantidade: '3000 Lts',
-			invoice: 'Sim',
+			invoice: false,
 			fornecedor: 'Ipiranga',
 			local: '-',
 			motorista: '-',
@@ -117,7 +117,7 @@ export const manejoCombustivel = [
 			id: '00005',
 			description: 'Diesel Comum',
 			quantidade: '32Lts',
-			invoice: 'Sim',
+			invoice: true,
 			fornecedor: 'Posto do zé',
 			local: 'Na cidade',
 			motorista: 'Rogério',
@@ -133,7 +133,7 @@ export const manejoCombustivel = [
 			id: '00006',
 			description: 'Diesel S-10',
 			quantidade: '62Lts',
-			invoice: 'Não',
+			invoice: true,
 			fornecedor: 'Rogério',
 			local: 'Na fazenda',
 			motorista: 'Rogério',
@@ -256,28 +256,219 @@ export const manejoInsumos = [
 ];
 
 export const fuelTypes = [
-    {
-        value: 'common-diesel',
-        name: 'commonDiesel'
-    },
-    {
-        value: 's10-diesel',
-        name: 's10Diesel'
-    },
-    {
-        value: 'common-gasoline',
-        name: 'commonGasoline'
-    },
-    {
-        value: 'gasoline-additive',
-        name: 'gasolineAdditive'
-    },
-    {
-        value: 'common-diesel',
-        name: 'commonDiesel'
-    },
-    {
-        value: 'ethanol',
-        name: 'ethanol'
-    },
-]
+	{
+		value: 'common-diesel',
+		name: 'commonDiesel',
+	},
+	{
+		value: 's10-diesel',
+		name: 's10Diesel',
+	},
+	{
+		value: 'common-gasoline',
+		name: 'commonGasoline',
+	},
+	{
+		value: 'gasoline-additive',
+		name: 'gasolineAdditive',
+	},
+	{
+		value: 'common-diesel',
+		name: 'commonDiesel',
+	},
+	{
+		value: 'ethanol',
+		name: 'ethanol',
+	},
+];
+export const animaisData = [
+	{
+		id: '002',
+		specie: 'Bovino',
+		type: 'Corte',
+		sex: 'Macho',
+		age: '12 meses',
+		quantity: 340,
+	},
+	{
+		id: '002',
+		specie: 'Bovino',
+		type: 'Leite',
+		sex: 'Fêmea',
+		age: '24 meses',
+		quantity: 158,
+	},
+];
+
+export const animaisMoviment = [
+	{
+		data: {
+			id: '00004',
+			description: 'Compra',
+			quantidade: 60,
+			specie: 'Bovinos',
+			category: 'Corte',
+			sex: 'Macho',
+			age: '18 meses',
+			weightAverage: '200 kg',
+		},
+		extras: {
+			image: 'entrada',
+		},
+	},
+	{
+		data: {
+			id: '00004',
+			description: 'Morte',
+			quantidade: 10,
+			specie: 'Bovinos',
+			category: 'Leite',
+			sex: 'Fêmea',
+			age: '32 meses',
+			weightAverage: '390 kg',
+		},
+		extras: {
+			image: 'saida',
+		},
+	},
+];
+
+export const animaisWeighings = [
+	{
+		id: '002',
+		lot: '1 - Lote de Engorda',
+		qntdAnimals: '100',
+		animalsWeighed: '30%',
+		averageWeight: '260 kg',
+		lastWeighing: '10/10/2021',
+		subarea: '1 - Pasto da onça',
+	},
+	{
+		id: '004',
+		lot: '1 - Lote de Engorda',
+		qntdAnimals: '100',
+		animalsWeighed: '30%',
+		averageWeight: '260 kg',
+		lastWeighing: '10/10/2021',
+		subarea: '1 - Pasto da onça',
+	},
+];
+
+export const animaisLots = [
+	{
+		id: '002',
+		lot: 'Lote 1',
+		nameLot: 'Lote de Engorda',
+		subarea: 'Sub-área 1 “Pasto da onça”',
+		total: '100',
+		content: [
+			{
+				raceSpecies: 'Bovino',
+				type: 'Corte',
+				sex: 'Macho',
+				age: '12 meses',
+				quantity: 10,
+			},
+			{
+				raceSpecies: 'Bovino',
+				type: 'Corte',
+				sex: 'Macho',
+				age: '12 meses',
+				quantity: 10,
+			},
+		],
+	},
+	{
+		id: '004',
+		lot: 'Lote 1',
+		nameLot: 'Lote de Engorda',
+		subarea: 'Sub-área 1 “Pasto da onça”',
+		total: '100',
+		content: [
+			{
+				raceSpecies: 'Bovino',
+				type: 'Corte',
+				sex: 'Macho',
+				age: '12 meses',
+				quantity: 10,
+			},
+		],
+	},
+];
+
+export const manejoDemandas = [
+	{
+		id: '000004',
+		demand: 'Cerca quebrada no pasto da onça',
+		createBy: 'Dito (Benedito)',
+		demandPhoto: 'https://www.google.com/',
+		task: true,
+	},
+	{
+		id: '000018',
+		demand: 'Cerca quebrada no pasto da onça',
+		createBy: 'Dito (Benedito)',
+		demandPhoto: 'https://www.google.com/',
+		task: false,
+	},
+];
+
+export const manejoTask = [
+	{
+		id: '000004',
+		title: 'Porteira da sede quebrada',
+		startDate: '13/10/2021',
+		cost: 'Animais, Lavoura',
+		status: 'Iniciada',
+		responsible: 'Rodrigo Alves de Souza',
+	},
+	{
+		id: '000004',
+		title: 'Concertar colchete do retiro',
+		startDate: '13/10/2021',
+		cost: 'Infraestrutura',
+		status: 'Recusada',
+		responsible: 'José da Silva',
+	},
+	{
+		id: '000004',
+		title: 'Porteira da sede quebrada',
+		startDate: '13/10/2021',
+		cost: null || '-',
+		status: 'Concluída',
+		responsible: 'Rodrigo Alves de Souza',
+	},
+	{
+		id: '000004',
+		title: 'Concertar colchete do retiro',
+		startDate: '13/10/2021',
+		cost: 'Infraestrutura',
+		status: 'Não iniciada',
+		responsible: 'José da Silva',
+	},
+	{
+		id: '000004',
+		title: 'Porteira da sede quebrada',
+		startDate: '13/10/2021',
+		cost: 'Animais, Lavoura',
+		status: 'Demanda',
+		responsible: null || '-',
+	},
+];
+
+export const manejoLavouras = [
+	{
+		id: '000004',
+		typeAgriculture: 'Arroz',
+		subarea: 'Sub-área 9 “Antiga matinha” - 60 ha',
+		numberBags: '100 sacos',
+		weightPerBag: '50 kg',
+	},
+	{
+		id: '000018',
+		typeAgriculture: 'Soja',
+		subarea: 'Sub-área 10 “Área do córrego” - 50 ha',
+		numberBags: '90 sacos',
+		weightPerBag: '45 kg',
+	},
+];

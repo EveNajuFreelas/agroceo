@@ -1,13 +1,20 @@
 import styled from 'styled-components';
 import { defaultTheme } from '../../../theme';
 
-const { text, colors } = defaultTheme;
+const { text, colors, margin } = defaultTheme;
 
 export const ListItemCard = styled.li`
 	display: grid;
 	grid-template-columns: 1fr 6fr 3fr;
 	align-items: flex-start;
 	padding: 10px 0;
+	
+	@media (max-width: 1445px){
+		grid-template-columns: 9% 61% 30%;
+	}
+	@media (max-width: 1025px){
+		grid-template-columns: 7% 60% 33%;
+	}
 `;
 
 export const IconItem = styled.img`
@@ -18,6 +25,7 @@ export const TitleSection = styled.div`
 	display: flex;
 	flex-direction: column;
 	row-gap: 2px;
+	margin-left: ${margin.lg};
 `;
 
 export const Title = styled.span`

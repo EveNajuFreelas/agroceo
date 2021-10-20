@@ -1,28 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import { TabStyled, TabsStyled, HeadSection, ButtonSection } from './styles';
+import { TabStyled, TabsStyled, HeadSection, ButtonSection } from '../styles';
 import { useTranslation } from 'react-i18next';
 
 import ButtonIconAdd from '../../../components/Geral/ButtonIcon';
-import TableEmployees from '../../../components/Table/ManejoMaoDeObra/tableEmployees';
+import TableEmployees from '../../../components/Table/Manejo/tableEmployees';
 
 import { defaultTheme } from '../../../theme';
 import { useRole } from '../../../context/rolesContext';
-import { useAuthentication } from '../../../context/authContext';
 import TableWithChip from '../../../components/Table/TableWithChip';
+import CircleLoading from '../../../components/LoadingCircle';
 
-const MaoObra = () => {
+const MaoDeObra = () => {
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
-	const { roles, employees, getRolesAndEmployees, isLoading, deleteRole } =
+	const { roles, employees, getRoles, getEmployees, isLoading, deleteRole } =
 		useRole();
-	const { propertiesSelected } = useAuthentication();
 
 	const [value, setValue] = useState(0);
+
 	let columnsRoles = ['ID', t('roleName'), t('obligations'), t('daysWeek')];
 
 	useEffect(() => {
-		getRolesAndEmployees(propertiesSelected);
+		getRoles();
+		getEmployees();
 	}, []);
 
 	const handleChange = (event, newValue) => {
@@ -30,7 +31,7 @@ const MaoObra = () => {
 	};
 
 	return isLoading ? (
-		<span>Carregando...</span>
+		<CircleLoading />
 	) : (
 		<>
 			<HeadSection>
@@ -55,12 +56,7 @@ const MaoObra = () => {
 				</ButtonSection>
 			</HeadSection>
 
-			{value === 0 &&
-				(employees ? (
-					<TableEmployees data={employees} />
-				) : (
-					<span>carregando...</span>
-				))}
+			{value === 0 && <TableEmployees data={employees} />}
 			{value === 1 && (
 				<TableWithChip
 					data={roles}
@@ -72,4 +68,4 @@ const MaoObra = () => {
 	);
 };
 
-export default MaoObra;
+export default MaoDeObra;

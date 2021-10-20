@@ -2,10 +2,11 @@ import React from 'react';
 
 import { TableCell, TableHead, TableRow, Checkbox } from '@material-ui/core';
 
-const TableHeadDefault = ({ columns }) => {
+const TableHeadDefault = ({ columns, space }) => {
 	return (
 		<TableHead>
 			<TableRow style={{ height: '50px' }}>
+				{space && <TableCell width={1} />}
 				<TableCell padding='checkbox'>
 					<Checkbox style={{ color: 'green' }} />
 				</TableCell>

@@ -12,7 +12,7 @@ const useAuthenticationContainer = () => {
 	const [ready, setReady] = useState(false);
 	const [user, setUser] = useState(localStorage.getItem('@agroceo/user'));
 	const [properties, setProperties] = useState();
-	const [propertiesSelected, setPropertiesSelected] = useState(5);
+	const [propertiesSelected, setPropertiesSelected] = useState([5]);
 
 	let token =
 		'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjksImlhdCI6MTYzMzg5MTI3NX0.fGb8aGcMui62Alr6kfq2WzXpnbggoFGEtX6dGGWj6Gw';

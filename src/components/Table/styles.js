@@ -18,7 +18,7 @@ export const StyledTableContainer = styled(TableContainer)`
 	}
 
 	&.MuiTableContainer-root .MuiTableRow-root {
-		height: 68px;
+		//height: 68px;
 	}
 
 	&.MuiTableContainer-root

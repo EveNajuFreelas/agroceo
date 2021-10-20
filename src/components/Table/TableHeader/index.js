@@ -14,6 +14,7 @@ import {
 	ButtonIcon,
 	ButtonWrapper,
 	FilterContainer,
+	ButtonRight,
 } from './styles';
 
 import {
@@ -93,29 +94,19 @@ const TableHeader = ({ data, columns, title }) => {
 			/>
 			<ContainerRight>
 				<FilterContainer>
-					<Filter
-						label={'2021'}
-						itensMenu={itensMenuYear}
-						clickFunction={filter}
-					/>
-					<Filter
-						label={'Setembro'}
-						itensMenu={itensMenuMonth}
-						clickFunction={filter}
-					/>
-					<Filter
-						label={'Todas as despesas'}
-						itensMenu={itensMenuYear}
-						clickFunction={filter}
-					/>
+					<Filter itensMenu={itensMenuYear} clickFunction={filter} />
+					<Filter itensMenu={itensMenuMonth} clickFunction={filter} />
+					<Filter itensMenu={itensMenuYear} clickFunction={filter} />
 				</FilterContainer>
+			</ContainerRight>
+			<ButtonRight>
 				<ButtonIconAdd
 					onClick={handleClick}
 					color={colors.neutral0}
 					backgroundColor={colors.primary}
 					textButton='Registro'
 				/>
-			</ContainerRight>
+			</ButtonRight>
 		</TableHeaderContainer>
 	);
 };

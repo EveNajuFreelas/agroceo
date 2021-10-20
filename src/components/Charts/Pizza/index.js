@@ -2,7 +2,7 @@ import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import { ChartContainer, PaperChart } from '../styles';
 import { TitleSection } from '../../Geral/styles';
-
+import { usePageContext } from "../../../context/pageContext/index.js";
 import {
 	PizzaContainer,
 	LegendPizzaContainer,
@@ -16,6 +16,7 @@ import { demandas } from '../../../utils/dataMock/mock';
 const dataset = demandas.datasets[0];
 
 const PizzaChart = () => {
+	const { drawerOpen } = usePageContext();
 	const options = {
 		plugins: {
 			legend: {
@@ -33,7 +34,7 @@ const PizzaChart = () => {
 	return (
 		<ChartContainer>
 			<TitleSection>Demandas</TitleSection>
-			<PaperChart>
+			<PaperChart drawerOpen={drawerOpen}>
 				<PizzaContainer>
 					<Doughnut data={demandas} options={options} />
 					<LegendPizzaContainer>
@@ -48,7 +49,7 @@ const PizzaChart = () => {
 									<LegendName>
 										{demandas.labels[index]}
 									</LegendName>
-									<LegendPercent>{`${demanda} %`}</LegendPercent>
+									<LegendPercent>{`${demanda}%`}</LegendPercent>
 								</LegendPizzaLabel>
 							</LegendPizzaItem>
 						))}

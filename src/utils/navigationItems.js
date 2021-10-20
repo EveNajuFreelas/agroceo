@@ -35,7 +35,7 @@ export const menuItems = [
 		id: 2,
 		name: 'management',
 		icon: <Icon name={iconList.farm} size={20} />,
-		url: '/manejo',
+		url: '/manejo/combustivel',
 		items: [
 			{
 				id: 2.1,
@@ -70,7 +70,7 @@ export const menuItems = [
 			{
 				id: 2.7,
 				text: 'agriculture',
-				url: '/dashboard',
+				url: '/manejo/lavouras',
 			},
 			{
 				id: 2.8,
@@ -80,35 +80,12 @@ export const menuItems = [
 			{
 				id: 2.9,
 				text: 'assignments',
-				url: '/dashboard',
+				url: '/manejo/tarefas',
 			},
 			{
 				id: 2.01,
 				text: 'demand',
-				url: '/dashboard',
-			},
-		],
-	},
-	{
-		id: 3,
-		name: 'reports',
-		icon: <Icon name={iconList.farm} size={20} />,
-		url: '/',
-		items: [
-			{
-				id: 3.1,
-				text: 'financial',
-				url: '/dashboard',
-			},
-			{
-				id: 3.2,
-				text: 'demand',
-				url: '/dashboard',
-			},
-			{
-				id: 3.3,
-				text: 'properties',
-				url: '/dashboard',
+				url: '/manejo/demandas',
 			},
 		],
 	},

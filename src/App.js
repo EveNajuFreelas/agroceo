@@ -1,4 +1,3 @@
-import React from 'react';
 import {
 	BrowserRouter as Router,
 	Route,
@@ -15,11 +14,14 @@ import Investimento from './pages/Financeiro/Investimento';
 import Receitas from './pages/Financeiro/Receitas';
 import Combustivel from './pages/Manejo/Combustivel';
 import Veiculos from './pages/Manejo/Veiculos';
-import MaoObra from './pages/Manejo/MaoObra';
+import MaoDeObra from './pages/Manejo/MaoObra';
 import Tratores from './pages/Manejo/Tratores';
 import Insumos from './pages/Manejo/Insumos';
 import Areas from './pages/Manejo/Areas';
 import Animals from './pages/Manejo/Animals';
+import Demandas from './pages/Manejo/Demandas';
+import Tarefas from './pages/Manejo/Tarefas';
+import Lavouras from './pages/Manejo/Lavouras';
 
 export function App() {
 	return (
@@ -32,6 +34,7 @@ export function App() {
 						component={() => <Redirect to='/dashboard' />}
 					/>
 					<NotLoggedRoute path='/login' exact component={Login} />
+
 					<NotLoggedRoute
 						path='/dashboard'
 						exact
@@ -69,7 +72,7 @@ export function App() {
 					<NotLoggedRoute
 						path='/manejo/maodeobra'
 						exact
-						component={MaoObra}
+						component={MaoDeObra}
 					/>
 
 					<NotLoggedRoute
@@ -91,9 +94,27 @@ export function App() {
 					/>
 
 					<NotLoggedRoute
+						path='/manejo/lavouras'
+						exact
+						component={Lavouras}
+					/>
+
+					<NotLoggedRoute
 						path='/manejo/animais'
 						exact
 						component={Animals}
+					/>
+
+					<NotLoggedRoute
+						path='/manejo/demandas'
+						exact
+						component={Demandas}
+					/>
+
+					<NotLoggedRoute
+						path='/manejo/tarefas'
+						exact
+						component={Tarefas}
 					/>
 				</Switch>
 			</Router>

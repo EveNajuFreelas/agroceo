@@ -20,16 +20,8 @@ const OverviewFinancial = () => {
 		<>
 			<FilterFinancial>
 				<FilterLabel>Financeiro</FilterLabel>
-				<Filter
-					label={'2021'}
-					itensMenu={itensMenuYear}
-					clickFunction={filter}
-				/>
-				<Filter
-					label={'Setembro'}
-					itensMenu={itensMenuMonth}
-					clickFunction={filter}
-				/>
+				<Filter itensMenu={itensMenuYear} clickFunction={filter} />
+				<Filter itensMenu={itensMenuMonth} clickFunction={filter} />
 			</FilterFinancial>
 			<CardTab>
 				<CardFinancial

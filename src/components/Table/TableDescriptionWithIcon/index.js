@@ -14,16 +14,20 @@ import { iconList } from '../../../assets/Icons/icon-list';
 import { useExpensesContainer } from '../../../context/financesContext/expensesContext';
 import TableHeadDefault from '../TableHead';
 import YesNo from '../yesNo';
-	
+import NoRegister from '../../NoRegistry';
+
 const TableWithDescriptionIcon = ({ data, columns, columnYesNo, yesNo }) => {
 	const { editActiveContent, setModalState } = useExpensesContainer();
 	const { colors } = defaultTheme;
+	console.log(data);
+
+	if (data.length === 0) return <NoRegister />;
 	let keys = Object.keys(data[0].data);
 
-	const handleClick = (info) => {
+	const handleClick = info => {
 		editActiveContent(info);
 		setModalState(true);
-	}
+	};
 
 	return (
 		<StyledTableContainer>
@@ -51,7 +55,11 @@ const TableWithDescriptionIcon = ({ data, columns, columnYesNo, yesNo }) => {
 								</TableCell>
 
 								<TableCell align='left' width='200px'>
-									<Link component='button' color='inherit' onClick={() => handleClick(row.data)}>
+									<Link
+										component='button'
+										color='inherit'
+										onClick={() => handleClick(row.data)}
+									>
 										<LabelWithIcon
 											iconName={'Insumos'}
 											title={row.data.description}

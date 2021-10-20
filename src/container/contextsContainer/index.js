@@ -11,7 +11,10 @@ import { ThemeProvider } from 'styled-components';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { AuthenticationContainer } from '../../context/authContext';
 import { ManagementContainer } from '../../context/managementContext';
-
+import { DemandContainer } from '../../context/demandContext';
+import { TaskContainer } from '../../context/taskContext';
+import { TillageContainer } from '../../context/tillageContext';
+import { AnimalsContainer } from '../../context/animalsContext';
 // import { PopoverContainer } from '../../context/Popover';
 // import { SnackbarProvider } from 'notistack';
 // import { PropertyContext } from '../../context/properties';
@@ -20,8 +23,8 @@ import { ManagementContainer } from '../../context/managementContext';
 
 const queryClient = new QueryClient();
 
-export const ContextsProviders = ({children}) => (
-    <ThemeProvider theme={defaultTheme}>
+export const ContextsProviders = ({ children }) => (
+	<ThemeProvider theme={defaultTheme}>
 		<QueryClientProvider client={queryClient}>
 			{/* <SnackbarProvider maxSnack={3}> */}
 			{/* <GlobalLoadingContext.Provider> */}
@@ -29,25 +32,33 @@ export const ContextsProviders = ({children}) => (
 				<ManagementContainer.Provider>
 					<RegisterContainer.Provider>
 						<PageContainer.Provider>
-							<VehicleContainer.Provider>
-								<AreasContainer.Provider>
-									<TractorContainer.Provider>
-										<ExpensesContainer.Provider>
-											<InputContainer.Provider>
-												<RoleContainer.Provider>
-												{/* <PopoverContainer.Provider> */}
-												{/* <ListPropertieContext.Provider> */}
-												{/* <PropertyContext.Provider> */}
-												{children}
-												{/* </PropertyContext.Provider> */}
-												{/* </ListPropertieContext.Provider> */}
-												{/* </PopoverContainer.Provider> */}
-												</RoleContainer.Provider>
-											</InputContainer.Provider>
-										</ExpensesContainer.Provider>
-									</TractorContainer.Provider>
-								</AreasContainer.Provider>
-							</VehicleContainer.Provider>
+							<AnimalsContainer.Provider>
+								<TillageContainer.Provider>
+									<TaskContainer.Provider>
+										<VehicleContainer.Provider>
+											<AreasContainer.Provider>
+												<DemandContainer.Provider>
+													<TractorContainer.Provider>
+														<ExpensesContainer.Provider>
+															<InputContainer.Provider>
+																<RoleContainer.Provider>
+																	{/* <PopoverContainer.Provider> */}
+																	{/* <ListPropertieContext.Provider> */}
+																	{/* <PropertyContext.Provider> */}
+																	{children}
+																	{/* </PropertyContext.Provider> */}
+																	{/* </ListPropertieContext.Provider> */}
+																	{/* </PopoverContainer.Provider> */}
+																</RoleContainer.Provider>
+															</InputContainer.Provider>
+														</ExpensesContainer.Provider>
+													</TractorContainer.Provider>
+												</DemandContainer.Provider>
+											</AreasContainer.Provider>
+										</VehicleContainer.Provider>
+									</TaskContainer.Provider>
+								</TillageContainer.Provider>
+							</AnimalsContainer.Provider>
 						</PageContainer.Provider>
 					</RegisterContainer.Provider>
 				</ManagementContainer.Provider>
@@ -55,5 +66,5 @@ export const ContextsProviders = ({children}) => (
 			{/* </GlobalLoadingContext.Provider> */}
 			{/* </SnackbarProvider> */}
 		</QueryClientProvider>
-	</ThemeProvider>                                         
+	</ThemeProvider>
 );

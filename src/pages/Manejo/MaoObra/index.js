@@ -30,7 +30,9 @@ const MaoDeObra = () => {
 		setValue(newValue);
 	};
 
-	return (
+	return isLoading ? (
+		<CircleLoading />
+	) : (
 		<>
 			<HeadSection>
 				<TabsStyled value={value} onChange={handleChange}>

@@ -1,4 +1,4 @@
-import { Button } from '@material-ui/core';
+import { Button, DialogContent } from '@material-ui/core';
 import { 
     ModalWrapper, 
     ModalHeader, 
@@ -39,11 +39,13 @@ export const ModalShell = ({
             </div>
             <CloseModal onClick={handleClose} />
         </ModalHeader>
+        <DialogContent>
         {children}
         {actionButtons && (<ModalFooter>
             {actionButtons.map(ab => (
                 <Button {...ab}>{t(ab.title)}</Button>
             ))}
         </ModalFooter>)}
+        </DialogContent>
     </ModalWrapper>)
 }

@@ -6,7 +6,7 @@ const ManagementContext = () => {
     const [exitModalState, setExitModalState] = useState(false);
     const [initialModalState, setInitialModalState] = useState(false);
     
-    const [activeContent, setActiveContent] = useState();
+    const [activeContent, setActiveContent] = useState({ receipt: null });
 
     const openEntranceModal = () => {
         setInitialModalState(false);

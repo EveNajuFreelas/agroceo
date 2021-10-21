@@ -156,4 +156,8 @@ export const portuguese = {
 	'milk': 'Leite',
 	'male': 'Masculino',
 	'female': 'Fêmea',
+	'attention': 'Atenção!',
+	'receiptNotSent': 'A nota fiscal desse registro não foi enviada!',
+	'confirmSendingWithoutReceipt': 'Você quer continuar o registro sem nota fiscal?',
+	'entranceRegister': 'Registro de Entrada',
 };

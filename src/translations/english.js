@@ -155,4 +155,8 @@ export const english = {
 	'milk': 'Milk',
 	'male': 'Male',
 	'female': 'Female',
+	'attention': 'Attention!',
+	'receiptNotSent': 'This register\'s receipt was not sent!',
+	'confirmSendingWithoutReceipt': 'Do you want to send the register without the receipt?',
+	'entranceRegister': 'Entrance Register',
 };

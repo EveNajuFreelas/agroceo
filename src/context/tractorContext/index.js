@@ -17,7 +17,7 @@ const useTractorContainer = () => {
 					setLoading(false);
 				})
 				.catch(err => {
-					console.log(err);
+					console.error(err);
 				});
 		});
 	};
@@ -30,7 +30,7 @@ const useTractorContainer = () => {
 				getTractor();
 			})
 			.catch(err => {
-				console.log(err);
+				console.error(err);
 			});
 	};
 
@@ -42,7 +42,7 @@ const useTractorContainer = () => {
 				getTractor();
 			})
 			.catch(err => {
-				console.log(err);
+				console.error(err);
 			});
 	};
 

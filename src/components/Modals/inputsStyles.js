@@ -107,6 +107,7 @@ export const UploadField = styled(CustomComponents.UploadComponent)`
 	height: 35px;
 	border: ${border.input};
 	border-radius: ${borderRadius.md};
+	margin-bottom: ${margin.lg};
 
 	.label {
 		padding: 0 ${padding.lg};

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { defaultTheme } from '../../../theme';
 import LabelWithIcon from '../../LabelWithIcon';
 import {
@@ -19,7 +19,6 @@ import NoRegister from '../../NoRegistry';
 const TableWithDescriptionIcon = ({ data, columns, columnYesNo, yesNo }) => {
 	const { editActiveContent, setModalState } = useExpensesContainer();
 	const { colors } = defaultTheme;
-	console.log(data);
 
 	if (data.length === 0) return <NoRegister />;
 	let keys = Object.keys(data[0].data);

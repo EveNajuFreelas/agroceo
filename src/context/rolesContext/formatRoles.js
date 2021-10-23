@@ -1,7 +1,6 @@
 export const formatResponseEmployee = response => {
 	let tempArray = [];
 	response.map(res => {
-		console.log(res);
 		tempArray.push({
 			data: {
 				id: res.id,

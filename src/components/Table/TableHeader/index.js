@@ -43,10 +43,7 @@ const TableHeader = ({ data, columns, title }) => {
 			headStyles: { fillColor: colors.primary },
 		});
 
-		let dados = [];
-		data.map(item => {
-			dados.push(Object.values(item.data));
-		});
+		let dados = data.map(item => Object.values(item.data));
 
 		doc.autoTable({
 			head: [columns],

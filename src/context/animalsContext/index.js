@@ -12,15 +12,14 @@ const useAnimalsContainer = () => {
 	const { t } = useTranslation();
 
 	const getAnimals = () => {
-		propertiesSelected.map(property => {
-			api.get(`/animals/${property}`)
-				.then(res => {
-					setAnimals(FormatResponseAnimals(t, res.data));
-					setLoading(false);
-				})
-				.catch(err => {
-					console.log(err);
-				});
+		propertiesSelected.map(async property => {
+			try {
+				const res = await api.get(`/animals/${property}`);
+				setAnimals(FormatResponseAnimals(t, res.data));
+				setLoading(false);
+			} catch (err) {
+				console.error(err);
+			}
 		});
 	};
 
@@ -31,7 +30,7 @@ const useAnimalsContainer = () => {
 				getAnimals();
 			})
 			.catch(err => {
-				console.log(err);
+				console.error(err);
 			});
 	};
 
@@ -41,7 +40,7 @@ const useAnimalsContainer = () => {
 				getAnimals();
 			})
 			.catch(err => {
-				console.log(err);
+				console.error(err);
 			});
 	};
 

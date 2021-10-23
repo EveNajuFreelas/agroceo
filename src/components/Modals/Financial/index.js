@@ -16,7 +16,7 @@ import {
 import { Checkbox, Divider, InputAdornment } from '@material-ui/core';
 
 export const FinancialModal = ({ title, breadcrumbs }) => {
-	const { modalState, setModalState, activeContent, editActiveContent } =
+	const { modalState, setModalState, activeContent } =
 		useExpensesContainer();
 	const { t } = useTranslation();
 	const [currentInfo, setCurrentInfo] = useState(activeContent);
@@ -30,7 +30,7 @@ export const FinancialModal = ({ title, breadcrumbs }) => {
 	};
 
 	const handlePropertiesInput = (info, inputName, id) => {
-		if (inputName == 'percentage') {
+		if (inputName === 'percentage') {
 			// fazer equivalência valor total -> porcentagem aqui
 		}
 		const newArray = [...currentInfo.Properties];

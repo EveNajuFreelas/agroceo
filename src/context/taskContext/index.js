@@ -17,7 +17,7 @@ const useTaskContainer = () => {
 					setLoading(false);
 				})
 				.catch(err => {
-					console.log(err);
+					console.error(err);
 				});
 		});
 	};
@@ -29,7 +29,7 @@ const useTaskContainer = () => {
 				getTasks();
 			})
 			.catch(err => {
-				console.log(err);
+				console.error(err);
 			});
 	};
 
@@ -40,7 +40,7 @@ const useTaskContainer = () => {
 				getTasks();
 			})
 			.catch(err => {
-				console.log(err);
+				console.error(err);
 			});
 	};
 

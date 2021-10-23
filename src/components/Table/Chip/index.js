@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import Chip from '@material-ui/core/Chip';
 import { useStyles } from './styles';
-import { defaultTheme } from '../../../theme';
 
 const ChipTable = ({ items }) => {
 	const classes = useStyles();

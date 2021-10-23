@@ -5,7 +5,6 @@ import {
 	TabsStyled,
 	HeadSection,
 	ButtonSection,
-	ProgressContainer,
 } from '../styles';
 import { useTranslation } from 'react-i18next';
 import { defaultTheme } from '../../../theme';

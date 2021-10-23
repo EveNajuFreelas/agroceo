@@ -18,7 +18,7 @@ const useAreaContainer = () => {
 					setAreas(formatResponseArea(res.data));
 				})
 				.catch(err => {
-					console.log(err);
+					console.error(err);
 				});
 
 			api.get(`/modules/${property}`)
@@ -27,7 +27,7 @@ const useAreaContainer = () => {
 					setLoading(false);
 				})
 				.catch(err => {
-					console.log(err);
+					console.error(err);
 				});
 		});
 	};

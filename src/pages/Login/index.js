@@ -27,8 +27,6 @@ import {
 	LoginButton,
 } from './styles';
 
-import logo from '../../assets/images/logoAgroceo.svg';
-
 const { colors, text, margin } = defaultTheme;
 
 const useStyles = makeStyles({

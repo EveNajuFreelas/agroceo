@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { TitleSection } from '../../../components/Geral/styles';
-import { HeadSection, ProgressContainer } from '../styles';
+import { HeadSection } from '../styles';
 
 import { useTranslation } from 'react-i18next';
 import { defaultTheme } from '../../../theme';

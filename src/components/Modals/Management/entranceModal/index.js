@@ -1,10 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useManagementContainer } from '../../../../context/managementContext';
 import { ModalShell } from '../../../Modal/index';
 import { InputField, UploadField, SelectField, StyledMenuItem, InputFieldsWrapper } from '../../inputsStyles';
 import { fuelTypes } from '../../../../utils/dataMock/mock';
 import { useTranslation } from 'react-i18next';
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle, FormHelperText, InputLabel } from '@material-ui/core';
+import { 
+    Button, 
+    Dialog, 
+    DialogActions, 
+    DialogContent, 
+    DialogTitle, 
+    FormHelperText, 
+    InputLabel 
+} from '@material-ui/core';
 
 export const EntranceManagementModal = () => {
     const { t } = useTranslation();
@@ -27,6 +35,7 @@ export const EntranceManagementModal = () => {
         switch(opt) {
             case 'openDialog':
                 setConfirmDialogActive(true);
+                break;
             case 'save':
                 setActiveContent(currentInfo);
                 closeModals();

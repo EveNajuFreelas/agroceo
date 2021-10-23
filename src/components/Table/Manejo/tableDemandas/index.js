@@ -18,14 +18,9 @@ import NoRegister from '../../../NoRegistry';
 const TableDemandas = ({ data, columns, deleteFunction }) => {
 	const { colors } = defaultTheme;
 
-	console.log(data.length != 0);
-
 	if (data.length === 0) {
 		return <NoRegister />;
 	}
-
-	console.log(columns);
-	console.log(data);
 
 	return (
 		<StyledTableContainer>

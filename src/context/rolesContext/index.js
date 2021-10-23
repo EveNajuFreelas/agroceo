@@ -18,7 +18,7 @@ const useRoleContainer = () => {
 					setLoading(false);
 				})
 				.catch(err => {
-					console.log(err);
+					console.error(err);
 				});
 		});
 	};
@@ -31,7 +31,7 @@ const useRoleContainer = () => {
 					setLoading(false);
 				})
 				.catch(err => {
-					console.log(err);
+					console.error(err);
 				});
 		});
 	};
@@ -46,7 +46,7 @@ const useRoleContainer = () => {
 				getEmployees();
 			})
 			.catch(err => {
-				console.log(err);
+				console.error(err);
 			});
 	};
 
@@ -60,7 +60,7 @@ const useRoleContainer = () => {
 				getRoles();
 			})
 			.catch(err => {
-				console.log(err);
+				console.error(err);
 			});
 	};
 

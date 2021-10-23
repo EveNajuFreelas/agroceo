@@ -18,7 +18,7 @@ const useVehicleContainer = () => {
 					setLoading(false);
 				})
 				.catch(err => {
-					console.log(err);
+					console.error(err);
 				});
 		});
 	};
@@ -33,7 +33,7 @@ const useVehicleContainer = () => {
 				getVehicle();
 			})
 			.catch(err => {
-				console.log(err);
+				console.error(err);
 			});
 	};
 
@@ -45,7 +45,7 @@ const useVehicleContainer = () => {
 				getVehicle();
 			})
 			.catch(err => {
-				console.log(err);
+				console.error(err);
 			});
 	};
 

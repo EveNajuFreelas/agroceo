@@ -23,8 +23,6 @@ const TableNormal = ({
 	const { colors } = defaultTheme;
 	const COLUMN_INITIAL = description ? 1 : 0;
 
-	console.log(data.length != 0);
-
 	if (data.length === 0) {
 		return <span>Sem registros</span>;
 	}

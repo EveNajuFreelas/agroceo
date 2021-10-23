@@ -1,4 +1,3 @@
-import { Label } from '@material-ui/icons';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { NoRegistryContainer, LabelRegistry } from './styles';

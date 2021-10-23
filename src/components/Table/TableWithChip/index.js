@@ -12,14 +12,10 @@ import {
 
 import { StyledTableContainer } from '../styles';
 import { iconList } from '../../../assets/Icons/icon-list';
-import TableHeadDefault from '../TableHead';
 import ChipTable from '../Chip';
 
 const TableWithChip = ({ data, columns, deleteFunction }) => {
 	const { colors } = defaultTheme;
-
-	console.log('data', data);
-	console.log('columns', columns);
 
 	let keys = Object.keys(data[0]);
 	const lastColumn = keys.length - 1;
@@ -64,7 +60,6 @@ const TableWithChip = ({ data, columns, deleteFunction }) => {
 								</TableCell>
 
 								{keys.map((column, index) => {
-									//console.log('content', row[column]);
 									return (
 										//tem alguma forma de fazer melhor certeza k k k k
 

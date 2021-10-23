@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { TitleSection } from '../../../components/Geral/styles';
-import { HeadSection, ProgressContainer } from '../styles';
+import { HeadSection } from '../styles';
 
 import { useTranslation } from 'react-i18next';
 import { defaultTheme } from '../../../theme';
@@ -10,8 +10,6 @@ import { itensMenuCombustivel } from '../../../utils/dataMock/itensMenu';
 import Filter from '../../../components/Filter';
 import ButtonIconAdd from '../../../components/Geral/ButtonIcon';
 import TableNormal from '../../../components/Table/TableNormal';
-import { useTractor } from '../../../context/tractorContext';
-import { manejoLavouras } from '../../../utils/dataMock/mock';
 import { useTillage } from '../../../context/tillageContext';
 import CircleLoading from '../../../components/LoadingCircle';
 

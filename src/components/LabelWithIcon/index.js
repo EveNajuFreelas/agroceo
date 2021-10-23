@@ -1,5 +1,4 @@
 import { ItemDescription, IconItemDescription, TitleItem } from './styles';
-import { icon } from '../../utils/functions';
 
 const LabelWithIcon = ({ title, iconSrc, justifyEnd }) => {
 	return (

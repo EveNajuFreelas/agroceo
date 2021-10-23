@@ -17,7 +17,7 @@ const useDemandContainer = () => {
 					setLoading(false);
 				})
 				.catch(err => {
-					console.log(err);
+					console.error(err);
 				});
 		});
 	};
@@ -29,7 +29,7 @@ const useDemandContainer = () => {
 				getDemands();
 			})
 			.catch(err => {
-				console.log(err);
+				console.error(err);
 			});
 	};
 
@@ -39,7 +39,7 @@ const useDemandContainer = () => {
 				getDemands();
 			})
 			.catch(err => {
-				console.log(err);
+				console.error(err);
 			});
 	};
 
@@ -48,6 +48,7 @@ const useDemandContainer = () => {
 		getDemands,
 		isLoading,
 		deleteDemands,
+		postDemands,
 	};
 };
 

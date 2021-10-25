@@ -14,29 +14,29 @@ import { Icon } from '../../assets/Icons/index';
 const { margin, padding, colors, border, borderRadius, text } = defaultTheme;
 
 const CustomComponents = {
-	SelectComponent: props => (
+	SelectComponent: (props) => (
 		<div style={{ marginBottom: margin.lg }}>
 			<Select
 				{...props}
-				variant='outlined'
+				variant="outlined"
 				IconComponent={ExpandMore}
-				margin='dense'
+				margin="dense"
 			/>
 		</div>
 	),
-	UploadComponent: props => (
+	UploadComponent: (props) => (
 		<div className={props.className} style={{ width: '100%' }}>
-			<p className='label'>{props.docName || props.label}</p>
+			<p className="label">{props.docName || props.label}</p>
 			<UploadButton
 				onChange={props.onChange}
 				buttonName={props.buttonName}
 			/>
 		</div>
 	),
-	UploadButtonComponent: props => (
+	UploadButtonComponent: (props) => (
 		<label className={props.className}>
 			<Icon name={iconList.iconUpload} size={15} />
-			<input onChange={props.onChange} id='file-upload' type='file' />
+			<input onChange={props.onChange} id="file-upload" type="file" />
 			<p>{props.buttonName}</p>
 		</label>
 	),
@@ -51,19 +51,20 @@ export const InputFieldsWrapper = styled.div`
 export const InputLabelStyled = styled(InputLabel)`
 	&.MuiInputLabel-root {
 		font-size: ${text.size.normal};
-		margin-bottom: ${margin.sm};
+		margin-bottom: ${margin.md};
+		color: ${colors.neutral5};
 	}
 `;
 
-export const InputField = styled(props => (
+export const InputField = styled((props) => (
 	<TextField
-		variant='outlined'
+		variant="outlined"
 		InputLabelProps={{ shrink: true }}
 		{...props}
 	/>
 ))`
 	.MuiInputBase-root {
-		margin-bottom: ${margin.lg};
+		margin-bottom: ${(props) => (props.helperText ? 0 : margin.lg2)};
 	}
 
 	.MuiOutlinedInput-root {
@@ -81,11 +82,20 @@ export const InputField = styled(props => (
 	.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
 		border-color: ${colors.primary};
 	}
+
+	.MuiFormHelperText-root {
+		margin-bottom: 12px;
+		margin-left: 0;
+		color: ${colors.neutral6};
+		font-family: ${text.fontFamily.regular};
+		font-size: ${text.size.caption};
+	}
 `;
 
 export const SelectField = styled(CustomComponents.SelectComponent)`
 	&.MuiOutlinedInput-root {
 		min-width: 100%;
+		margin-bottom: ${margin.md};
 	}
 	.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
 		border-color: ${colors.primary};
@@ -147,8 +157,8 @@ export const StyledSlider = styled(Slider)`
 	}
 `;
 
-export const ControlledInput = styled(props => (
-	<TextField {...props} variant='outlined' />
+export const ControlledInput = styled((props) => (
+	<TextField {...props} variant="outlined" />
 ))`
 	.MuiOutlinedInput-root {
 		height: 40px;

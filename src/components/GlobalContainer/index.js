@@ -21,7 +21,7 @@ export const GlobalContainer = ({ children }) => {
 			<Container
 				style={{
 					paddingTop: 80,
-					maxWidth: '90%',
+					maxWidth: '100%',
 					width: width,
 					marginLeft: marginLeft,
 					transition: 'all 0.4s ease-out',

@@ -8,7 +8,7 @@ const principal = 'https://apiv1.agroceo.app';
 const localhost = 'http://localhost:3334';
 
 const api = axios.create({
-	baseURL: localhost,
+	baseURL: principal,
 });
 
 api.interceptors.request.use(async config => {

@@ -21,7 +21,7 @@ export const ChartSection = styled.div`
 	
 	@media (max-width: 1720px){
 		flex-direction: column;
-		width: ${props => props.drawerOpen ? `40%` : `50%`};
+		//width: ${props => props.drawerOpen ? `60%` : `60%`};
 		height: 100%;
 	}
 	@media (max-width: 1024px){
@@ -31,23 +31,15 @@ export const ChartSection = styled.div`
 
 export const OverviewFinancialContainer = styled.div`	
 	transition: width 0.4s ease-out;
-	width: 28%;
+	width: 35%;
 	height: 100%;
 	
 	@media (max-width: 1720px){
-		width: ${props => props.drawerOpen ? `40%` : `50%`};
+		width: ${props => props.drawerOpen ? `40%` : `35%`};
 		height: 100%;
 	}
 
 	@media (max-width: 1024px){
-		width: 100%;
-	}
-`;
-
-export const ChartDiv = styled.div`
-	width: 50%;
-	margin-right: 50px;
-	@media (max-width: 1720px){
 		width: 100%;
 	}
 `;

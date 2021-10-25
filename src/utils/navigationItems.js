@@ -5,14 +5,14 @@ export const menuItems = [
 	{
 		id: 0,
 		name: 'home',
-		icon: <Icon name={iconList.homeMenu} size={20} color='white' />,
+		icon: <Icon name={iconList.homeMenu} size={20} color="white" />,
 		url: '/dashboard',
 	},
 	{
 		id: 1,
 		name: 'financial',
-		icon: <Icon name={iconList.finance} size={20} color='white' />,
-		url: '/financeiro',
+		icon: <Icon name={iconList.finance} size={20} color="white" />,
+		url: '/financeiro/receitas',
 		items: [
 			{
 				id: 1.1,

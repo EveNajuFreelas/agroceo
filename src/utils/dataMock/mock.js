@@ -273,10 +273,6 @@ export const fuelTypes = [
 		name: 'gasolineAdditive',
 	},
 	{
-		value: 'common-diesel',
-		name: 'commonDiesel',
-	},
-	{
 		value: 'ethanol',
 		name: 'ethanol',
 	},

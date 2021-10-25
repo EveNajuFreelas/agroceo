@@ -5,7 +5,7 @@ const { text, colors, margin } = defaultTheme;
 
 export const ListItemCard = styled.li`
 	display: grid;
-	grid-template-columns: 1fr 6fr 3fr;
+	grid-template-columns: 8% 60% 33%;
 	align-items: flex-start;
 	padding: 10px 0;
 	
@@ -13,7 +13,7 @@ export const ListItemCard = styled.li`
 		grid-template-columns: 9% 61% 30%;
 	}
 	@media (max-width: 1025px){
-		grid-template-columns: 7% 60% 33%;
+		grid-template-columns: 5% 60% 33%;
 	}
 `;
 

@@ -13,7 +13,12 @@ import TableNormal from '../../../components/Table/TableNormal';
 import { useVehicle } from '../../../context/vehiclesContext';
 import CircleLoading from '../../../components/LoadingCircle';
 
+import { RegisterModal } from '../../../components/Modals/Management/vehicleModals/RegisterModal';
+//import { useManagementContainer } from '../../../context/managementContext';
+import { useModalsContainer } from '../../../context/modalsContext';
+
 const Veiculos = () => {
+	const { openModal } = useModalsContainer();
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
 	const { isLoading, getVehicle, vehicle, deleteVehicle } = useVehicle();
@@ -33,12 +38,13 @@ const Veiculos = () => {
 		t('lastRevision'),
 	];
 
-	const filter = mes => {
+	const filter = (mes) => {
 		//console.log(mes);
 	};
 
 	return (
 		<>
+			<RegisterModal />
 			<HeadSection>
 				<TitleSection>
 					{t('vehicle')}
@@ -50,8 +56,9 @@ const Veiculos = () => {
 				<ButtonIconAdd
 					color={colors.neutral0}
 					backgroundColor={colors.primary}
-					textButton='Cadastrar'
+					textButton="Cadastrar"
 					marginBottom={true}
+					onClick={openModal}
 				/>
 			</HeadSection>
 			<div>

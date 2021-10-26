@@ -5,13 +5,13 @@ import { getObject } from '../utils/storage';
 const AccessToken = '@agroceo/accessToken';
 
 const principal = 'https://apiv1.agroceo.app';
-const localhost = 'http://localhost:3334';
+const localhost = 'http://localhost:3333';
 
 const api = axios.create({
-	baseURL: principal,
+	baseURL: localhost,
 });
 
-api.interceptors.request.use(async config => {
+api.interceptors.request.use(async (config) => {
 	const token = await getObject(AccessToken);
 	if (token) {
 		config.headers.Authorization = `Bearer ${token}`;

@@ -12,8 +12,11 @@ import ButtonIconAdd from '../../../components/Geral/ButtonIcon';
 import TableNormal from '../../../components/Table/TableNormal';
 import { useTractor } from '../../../context/tractorContext';
 import CircleLoading from '../../../components/LoadingCircle';
+import { RegisterModal } from '../../../components/Modals/Management/vehicleModals/RegisterModal';
+import { useModalsContainer } from '../../../context/modalsContext';
 
 const Tratores = () => {
+	const { openModal } = useModalsContainer();
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
 	const { isLoading, tractor, getTractor, deleteTractor } = useTractor();
@@ -33,12 +36,19 @@ const Tratores = () => {
 		t('lastRevision'),
 	];
 
-	const filter = mes => {
+	const filter = (mes) => {
 		console.log(mes);
 	};
 
 	return (
 		<>
+			<RegisterModal
+				title={t('registerTractor')}
+				breadcrumbs={[['management', 'tractor']]}
+				description={false}
+				odometerHourmeter="hourmeter"
+			/>
+
 			<HeadSection>
 				<TitleSection>
 					{t('tractor')}
@@ -50,8 +60,9 @@ const Tratores = () => {
 				<ButtonIconAdd
 					color={colors.neutral0}
 					backgroundColor={colors.primary}
-					textButton='Cadastrar'
+					textButton="Cadastrar"
 					marginBottom={true}
+					onClick={openModal}
 				/>
 			</HeadSection>
 			{isLoading ? (

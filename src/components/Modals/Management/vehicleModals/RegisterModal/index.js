@@ -22,23 +22,59 @@ import {
 } from '@material-ui/core';
 import { useModalsContainer } from '../../../../../context/modalsContext';
 
-export const RegisterModal = ({ title }) => {
+export const RegisterModal = ({
+	title,
+	breadcrumbs,
+	description,
+	odometerHourmeter,
+}) => {
 	const { t } = useTranslation();
-	const { openModal, closeModals } = useModalsContainer();
-
-	const [whereWasFilled, setWhereWasFilled] = useState('atFarm');
+	const { modalState, closeModals } = useModalsContainer();
 
 	const handleInput = (info, inputName) => {
 		console.log(inputName);
 		//setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
 	};
 
+	const groupBoardYearField = () => {
+		return (
+			<div style={{ display: 'flex', gap: 20 }}>
+				<div>
+					<InputLabelStyled htmlFor="board">
+						{t('board')}
+					</InputLabelStyled>
+					<InputField
+						id="board"
+						name="board"
+						onChange={(e) =>
+							handleInput(e.target.value, e.target.name)
+						}
+						placeholder={t('typeSomething')}
+					/>
+				</div>
+				<div>
+					<InputLabelStyled htmlFor="yearAcquisition">
+						{t('yearAcquisition')}
+					</InputLabelStyled>
+					<InputField
+						id="yearAcquisition"
+						name="yearAcquisition"
+						onChange={(e) =>
+							handleInput(e.target.value, e.target.name)
+						}
+						placeholder="DD/MM/AAAA"
+					/>
+				</div>
+			</div>
+		);
+	};
+
 	return (
 		<ModalShell
-			open={openModal}
+			open={modalState}
 			handleClose={closeModals}
-			title={t('registerVehicle')}
-			breadcrumbs={['management', 'vehicles']}
+			title={title}
+			breadcrumbs={breadcrumbs}
 			actionButtons={[
 				{
 					onClick: () => closeModals(),
@@ -48,9 +84,9 @@ export const RegisterModal = ({ title }) => {
 				},
 				{
 					onClick: () => closeModals(),
-					title: 'save',
+					title: 'continue',
 					color: 'primary',
-					variant: 'contained',
+					variant: 'outlined',
 				},
 			]}
 		>
@@ -90,19 +126,23 @@ export const RegisterModal = ({ title }) => {
 							{t('atCity')}
 						</RadioGroup>
 					</FormControl> */}
-					<InputLabelStyled htmlFor="description">
-						{t('description')}
-					</InputLabelStyled>
-					<InputField
-						id="description"
-						name="description"
-						type="text"
-						//defaultValue={currentInfo?.quantity}
-						onChange={(e) =>
-							handleInput(e.target.value, e.target.name)
-						}
-						placeholder={t('typeSomething')}
-					/>
+					{description && (
+						<>
+							<InputLabelStyled htmlFor="description">
+								{t('description')}
+							</InputLabelStyled>
+							<InputField
+								id="description"
+								name="description"
+								type="text"
+								//defaultValue={currentInfo?.quantity}
+								onChange={(e) =>
+									handleInput(e.target.value, e.target.name)
+								}
+								placeholder={t('typeSomething')}
+							/>
+						</>
+					)}
 					<InputLabelStyled htmlFor="brand">
 						{t('brand')}
 					</InputLabelStyled>
@@ -190,36 +230,10 @@ export const RegisterModal = ({ title }) => {
 							/>
 						</div>
 					</div>
+					{!description && groupBoardYearField()}
 				</div>
 				<div style={{ width: '48%' }}>
-					<div style={{ display: 'flex', gap: 20 }}>
-						<div>
-							<InputLabelStyled htmlFor="board">
-								{t('board')}
-							</InputLabelStyled>
-							<InputField
-								id="board"
-								name="board"
-								onChange={(e) =>
-									handleInput(e.target.value, e.target.name)
-								}
-								placeholder={t('typeSomething')}
-							/>
-						</div>
-						<div>
-							<InputLabelStyled htmlFor="yearAcquisition">
-								{t('yearAcquisition')}
-							</InputLabelStyled>
-							<InputField
-								id="yearAcquisition"
-								name="yearAcquisition"
-								onChange={(e) =>
-									handleInput(e.target.value, e.target.name)
-								}
-								placeholder="DD/MM/AAAA"
-							/>
-						</div>
-					</div>
+					{description && groupBoardYearField()}
 					<div style={{ display: 'flex', gap: 20 }}>
 						<div>
 							<InputLabelStyled htmlFor="currentOdometer">
@@ -248,12 +262,12 @@ export const RegisterModal = ({ title }) => {
 							/>
 						</div>
 					</div>
-					<InputLabelStyled htmlFor="odometerFile">
-						{t('odometerFile')}
+					<InputLabelStyled htmlFor="uploadFile">
+						{t(`${odometerHourmeter}File`)}
 					</InputLabelStyled>
 					<UploadField
-						id="odometerFile"
-						name="odometerFile"
+						id="uploadFile"
+						name="uploadFile"
 						docName=""
 						buttonName={t('select')}
 						onChange={(e) =>
@@ -262,12 +276,12 @@ export const RegisterModal = ({ title }) => {
 					/>
 					<div style={{ display: 'flex', gap: 20 }}>
 						<div>
-							<InputLabelStyled htmlFor="lastRevisionOdometer">
-								{t('lastRevisionOdometer')}
+							<InputLabelStyled htmlFor="lastRevision">
+								{t(`${odometerHourmeter}LastRevision`)}
 							</InputLabelStyled>
 							<InputField
-								id="lastRevisionOdometer"
-								name="lastRevisionOdometer"
+								id="lastRevision"
+								name="lastRevision"
 								onChange={(e) =>
 									handleInput(e.target.value, e.target.name)
 								}

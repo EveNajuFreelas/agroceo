@@ -28,7 +28,9 @@ export const ModalHeader = styled.header`
 	margin-bottom: ${margin.xg};
 `;
 
-export const CloseModal = styled(Close)``;
+export const CloseModal = styled(Close)`
+	cursor: pointer;
+`;
 
 export const HeaderTitle = styled.div`
 	font-size: ${text.size.large};

@@ -114,7 +114,7 @@ export const defaultTheme = {
 		subSidebar: '206px',
 		globalWidthOpen: '270px',
 		globalWidthClosed: '105px',
-		actionButtons: '130px',
+		actionButtons: '120px',
 	},
 	height: {
 		input: '40px',

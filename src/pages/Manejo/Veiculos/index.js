@@ -44,7 +44,12 @@ const Veiculos = () => {
 
 	return (
 		<>
-			<RegisterModal />
+			<RegisterModal
+				title={t('registerVehicle')}
+				breadcrumbs={[['management', 'vehicles']]}
+				description={true}
+				odometerHourmeter="odometer"
+			/>
 			<HeadSection>
 				<TitleSection>
 					{t('vehicle')}

@@ -12,6 +12,7 @@ import {
 import { StyledTableContainer } from '../styles';
 import { iconList } from '../../../assets/Icons/icon-list';
 import TableHeadDefault from '../TableHead';
+import { useModalsContainer } from '../../../context/modalsContext';
 
 const TableNormal = ({
 	data,
@@ -21,6 +22,8 @@ const TableNormal = ({
 	deleteFunction,
 }) => {
 	const { colors } = defaultTheme;
+	const { openUtilizationModal } = useModalsContainer();
+
 	const COLUMN_INITIAL = description ? 1 : 0;
 
 	if (data.length === 0) {
@@ -34,10 +37,10 @@ const TableNormal = ({
 			<Table>
 				<TableHeadDefault columns={columns} />
 				<TableBody>
-					{data.map(row => {
+					{data.map((row) => {
 						return (
 							<TableRow key={row.id}>
-								<TableCell padding='checkbox'>
+								<TableCell padding="checkbox">
 									<Checkbox
 										style={{ color: 'green' }}
 										//checked={isItemSelected}
@@ -48,7 +51,7 @@ const TableNormal = ({
 								</TableCell>
 
 								<TableCell
-									width='50px'
+									width="50px"
 									style={{ color: colors.neutral6 }}
 								>
 									{row.id}
@@ -76,18 +79,22 @@ const TableNormal = ({
 									);
 								})}
 
-								<TableCell width={100} align='center'>
+								<TableCell width={100} align="center">
 									{putInIcon && (
 										<img
-											alt='icon put in'
+											alt="icon put in"
 											style={{
 												marginRight: 10,
+												cursor: 'pointer',
 											}}
 											src={iconList.putIn}
+											onClick={() =>
+												openUtilizationModal()
+											}
 										/>
 									)}
 									<img
-										alt='icon edit'
+										alt="icon edit"
 										style={{
 											marginRight: 10,
 											cursor: 'pointer',
@@ -95,7 +102,7 @@ const TableNormal = ({
 										src={iconList.edit}
 									/>
 									<img
-										alt='icon delete'
+										alt="icon delete"
 										style={{
 											cursor: 'pointer',
 										}}

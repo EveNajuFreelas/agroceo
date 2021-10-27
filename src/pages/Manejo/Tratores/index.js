@@ -14,6 +14,7 @@ import { useTractor } from '../../../context/tractorContext';
 import CircleLoading from '../../../components/LoadingCircle';
 import { RegisterModal } from '../../../components/Modals/Management/vehicleModals/RegisterModal';
 import { useModalsContainer } from '../../../context/modalsContext';
+import { UtilizationModal } from '../../../components/Modals/Management/vehicleModals/UtilzationModal';
 
 const Tratores = () => {
 	const { openModal } = useModalsContainer();
@@ -46,6 +47,11 @@ const Tratores = () => {
 				title={t('registerTractor')}
 				breadcrumbs={[['management', 'tractor']]}
 				description={false}
+				odometerHourmeter="hourmeter"
+			/>
+			<UtilizationModal
+				title={t('registerUsageReview')}
+				breadcrumbs={[['management', 'tractor', 'truck']]}
 				odometerHourmeter="hourmeter"
 			/>
 

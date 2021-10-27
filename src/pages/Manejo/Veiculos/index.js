@@ -16,6 +16,7 @@ import CircleLoading from '../../../components/LoadingCircle';
 import { RegisterModal } from '../../../components/Modals/Management/vehicleModals/RegisterModal';
 //import { useManagementContainer } from '../../../context/managementContext';
 import { useModalsContainer } from '../../../context/modalsContext';
+import { UtilizationModal } from '../../../components/Modals/Management/vehicleModals/UtilzationModal';
 
 const Veiculos = () => {
 	const { openModal } = useModalsContainer();
@@ -48,6 +49,11 @@ const Veiculos = () => {
 				title={t('registerVehicle')}
 				breadcrumbs={[['management', 'vehicles']]}
 				description={true}
+				odometerHourmeter="odometer"
+			/>
+			<UtilizationModal
+				title={t('registerUsageReview')}
+				breadcrumbs={[['management', 'vehicle', 'truck']]}
 				odometerHourmeter="odometer"
 			/>
 			<HeadSection>

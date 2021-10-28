@@ -195,8 +195,10 @@ export const portuguese = {
 	finalOdometer: 'Odômetro final',
 	odometerInitialFile: 'Foto do odômetro inicial',
 	odometerFinalFile: 'Foto do odômetro final',
+	odometerPhotoReview: 'Foto do odômetro na revisão',
 	hourmeterInitialFile: 'Foto do horímetro inicial',
 	hourmeterFinalFile: 'Foto do horímetro final',
+	hourmeterPhotoReview: 'Foto do horímetro na revisão',
 	involvesTask: 'Envolve tarefa',
 	justification: 'Justificativa',
 	revisedItens: 'Itens revisados',
@@ -204,4 +206,5 @@ export const portuguese = {
 	tasksInvolved: 'Tarefas envolvidas',
 	registerUsageReview: 'Registrar utilização ou revisão',
 	truck: 'Caminhonete',
+	nextRevision: 'Faltam para a próxima revisão',
 };

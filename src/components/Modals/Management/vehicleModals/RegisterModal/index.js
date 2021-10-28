@@ -10,6 +10,8 @@ import {
 	StyledMenuItem,
 	UploadField,
 	InputLabelStyled,
+	InputLabelRadio,
+	FormControlStyled,
 } from '../../../inputsStyles';
 import { useManagementContainer } from '../../../../../context/managementContext';
 import {
@@ -38,8 +40,8 @@ export const RegisterModal = ({
 
 	const groupBoardYearField = () => {
 		return (
-			<div style={{ display: 'flex', gap: 20 }}>
-				<div>
+			<div style={{ display: 'flex', justifyContent: 'space-between' }}>
+				<div style={{ width: '48%' }}>
 					<InputLabelStyled htmlFor="board">
 						{t('board')}
 					</InputLabelStyled>
@@ -52,7 +54,7 @@ export const RegisterModal = ({
 						placeholder={t('typeSomething')}
 					/>
 				</div>
-				<div>
+				<div style={{ width: '48%' }}>
 					<InputLabelStyled htmlFor="yearAcquisition">
 						{t('yearAcquisition')}
 					</InputLabelStyled>
@@ -98,34 +100,6 @@ export const RegisterModal = ({
 						flexDirection: 'column',
 					}}
 				>
-					{/* <FormControl component="fieldset">
-						<InputLabel htmlFor="filledUpTank">
-							{t('whereWasFueled')}
-						</InputLabel>
-						<RadioGroup
-							row
-							id="filledUpTank"
-							name="filledUpTank"
-							value={whereWasFilled}
-						>
-							<FuelTypeRadio
-								value="atFarm"
-								label={t('atFarm')}
-								onClick={(e) =>
-									setWhereWasFilled(e.target.value)
-								}
-							/>
-							{t('atFarm')}
-							<FuelTypeRadio
-								value="atCity"
-								label={t('atCity')}
-								onClick={(e) =>
-									setWhereWasFilled(e.target.value)
-								}
-							/>
-							{t('atCity')}
-						</RadioGroup>
-					</FormControl> */}
 					{description && (
 						<>
 							<InputLabelStyled htmlFor="description">
@@ -200,8 +174,13 @@ export const RegisterModal = ({
 						}
 						//placeholder={t('sendFile')}
 					/>
-					<div style={{ display: 'flex', gap: 20 }}>
-						<div>
+					<div
+						style={{
+							display: 'flex',
+							justifyContent: 'space-between',
+						}}
+					>
+						<div style={{ width: '48%' }}>
 							<InputLabelStyled htmlFor="color">
 								{t('color')}
 							</InputLabelStyled>
@@ -215,7 +194,7 @@ export const RegisterModal = ({
 								placeholder={t('typeSomething')}
 							/>
 						</div>
-						<div>
+						<div style={{ width: '48%' }}>
 							<InputLabelStyled htmlFor="manufacture">
 								{t('manufacture')}
 							</InputLabelStyled>
@@ -234,8 +213,13 @@ export const RegisterModal = ({
 				</div>
 				<div style={{ width: '48%' }}>
 					{description && groupBoardYearField()}
-					<div style={{ display: 'flex', gap: 20 }}>
-						<div>
+					<div
+						style={{
+							display: 'flex',
+							justifyContent: 'space-between',
+						}}
+					>
+						<div style={{ width: '48%' }}>
 							<InputLabelStyled htmlFor="currentOdometer">
 								{t('currentOdometer')}
 							</InputLabelStyled>
@@ -248,7 +232,7 @@ export const RegisterModal = ({
 								placeholder="00000000"
 							/>
 						</div>
-						<div>
+						<div style={{ width: '48%' }}>
 							<InputLabelStyled htmlFor="reviewEveryKm">
 								{t('reviewEveryKm')}
 							</InputLabelStyled>
@@ -274,8 +258,13 @@ export const RegisterModal = ({
 							handleInput(e.target.value, e.target.name)
 						}
 					/>
-					<div style={{ display: 'flex', gap: 20 }}>
-						<div>
+					<div
+						style={{
+							display: 'flex',
+							justifyContent: 'space-between',
+						}}
+					>
+						<div style={{ width: '48%' }}>
 							<InputLabelStyled htmlFor="lastRevision">
 								{t(`${odometerHourmeter}LastRevision`)}
 							</InputLabelStyled>
@@ -288,7 +277,7 @@ export const RegisterModal = ({
 								placeholder="00000000"
 							/>
 						</div>
-						<div>
+						<div style={{ width: '48%' }}>
 							<InputLabelStyled htmlFor="lastRevision">
 								{t('lastRevision')}
 							</InputLabelStyled>
@@ -302,8 +291,10 @@ export const RegisterModal = ({
 							/>
 						</div>
 					</div>
-					<FormControl component="fieldset">
-						<FormLabel component="legend">{t('owner')}</FormLabel>
+					<FormControlStyled component="fieldset">
+						<InputLabelRadio component="legend">
+							{t('owner')}
+						</InputLabelRadio>
 						<RadioGroup row id="ownerVehicle" name="filledUpTank">
 							<FormControlLabel
 								value="farm"
@@ -316,7 +307,7 @@ export const RegisterModal = ({
 								label={t('subcontractors')}
 							/>
 						</RadioGroup>
-					</FormControl>
+					</FormControlStyled>
 				</div>
 			</InputFieldsWrapper>
 		</ModalShell>

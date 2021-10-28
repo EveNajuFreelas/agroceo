@@ -55,7 +55,7 @@ export const ExitManagementModal = ({ title }) => {
 						flexDirection: 'column',
 					}}
 				>
-					<FormControl component="fieldset">
+					<FormControlStyled component="fieldset">
 						<InputLabel htmlFor="filledUpTank">
 							{t('whereWasFueled')}
 						</InputLabel>
@@ -82,7 +82,7 @@ export const ExitManagementModal = ({ title }) => {
 							/>
 							{t('atCity')}
 						</RadioGroup>
-					</FormControl>
+					</FormControlStyled>
 					<InputLabelStyled htmlFor="fuelType">
 						{t('fuelType')}
 					</InputLabelStyled>
@@ -117,7 +117,12 @@ export const ExitManagementModal = ({ title }) => {
 						helperText={t('justNumbers')}
 						placeholder="0,00"
 					/>
-					<div style={{ display: 'flex', gap: 20 }}>
+					<div
+						style={{
+							display: 'flex',
+							justifyContent: 'space-between',
+						}}
+					>
 						<div>
 							<InputLabelStyled htmlFor="fillDate">
 								{t('fillDate')}

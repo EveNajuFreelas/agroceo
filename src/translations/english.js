@@ -203,4 +203,5 @@ export const english = {
 	tasksInvolved: 'Tasks involved',
 	registerUsageReview: 'Register of usage or review',
 	truck: 'Truck',
+	nextRevision: 'To the next review',
 };

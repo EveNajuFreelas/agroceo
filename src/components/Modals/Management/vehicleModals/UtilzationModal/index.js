@@ -1,26 +1,23 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ModalShell } from '../../../../Modal/index';
-import { FuelTypeRadio } from '../../managementStyles';
-import { fuelTypes } from '../../../../../utils/dataMock/mock';
+
 import {
 	InputFieldsWrapper,
-	SelectField,
-	InputField,
-	StyledMenuItem,
-	UploadField,
-	InputLabelStyled,
+	InputLabelRadio,
+	FormControlStyled,
 } from '../../../inputsStyles';
-import { RadioGroup, FormControl, InputLabel } from '@material-ui/core';
+import { RadioGroup, FormControlLabel, Radio } from '@material-ui/core';
 import { useModalsContainer } from '../../../../../context/modalsContext';
+import { UtilizationFirst, UtilizationSecond } from './UtilizationOption';
+import { RevisionFirst, RevisionSecond } from './RevisionOption';
 
 export const UtilizationModal = ({ title, breadcrumbs, odometerHourmeter }) => {
 	const { t } = useTranslation();
 	const { modalUtilizationState, closeUtilizationModal } =
 		useModalsContainer();
 
-	const [register, setRegister] = useState('');
-	const [task, setTask] = useState('');
+	const [register, setRegister] = useState('utilization');
 
 	const handleInput = (info, inputName) => {
 		//setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
@@ -55,228 +52,50 @@ export const UtilizationModal = ({ title, breadcrumbs, odometerHourmeter }) => {
 						flexDirection: 'column',
 					}}
 				>
-					<FormControl component="fieldset">
-						<InputLabel htmlFor="typeRegister">
+					<FormControlStyled component="fieldset">
+						<InputLabelRadio
+							component="legend"
+							htmlFor="typeRegister"
+						>
 							{t('typeRegister')}
-						</InputLabel>
+						</InputLabelRadio>
 						<RadioGroup
 							row
 							id="typeRegister"
 							name="typeRegister"
 							value={register}
 						>
-							<FuelTypeRadio
+							<FormControlLabel
 								value="utilization"
 								label={t('utilization')}
+								control={<Radio />}
 								onClick={(e) => setRegister(e.target.value)}
 							/>
-							{t('utilization')}
-							<FuelTypeRadio
+							<FormControlLabel
 								value="revision"
 								label={t('revision')}
+								control={<Radio />}
 								onClick={(e) => setRegister(e.target.value)}
 							/>
-							{t('revision')}
 						</RadioGroup>
-					</FormControl>
-					<InputLabelStyled htmlFor="whoUsed">
-						{t('whoUsed')}
-					</InputLabelStyled>
-					<SelectField
-						id="whoUsed"
-						name="whoUsed"
-						//defaultValue={currentInfo?.fuelType || ''}
-						// onChange={(e) =>
-						// 	handleInput(e.target.value, e.target.name)
-						// }
-					>
-						<StyledMenuItem value="">{`${t(
-							'select'
-						)}...`}</StyledMenuItem>
-						{fuelTypes.map((ft) => (
-							<StyledMenuItem value={ft.value}>
-								{t(ft.name)}
-							</StyledMenuItem>
-						))}
-					</SelectField>
-					<div style={{ display: 'flex', gap: 20 }}>
-						<div>
-							<InputLabelStyled htmlFor="dateUse">
-								{t('dateUse')}
-							</InputLabelStyled>
-							<InputField
-								id="dateUse"
-								name="dateUse"
-								// onChange={(e) =>
-								// 	handleInput(e.target.value, e.target.name)
-								// }
-							/>
-						</div>
-						<div>
-							<InputLabelStyled htmlFor="hour">
-								{t('hour')}
-							</InputLabelStyled>
-							<InputField
-								id="hour"
-								name="hour"
-								// onChange={(e) =>
-								// 	handleInput(e.target.value, e.target.name)
-								// }
-							/>
-						</div>
-					</div>
-					<InputLabelStyled htmlFor="initialPicture">
-						{t(`${odometerHourmeter}InitialFile`)}
-					</InputLabelStyled>
-					<UploadField
-						id="initialPicture"
-						name="initialPicture"
-						docName=""
-						buttonName={t('select')}
-						// onChange={(e) =>
-						// 	handleInput(e.target.value, e.target.name)
-						// }
-					/>
-					<InputLabelStyled htmlFor="finalPicture">
-						{t(`${odometerHourmeter}FinalFile`)}
-					</InputLabelStyled>
-					<UploadField
-						id="finalPicture"
-						name="finalPicture"
-						docName=""
-						buttonName={t('select')}
-						// onChange={(e) =>
-						// 	handleInput(e.target.value, e.target.name)
-						// }
-					/>
-				</div>
-				<div style={{ width: '48%' }}>
+					</FormControlStyled>
+
 					{register === 'utilization' && (
-						<FormControl component="fieldset">
-							<InputLabel htmlFor="involvesTask">
-								{t('involvesTask')}
-							</InputLabel>
-							<RadioGroup
-								row
-								id="involvesTask"
-								name="involvesTask"
-								value={task}
-							>
-								<FuelTypeRadio
-									value="yes"
-									label={t('yes')}
-									onClick={(e) => setTask(e.target.value)}
-								/>
-								{t('yes')}
-								<FuelTypeRadio
-									value="no"
-									label={t('no')}
-									onClick={(e) => setTask(e.target.value)}
-								/>
-								{t('no')}
-							</RadioGroup>
-						</FormControl>
+						<UtilizationFirst
+							odometerHourmeter={odometerHourmeter}
+							t={t}
+						/>
 					)}
 					{register === 'revision' && (
-						<>
-							<InputLabelStyled htmlFor="responsible">
-								{t('responsible')}
-							</InputLabelStyled>
-							<SelectField
-								id="responsible"
-								name="responsible"
-								defaultValue={''}
-								// onChange={(e) =>
-								// 	handleInput(e.target.value, e.target.name)
-								// }
-							>
-								<StyledMenuItem value="">{`${t(
-									'select'
-								)}...`}</StyledMenuItem>
-							</SelectField>
-
-							<InputLabelStyled htmlFor="revisedItens">
-								{t('revisedItens')}
-							</InputLabelStyled>
-							<SelectField
-								id="revisedItens"
-								name="revisedItens"
-								defaultValue={''}
-								// onChange={(e) =>
-								// 	handleInput(e.target.value, e.target.name)
-								// }
-							>
-								<StyledMenuItem value="">{`${t(
-									'select'
-								)}...`}</StyledMenuItem>
-							</SelectField>
-
-							<div>
-								<h6>{t('itemsReview')}</h6>
-								<ul>
-									<li>Filtro de ar</li>
-									<li>Filtro de combustível</li>
-									<li>Troca de óleo</li>
-								</ul>
-							</div>
-						</>
+						<RevisionFirst
+							odometerHourmeter={odometerHourmeter}
+							t={t}
+						/>
 					)}
-
-					{task === 'no' && (
-						<>
-							<InputLabelStyled htmlFor="justification">
-								{t('justification')}
-							</InputLabelStyled>
-							<InputField
-								id="justification"
-								name="justification"
-								// onChange={(e) =>
-								// 	handleInput(e.target.value, e.target.name)
-								// }
-							/>
-						</>
-					)}
-
-					{task === 'yes' && (
-						<>
-							<InputLabelStyled htmlFor="tasksInvolved">
-								{t('tasksInvolved')}
-							</InputLabelStyled>
-							<SelectField
-								id="tasksInvolved"
-								name="tasksInvolved"
-								defaultValue={''}
-								// onChange={(e) =>
-								// 	handleInput(e.target.value, e.target.name)
-								// }
-							>
-								<StyledMenuItem value="">{`${t(
-									'select'
-								)}...`}</StyledMenuItem>
-							</SelectField>
-
-							<div>
-								<table>
-									<tr>
-										<th>Descrição da tarefa</th>
-										<th>Status</th>
-									</tr>
-									<tr>
-										<td>Consertar porteira</td>
-										<td>Consertar tábua</td>
-									</tr>
-									<tr>
-										<td style={{ color: 'green' }}>
-											Concluído
-										</td>
-										<td style={{ color: 'lighBlue' }}>
-											Iniciado
-										</td>
-									</tr>
-								</table>
-							</div>
-						</>
-					)}
+				</div>
+				<div style={{ width: '48%' }}>
+					{register === 'utilization' && <UtilizationSecond t={t} />}
+					{register === 'revision' && <RevisionSecond t={t} />}
 				</div>
 			</InputFieldsWrapper>
 		</ModalShell>

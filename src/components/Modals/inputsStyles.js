@@ -5,6 +5,7 @@ import {
 	MenuItem,
 	Slider,
 	InputLabel,
+	FormControl,
 } from '@material-ui/core';
 import { ExpandMore } from '@material-ui/icons';
 import { defaultTheme } from '../../theme';
@@ -56,6 +57,12 @@ export const InputLabelStyled = styled(InputLabel)`
 	}
 `;
 
+export const InputLabelRadio = styled.span`
+	font-size: ${text.size.normal};
+	margin-bottom: ${margin.md};
+	color: ${colors.neutral5};
+`;
+
 export const InputField = styled((props) => (
 	<TextField
 		variant="outlined"
@@ -89,6 +96,12 @@ export const InputField = styled((props) => (
 		color: ${colors.neutral6};
 		font-family: ${text.fontFamily.regular};
 		font-size: ${text.size.caption};
+	}
+`;
+
+export const FormControlStyled = styled(FormControl)`
+	.MuiFormGroup-row {
+		margin-bottom: ${margin.xg};
 	}
 `;
 
@@ -147,6 +160,7 @@ export const UploadButton = styled(CustomComponents.UploadButtonComponent)`
 	border-radius: 0 ${borderRadius.sm} ${borderRadius.sm} 0;
 	background-color: ${colors.primary};
 	text-transform: uppercase;
+	cursor: pointer;
 `;
 
 export const StyledSlider = styled(Slider)`

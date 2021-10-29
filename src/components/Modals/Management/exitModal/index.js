@@ -10,11 +10,18 @@ import {
 	StyledMenuItem,
 	UploadField,
 	InputLabelStyled,
+	FormControlStyled,
+	InputLabelRadio,
 } from '../../inputsStyles';
 import { useManagementContainer } from '../../../../context/managementContext';
-import { RadioGroup, FormControl, InputLabel } from '@material-ui/core';
+import {
+	RadioGroup,
+	FormControl,
+	InputLabel,
+	Divider,
+} from '@material-ui/core';
 
-export const ExitManagementModal = ({ title }) => {
+export const ExitManagementModal = () => {
 	const { t } = useTranslation();
 	const { exitModalState, closeModals, activeContent } =
 		useManagementContainer();
@@ -30,7 +37,7 @@ export const ExitManagementModal = ({ title }) => {
 		<ModalShell
 			open={exitModalState}
 			handleClose={closeModals}
-			title={title}
+			title={t('checkout')}
 			breadcrumbs={['financial', 'expenses']}
 			actionButtons={[
 				{
@@ -56,9 +63,9 @@ export const ExitManagementModal = ({ title }) => {
 					}}
 				>
 					<FormControlStyled component="fieldset">
-						<InputLabel htmlFor="filledUpTank">
+						<InputLabelRadio htmlFor="filledUpTank">
 							{t('whereWasFueled')}
-						</InputLabel>
+						</InputLabelRadio>
 						<RadioGroup
 							row
 							id="filledUpTank"
@@ -123,7 +130,7 @@ export const ExitManagementModal = ({ title }) => {
 							justifyContent: 'space-between',
 						}}
 					>
-						<div>
+						<div style={{ width: '48%' }}>
 							<InputLabelStyled htmlFor="fillDate">
 								{t('fillDate')}
 							</InputLabelStyled>
@@ -136,7 +143,7 @@ export const ExitManagementModal = ({ title }) => {
 								helperText={t('justNumbers')}
 							/>
 						</div>
-						<div>
+						<div style={{ width: '48%' }}>
 							<InputLabelStyled htmlFor="fillHour">
 								{t('fillHour')}
 							</InputLabelStyled>
@@ -170,6 +177,9 @@ export const ExitManagementModal = ({ title }) => {
 						</>
 					)}
 				</div>
+
+				<Divider orientation="vertical" flexItem component="div" />
+
 				<div style={{ width: '48%' }}>
 					<InputLabelStyled htmlFor="odometerHourmeterFile">
 						{t('odometerHourmeterFile')}

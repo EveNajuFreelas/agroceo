@@ -1,11 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import {
-	TabStyled,
-	TabsStyled,
-	HeadSection,
-	ButtonSection,
-} from '../styles';
+import { TabStyled, TabsStyled, HeadSection, ButtonSection } from '../styles';
 import { useTranslation } from 'react-i18next';
 import { defaultTheme } from '../../../theme';
 
@@ -62,7 +57,7 @@ const Animals = () => {
 		'ID',
 		t('lot'),
 		t('nameLot'),
-		t('subarea'),
+		t('subareas'),
 		t('totalAnimals'),
 	];
 
@@ -84,7 +79,7 @@ const Animals = () => {
 		t('%AnimalsWeighed'),
 		t('averageWeight'),
 		t('lastWeighing'),
-		t('subarea'),
+		t('subareas'),
 	];
 
 	return isLoading ? (
@@ -124,7 +119,7 @@ const Animals = () => {
 							space={true}
 						/>
 						<TableBody>
-							{animaisLots.map(row => (
+							{animaisLots.map((row) => (
 								<CollapseRow
 									row={row}
 									columns={columnTableCollapse}

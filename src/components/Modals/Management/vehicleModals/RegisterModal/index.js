@@ -21,6 +21,7 @@ import {
 	FormControlLabel,
 	Radio,
 	FormLabel,
+	Divider,
 } from '@material-ui/core';
 import { useModalsContainer } from '../../../../../context/modalsContext';
 
@@ -211,6 +212,9 @@ export const RegisterModal = ({
 					</div>
 					{!description && groupBoardYearField()}
 				</div>
+
+				<Divider orientation="vertical" flexItem component="div" />
+
 				<div style={{ width: '48%' }}>
 					{description && groupBoardYearField()}
 					<div

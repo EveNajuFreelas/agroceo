@@ -1,26 +1,20 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ModalShell } from '../../../../Modal/index';
+import { ModalShell } from '../../../Modal/index';
 
 import {
 	InputFieldsWrapper,
 	InputLabelRadio,
 	FormControlStyled,
-} from '../../../inputsStyles';
-import {
-	RadioGroup,
-	FormControlLabel,
-	Radio,
-	Divider,
-} from '@material-ui/core';
-import { useModalsContainer } from '../../../../../context/modalsContext';
-import { UtilizationFirst, UtilizationSecond } from './UtilizationOption';
-import { RevisionFirst, RevisionSecond } from './RevisionOption';
+} from '../../inputsStyles';
+import { RadioGroup, FormControlLabel, Radio } from '@material-ui/core';
+import { useModalsContainer } from '../../../../context/modalsContext';
+import { ModuleOption } from './moduleOption';
+import { SubAreaOption } from './subareaOption';
 
-export const UtilizationModal = ({ title, breadcrumbs, odometerHourmeter }) => {
+export const AreaModal = ({ title, breadcrumbs }) => {
 	const { t } = useTranslation();
-	const { modalUtilizationState, closeUtilizationModal } =
-		useModalsContainer();
+	const { modalState, closeModals } = useModalsContainer();
 
 	const [register, setRegister] = useState('utilization');
 
@@ -30,19 +24,20 @@ export const UtilizationModal = ({ title, breadcrumbs, odometerHourmeter }) => {
 
 	return (
 		<ModalShell
-			open={modalUtilizationState}
-			handleClose={closeUtilizationModal}
+			isSmall
+			open={modalState}
+			handleClose={closeModals}
 			title={title}
 			breadcrumbs={breadcrumbs}
 			actionButtons={[
 				{
-					onClick: () => closeUtilizationModal(),
+					onClick: () => closeModals(),
 					title: 'cancel',
 					color: 'secondary',
 					variant: 'outlined',
 				},
 				{
-					onClick: () => closeUtilizationModal(),
+					onClick: () => closeModals(),
 					title: 'save',
 					color: 'primary',
 					variant: 'contained',
@@ -52,7 +47,6 @@ export const UtilizationModal = ({ title, breadcrumbs, odometerHourmeter }) => {
 			<InputFieldsWrapper>
 				<div
 					style={{
-						width: '48%',
 						display: 'flex',
 						flexDirection: 'column',
 					}}
@@ -72,39 +66,22 @@ export const UtilizationModal = ({ title, breadcrumbs, odometerHourmeter }) => {
 							value={register}
 						>
 							<FormControlLabel
-								value="utilization"
-								label={t('utilization')}
+								value="subarea"
+								label={t('subarea')}
 								control={<Radio />}
 								onClick={(e) => setRegister(e.target.value)}
 							/>
 							<FormControlLabel
-								value="revision"
-								label={t('revision')}
+								value="module"
+								label={t('module')}
 								control={<Radio />}
 								onClick={(e) => setRegister(e.target.value)}
 							/>
 						</RadioGroup>
 					</FormControlStyled>
 
-					{register === 'utilization' && (
-						<UtilizationFirst
-							odometerHourmeter={odometerHourmeter}
-							t={t}
-						/>
-					)}
-					{register === 'revision' && (
-						<RevisionFirst
-							odometerHourmeter={odometerHourmeter}
-							t={t}
-						/>
-					)}
-				</div>
-
-				<Divider orientation="vertical" flexItem component="div" />
-
-				<div style={{ width: '48%' }}>
-					{register === 'utilization' && <UtilizationSecond t={t} />}
-					{register === 'revision' && <RevisionSecond t={t} />}
+					{register === 'subarea' && <SubAreaOption t={t} />}
+					{register === 'module' && <ModuleOption t={t} />}
 				</div>
 			</InputFieldsWrapper>
 		</ModalShell>

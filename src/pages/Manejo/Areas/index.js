@@ -10,9 +10,12 @@ import TableNormal from '../../../components/Table/TableNormal';
 import { useArea } from '../../../context/areasContext';
 import TableWithChip from '../../../components/Table/TableWithChip';
 import CircleLoading from '../../../components/LoadingCircle';
+import { AreaModal } from '../../../components/Modals/Management/areas';
+import { useModalsContainer } from '../../../context/modalsContext';
 
 const Areas = () => {
 	const { t } = useTranslation();
+	const { openModal } = useModalsContainer();
 	const { colors } = defaultTheme;
 	const { isLoading, areas, modules, getAreasAndModules } = useArea();
 
@@ -44,6 +47,10 @@ const Areas = () => {
 		<CircleLoading />
 	) : (
 		<>
+			<AreaModal
+				title={'Registrar Sub-área ou Módulo'}
+				breadcrumbs={['management', 'areas']}
+			/>
 			<HeadSection>
 				<TabsStyled value={value} onChange={handleChange}>
 					<TabStyled label={t('subareas')} />
@@ -55,6 +62,7 @@ const Areas = () => {
 						backgroundColor={colors.primary}
 						textButton={'Registro'}
 						marginBottom={false}
+						onClick={openModal}
 					/>
 				</ButtonSection>
 			</HeadSection>

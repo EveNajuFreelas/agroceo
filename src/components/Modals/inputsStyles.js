@@ -51,16 +51,29 @@ export const InputFieldsWrapper = styled.div`
 
 export const InputLabelStyled = styled(InputLabel)`
 	&.MuiInputLabel-root {
-		font-size: ${text.size.normal};
+		font-size: ${text.size.small};
 		margin-bottom: ${margin.md};
 		color: ${colors.neutral5};
+		font-family: ${text.fontFamily.regular};
+	}
+
+	&.MuiInputLabel-root .MuiInputLabel-asterisk {
+		color: ${colors.auxiliar};
 	}
 `;
 
-export const InputLabelRadio = styled.span`
+export const InputLabelRadio = styled((props) => <span {...props}></span>)`
 	font-size: ${text.size.normal};
 	margin-bottom: ${margin.md};
 	color: ${colors.neutral5};
+	font-family: ${text.fontFamily.regular};
+
+	${(props) =>
+		props.required &&
+		`&:after {
+			content: ' *';
+			color: ${colors.auxiliar}
+		}`}
 `;
 
 export const InputField = styled((props) => (
@@ -107,7 +120,7 @@ export const FormControlStyled = styled(FormControl)`
 
 export const SelectField = styled(CustomComponents.SelectComponent)`
 	&.MuiOutlinedInput-root {
-		min-width: 100%;
+		width: 100%;
 		margin-bottom: ${margin.md};
 	}
 	.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
@@ -126,7 +139,7 @@ export const UploadField = styled(CustomComponents.UploadComponent)`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	width: 300px;
+	width: 100%;
 	height: 35px;
 	border: ${border.input};
 	border-radius: ${borderRadius.md};

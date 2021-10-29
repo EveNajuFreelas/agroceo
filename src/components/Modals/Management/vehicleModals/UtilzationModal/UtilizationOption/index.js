@@ -19,7 +19,7 @@ const UtilizationFirst = ({ odometerHourmeter, t }) => {
 	};
 	return (
 		<>
-			<InputLabelStyled htmlFor="whoUsed">
+			<InputLabelStyled required htmlFor="whoUsed">
 				{t('whoUsed')}
 			</InputLabelStyled>
 			<SelectField
@@ -44,7 +44,7 @@ const UtilizationFirst = ({ odometerHourmeter, t }) => {
 				}}
 			>
 				<div style={{ width: '49%' }}>
-					<InputLabelStyled htmlFor="dateUse">
+					<InputLabelStyled required htmlFor="dateUse">
 						{t('dateUse')}
 					</InputLabelStyled>
 					<InputField
@@ -56,7 +56,7 @@ const UtilizationFirst = ({ odometerHourmeter, t }) => {
 					/>
 				</div>
 				<div style={{ width: '49%' }}>
-					<InputLabelStyled htmlFor="hour">
+					<InputLabelStyled required htmlFor="hour">
 						{t('hour')}
 					</InputLabelStyled>
 					<InputField
@@ -69,7 +69,7 @@ const UtilizationFirst = ({ odometerHourmeter, t }) => {
 					/>
 				</div>
 			</div>
-			<InputLabelStyled htmlFor="initialPicture">
+			<InputLabelStyled required htmlFor="initialPicture">
 				{t(`${odometerHourmeter}InitialFile`)}
 			</InputLabelStyled>
 			<UploadField
@@ -81,7 +81,7 @@ const UtilizationFirst = ({ odometerHourmeter, t }) => {
 				// 	handleInput(e.target.value, e.target.name)
 				// }
 			/>
-			<InputLabelStyled htmlFor="finalPicture">
+			<InputLabelStyled required htmlFor="finalPicture">
 				{t(`${odometerHourmeter}FinalFile`)}
 			</InputLabelStyled>
 			<UploadField
@@ -103,7 +103,7 @@ const UtilizationSecond = ({ t }) => {
 	return (
 		<>
 			<FormControlStyled component="fieldset">
-				<InputLabelRadio component="legend">
+				<InputLabelRadio required component="legend">
 					{t('involvesTask')}
 				</InputLabelRadio>
 				<RadioGroup
@@ -129,7 +129,7 @@ const UtilizationSecond = ({ t }) => {
 
 			{task === 'no' && (
 				<>
-					<InputLabelStyled htmlFor="justification">
+					<InputLabelStyled required htmlFor="justification">
 						{t('justification')}
 					</InputLabelStyled>
 					<InputField
@@ -145,7 +145,7 @@ const UtilizationSecond = ({ t }) => {
 
 			{task === 'yes' && (
 				<>
-					<InputLabelStyled htmlFor="tasksInvolved">
+					<InputLabelStyled required htmlFor="tasksInvolved">
 						{t('tasksInvolved')}
 					</InputLabelStyled>
 					<SelectField

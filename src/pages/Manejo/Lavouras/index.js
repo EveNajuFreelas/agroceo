@@ -12,9 +12,12 @@ import ButtonIconAdd from '../../../components/Geral/ButtonIcon';
 import TableNormal from '../../../components/Table/TableNormal';
 import { useTillage } from '../../../context/tillageContext';
 import CircleLoading from '../../../components/LoadingCircle';
+import { AgricultureModal } from '../../../components/Modals/Management/agriculture';
+import { useModalsContainer } from '../../../context/modalsContext';
 
 const Lavouras = () => {
 	const { t } = useTranslation();
+	const { openModal } = useModalsContainer();
 	const { colors } = defaultTheme;
 	const { isLoading, tillage, getTillage, deleteTillage } = useTillage();
 
@@ -25,17 +28,18 @@ const Lavouras = () => {
 	const columns = [
 		'ID',
 		t('typeAgriculture'),
-		t('subarea'),
+		t('subareas'),
 		t('numberBags'),
 		t('weightPerBag'),
 	];
 
-	const filter = mes => {
+	const filter = (mes) => {
 		console.log(mes);
 	};
 
 	return (
 		<>
+			<AgricultureModal />
 			<HeadSection>
 				<TitleSection>
 					{t('agriculture')}
@@ -47,8 +51,9 @@ const Lavouras = () => {
 				<ButtonIconAdd
 					color={colors.neutral0}
 					backgroundColor={colors.primary}
-					textButton='Registro'
+					textButton="Registro"
 					marginBottom={true}
+					onClick={openModal}
 				/>
 			</HeadSection>
 			{isLoading ? (

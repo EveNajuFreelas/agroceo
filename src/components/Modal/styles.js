@@ -7,15 +7,21 @@ const { padding, colors, text, margin, width } = defaultTheme;
 
 export const ModalWrapper = styled(Dialog)`
 	.MuiDialog-paper {
+		overflow-x: hidden;
 		padding: ${padding.xg};
 	}
+
 	.MuiDialog-paperWidthSm {
-		min-width: ${(props) => (props.isSmall ? '30%' : '55%')};
+		min-width: ${(props) => (props.isSmall ? '20%' : '42%')};
+	}
+
+	.MuiDialogContent-root {
+		overflow-x: hidden;
 	}
 
 	@media (max-width: 1280px) {
 		.MuiDialog-paperWidthSm {
-			min-width: ${(props) => (props.isSmall ? '35%' : '70%')};
+			min-width: ${(props) => (props.isSmall ? '35%' : '60%')};
 		}
 	}
 `;

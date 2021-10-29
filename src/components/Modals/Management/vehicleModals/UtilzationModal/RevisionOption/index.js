@@ -7,6 +7,7 @@ import {
 	UploadField,
 	InputLabelStyled,
 } from '../../../../inputsStyles';
+import { ListItems, TitleList } from '../../../styles';
 
 const RevisionFirst = ({ odometerHourmeter, t }) => {
 	return (
@@ -18,7 +19,7 @@ const RevisionFirst = ({ odometerHourmeter, t }) => {
 				}}
 			>
 				<div style={{ width: '49%' }}>
-					<InputLabelStyled htmlFor="lastRevision">
+					<InputLabelStyled required htmlFor="lastRevision">
 						{t('lastRevision')}
 					</InputLabelStyled>
 					<InputField
@@ -30,7 +31,7 @@ const RevisionFirst = ({ odometerHourmeter, t }) => {
 					/>
 				</div>
 				<div style={{ width: '49%' }}>
-					<InputLabelStyled htmlFor="odometerLastRevision">
+					<InputLabelStyled required htmlFor="odometerLastRevision">
 						{t('odometerLastRevision')}
 					</InputLabelStyled>
 					<InputField
@@ -44,7 +45,7 @@ const RevisionFirst = ({ odometerHourmeter, t }) => {
 				</div>
 			</div>
 
-			<InputLabelStyled htmlFor="nextRevision">
+			<InputLabelStyled required htmlFor="nextRevision">
 				{t('nextRevision')}
 			</InputLabelStyled>
 			<SelectField
@@ -62,7 +63,7 @@ const RevisionFirst = ({ odometerHourmeter, t }) => {
 					</StyledMenuItem>
 				))}
 			</SelectField>
-			<InputLabelStyled htmlFor="pictureReview">
+			<InputLabelStyled required htmlFor="pictureReview">
 				{t(`${odometerHourmeter}PhotoReview`)}
 			</InputLabelStyled>
 			<UploadField
@@ -81,7 +82,7 @@ const RevisionFirst = ({ odometerHourmeter, t }) => {
 const RevisionSecond = ({ t }) => {
 	return (
 		<>
-			<InputLabelStyled htmlFor="responsible">
+			<InputLabelStyled required htmlFor="responsible">
 				{t('responsible')}
 			</InputLabelStyled>
 			<SelectField
@@ -95,7 +96,7 @@ const RevisionSecond = ({ t }) => {
 				<StyledMenuItem value="">{`${t('select')}...`}</StyledMenuItem>
 			</SelectField>
 
-			<InputLabelStyled htmlFor="revisedItens">
+			<InputLabelStyled required htmlFor="revisedItens">
 				{t('revisedItens')}
 			</InputLabelStyled>
 			<SelectField
@@ -110,12 +111,12 @@ const RevisionSecond = ({ t }) => {
 			</SelectField>
 
 			<div>
-				<h6>{t('itemsReview')}</h6>
-				<ul>
+				<TitleList>{t('itemsReview')}</TitleList>
+				<ListItems>
 					<li>Filtro de ar</li>
 					<li>Filtro de combustível</li>
 					<li>Troca de óleo</li>
-				</ul>
+				</ListItems>
 			</div>
 		</>
 	);

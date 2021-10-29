@@ -13,6 +13,7 @@ import { StyledTableContainer } from '../styles';
 import { iconList } from '../../../assets/Icons/icon-list';
 import TableHeadDefault from '../TableHead';
 import { useModalsContainer } from '../../../context/modalsContext';
+import NoRegister from '../../NoRegistry';
 
 const TableNormal = ({
 	data,
@@ -27,7 +28,7 @@ const TableNormal = ({
 	const COLUMN_INITIAL = description ? 1 : 0;
 
 	if (data.length === 0) {
-		return <span>Sem registros</span>;
+		return <NoRegister />;
 	}
 
 	let keys = Object.keys(data[0]);

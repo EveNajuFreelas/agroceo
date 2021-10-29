@@ -37,7 +37,7 @@ export const ModalShell = ({
 				</div>
 				<CloseModal onClick={handleClose} />
 			</ModalHeader>
-			<DialogContent>
+			<DialogContent style={{ margin: 0, padding: 0 }}>
 				{children}
 				{actionButtons && (
 					<ModalFooter>

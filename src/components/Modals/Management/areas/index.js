@@ -16,7 +16,7 @@ export const AreaModal = ({ title, breadcrumbs }) => {
 	const { t } = useTranslation();
 	const { modalState, closeModals } = useModalsContainer();
 
-	const [register, setRegister] = useState('utilization');
+	const [register, setRegister] = useState('subarea');
 
 	const handleInput = (info, inputName) => {
 		//setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));

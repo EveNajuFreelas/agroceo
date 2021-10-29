@@ -13,7 +13,7 @@ import TableNormal from '../../../components/Table/TableNormal';
 import { useVehicle } from '../../../context/vehiclesContext';
 import CircleLoading from '../../../components/LoadingCircle';
 
-import { RegisterModal } from '../../../components/Modals/Management/vehicleModals/RegisterModal';
+import { RegisterModalVehicle } from '../../../components/Modals/Management/vehicleModals/RegisterModal';
 //import { useManagementContainer } from '../../../context/managementContext';
 import { useModalsContainer } from '../../../context/modalsContext';
 import { UtilizationModal } from '../../../components/Modals/Management/vehicleModals/UtilzationModal';
@@ -45,7 +45,7 @@ const Veiculos = () => {
 
 	return (
 		<>
-			<RegisterModal
+			<RegisterModalVehicle
 				title={t('registerVehicle')}
 				breadcrumbs={[['management', 'vehicles']]}
 				description={true}

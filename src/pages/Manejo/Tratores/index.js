@@ -12,7 +12,7 @@ import ButtonIconAdd from '../../../components/Geral/ButtonIcon';
 import TableNormal from '../../../components/Table/TableNormal';
 import { useTractor } from '../../../context/tractorContext';
 import CircleLoading from '../../../components/LoadingCircle';
-import { RegisterModal } from '../../../components/Modals/Management/vehicleModals/RegisterModal';
+import { RegisterModalVehicle } from '../../../components/Modals/Management/vehicleModals/RegisterModal';
 import { useModalsContainer } from '../../../context/modalsContext';
 import { UtilizationModal } from '../../../components/Modals/Management/vehicleModals/UtilzationModal';
 
@@ -43,7 +43,7 @@ const Tratores = () => {
 
 	return (
 		<>
-			<RegisterModal
+			<RegisterModalVehicle
 				title={t('registerTractor')}
 				breadcrumbs={[['management', 'tractor']]}
 				description={false}

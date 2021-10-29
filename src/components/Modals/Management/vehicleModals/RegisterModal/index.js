@@ -25,7 +25,7 @@ import {
 } from '@material-ui/core';
 import { useModalsContainer } from '../../../../../context/modalsContext';
 
-export const RegisterModal = ({
+export const RegisterModalVehicle = ({
 	title,
 	breadcrumbs,
 	description,

@@ -216,4 +216,6 @@ export const english = {
 	moduleNickname: 'Modulo nickname',
 	registerAgriculture: 'Register Agriculture',
 	onlyFarm: 'Only intended for farming',
+	assignTo: 'Assign to',
+	photoBeforeStarting: 'Photo before starting',
 };

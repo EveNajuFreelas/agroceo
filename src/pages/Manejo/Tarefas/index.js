@@ -13,10 +13,14 @@ import TableTarefas from '../../../components/Table/Manejo/tableTarefas';
 import { useTask } from '../../../context/taskContext';
 import CircleLoading from '../../../components/LoadingCircle';
 
+import { RegisterModalTask } from '../../../components/Modals/Management/task';
+import { useModalsContainer } from '../../../context/modalsContext';
+
 const Tarefas = () => {
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
 	const { getTasks, tasks, deleteTasks, isLoading } = useTask();
+	const { openModal } = useModalsContainer();
 
 	useEffect(() => {
 		getTasks();
@@ -31,12 +35,16 @@ const Tarefas = () => {
 		t('responsible'),
 	];
 
-	const filter = mes => {
+	const filter = (mes) => {
 		console.log(mes);
 	};
 
 	return (
 		<>
+			<RegisterModalTask
+				title="Registrar Tarefa"
+				breadcrumbs={['management', 'task']}
+			/>
 			<HeadSection>
 				<TitleSection>
 					{t('assignments')}
@@ -48,8 +56,9 @@ const Tarefas = () => {
 				<ButtonIconAdd
 					color={colors.neutral0}
 					backgroundColor={colors.primary}
-					textButton='Cadastrar'
+					textButton="Cadastrar"
 					marginBottom={true}
+					onClick={openModal}
 				/>
 			</HeadSection>
 			{isLoading ? (

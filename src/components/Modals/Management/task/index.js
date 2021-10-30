@@ -13,7 +13,7 @@ import {
 import { Divider } from '@material-ui/core';
 import { useModalsContainer } from '../../../../context/modalsContext';
 
-export const RegisterModalTask = ({ title, breadcrumbs }) => {
+export const RegisterModalTask = () => {
 	const { t } = useTranslation();
 	const { modalState, closeModals } = useModalsContainer();
 
@@ -26,8 +26,8 @@ export const RegisterModalTask = ({ title, breadcrumbs }) => {
 		<ModalShell
 			open={modalState}
 			handleClose={closeModals}
-			title={title}
-			breadcrumbs={breadcrumbs}
+			title={t('registerTask')}
+			breadcrumbs={['management', 'task']}
 			actionButtons={[
 				{
 					onClick: () => closeModals(),

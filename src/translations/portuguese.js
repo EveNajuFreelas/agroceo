@@ -221,4 +221,6 @@ export const portuguese = {
 	onlyFarm: 'Apenas destinadas a lavoura',
 	assignTo: 'Atribuir para',
 	photoBeforeStarting: 'Foto antes de começar',
+	registerDemand: 'Registrar demanda',
+	registerTask: 'Registrar Tarefa',
 };

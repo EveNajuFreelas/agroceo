@@ -41,10 +41,7 @@ const Tarefas = () => {
 
 	return (
 		<>
-			<RegisterModalTask
-				title="Registrar Tarefa"
-				breadcrumbs={['management', 'task']}
-			/>
+			<RegisterModalTask />
 			<HeadSection>
 				<TitleSection>
 					{t('assignments')}

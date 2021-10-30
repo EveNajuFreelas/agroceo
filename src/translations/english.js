@@ -218,4 +218,6 @@ export const english = {
 	onlyFarm: 'Only intended for farming',
 	assignTo: 'Assign to',
 	photoBeforeStarting: 'Photo before starting',
+	registerDemand: 'Register Demands',
+	registerTask: 'Register Task',
 };

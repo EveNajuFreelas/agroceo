@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ModalShell } from '../../../Modal/index';
-import { FuelTypeRadio } from '../managementStyles';
-import { fuelTypes } from '../../../../utils/dataMock/mock';
+import { ModalShell } from '../../../../Modal/index';
+import { FuelTypeRadio } from '../../managementStyles';
+import { fuelTypes } from '../../../../../utils/dataMock/mock';
 import {
 	InputFieldsWrapper,
 	SelectField,
@@ -12,14 +12,9 @@ import {
 	InputLabelStyled,
 	FormControlStyled,
 	InputLabelRadio,
-} from '../../inputsStyles';
-import { useManagementContainer } from '../../../../context/managementContext';
-import {
-	RadioGroup,
-	FormControl,
-	InputLabel,
-	Divider,
-} from '@material-ui/core';
+} from '../../../inputsStyles';
+import { useManagementContainer } from '../../../../../context/managementContext';
+import { RadioGroup, Divider } from '@material-ui/core';
 
 export const ExitManagementModal = () => {
 	const { t } = useTranslation();

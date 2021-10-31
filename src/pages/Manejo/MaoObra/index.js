@@ -10,12 +10,15 @@ import { defaultTheme } from '../../../theme';
 import { useRole } from '../../../context/rolesContext';
 import TableWithChip from '../../../components/Table/TableWithChip';
 import CircleLoading from '../../../components/LoadingCircle';
+import { EmployeesModal } from '../../../components/Modals/Management/manPower/employeesModal';
+import { useModalsContainer } from '../../../context/modalsContext';
 
 const MaoDeObra = () => {
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
 	const { roles, employees, getRoles, getEmployees, isLoading, deleteRole } =
 		useRole();
+	const { openModal } = useModalsContainer();
 
 	const [value, setValue] = useState(0);
 
@@ -45,6 +48,7 @@ const MaoDeObra = () => {
 						backgroundColor={colors.neutral0}
 						textButton={'Funções'}
 						marginBottom={false}
+						onClick={openModal}
 					/>
 
 					<ButtonIconAdd
@@ -55,6 +59,8 @@ const MaoDeObra = () => {
 					/>
 				</ButtonSection>
 			</HeadSection>
+
+			<EmployeesModal />
 
 			{value === 0 && <TableEmployees data={employees} />}
 			{value === 1 && (

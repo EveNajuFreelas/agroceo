@@ -220,4 +220,31 @@ export const english = {
 	photoBeforeStarting: 'Photo before starting',
 	registerDemand: 'Register Demands',
 	registerTask: 'Register Task',
+	registerEmployee: 'Register Employee',
+	fullName: 'Full name',
+	employeePhoto: 'Employee photo',
+	country: 'Country',
+	telephone: 'Telephone',
+	temporary: 'Temporary',
+	permanent: 'Permanent',
+
+	// 	batch name
+	// link to a subarea
+	// Select from inventory
+	// Number of animals you want to include in the batch
+	// Available in stock
+	// subarea change
+	// inform the date of movement
+
+	// 	inputType
+	// birth
+	// purchase
+	// transfer between farms of the same owner
+	// weaning prediction
+	// observation
+	// animal transit guide
+
+	// 	death
+	// sale
+	// Departure to farm owned by the same owner
 };

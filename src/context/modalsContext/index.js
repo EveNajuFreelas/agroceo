@@ -5,11 +5,16 @@ const ModalsContext = () => {
 	const [modalState, setmodalState] = useState(false);
 	const [modalEditState, setModalEditState] = useState(false);
 	const [modalUtilizationState, setModalUtilizationState] = useState(false);
+	const [secondModalState, setSecondModalState] = useState(false);
 
 	const [activeContent, setActiveContent] = useState({ receipt: null });
 
 	const openModal = () => {
 		setmodalState(true);
+	};
+
+	const openSecondModal = () => {
+		setSecondModalState(true);
 	};
 
 	const openEditModal = () => {
@@ -21,6 +26,10 @@ const ModalsContext = () => {
 	};
 
 	const closeModals = () => {
+		setmodalState(false);
+	};
+
+	const closeSecondModal = () => {
 		setmodalState(false);
 	};
 
@@ -41,6 +50,8 @@ const ModalsContext = () => {
 		modalState,
 		modalEditState,
 		modalUtilizationState,
+		secondModalState,
+		openSecondModal,
 		editActiveContent,
 		clearContent,
 		openModal,
@@ -49,6 +60,7 @@ const ModalsContext = () => {
 		closeModals,
 		closeEditModal,
 		closeUtilizationModal,
+		closeSecondModal,
 		setActiveContent,
 	};
 };

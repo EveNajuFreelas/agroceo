@@ -168,7 +168,7 @@ export const UploadButton = styled(CustomComponents.UploadButtonComponent)`
 	align-items: center;
 	border-left: ${border.input};
 	height: 100%;
-	width: 45%;
+	width: 30%;
 	color: white;
 	border-radius: 0 ${borderRadius.sm} ${borderRadius.sm} 0;
 	background-color: ${colors.primary};

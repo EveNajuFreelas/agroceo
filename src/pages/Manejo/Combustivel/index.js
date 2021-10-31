@@ -12,11 +12,11 @@ import { manejoCombustivel } from '../../../utils/dataMock/mock';
 import ButtonIconAdd from '../../../components/Geral/ButtonIcon';
 import { useManagementContainer } from '../../../context/managementContext';
 import { InitialManagementModal } from '../../../components/Modals/Management';
-import { EntranceManagementModal } from '../../../components/Modals/Management/entranceModal/index';
-import { ExitManagementModal } from '../../../components/Modals/Management/exitModal/index';
+import { EntranceManagementModal } from '../../../components/Modals/Management/fuel/entranceModal/index';
+import { ExitManagementModal } from '../../../components/Modals/Management/fuel/exitModal/index';
 
 const Combustivel = () => {
-    const { openInitialModal } = useManagementContainer();
+	const { openInitialModal } = useManagementContainer();
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
 
@@ -32,7 +32,7 @@ const Combustivel = () => {
 		t('dateTime'),
 	];
 
-	const filter = mes => {
+	const filter = (mes) => {
 		console.log(mes);
 	};
 
@@ -52,7 +52,7 @@ const Combustivel = () => {
 				<ButtonIconAdd
 					color={colors.neutral0}
 					backgroundColor={colors.primary}
-					textButton='Registro'
+					textButton="Registro"
 					marginBottom={true}
 					onClick={openInitialModal}
 				/>

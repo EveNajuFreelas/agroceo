@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { useManagementContainer } from '../../../../context/managementContext';
-import { ModalShell } from '../../../Modal/index';
+import { useManagementContainer } from '../../../../../context/managementContext';
+import { ModalShell } from '../../../../Modal/index';
 import {
 	InputField,
 	UploadField,
@@ -8,8 +8,8 @@ import {
 	StyledMenuItem,
 	InputFieldsWrapper,
 	InputLabelStyled,
-} from '../../inputsStyles';
-import { fuelTypes } from '../../../../utils/dataMock/mock';
+} from '../../../inputsStyles';
+import { fuelTypes } from '../../../../../utils/dataMock/mock';
 import { useTranslation } from 'react-i18next';
 import {
 	Button,
@@ -17,8 +17,6 @@ import {
 	DialogActions,
 	DialogContent,
 	DialogTitle,
-	FormHelperText,
-	InputLabel,
 } from '@material-ui/core';
 
 export const EntranceManagementModal = () => {

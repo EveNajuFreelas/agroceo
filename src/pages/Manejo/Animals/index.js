@@ -20,12 +20,14 @@ import { TableBody, Table } from '@material-ui/core';
 import { StyledTableContainer } from '../../../components/Table/styles';
 import { useAnimals } from '../../../context/animalsContext';
 import CircleLoading from '../../../components/LoadingCircle';
+import { AnimalsModal } from '../../../components/Modals/Management/animals';
+import { useModalsContainer } from '../../../context/modalsContext';
 
 const Animals = () => {
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
 	const { isLoading, animals, getAnimals, deleteAnimals } = useAnimals();
-
+	const { openModal } = useModalsContainer();
 	const [value, setValue] = useState(0);
 
 	useEffect(() => {
@@ -86,6 +88,7 @@ const Animals = () => {
 		<CircleLoading />
 	) : (
 		<>
+			<AnimalsModal t={t} />
 			<HeadSection>
 				<TabsStyled value={value} onChange={handleChange}>
 					<TabStyled label={t('registeredAnimals')} />
@@ -99,6 +102,7 @@ const Animals = () => {
 						backgroundColor={colors.primary}
 						textButton={'Registro'}
 						marginBottom={false}
+						onClick={openModal}
 					/>
 				</ButtonSection>
 			</HeadSection>

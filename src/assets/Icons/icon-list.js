@@ -32,7 +32,7 @@ import { ReactComponent as saida } from '../../utils/Icons/Saida.svg';
 import Brasil from '../../utils/Icons/Brasil.svg';
 import Usa from '../../utils/Icons/Estados Unidos.svg';
 import Australia from '../../utils/Icons/Australia.svg';
-import putIn from '../../utils/Icons/putIn.svg';
+import putIn from '../../utils/Icons/PutIn.svg';
 import { ReactComponent as iconUpload } from '../../utils/Icons/iconUpload.svg';
 
 export const iconList = {

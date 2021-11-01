@@ -24,8 +24,8 @@ const useRoleContainer = () => {
 	};
 
 	const getEmployees = () => {
-		propertiesSelected.map(property => {
-			api.get(`/people/${property}`)
+		propertiesSelected.map(async property => {
+			await api.get(`/people/${property}`)
 				.then(res => {
 					setEmployees(formatResponseEmployee(res.data.people));
 					setLoading(false);
@@ -64,6 +64,10 @@ const useRoleContainer = () => {
 			});
 	};
 
+	const editEmployee = (id, body) => {
+		console.log(id, body);
+	}
+
 	return {
 		roles,
 		employees,
@@ -72,6 +76,7 @@ const useRoleContainer = () => {
 		isLoading,
 		deleteRole,
 		deleteEmployee,
+		editEmployee,
 	};
 };
 

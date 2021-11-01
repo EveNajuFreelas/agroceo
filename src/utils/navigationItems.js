@@ -90,7 +90,7 @@ export const menuItems = [
 		],
 	},
 	{
-		id: 4,
+		id: 3,
 		name: 'settings',
 		icon: <Icon name={iconList.farm} size={20} />,
 		url: '/',

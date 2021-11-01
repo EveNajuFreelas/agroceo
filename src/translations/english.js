@@ -227,6 +227,19 @@ export const english = {
 	telephone: 'Telephone',
 	temporary: 'Temporary',
 	permanent: 'Permanent',
+	details: 'Details',
+	value: 'Value',
+	payed: 'Payed',
+	notPayed: 'Not Payed',
+	parcel: 'Parcel',
+	parcelDate: 'Parcel Date',
+	payedValue: 'Payed Value',
+	updatePayment: 'Update Payment',
+	editEmployee: 'Edit Employee',
+	addFunction: 'Add Function',
+	functionName: 'Function Name',
+	obligationsList: 'Obligations List',
+	editFunction: 'Edit Function',
 
 	// 	batch name
 	// link to a subarea

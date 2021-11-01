@@ -101,6 +101,7 @@ export const defaultTheme = {
 		header: `1px solid #EBEBEB`,
 		menu: `1px solid #FFFFFF`,
 		input: `1px solid #A3A3A3`,
+		payedButton: `1px solid #EB1F44`
 	},
 	align: {
 		center: 'center',

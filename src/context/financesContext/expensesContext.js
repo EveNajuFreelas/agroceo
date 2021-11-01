@@ -10,15 +10,27 @@ const ExpensesContext = () => {
 				id: 0,
 				name: 'Fazenda Recanto',
 				percentage: 80,
-				value: 3200,
+				value: 8000,
 			},
 			{
 				id: 1,
 				name: 'Fazenda Lá',
 				percentage: 20,
-				value: 800,
+				value: 2000,
 			},
 		],
+		selectedProperties: {
+			properties: [{
+					id: 0,
+					name: 'Fazenda Recanto',
+					percentage: 100,
+					value: 10000,
+			}],
+			numberParcels: 10,
+			payedParcels: [1, 2, 3],
+			parcelsValue: 1000,
+		},
+
 	};
 
 	const [activeContent, setActiveContent] = useState(extraMockedInfo);

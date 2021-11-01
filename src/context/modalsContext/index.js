@@ -30,7 +30,7 @@ const ModalsContext = () => {
 	};
 
 	const closeSecondModal = () => {
-		setmodalState(false);
+		setSecondModalState(false);
 	};
 
 	const closeEditModal = () => {

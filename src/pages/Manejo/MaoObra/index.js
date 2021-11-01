@@ -11,14 +11,17 @@ import { useRole } from '../../../context/rolesContext';
 import TableWithChip from '../../../components/Table/TableWithChip';
 import CircleLoading from '../../../components/LoadingCircle';
 import { EmployeesModal } from '../../../components/Modals/Management/manPower/employeesModal';
+import { EditEmployeeModal } from '../../../components/Modals/Management/manPower/editEmployee';
 import { useModalsContainer } from '../../../context/modalsContext';
+import { FunctionsModal } from '../../../components/Modals/Management/manPower/functionsModal';
+import { EditFunctionsModal } from '../../../components/Modals/Management/manPower/editFunctionsModal';
 
 const MaoDeObra = () => {
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
 	const { roles, employees, getRoles, getEmployees, isLoading, deleteRole } =
 		useRole();
-	const { openModal } = useModalsContainer();
+	const { openModal, openSecondModal } = useModalsContainer();
 
 	const [value, setValue] = useState(0);
 
@@ -48,7 +51,7 @@ const MaoDeObra = () => {
 						backgroundColor={colors.neutral0}
 						textButton={'Funções'}
 						marginBottom={false}
-						onClick={openModal}
+						onClick={openSecondModal}
 					/>
 
 					<ButtonIconAdd
@@ -56,11 +59,16 @@ const MaoDeObra = () => {
 						backgroundColor={colors.primary}
 						textButton={'Registro'}
 						marginBottom={false}
+						onClick={openModal}
 					/>
 				</ButtonSection>
 			</HeadSection>
 
+			<EditEmployeeModal />
 			<EmployeesModal />
+
+			<FunctionsModal />
+			<EditFunctionsModal />
 
 			{value === 0 && <TableEmployees data={employees} />}
 			{value === 1 && (

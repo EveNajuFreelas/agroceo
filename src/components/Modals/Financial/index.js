@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { ModalShell } from '../../Modal/index';
 import { useTranslation } from 'react-i18next';
 import { useExpensesContainer } from '../../../context/financesContext/expensesContext';
-import { PropertyDivisionWrapper, PropertiesField, Subtitle } from './styles';
+import { PropertyDivisionWrapper, PropertiesField, Subtitle, ParcelButton } from './styles';
 import {
 	InputFieldsWrapper,
 	InputField,
@@ -13,13 +13,24 @@ import {
 	ControlledInput,
 	InputLabelStyled,
 } from '../inputsStyles';
-import { Checkbox, Divider, InputAdornment } from '@material-ui/core';
+import { 
+	Checkbox, 
+	Divider, 
+	InputAdornment, 
+	Table,
+	TableHead, 
+	TableRow, 
+	TableCell, 
+	TableBody 
+} from '@material-ui/core';
 
 export const FinancialModal = ({ title, breadcrumbs }) => {
 	const { modalState, setModalState, activeContent } =
 		useExpensesContainer();
 	const { t } = useTranslation();
 	const [currentInfo, setCurrentInfo] = useState(activeContent);
+	const [editParcelModal, setEditParcelModal] = useState(false);
+	const [currentParcel, setCurrentParcel] = useState();
 
 	useEffect(() => {
 		setCurrentInfo(activeContent);
@@ -40,6 +51,97 @@ export const FinancialModal = ({ title, breadcrumbs }) => {
 		};
 		setCurrentInfo(curr => ({ ...curr, Properties: newArray }));
 	};
+
+	const editParcelStatusModal = () => {
+		return (
+			<ModalShell
+				isSmall
+				open={editParcelModal}
+				handleClose={() => setEditParcelModal(false)}
+				title={t('updatePayment')}
+				actionButtons={[
+					{
+						onClick: () => setEditParcelModal(false),
+						title: 'cancel',
+						color: 'secondary',
+						variant: 'outlined',
+					},
+					{
+						onClick: () => setEditParcelModal(false),
+						title: 'save',
+						color: 'primary',
+						variant: 'contained',
+					},
+				]}
+			>
+				<p style={{marginBottom: '10px'}}>{currentParcel?.details}</p>
+				<InputLabelStyled htmlFor='parcelDate'>
+					{t('parcelDate')}
+				</InputLabelStyled>
+				<InputField
+					id='parcelDate'
+					type='date'
+					name='parcelDate'
+					onChange={e =>
+						handleInput(e.target.value, e.target.name)
+					}
+				/>
+				<InputLabelStyled htmlFor="payedValue">{t('payedValue')}</InputLabelStyled>
+				<InputField 
+					id="payedValue"
+					type="number"
+				/>
+			</ModalShell>
+		);
+	}
+
+	const handleParcelEditClick = (parcel) => {
+		console.log(parcel);
+		if(!parcel.status) {
+			setEditParcelModal(true);
+			setCurrentParcel(parcel);
+		}
+	}
+	
+	const renderSelectedProperties = () => {
+		const { numberParcels, parcelsValue, payedParcels } = currentInfo.selectedProperties;
+		const tableRows = [];
+
+		for(let i = 1; i <= numberParcels; i++) {
+			const newRow = {
+				details: `${t('parcel')} ${i}x${numberParcels}`,
+				value: parcelsValue,
+				status: !!payedParcels.find(p => p === i),
+			};
+
+			tableRows.push(newRow);
+		}
+
+		return (
+			<Table>
+				<TableHead>
+					<TableRow>
+						<TableCell>{t('details')}</TableCell>
+						<TableCell>{t('value')}</TableCell>
+						<TableCell>{t('status')}</TableCell>
+					</TableRow>
+				</TableHead>
+				<TableBody>
+					{tableRows.map(row => (
+						<TableRow>
+							<TableCell>{row.details}</TableCell>
+							<TableCell>{row.value}</TableCell>
+							<TableCell>
+								<ParcelButton onClick={() => handleParcelEditClick(row)} isPayed={row.status}>
+									{t(row.status ? 'payed' : 'notPayed')}
+								</ParcelButton>
+							</TableCell>
+						</TableRow>
+					))}
+				</TableBody>
+			</Table>
+		)
+	}
 
 	const renderProperties = () => {
 		return currentInfo.Properties?.map(prop => (
@@ -106,11 +208,13 @@ export const FinancialModal = ({ title, breadcrumbs }) => {
 		));
 	};
 
-	return (
+
+	return (<>
+		{editParcelStatusModal()}
 		<ModalShell
 			open={modalState}
 			handleClose={() => setModalState(false)}
-			title={title}
+			title={ currentInfo?.description || title}
 			breadcrumbs={breadcrumbs}
 			actionButtons={[
 				{
@@ -240,12 +344,14 @@ export const FinancialModal = ({ title, breadcrumbs }) => {
 					</SelectField>
 				</div>
 			</InputFieldsWrapper>
-			{currentInfo.Properties && (
+			{currentInfo.selectedProperties 
+			? renderSelectedProperties() 
+			: (
 				<PropertyDivisionWrapper>
 					<Subtitle>Divisão entre propriedades</Subtitle>
 					{renderProperties()}
 				</PropertyDivisionWrapper>
 			)}
 		</ModalShell>
-	);
+	</>);
 };

@@ -13,12 +13,19 @@ import {
 import { StyledTableContainer } from '../styles';
 import { iconList } from '../../../assets/Icons/icon-list';
 import ChipTable from '../Chip';
+import { useModalsContainer } from '../../../context/modalsContext';
 
 const TableWithChip = ({ data, columns, deleteFunction }) => {
 	const { colors } = defaultTheme;
+	const { editActiveContent, openUtilizationModal } = useModalsContainer();
 
 	let keys = Object.keys(data[0]);
 	const lastColumn = keys.length - 1;
+
+	const handleEditClick = (content) => {
+		editActiveContent(content);
+		openUtilizationModal();
+	}
 
 	return (
 		<StyledTableContainer>
@@ -61,8 +68,6 @@ const TableWithChip = ({ data, columns, deleteFunction }) => {
 
 								{keys.map((column, index) => {
 									return (
-										//tem alguma forma de fazer melhor certeza k k k k
-
 										index > 0 && (
 											<TableCell
 												width={index === 1 && 200}
@@ -94,6 +99,7 @@ const TableWithChip = ({ data, columns, deleteFunction }) => {
 											cursor: 'pointer',
 										}}
 										src={iconList.edit}
+										onClick={() => handleEditClick(row)}
 									/>
 									<img
 										alt='icon delete'

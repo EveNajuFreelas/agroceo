@@ -18,10 +18,12 @@ import LabelWithIcon from '../../../LabelWithIcon';
 import { iconList } from '../../../../assets/Icons/icon-list';
 import { useRole } from '../../../../context/rolesContext';
 import NoRegister from '../../../NoRegistry';
+import { useModalsContainer } from '../../../../context/modalsContext';
 
 const TableEmployees = ({ data }) => {
 	const { t } = useTranslation();
 	const { deleteEmployee } = useRole();
+	const { editActiveContent, openEditModal} = useModalsContainer();
 	const { colors } = defaultTheme;
 
 	if (data.length === 0) {
@@ -36,6 +38,11 @@ const TableEmployees = ({ data }) => {
 		t('contact'),
 		t('typeContract'),
 	];
+
+	const handleEditClick = (content) => {
+		editActiveContent(content);
+		openEditModal();
+	}
 
 	return (
 		<StyledTableContainer>
@@ -110,6 +117,7 @@ const TableEmployees = ({ data }) => {
 											marginRight: 10,
 										}}
 										src={iconList.edit}
+										onClick={() => handleEditClick(row)}
 									/>
 									<img
 										alt='icon delete'

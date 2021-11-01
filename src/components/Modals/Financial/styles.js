@@ -1,8 +1,8 @@
-import { Grid } from '@material-ui/core';
+import { Grid, Button } from '@material-ui/core';
 import styled from 'styled-components';
 import { defaultTheme } from '../../../theme/index';
 
-const { margin, text } = defaultTheme;
+const { margin, text, colors, border } = defaultTheme;
 
 export const PropertyDivisionWrapper = styled.div``;
 
@@ -19,4 +19,11 @@ export const PropertiesField = styled(Grid)`
 export const Subtitle = styled.span`
 	font-size: ${text.size.medium};
 	font-family: ${text.fontFamily.bold};
+`;
+
+export const ParcelButton = styled(Button)`
+	.MuiButton-root {
+		color: ${(props) => props.isPayed ? colors.neutral0 : colors.auxiliar };
+		border: ${props => !props.isPayed && border.payedButton };
+	}
 `;

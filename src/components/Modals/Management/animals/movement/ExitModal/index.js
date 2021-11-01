@@ -8,8 +8,27 @@ import {
 
 import { fuelTypes } from '../../../../../../utils/dataMock/mock';
 import { WrapperRow } from './styles';
+import { useState } from 'react';
+import {
+	lotSelect,
+	subareas,
+} from '../../../../../../utils/dataMock/selectMock';
+import { ListItemText, MenuItem } from '@material-ui/core';
+import { ItemTableRow } from '../../lot/styles';
 
 export const ExitModal = ({ t, typeExit }) => {
+	const [inventorySelected, setInventorySelected] = useState([]);
+
+	const [subareasSelected, setSubareasSelected] = useState({});
+
+	const handleSubareaSelected = (event) => {
+		setSubareasSelected(event.target.value);
+	};
+
+	const handleInventorySelected = (event) => {
+		setInventorySelected(event.target.value);
+	};
+
 	return (
 		<div style={{ width: '100%' }}>
 			<WrapperRow>
@@ -20,18 +39,31 @@ export const ExitModal = ({ t, typeExit }) => {
 					<SelectField
 						id="selectInventory"
 						name="selectInventory"
-						//defaultValue={currentInfo?.fuelType || ''}
-						// onChange={(e) =>
-						// 	handleInput(e.target.value, e.target.name)
-						// }
+						onChange={handleInventorySelected}
+						style={{ width: '100%' }}
 					>
-						<StyledMenuItem value="">{`${t(
-							'select'
-						)}...`}</StyledMenuItem>
-						{fuelTypes.map((ft) => (
-							<StyledMenuItem value={ft.value}>
-								{t(ft.name)}
-							</StyledMenuItem>
+						{lotSelect.map((lot) => (
+							<MenuItem key={lot.id} value={lot}>
+								<ListItemText>
+									<tbody>
+										<ItemTableRow
+											style={{
+												display: 'flex',
+												alignItems: 'center',
+												justifyContent: 'space-between',
+												gap: '10%',
+											}}
+										>
+											<td>
+												{lot.specie} - {lot.category}
+											</td>
+											<td>{lot.sex}</td>
+											<td>{lot.age}</td>
+											<td>{lot.qtnd}</td>
+										</ItemTableRow>
+									</tbody>
+								</ListItemText>
+							</MenuItem>
 						))}
 					</SelectField>
 				</div>
@@ -58,18 +90,16 @@ export const ExitModal = ({ t, typeExit }) => {
 					<SelectField
 						id="linkSubarea"
 						name="linkSubarea"
-						//defaultValue={currentInfo?.fuelType || ''}
-						// onChange={(e) =>
-						// 	handleInput(e.target.value, e.target.name)
-						// }
+						value={subareasSelected}
+						onChange={handleSubareaSelected}
 					>
-						<StyledMenuItem value="">{`${t(
-							'select'
-						)}...`}</StyledMenuItem>
-						{fuelTypes.map((ft) => (
-							<StyledMenuItem value={ft.value}>
-								{t(ft.name)}
-							</StyledMenuItem>
+						{subareas.map((subarea) => (
+							<MenuItem key={subarea.id} value={subarea}>
+								<ListItemText>
+									{subarea.destination} {subarea.pastures} -
+									{subarea.size}
+								</ListItemText>
+							</MenuItem>
 						))}
 					</SelectField>
 				</div>

@@ -80,6 +80,7 @@ const Tratores = () => {
 					putInIcon={true}
 					description={false}
 					deleteFunction={deleteTractor}
+					title={t('tractor')}
 				/>
 			)}
 		</>

@@ -8,13 +8,13 @@ const Filter = ({ itensMenu, clickFunction }) => {
 	const [anchorEl, setAnchorEl] = useState(null);
 	const [labelSelected, setLabelSelected] = useState(itensMenu[0]);
 
-	const handleClick = event => {
+	const handleClick = (event) => {
 		setAnchorEl(event.currentTarget);
 	};
 
 	useEffect(() => {
 		handleClose();
-		clickFunction(labelSelected);
+		//clickFunction(labelSelected);
 	}, [labelSelected]);
 
 	const handleClose = () => {
@@ -28,13 +28,13 @@ const Filter = ({ itensMenu, clickFunction }) => {
 				<KeyboardArrowDownIcon />
 			</LabelContainer>
 			<Menu
-				id='simple-menu'
+				id="simple-menu"
 				anchorEl={anchorEl}
 				keepMounted
 				open={Boolean(anchorEl)}
 				onClose={handleClose}
 			>
-				{itensMenu.map(item => (
+				{itensMenu.map((item) => (
 					<MenuItem onClick={() => setLabelSelected(item)}>
 						{item}
 					</MenuItem>

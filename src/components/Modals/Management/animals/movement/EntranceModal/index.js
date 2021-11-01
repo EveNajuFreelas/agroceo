@@ -9,9 +9,33 @@ import {
 } from '../../../../inputsStyles';
 
 import { fuelTypes } from '../../../../../../utils/dataMock/mock';
-import { RadioGroup, FormControlLabel, Radio } from '@material-ui/core';
+import {
+	RadioGroup,
+	FormControlLabel,
+	Radio,
+	InputAdornment,
+	MenuItem,
+	ListItemText,
+} from '@material-ui/core';
+import { iconList } from '../../../../../../assets/Icons/icon-list';
+import { useState } from 'react';
+import {
+	categorySelect,
+	speciesSelect,
+} from '../../../../../../utils/dataMock/selectMock';
+import { TitleTask } from '../../../vehicleModals/UtilzationModal/UtilizationOption/styles';
 
 export const EntranceModal = ({ t, typeEntrance }) => {
+	const [specieSelected, setSpecieSelected] = useState([]);
+	const [categorySelected, setCategorySelected] = useState([]);
+
+	const handleSpecieSelected = (event) => {
+		setSpecieSelected(event.target.value);
+	};
+	const handleCategorySelected = (event) => {
+		setCategorySelected(event.target.value);
+	};
+
 	return (
 		<>
 			<div
@@ -27,18 +51,15 @@ export const EntranceModal = ({ t, typeEntrance }) => {
 				<SelectField
 					id="specie"
 					name="specie"
-					//defaultValue={currentInfo?.fuelType || ''}
-					// onChange={(e) =>
-					// 	handleInput(e.target.value, e.target.name)
-					// }
+					value={specieSelected}
+					onChange={handleSpecieSelected}
 				>
-					<StyledMenuItem value="">{`${t(
-						'select'
-					)}...`}</StyledMenuItem>
-					{fuelTypes.map((ft) => (
-						<StyledMenuItem value={ft.value}>
-							{t(ft.name)}
-						</StyledMenuItem>
+					{speciesSelect.map((specie) => (
+						<MenuItem key={specie.id} value={specie.name}>
+							<ListItemText>
+								<TitleTask>{specie.name}</TitleTask>
+							</ListItemText>
+						</MenuItem>
 					))}
 				</SelectField>
 				<FormControlStyled component="fieldset">
@@ -133,14 +154,16 @@ export const EntranceModal = ({ t, typeEntrance }) => {
 				<SelectField
 					id="category"
 					name="category"
-					defaultValue={''}
-					// onChange={(e) =>
-					// 	handleInput(e.target.value, e.target.name)
-					// }
+					value={categorySelected}
+					onChange={handleCategorySelected}
 				>
-					<StyledMenuItem value="">{`${t(
-						'select'
-					)}...`}</StyledMenuItem>
+					{categorySelect.map((category) => (
+						<MenuItem key={category.id} value={category.name}>
+							<ListItemText>
+								<TitleTask>{category.name}</TitleTask>
+							</ListItemText>
+						</MenuItem>
+					))}
 				</SelectField>
 
 				<InputLabelStyled required htmlFor="quantity">
@@ -167,6 +190,16 @@ export const EntranceModal = ({ t, typeEntrance }) => {
 					//onChange={(e) => handleInput(e.target.value, e.target.name)}
 					placeholder={t('typeSomething')}
 					helperText={t('justNumbers')}
+					InputProps={{
+						endAdornment: (
+							<InputAdornment position="end">
+								<img
+									alt="icon money"
+									src={iconList.weightInput}
+								/>
+							</InputAdornment>
+						),
+					}}
 				/>
 
 				<InputLabelStyled required htmlFor="observation">

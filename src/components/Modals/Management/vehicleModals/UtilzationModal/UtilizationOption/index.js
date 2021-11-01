@@ -10,13 +10,30 @@ import {
 	InputLabelRadio,
 	FormControlStyled,
 } from '../../../../inputsStyles';
-import { RadioGroup, FormControlLabel, Radio } from '@material-ui/core';
-import { ItemRow, TitleRow } from './styles';
+import {
+	RadioGroup,
+	FormControlLabel,
+	Radio,
+	InputAdornment,
+	MenuItem,
+	Checkbox,
+	ListItemText,
+	Input,
+} from '@material-ui/core';
+import { ItemRow, StatusTask, TitleRow, TitleTask } from './styles';
+import { iconList } from '../../../../../../assets/Icons/icon-list';
+import { defaultTheme } from '../../../../../../theme';
 
-const UtilizationFirst = ({ odometerHourmeter, t }) => {
+const UtilizationFirst = ({ odometerHourmeter, t, employees }) => {
+	const [employeeSelected, setEmployeeSelected] = useState();
 	const handleInput = (info, inputName) => {
 		//setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
 	};
+
+	const handleEmployeeSelected = (event) => {
+		setEmployeeSelected(event.target.value);
+	};
+
 	return (
 		<>
 			<InputLabelStyled required htmlFor="whoUsed">
@@ -25,15 +42,12 @@ const UtilizationFirst = ({ odometerHourmeter, t }) => {
 			<SelectField
 				id="whoUsed"
 				name="whoUsed"
-				//defaultValue={currentInfo?.fuelType || ''}
-				// onChange={(e) =>
-				// 	handleInput(e.target.value, e.target.name)
-				// }
+				value={employeeSelected}
+				onChange={handleEmployeeSelected}
 			>
-				<StyledMenuItem value="">{`${t('select')}...`}</StyledMenuItem>
-				{fuelTypes.map((ft) => (
-					<StyledMenuItem value={ft.value}>
-						{t(ft.name)}
+				{employees.map((employee) => (
+					<StyledMenuItem value={employee}>
+						{t(employee.name)}
 					</StyledMenuItem>
 				))}
 			</SelectField>
@@ -43,7 +57,7 @@ const UtilizationFirst = ({ odometerHourmeter, t }) => {
 					justifyContent: 'space-between',
 				}}
 			>
-				<div style={{ width: '49%' }}>
+				<div style={{ width: '48%' }}>
 					<InputLabelStyled required htmlFor="dateUse">
 						{t('dateUse')}
 					</InputLabelStyled>
@@ -55,7 +69,7 @@ const UtilizationFirst = ({ odometerHourmeter, t }) => {
 						// }
 					/>
 				</div>
-				<div style={{ width: '49%' }}>
+				<div style={{ width: '48%' }}>
 					<InputLabelStyled required htmlFor="hour">
 						{t('hour')}
 					</InputLabelStyled>
@@ -66,6 +80,59 @@ const UtilizationFirst = ({ odometerHourmeter, t }) => {
 						// onChange={(e) =>
 						// 	handleInput(e.target.value, e.target.name)
 						// }
+					/>
+				</div>
+			</div>
+			<div
+				style={{
+					display: 'flex',
+					justifyContent: 'space-between',
+				}}
+			>
+				<div style={{ width: '48%' }}>
+					<InputLabelStyled required htmlFor="initialOdometer">
+						{t('initialOdometer')}
+					</InputLabelStyled>
+					<InputField
+						id="initialOdometer"
+						name="initialOdometer"
+						onChange={(e) =>
+							handleInput(e.target.value, e.target.name)
+						}
+						placeholder="00000000"
+						InputProps={{
+							endAdornment: (
+								<InputAdornment position="end">
+									<img
+										alt="icon money"
+										src={iconList.odometerInput}
+									/>
+								</InputAdornment>
+							),
+						}}
+					/>
+				</div>
+				<div style={{ width: '48%' }}>
+					<InputLabelStyled required htmlFor="finalOdometer">
+						{t('finalOdometer')}
+					</InputLabelStyled>
+					<InputField
+						id="finalOdometer"
+						name="finalOdometer"
+						onChange={(e) =>
+							handleInput(e.target.value, e.target.name)
+						}
+						placeholder="00000000"
+						InputProps={{
+							endAdornment: (
+								<InputAdornment position="end">
+									<img
+										alt="icon money"
+										src={iconList.odometerInput}
+									/>
+								</InputAdornment>
+							),
+						}}
 					/>
 				</div>
 			</div>
@@ -97,8 +164,20 @@ const UtilizationFirst = ({ odometerHourmeter, t }) => {
 	);
 };
 
-const UtilizationSecond = ({ t }) => {
-	const [task, setTask] = useState('');
+const UtilizationSecond = ({ t, tasks }) => {
+	const [tasksSelected, setTasksSelected] = useState([]);
+	const [taskOption, setTaskOption] = useState('');
+	const { colors } = defaultTheme;
+
+	const colorsStatus = {
+		open: '#44CFEE',
+		done: colors.primary,
+		unstarted: colors.secondaryAccent,
+	};
+
+	const handleTaskSelected = (event) => {
+		setTasksSelected(event.target.value);
+	};
 
 	return (
 		<>
@@ -110,24 +189,24 @@ const UtilizationSecond = ({ t }) => {
 					row
 					id="involvesTask"
 					name="involvesTask"
-					value={task}
+					value={taskOption}
 				>
 					<FormControlLabel
 						value="yes"
 						label={t('yes')}
 						control={<Radio />}
-						onClick={(e) => setTask(e.target.value)}
+						onClick={(e) => setTaskOption(e.target.value)}
 					/>
 					<FormControlLabel
 						value="no"
 						label={t('no')}
 						control={<Radio />}
-						onClick={(e) => setTask(e.target.value)}
+						onClick={(e) => setTaskOption(e.target.value)}
 					/>
 				</RadioGroup>
 			</FormControlStyled>
 
-			{task === 'no' && (
+			{taskOption === 'no' && (
 				<>
 					<InputLabelStyled required htmlFor="justification">
 						{t('justification')}
@@ -143,7 +222,7 @@ const UtilizationSecond = ({ t }) => {
 				</>
 			)}
 
-			{task === 'yes' && (
+			{taskOption === 'yes' && (
 				<>
 					<InputLabelStyled required htmlFor="tasksInvolved">
 						{t('tasksInvolved')}
@@ -151,14 +230,31 @@ const UtilizationSecond = ({ t }) => {
 					<SelectField
 						id="tasksInvolved"
 						name="tasksInvolved"
-						defaultValue={''}
-						// onChange={(e) =>
-						// 	handleInput(e.target.value, e.target.name)
-						// }
+						value={tasksSelected}
+						multiple
+						onChange={handleTaskSelected}
+						renderValue={(selected) => selected.join(', ')}
+						style={{ width: '100%' }}
 					>
-						<StyledMenuItem value="">{`${t(
-							'select'
-						)}...`}</StyledMenuItem>
+						{tasks.map((task) => (
+							<MenuItem key={task.id} value={task}>
+								<Checkbox
+									checked={tasksSelected.indexOf(task) > -1}
+									style={{ color: 'green' }}
+								/>
+								<ListItemText>
+									<TitleTask>{task.title}</TitleTask>
+									<StatusTask
+										style={{
+											marginLeft: '10px',
+											color: colorsStatus[task.status],
+										}}
+									>
+										{t(task.status)}
+									</StatusTask>
+								</ListItemText>
+							</MenuItem>
+						))}
 					</SelectField>
 
 					<div>
@@ -170,16 +266,20 @@ const UtilizationSecond = ({ t }) => {
 								</TitleRow>
 							</thead>
 							<tbody>
-								<ItemRow>
-									<td>Consertar porteira</td>
-									<td style={{ color: 'green' }}>
-										Concluído
-									</td>
-								</ItemRow>
-								<ItemRow>
-									<td>Consertar tábua</td>
-									<td style={{ color: 'blue' }}>Iniciado</td>
-								</ItemRow>
+								{tasksSelected.map((task) => (
+									<ItemRow>
+										<td>{task.title}</td>
+										<td
+											style={{
+												color: colorsStatus[
+													task.status
+												],
+											}}
+										>
+											{t(task.status)}
+										</td>
+									</ItemRow>
+								))}
 							</tbody>
 						</table>
 					</div>

@@ -32,8 +32,14 @@ import { ReactComponent as saida } from '../../utils/Icons/Saida.svg';
 import Brasil from '../../utils/Icons/Brasil.svg';
 import Usa from '../../utils/Icons/Estados Unidos.svg';
 import Australia from '../../utils/Icons/Australia.svg';
-import putIn from '../../utils/Icons/PutIn.svg';
+import putIn from '../../utils/Icons/putIn.svg';
 import { ReactComponent as iconUpload } from '../../utils/Icons/iconUpload.svg';
+import moneyInput from '../../utils/Icons/moneyInput.svg';
+import odometerInput from '../../utils/Icons/odometerInput.svg';
+import areaInput from '../../utils/Icons/areaInput.svg';
+import mapInput from '../../utils/Icons/mapInput.svg';
+import bagInput from '../../utils/Icons/bagInput.svg';
+import weightInput from '../../utils/Icons/weightInput.svg';
 
 export const iconList = {
 	add_a_photo,
@@ -72,4 +78,10 @@ export const iconList = {
 	putIn,
 	homeRecurso,
 	iconUpload,
+	moneyInput,
+	odometerInput,
+	areaInput,
+	mapInput,
+	bagInput,
+	weightInput,
 };

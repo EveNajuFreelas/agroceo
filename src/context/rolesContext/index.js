@@ -11,62 +11,63 @@ const useRoleContainer = () => {
 	const [isLoading, setLoading] = useState(true);
 
 	const getRoles = () => {
-		propertiesSelected.map(property => {
+		propertiesSelected.map((property) => {
 			api.get(`/offices/${property}`)
-				.then(res => {
+				.then((res) => {
 					setRoles(formatResponseRole(res.data.office));
 					setLoading(false);
 				})
-				.catch(err => {
+				.catch((err) => {
 					console.error(err);
 				});
 		});
 	};
 
 	const getEmployees = () => {
-		propertiesSelected.map(async property => {
-			await api.get(`/people/${property}`)
-				.then(res => {
+		propertiesSelected.map(async (property) => {
+			await api
+				.get(`/people/${property}`)
+				.then((res) => {
 					setEmployees(formatResponseEmployee(res.data.people));
 					setLoading(false);
 				})
-				.catch(err => {
+				.catch((err) => {
 					console.error(err);
 				});
 		});
 	};
 
-	const deleteEmployee = id => {
+	const deleteEmployee = (id) => {
 		setLoading(true);
 		api.defaults.headers.authorization = `Bearer ${token}`;
 		api.delete(`/people/${id}`, {
 			id: id,
 		})
-			.then(res => {
+			.then((res) => {
 				getEmployees();
 			})
-			.catch(err => {
+			.catch((err) => {
 				console.error(err);
 			});
 	};
 
-	const deleteRole = id => {
+	const deleteRole = (id) => {
 		setLoading(true);
 		api.defaults.headers.authorization = `Bearer ${token}`;
 		api.delete(`/office/${id}`, {
 			id: id,
 		})
-			.then(res => {
+			.then((res) => {
 				getRoles();
 			})
-			.catch(err => {
+			.catch((err) => {
 				console.error(err);
 			});
 	};
 
 	const editEmployee = (id, body) => {
 		console.log(id, body);
-	}
+	};
 
 	return {
 		roles,

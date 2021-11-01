@@ -1,4 +1,7 @@
+import { Checkbox, ListItemText, MenuItem } from '@material-ui/core';
+import { useState } from 'react';
 import { fuelTypes } from '../../../../../../utils/dataMock/mock';
+import { itemsRevised } from '../../../../../../utils/dataMock/selectMock';
 
 import {
 	SelectField,
@@ -8,6 +11,7 @@ import {
 	InputLabelStyled,
 } from '../../../../inputsStyles';
 import { ListItems, TitleList } from '../../../styles';
+import { TitleTask } from '../UtilizationOption/styles';
 
 const RevisionFirst = ({ odometerHourmeter, t }) => {
 	return (
@@ -80,6 +84,11 @@ const RevisionFirst = ({ odometerHourmeter, t }) => {
 };
 
 const RevisionSecond = ({ t }) => {
+	const [itemsSelected, setItemsSelected] = useState([]);
+
+	const handleItemsSelected = (event) => {
+		setItemsSelected(event.target.value);
+	};
 	return (
 		<>
 			<InputLabelStyled required htmlFor="responsible">
@@ -102,20 +111,31 @@ const RevisionSecond = ({ t }) => {
 			<SelectField
 				id="revisedItens"
 				name="revisedItens"
-				defaultValue={''}
-				// onChange={(e) =>
-				// 	handleInput(e.target.value, e.target.name)
-				// }
+				multiple
+				value={itemsSelected}
+				onChange={handleItemsSelected}
+				renderValue={(selected) => selected.join(', ')}
+				style={{ width: '100%' }}
 			>
-				<StyledMenuItem value="">{`${t('select')}...`}</StyledMenuItem>
+				{itemsRevised.map((item) => (
+					<MenuItem key={item.id} value={item.name}>
+						<Checkbox
+							checked={itemsSelected.indexOf(item.name) > -1}
+							style={{ color: 'green' }}
+						/>
+						<ListItemText>
+							<TitleTask>{item.name}</TitleTask>
+						</ListItemText>
+					</MenuItem>
+				))}
 			</SelectField>
 
 			<div>
 				<TitleList>{t('itemsReview')}</TitleList>
 				<ListItems>
-					<li>Filtro de ar</li>
-					<li>Filtro de combustível</li>
-					<li>Troca de óleo</li>
+					{itemsSelected.map((item) => (
+						<li key={item}>{item}</li>
+					))}
 				</ListItems>
 			</div>
 		</>

@@ -8,10 +8,31 @@ import {
 import { fuelTypes } from '../../../../../utils/dataMock/mock';
 import { ItemTableRowWeighing, TitleTableRowWeighing } from './styles';
 import { useState } from 'react';
+import { InputAdornment, ListItemText, MenuItem } from '@material-ui/core';
+import { iconList } from '../../../../../assets/Icons/icon-list';
+import {
+	subareas,
+	weighingSelect,
+} from '../../../../../utils/dataMock/selectMock';
+import { ItemTableRow } from '../lot/styles';
 
 export const ModalWeighing = ({ t }) => {
-	const [specieSelected, setSpecieSelected] = useState(fuelTypes[0].value);
+	const [lotSelected, setLotSelected] = useState([]);
+	const [subareaHomeSelected, setSubareaHomeSelected] = useState([]);
+	const [subareaDestinationSelected, setSubareaDestinationSelected] =
+		useState([]);
 
+	const handleLotSelected = (event) => {
+		setLotSelected(event.target.value);
+	};
+
+	const handleSubareaHomeSelected = (event) => {
+		setSubareaHomeSelected(event.target.value);
+	};
+
+	const handleSubareaDestinationSelected = (event) => {
+		setSubareaDestinationSelected(event.target.value);
+	};
 	return (
 		<div style={{ display: 'flex', flexDirection: 'column' }}>
 			<div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -22,24 +43,37 @@ export const ModalWeighing = ({ t }) => {
 						flexDirection: 'column',
 					}}
 				>
-					<InputLabelStyled required htmlFor="specie">
-						{t('specie')}
+					<InputLabelStyled required htmlFor="selectLot">
+						{t('selectLot')}
 					</InputLabelStyled>
 					<SelectField
-						id="specie"
-						name="specie"
-						value={specieSelected}
-						onChange={(e) =>
-							setSpecieSelected(e.target.value, e.target.name)
-						}
+						id="selectLot"
+						name="selectLot"
+						value={lotSelected}
+						onChange={handleLotSelected}
+						style={{ width: '100%' }}
 					>
-						<StyledMenuItem value="">{`${t(
-							'select'
-						)}...`}</StyledMenuItem>
-						{fuelTypes.map((ft) => (
-							<StyledMenuItem value={ft.value}>
-								{t(ft.name)}
-							</StyledMenuItem>
+						{weighingSelect.map((lot) => (
+							<MenuItem key={lot.id} value={lot}>
+								<ListItemText>
+									<tbody>
+										<ItemTableRow
+											style={{
+												display: 'flex',
+												alignItems: 'center',
+												justifyContent: 'space-between',
+												gap: '10%',
+											}}
+											onCLick={console.log('clicou')}
+										>
+											<td>{lot.id}</td>
+											<td>{lot.name}</td>
+											<td>{lot.subarea}</td>
+											<td>{lot.qtnd}</td>
+										</ItemTableRow>
+									</tbody>
+								</ListItemText>
+							</MenuItem>
 						))}
 					</SelectField>
 
@@ -90,6 +124,16 @@ export const ModalWeighing = ({ t }) => {
 								//onChange={(e) => handleInput(e.target.value, e.target.name)}
 								placeholder={t('typeSomething')}
 								helperText={t('justNumbers')}
+								InputProps={{
+									endAdornment: (
+										<InputAdornment position="end">
+											<img
+												alt="icon money"
+												src={iconList.weightInput}
+											/>
+										</InputAdornment>
+									),
+								}}
 							/>
 						</div>
 					</div>
@@ -134,6 +178,16 @@ export const ModalWeighing = ({ t }) => {
 							//defaultValue={currentInfo?.quantity}
 							//onChange={(e) => handleInput(e.target.value, e.target.name)}
 							placeholder={t('typeSomething')}
+							InputProps={{
+								endAdornment: (
+									<InputAdornment position="end">
+										<img
+											alt="icon money"
+											src={iconList.weightInput}
+										/>
+									</InputAdornment>
+								),
+							}}
 						/>
 					</div>
 				</div>
@@ -153,18 +207,16 @@ export const ModalWeighing = ({ t }) => {
 					<SelectField
 						id="homeSubarea"
 						name="homeSubarea"
-						//defaultValue={currentInfo?.fuelType || ''}
-						// onChange={(e) =>
-						// 	handleInput(e.target.value, e.target.name)
-						// }
+						value={subareaHomeSelected}
+						onChange={handleSubareaHomeSelected}
 					>
-						<StyledMenuItem value="">{`${t(
-							'select'
-						)}...`}</StyledMenuItem>
-						{fuelTypes.map((ft) => (
-							<StyledMenuItem value={ft.value}>
-								{t(ft.name)}
-							</StyledMenuItem>
+						{subareas.map((subarea) => (
+							<MenuItem key={subarea.id} value={subarea}>
+								<ListItemText>
+									{subarea.destination} {subarea.pastures} -
+									{subarea.size}
+								</ListItemText>
+							</MenuItem>
 						))}
 					</SelectField>
 				</div>
@@ -176,18 +228,16 @@ export const ModalWeighing = ({ t }) => {
 					<SelectField
 						id="destinationSubArea"
 						name="destinationSubArea"
-						//defaultValue={currentInfo?.fuelType || ''}
-						// onChange={(e) =>
-						// 	handleInput(e.target.value, e.target.name)
-						// }
+						value={subareaDestinationSelected}
+						onChange={handleSubareaDestinationSelected}
 					>
-						<StyledMenuItem value="">{`${t(
-							'select'
-						)}...`}</StyledMenuItem>
-						{fuelTypes.map((ft) => (
-							<StyledMenuItem value={ft.value}>
-								{t(ft.name)}
-							</StyledMenuItem>
+						{subareas.map((subarea) => (
+							<MenuItem key={subarea.id} value={subarea}>
+								<ListItemText>
+									{subarea.destination} {subarea.pastures} -
+									{subarea.size}
+								</ListItemText>
+							</MenuItem>
 						))}
 					</SelectField>
 				</div>

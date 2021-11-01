@@ -17,7 +17,11 @@ import {
 	DialogActions,
 	DialogContent,
 	DialogTitle,
+	InputAdornment,
+	SvgIcon,
 } from '@material-ui/core';
+import { iconList } from '../../../../../assets/Icons/icon-list';
+import { defaultTheme } from '../../../../../theme';
 
 export const EntranceManagementModal = () => {
 	const { t } = useTranslation();
@@ -28,6 +32,8 @@ export const EntranceManagementModal = () => {
 		setActiveContent,
 		activeContent,
 	} = useManagementContainer();
+
+	const { colors } = defaultTheme;
 
 	const [currentInfo, setCurrentInfo] = useState(activeContent);
 	const [confirmDialogActive, setConfirmDialogActive] = useState(false);
@@ -67,9 +73,12 @@ export const EntranceManagementModal = () => {
 				<p>{t('receiptNotSent')}</p>
 				<p>{t('confirmSendingWithoutReceipt')}</p>
 			</DialogContent>
-			<DialogActions>
+			<DialogActions style={{ justifyContent: 'center' }}>
 				<Button
-					color="primary"
+					style={{
+						borderColor: `${colors.primary}`,
+						color: `${colors.primary}`,
+					}}
 					variant="outlined"
 					onClick={() => handleSave('save')}
 				>
@@ -145,8 +154,18 @@ export const EntranceManagementModal = () => {
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}
-						helperText={t('litersnumber')}
+						helperText={t('justNumbers')}
 						style={{ marginBottom: '0px' }}
+						InputProps={{
+							endAdornment: (
+								<InputAdornment position="end">
+									<img
+										alt="icon money"
+										src={iconList.moneyInput}
+									/>
+								</InputAdornment>
+							),
+						}}
 					/>
 
 					<InputLabelStyled htmlFor="receipt">

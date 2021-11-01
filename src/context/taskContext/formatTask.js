@@ -1,6 +1,6 @@
-export const formatResponseTask = response => {
+export const formatResponseTask = (response) => {
 	let tempArray = [];
-	response.forEach(res => {
+	response.forEach((res) => {
 		tempArray.push({
 			id: res.id,
 			title: res.title,
@@ -14,7 +14,7 @@ export const formatResponseTask = response => {
 	return tempArray;
 };
 
-const formatStatus = Object.freeze({
+export const formatStatus = Object.freeze({
 	1: 'open',
 	2: 'refused',
 	3: 'done',

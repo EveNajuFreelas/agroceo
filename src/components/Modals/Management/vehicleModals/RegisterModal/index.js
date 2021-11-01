@@ -19,8 +19,10 @@ import {
 	FormControlLabel,
 	Radio,
 	Divider,
+	InputAdornment,
 } from '@material-ui/core';
 import { useModalsContainer } from '../../../../../context/modalsContext';
+import { iconList } from '../../../../../assets/Icons/icon-list';
 
 export const RegisterModalVehicle = ({
 	title,
@@ -231,6 +233,16 @@ export const RegisterModalVehicle = ({
 									handleInput(e.target.value, e.target.name)
 								}
 								placeholder="00000000"
+								InputProps={{
+									endAdornment: (
+										<InputAdornment position="end">
+											<img
+												alt="icon money"
+												src={iconList.odometerInput}
+											/>
+										</InputAdornment>
+									),
+								}}
 							/>
 						</div>
 						<div style={{ width: '48%' }}>
@@ -244,6 +256,16 @@ export const RegisterModalVehicle = ({
 									handleInput(e.target.value, e.target.name)
 								}
 								placeholder="00000000"
+								InputProps={{
+									endAdornment: (
+										<InputAdornment position="end">
+											<img
+												alt="icon money"
+												src={iconList.odometerInput}
+											/>
+										</InputAdornment>
+									),
+								}}
 							/>
 						</div>
 					</div>
@@ -276,6 +298,16 @@ export const RegisterModalVehicle = ({
 									handleInput(e.target.value, e.target.name)
 								}
 								placeholder="00000000"
+								InputProps={{
+									endAdornment: (
+										<InputAdornment position="end">
+											<img
+												alt="icon money"
+												src={iconList.odometerInput}
+											/>
+										</InputAdornment>
+									),
+								}}
 							/>
 						</div>
 						<div style={{ width: '48%' }}>

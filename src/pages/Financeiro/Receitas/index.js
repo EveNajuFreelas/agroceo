@@ -12,6 +12,7 @@ import CardTotalValue from '../../../components/Card/CardTotalValue';
 import TableWithDescriptionIcon from '../../../components/Table/TableDescriptionWithIcon';
 import { financeiroData } from '../../../utils/dataMock/mock';
 import TableHeader from '../../../components/Table/TableHeader';
+import { FinancialModal } from '../../../components/Modals/Financial';
 
 const Receitas = () => {
 	const { t } = useTranslation();
@@ -30,45 +31,52 @@ const Receitas = () => {
 	];
 
 	return (
-		<FinancialOverview>
-			<SummaryContainer>
-				<CardValueContainer>
-					<CardValue
-						colorText={`${colors.secondaryAccent}`}
-						text={t('receivable')}
-						value={'R$ 12.000,00'}
+		<>
+			<FinancialModal
+				title={t('newInvestment')}
+				breadcrumbs={['financial', 'investments']}
+			/>
+
+			<FinancialOverview>
+				<SummaryContainer>
+					<CardValueContainer>
+						<CardValue
+							colorText={`${colors.secondaryAccent}`}
+							text={t('receivable')}
+							value={'R$ 12.000,00'}
+						/>
+						<CardValue
+							colorText={`${colors.errorLight}`}
+							text={t('overdue')}
+							value={'R$ 5.000,00'}
+						/>
+						<CardValue
+							colorText={`${colors.greenLight}`}
+							text={t('paid')}
+							value={'R$ 43.000,00'}
+						/>
+					</CardValueContainer>
+					<CardTotalValue
+						value={'R$ 60.000,00'}
+						mes={'Setembro'}
+						ano={2021}
 					/>
-					<CardValue
-						colorText={`${colors.errorLight}`}
-						text={t('overdue')}
-						value={'R$ 5.000,00'}
+				</SummaryContainer>
+				<div>
+					<TableHeader
+						data={financeiroData}
+						columns={columnsFinancial}
+						title={'Financeiro - Receitas'}
 					/>
-					<CardValue
-						colorText={`${colors.greenLight}`}
-						text={t('paid')}
-						value={'R$ 43.000,00'}
+					<TableWithDescriptionIcon
+						data={financeiroData}
+						columns={columnsFinancial}
+						yesNo={true}
+						columnYesNo={'Invoice'}
 					/>
-				</CardValueContainer>
-				<CardTotalValue
-					value={'R$ 60.000,00'}
-					mes={'Setembro'}
-					ano={2021}
-				/>
-			</SummaryContainer>
-			<div>
-				<TableHeader
-					data={financeiroData}
-					columns={columnsFinancial}
-					title={'Financeiro - Receitas'}
-				/>
-				<TableWithDescriptionIcon
-					data={financeiroData}
-					columns={columnsFinancial}
-					yesNo={true}
-					columnYesNo={'Invoice'}
-				/>
-			</div>
-		</FinancialOverview>
+				</div>
+			</FinancialOverview>
+		</>
 	);
 };
 

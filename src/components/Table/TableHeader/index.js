@@ -22,72 +22,50 @@ import {
 	itensMenuMonth,
 } from '../../../utils/dataMock/itensMenu';
 import { iconList } from '../../../assets/Icons/icon-list';
-
-import jsPDF from 'jspdf';
-import 'jspdf-autotable';
+import { generatePDF, printOutPDF } from '../../../utils/functions';
 
 const TableHeader = ({ data, columns, title }) => {
 	const { clearContent, setModalState } = useExpensesContainer();
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
-	const doc = new jsPDF();
 
-	const filter = mes => {
+	const filter = (mes) => {
 		console.log(mes);
-	};
-
-	const createPDF = () => {
-		doc.text(title, 15, 10);
-
-		doc.autoTableSetDefaults({
-			headStyles: { fillColor: colors.primary },
-		});
-
-		let dados = data.map(item => Object.values(item.data));
-
-		doc.autoTable({
-			head: [columns],
-			body: dados,
-		});
-	};
-
-	const generatePDF = () => {
-		createPDF();
-		doc.save(`${title}.pdf`);
-	};
-
-	const printOutPDF = () => {
-		createPDF();
-		doc.output('dataurlnewwindow', `${title}.pdf`);
 	};
 
 	const handleClick = () => {
 		clearContent();
 		setModalState(true);
-	}
+	};
 
 	return (
 		<TableHeaderContainer>
 			<ButtonContainer>
 				<ButtonWrapper>
-					<ButtonIcon src={iconList.print} onClick={printOutPDF} />
+					<ButtonIcon
+						src={iconList.print}
+						onClick={() => printOutPDF(title, columns, data)}
+					/>
 				</ButtonWrapper>
 				<ButtonWrapper>
-					<ButtonIcon src={iconList.pdf} onClick={generatePDF} />
+					<ButtonIcon
+						src={iconList.pdf}
+						onClick={() => generatePDF(title, columns, data)}
+					/>
 				</ButtonWrapper>
 			</ButtonContainer>
 			<SearchInput
 				label={t('search prescription')}
-				type='search'
-				variant='outlined'
+				type="search"
+				variant="outlined"
 				InputProps={{
 					endAdornment: (
-						<InputAdornment position='end'>
-							<img alt='icon search' src={iconList.searchIcon} />
+						<InputAdornment position="end">
+							<img alt="icon search" src={iconList.searchIcon} />
 						</InputAdornment>
 					),
 				}}
-				size='small'
+				size="small"
 			/>
 			<ContainerRight>
 				<FilterContainer>
@@ -101,7 +79,7 @@ const TableHeader = ({ data, columns, title }) => {
 					onClick={handleClick}
 					color={colors.neutral0}
 					backgroundColor={colors.primary}
-					textButton='Registro'
+					textButton="Registro"
 				/>
 			</ButtonRight>
 		</TableHeaderContainer>

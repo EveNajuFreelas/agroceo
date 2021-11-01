@@ -16,11 +16,8 @@ import {
 import { useManagementContainer } from '../../../../../context/managementContext';
 import {
 	RadioGroup,
-	FormControl,
-	InputLabel,
 	FormControlLabel,
 	Radio,
-	FormLabel,
 	Divider,
 } from '@material-ui/core';
 import { useModalsContainer } from '../../../../../context/modalsContext';

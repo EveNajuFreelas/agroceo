@@ -16,6 +16,7 @@ import { useModalsContainer } from '../../../../context/modalsContext';
 import { AnimalsFirst, AnimalsSecond, ModalAnimals } from './animal';
 import { ModalLot } from './lot';
 import { ModalMovements } from './movement';
+import { ModalWeighing } from './weighing';
 
 export const AnimalsModal = ({ t }) => {
 	const { modalState, closeModals } = useModalsContainer();
@@ -92,6 +93,7 @@ export const AnimalsModal = ({ t }) => {
 				{register === 'animals' && <ModalAnimals t={t} />}
 				{register === 'lot' && <ModalLot t={t} />}
 				{register === 'movement' && <ModalMovements t={t} />}
+				{register === 'weighing' && <ModalWeighing t={t} />}
 			</InputFieldsWrapper>
 		</ModalShell>
 	);

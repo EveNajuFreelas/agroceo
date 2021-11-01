@@ -123,7 +123,7 @@ export const portuguese = {
 	specie: 'Espécie',
 	category: 'Categoria',
 	weightAverage: 'Média de Peso',
-	averageWeight: 'Peso Médio',
+	averageWeight: 'Peso Médio (kg)',
 	qntdAnimals: 'Qntd. Animais',
 	'%AnimalsWeighed': '% Animais Pesados',
 	lastWeighing: 'Data da última pesagem',
@@ -267,4 +267,8 @@ export const portuguese = {
 	functionName: 'Nome da Função',
 	obligationsList: 'Lista de Obrigações',
 	editFunction: 'Editar Função',
+	lastWeighingWeight: 'Peso última pesagem',
+	homeSubarea: 'Sub-área de origem',
+	destinationSubArea: 'Sub-área de destino',
+	dateWeighing: 'Data da pesagem',
 };

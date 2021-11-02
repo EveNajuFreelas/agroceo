@@ -123,7 +123,8 @@ export const SelectField = styled(CustomComponents.SelectComponent)`
 		width: 100%;
 		margin-bottom: ${margin.md};
 	}
-	.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+
+	&.MuiOutlinedInput-root {
 		border-color: ${colors.primary};
 	}
 `;

@@ -13,7 +13,7 @@ export const ModalWrapper = styled(Dialog)`
 	}
 
 	.MuiDialog-paperWidthSm {
-		min-width: ${(props) => (props.isSmall ? '30%' : '45%')};
+		min-width: ${(props) => (props.isSmall ? '20%' : '40%')};
 	}
 
 	.MuiDialogContent-root {

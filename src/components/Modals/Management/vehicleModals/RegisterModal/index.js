@@ -190,7 +190,6 @@ export const RegisterModalVehicle = ({
 								onChange={(e) =>
 									handleInput(e.target.value, e.target.name)
 								}
-								helperText={t('justNumbers')}
 								placeholder={t('typeSomething')}
 							/>
 						</div>
@@ -201,6 +200,7 @@ export const RegisterModalVehicle = ({
 							<InputField
 								id="manufactureYear"
 								name="manufactureYear"
+								type="number"
 								onChange={(e) =>
 									handleInput(e.target.value, e.target.name)
 								}

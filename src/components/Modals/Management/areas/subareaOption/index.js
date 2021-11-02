@@ -1,4 +1,13 @@
+import {
+	Checkbox,
+	InputAdornment,
+	ListItemText,
+	MenuItem,
+} from '@material-ui/core';
+import { useState } from 'react';
+import { iconList } from '../../../../../assets/Icons/icon-list';
 import { fuelTypes } from '../../../../../utils/dataMock/mock';
+import { areas } from '../../../../../utils/dataMock/selectMock';
 
 import {
 	SelectField,
@@ -6,8 +15,15 @@ import {
 	StyledMenuItem,
 	InputLabelStyled,
 } from '../../../inputsStyles';
+import { TitleTask } from '../../vehicleModals/UtilzationModal/UtilizationOption/styles';
 
 export const SubAreaOption = ({ t }) => {
+	const [areaSelected, setAreaSelected] = useState([]);
+
+	const handleAreasSelected = (event) => {
+		setAreaSelected(event.target.value);
+	};
+
 	return (
 		<>
 			<div
@@ -24,6 +40,17 @@ export const SubAreaOption = ({ t }) => {
 					<InputField
 						id="totalArea"
 						name="totalArea"
+						disabled
+						InputProps={{
+							endAdornment: (
+								<InputAdornment position="end">
+									<img
+										alt="icon money"
+										src={iconList.areaInput}
+									/>
+								</InputAdornment>
+							),
+						}}
 						// onChange={(e) =>
 						// 	handleInput(e.target.value, e.target.name)
 						// }
@@ -36,7 +63,17 @@ export const SubAreaOption = ({ t }) => {
 					<InputField
 						id="availableArea"
 						name="availableArea"
-
+						disabled
+						InputProps={{
+							endAdornment: (
+								<InputAdornment position="end">
+									<img
+										alt="icon money"
+										src={iconList.mapInput}
+									/>
+								</InputAdornment>
+							),
+						}}
 						// onChange={(e) =>
 						// 	handleInput(e.target.value, e.target.name)
 						// }
@@ -50,16 +87,15 @@ export const SubAreaOption = ({ t }) => {
 			<SelectField
 				id="destination"
 				name="destination"
-				//defaultValue={currentInfo?.fuelType || ''}
-				// onChange={(e) =>
-				// 	handleInput(e.target.value, e.target.name)
-				// }
+				value={areaSelected}
+				onChange={handleAreasSelected}
 			>
-				<StyledMenuItem value="">{`${t('select')}...`}</StyledMenuItem>
-				{fuelTypes.map((ft) => (
-					<StyledMenuItem value={ft.value}>
-						{t(ft.name)}
-					</StyledMenuItem>
+				{areas.map((area) => (
+					<MenuItem key={area.id} value={area.name}>
+						<ListItemText>
+							<TitleTask>{area.name}</TitleTask>
+						</ListItemText>
+					</MenuItem>
 				))}
 			</SelectField>
 
@@ -76,6 +112,17 @@ export const SubAreaOption = ({ t }) => {
 					<InputField
 						id="subareaSize"
 						name="subareaSize"
+						InputProps={{
+							endAdornment: (
+								<InputAdornment position="end">
+									<img
+										alt="icon money"
+										src={iconList.areaInput}
+									/>
+								</InputAdornment>
+							),
+						}}
+						helperText={t('inHectares')}
 						// onChange={(e) =>
 						// 	handleInput(e.target.value, e.target.name)
 						// }

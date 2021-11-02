@@ -116,6 +116,7 @@ const Animals = () => {
 					putInIcon={false}
 					description={false}
 					deleteFunction={deleteAnimals}
+					title={t('animals')}
 				/>
 			)}
 			{value === 1 && (
@@ -141,6 +142,7 @@ const Animals = () => {
 					data={animaisMoviment}
 					columns={columnsMovimentation}
 					yesNo={false}
+					title={t('movimentations')}
 				/>
 			)}
 			{value === 3 && (
@@ -149,6 +151,7 @@ const Animals = () => {
 					columns={columnsWeighings}
 					putInIcon={false}
 					description={false}
+					title={t('weighings')}
 				/>
 			)}
 		</>

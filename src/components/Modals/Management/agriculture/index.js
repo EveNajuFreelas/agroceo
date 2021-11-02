@@ -11,10 +11,21 @@ import {
 	SelectField,
 	StyledMenuItem,
 } from '../../inputsStyles';
+import { WrapperInputText } from './styles';
+import { InputAdornment, ListItemText, MenuItem } from '@material-ui/core';
+import { iconList } from '../../../../assets/Icons/icon-list';
+import { TitleTask } from '../vehicleModals/UtilzationModal/UtilizationOption/styles';
+import { subareas } from '../../../../utils/dataMock/selectMock';
 
-export const AgricultureModal = ({}) => {
+export const AgricultureModal = () => {
 	const { t } = useTranslation();
 	const { modalState, closeModals } = useModalsContainer();
+
+	const [subareasSelected, setSubareasSelected] = useState([]);
+
+	const handleSubareasSelected = (event) => {
+		setSubareasSelected(event.target.value);
+	};
 
 	const handleInput = (info, inputName) => {
 		//setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
@@ -55,20 +66,18 @@ export const AgricultureModal = ({}) => {
 					<SelectField
 						id="subarea"
 						name="subarea"
-						// defaultValue={currentInfo?.fuelType || ''}
-						onChange={(e) =>
-							handleInput(e.target.value, e.target.name)
-						}
-						helperText={t('onlyFarm')}
+						onChange={handleSubareasSelected}
 					>
-						<StyledMenuItem value="">{`${t(
-							'select'
-						)}...`}</StyledMenuItem>
-						{/* {fuelTypes.map((ft) => (
-							<StyledMenuItem value={ft.value}>
-								{t(ft.name)}
-							</StyledMenuItem>
-						))} */}
+						{subareas.map((subarea) => (
+							<MenuItem key={subarea.id} value={subarea}>
+								<ListItemText>
+									<TitleTask>
+										{subarea.destination} {subarea.pastures}{' '}
+										- {subarea.size}
+									</TitleTask>
+								</ListItemText>
+							</MenuItem>
+						))}
 					</SelectField>
 					<InputLabelStyled required htmlFor="typeAgriculture">
 						{t('typeAgriculture')}
@@ -76,7 +85,6 @@ export const AgricultureModal = ({}) => {
 					<InputField
 						id="typeAgriculture"
 						name="typeAgriculture"
-						type="number"
 						//defaultValue={currentInfo?.quantity}
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
@@ -93,29 +101,63 @@ export const AgricultureModal = ({}) => {
 							<InputLabelStyled required htmlFor="quantity">
 								{t('quantity')}
 							</InputLabelStyled>
-							<InputField
-								id="quantity"
-								name="quantity"
-								onChange={(e) =>
-									handleInput(e.target.value, e.target.name)
-								}
-								helperText={t('justNumbers')}
-								placeholder="0"
-							/>
+							<WrapperInputText>
+								<InputField
+									id="quantity"
+									name="quantity"
+									type="number"
+									onChange={(e) =>
+										handleInput(
+											e.target.value,
+											e.target.name
+										)
+									}
+									helperText={t('justNumbers')}
+									placeholder="0"
+									InputProps={{
+										endAdornment: (
+											<InputAdornment position="end">
+												<img
+													alt="icon money"
+													src={iconList.bagInput}
+												/>
+											</InputAdornment>
+										),
+									}}
+								/>
+								<span>{t('bags')}</span>
+							</WrapperInputText>
 						</div>
 						<div style={{ width: '48%' }}>
 							<InputLabelStyled required htmlFor="weightPerBag">
 								{t('weightPerBag')}
 							</InputLabelStyled>
-							<InputField
-								id="weightPerBag"
-								name="weightPerBag"
-								onChange={(e) =>
-									handleInput(e.target.value, e.target.name)
-								}
-								helperText={t('justNumbers')}
-								placeholder="0"
-							/>
+							<WrapperInputText>
+								<InputField
+									id="weightPerBag"
+									name="weightPerBag"
+									type="number"
+									onChange={(e) =>
+										handleInput(
+											e.target.value,
+											e.target.name
+										)
+									}
+									helperText={t('justNumbers')}
+									placeholder="0"
+									InputProps={{
+										endAdornment: (
+											<InputAdornment position="end">
+												<img
+													alt="icon money"
+													src={iconList.weightInput}
+												/>
+											</InputAdornment>
+										),
+									}}
+								/>
+								<span>{t('kilos')}</span>
+							</WrapperInputText>
 						</div>
 					</div>
 				</div>

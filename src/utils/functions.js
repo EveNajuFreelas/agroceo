@@ -1,4 +1,10 @@
 import { iconList } from '../assets/Icons/icon-list';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
+import { defaultTheme } from '../theme';
+
+let doc = new jsPDF();
+const { colors } = defaultTheme;
 
 export function icon(subtitle) {
 	const icons = {
@@ -14,3 +20,29 @@ export function icon(subtitle) {
 
 	return icons[subtitle];
 }
+export const createPDF = (title, columns, data) => {
+	doc.text(title, 15, 10);
+
+	doc.autoTableSetDefaults({
+		headStyles: { fillColor: colors.primary },
+	});
+
+	let dados = data.map((item) => Object.values(item.data));
+
+	doc.autoTable({
+		head: [columns],
+		body: dados,
+	});
+};
+
+export const generatePDF = (title, columns, data) => {
+	createPDF(title, columns, data);
+	doc.save(`${title}.pdf`);
+	doc = new jsPDF();
+};
+
+export const printOutPDF = (title, columns, data) => {
+	createPDF(title, columns, data);
+	doc.output('dataurlnewwindow', `${title}.pdf`);
+	doc = new jsPDF();
+};

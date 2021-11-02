@@ -1,45 +1,46 @@
 import { useState } from 'react';
 import { createContainer, useContainer } from 'unstated-next';
 import api from '../../api';
+import { tasksSelect } from '../../utils/dataMock/selectMock';
 import { useAuthentication } from '../authContext';
-import { formatResponseTask } from './formatTask';
+import { formatResponseTask, formatStatus } from './formatTask';
 
 const useTaskContainer = () => {
-	const [tasks, setTasks] = useState([]);
+	const [tasks, setTasks] = useState(tasksSelect);
 	const [isLoading, setLoading] = useState(true);
 	const { propertiesSelected } = useAuthentication();
 
 	const getTasks = () => {
-		propertiesSelected.map(each => {
+		propertiesSelected.map((each) => {
 			api.get(`/tasks/${each}`)
-				.then(res => {
+				.then((res) => {
 					setTasks(formatResponseTask(res.data.tasks));
 					setLoading(false);
 				})
-				.catch(err => {
+				.catch((err) => {
 					console.error(err);
 				});
 		});
 	};
 
-	const deleteTasks = id => {
+	const deleteTasks = (id) => {
 		setLoading(true);
 		api.post(`/DeleteTask/${id}`)
-			.then(res => {
+			.then((res) => {
 				getTasks();
 			})
-			.catch(err => {
+			.catch((err) => {
 				console.error(err);
 			});
 	};
 
-	const postTasks = data => {
+	const postTasks = (data) => {
 		api.post(`/task`, data)
-			.then(res => {
+			.then((res) => {
 				console.log(res);
 				getTasks();
 			})
-			.catch(err => {
+			.catch((err) => {
 				console.error(err);
 			});
 	};

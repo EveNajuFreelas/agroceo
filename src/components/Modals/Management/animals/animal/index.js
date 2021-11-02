@@ -9,9 +9,31 @@ import {
 	FormControlStyled,
 } from '../../../inputsStyles';
 
-import { RadioGroup, FormControlLabel, Radio } from '@material-ui/core';
+import {
+	RadioGroup,
+	FormControlLabel,
+	Radio,
+	MenuItem,
+	ListItemText,
+} from '@material-ui/core';
+import { useState } from 'react';
+import { TitleTask } from '../../vehicleModals/UtilzationModal/UtilizationOption/styles';
+import {
+	categorySelect,
+	speciesSelect,
+} from '../../../../../utils/dataMock/selectMock';
 
 export const ModalAnimals = ({ t }) => {
+	const [specieSelected, setSpecieSelected] = useState([]);
+	const [categorySelected, setCategorySelected] = useState([]);
+
+	const handleSpecieSelected = (event) => {
+		setSpecieSelected(event.target.value);
+	};
+	const handleCategorySelected = (event) => {
+		setCategorySelected(event.target.value);
+	};
+
 	return (
 		<>
 			<div
@@ -27,18 +49,15 @@ export const ModalAnimals = ({ t }) => {
 				<SelectField
 					id="specie"
 					name="specie"
-					//defaultValue={currentInfo?.fuelType || ''}
-					// onChange={(e) =>
-					// 	handleInput(e.target.value, e.target.name)
-					// }
+					value={specieSelected}
+					onChange={handleSpecieSelected}
 				>
-					<StyledMenuItem value="">{`${t(
-						'select'
-					)}...`}</StyledMenuItem>
-					{fuelTypes.map((ft) => (
-						<StyledMenuItem value={ft.value}>
-							{t(ft.name)}
-						</StyledMenuItem>
+					{speciesSelect.map((specie) => (
+						<MenuItem key={specie.id} value={specie.name}>
+							<ListItemText>
+								<TitleTask>{specie.name}</TitleTask>
+							</ListItemText>
+						</MenuItem>
 					))}
 				</SelectField>
 				<FormControlStyled component="fieldset">
@@ -86,14 +105,16 @@ export const ModalAnimals = ({ t }) => {
 				<SelectField
 					id="category"
 					name="category"
-					defaultValue={''}
-					// onChange={(e) =>
-					// 	handleInput(e.target.value, e.target.name)
-					// }
+					value={categorySelected}
+					onChange={handleCategorySelected}
 				>
-					<StyledMenuItem value="">{`${t(
-						'select'
-					)}...`}</StyledMenuItem>
+					{categorySelect.map((category) => (
+						<MenuItem key={category.id} value={category.name}>
+							<ListItemText>
+								<TitleTask>{category.name}</TitleTask>
+							</ListItemText>
+						</MenuItem>
+					))}
 				</SelectField>
 
 				<InputLabelStyled required htmlFor="quantity">

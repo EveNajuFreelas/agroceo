@@ -271,4 +271,8 @@ export const portuguese = {
 	homeSubarea: 'Sub-área de origem',
 	destinationSubArea: 'Sub-área de destino',
 	dateWeighing: 'Data da pesagem',
+	bags: 'Sacos',
+	kilos: 'Quilos',
+	inHectares: 'Em hectáres',
+	selectLot: 'Selecinar o lote',
 };

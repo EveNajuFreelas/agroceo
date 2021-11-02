@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ModalShell } from '../../../../Modal/index';
 
@@ -16,9 +16,13 @@ import {
 import { useModalsContainer } from '../../../../../context/modalsContext';
 import { UtilizationFirst, UtilizationSecond } from './UtilizationOption';
 import { RevisionFirst, RevisionSecond } from './RevisionOption';
+import { useRole } from '../../../../../context/rolesContext';
+import { useTask } from '../../../../../context/taskContext';
+import { employeesSelect } from '../../../../../utils/dataMock/selectMock';
 
 export const UtilizationModal = ({ title, breadcrumbs, odometerHourmeter }) => {
 	const { t } = useTranslation();
+	const { tasks } = useTask();
 	const { modalUtilizationState, closeUtilizationModal } =
 		useModalsContainer();
 
@@ -89,6 +93,7 @@ export const UtilizationModal = ({ title, breadcrumbs, odometerHourmeter }) => {
 					{register === 'utilization' && (
 						<UtilizationFirst
 							odometerHourmeter={odometerHourmeter}
+							employees={employeesSelect}
 							t={t}
 						/>
 					)}
@@ -103,7 +108,9 @@ export const UtilizationModal = ({ title, breadcrumbs, odometerHourmeter }) => {
 				<Divider orientation="vertical" flexItem component="div" />
 
 				<div style={{ width: '48%' }}>
-					{register === 'utilization' && <UtilizationSecond t={t} />}
+					{register === 'utilization' && (
+						<UtilizationSecond t={t} tasks={tasks} />
+					)}
 					{register === 'revision' && <RevisionSecond t={t} />}
 				</div>
 			</InputFieldsWrapper>

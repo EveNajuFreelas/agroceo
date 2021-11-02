@@ -9,13 +9,27 @@ import {
 import CloseIcon from '@material-ui/icons/Close';
 
 import { ItemTableRow, TitleTableRow } from './styles';
+import { useState } from 'react';
+import { lotSelect, subareas } from '../../../../../utils/dataMock/selectMock';
+import { Checkbox, ListItemText, MenuItem } from '@material-ui/core';
+import { TitleTask } from '../../vehicleModals/UtilzationModal/UtilizationOption/styles';
 
 export const ModalLot = ({ t }) => {
+	const [inventorySelected, setInventorySelected] = useState([]);
+	const [subareasSelected, setSubareasSelected] = useState({});
+
+	const handleInventorySelected = (event) => {
+		setInventorySelected(event.target.value);
+	};
+	const handleSubareaSelected = (event) => {
+		setSubareasSelected(event.target.value);
+	};
+
 	return (
 		<>
 			<div
 				style={{
-					width: '30%',
+					width: '35%',
 					display: 'flex',
 					flexDirection: 'column',
 				}}
@@ -37,25 +51,23 @@ export const ModalLot = ({ t }) => {
 				<SelectField
 					id="linkSubarea"
 					name="linkSubarea"
-					//defaultValue={currentInfo?.fuelType || ''}
-					// onChange={(e) =>
-					// 	handleInput(e.target.value, e.target.name)
-					// }
+					value={subareasSelected}
+					onChange={handleSubareaSelected}
 				>
-					<StyledMenuItem value="">{`${t(
-						'select'
-					)}...`}</StyledMenuItem>
-					{fuelTypes.map((ft) => (
-						<StyledMenuItem value={ft.value}>
-							{t(ft.name)}
-						</StyledMenuItem>
+					{subareas.map((subarea) => (
+						<MenuItem key={subarea.id} value={subarea}>
+							<ListItemText>
+								{subarea.destination} {subarea.pastures} -
+								{subarea.size}
+							</ListItemText>
+						</MenuItem>
 					))}
 				</SelectField>
 			</div>
 
 			<div
 				style={{
-					width: '68%',
+					width: '63%',
 					display: 'flex',
 					flexDirection: 'column',
 				}}
@@ -66,14 +78,36 @@ export const ModalLot = ({ t }) => {
 				<SelectField
 					id="selectInventory"
 					name="selectInventory"
-					defaultValue={''}
-					// onChange={(e) =>
-					// 	handleInput(e.target.value, e.target.name)
-					// }
+					value={inventorySelected}
+					multiple
+					onChange={handleInventorySelected}
+					renderValue={(selected) => selected.join(', ')}
+					style={{ width: '100%' }}
 				>
-					<StyledMenuItem value="">{`${t(
-						'select'
-					)}...`}</StyledMenuItem>
+					{lotSelect.map((lot) => (
+						<MenuItem key={lot.id} value={lot}>
+							<ListItemText>
+								<tbody>
+									<ItemTableRow
+										style={{
+											display: 'flex',
+											alignItems: 'center',
+											justifyContent: 'space-between',
+											gap: '10%',
+										}}
+										onCLick={console.log('clicou')}
+									>
+										<td>
+											{lot.specie} - {lot.category}
+										</td>
+										<td>{lot.sex}</td>
+										<td>{lot.age}</td>
+										<td>{lot.qtnd}</td>
+									</ItemTableRow>
+								</tbody>
+							</ListItemText>
+						</MenuItem>
+					))}
 				</SelectField>
 
 				<div>
@@ -89,24 +123,19 @@ export const ModalLot = ({ t }) => {
 							</TitleTableRow>
 						</thead>
 						<tbody>
-							<ItemTableRow>
-								<td>Bovinos - corte</td>
-								<td>Macho</td>
-								<td>24 meses</td>
-								<td>100</td>
-								<td>
-									<CloseIcon fontSize="small" />
-								</td>
-							</ItemTableRow>
-							<ItemTableRow>
-								<td>Consertar tábua</td>
-								<td>Fêmea</td>
-								<td>24 meses</td>
-								<td>100</td>
-								<td>
-									<CloseIcon fontSize="small" />
-								</td>
-							</ItemTableRow>
+							{inventorySelected.map((item) => (
+								<ItemTableRow>
+									<td>
+										{item.specie} - {item.category}
+									</td>
+									<td>{item.sex}</td>
+									<td>{item.age}</td>
+									<td>{item.qtnd}</td>
+									<td>
+										<CloseIcon fontSize="small" />
+									</td>
+								</ItemTableRow>
+							))}
 						</tbody>
 					</table>
 				</div>

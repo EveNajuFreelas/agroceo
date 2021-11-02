@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ModalShell } from '../../../../components/Modal/index';
-import { fuelTypes } from '../../../../utils/dataMock/mock';
 import {
 	InputFieldsWrapper,
 	SelectField,
@@ -10,13 +9,48 @@ import {
 	UploadField,
 	InputLabelStyled,
 } from '../../../Modals/inputsStyles';
-import { Divider } from '@material-ui/core';
+import {
+	Checkbox,
+	Chip,
+	Divider,
+	ListItemText,
+	makeStyles,
+	MenuItem,
+} from '@material-ui/core';
 import { useModalsContainer } from '../../../../context/modalsContext';
+import {
+	costCentersSelect,
+	employeesSelect,
+} from '../../../../utils/dataMock/selectMock';
+import { TitleTask } from '../vehicleModals/UtilzationModal/UtilizationOption/styles';
+import { defaultTheme } from '../../../../theme';
 
 export const RegisterModalTask = () => {
+	const { colors } = defaultTheme;
+	const useStyles = makeStyles((theme) => ({
+		chip: {
+			margin: theme.spacing(0.5),
+			backgroundColor: `${colors.primary}`,
+			color: `${colors.neutral0}`,
+			fontSize: '16px',
+			'&:hover': { backgroundColor: `${colors.primary}` },
+		},
+	}));
+
+	const classes = useStyles();
+
 	const { t } = useTranslation();
 	const { modalState, closeModals } = useModalsContainer();
 
+	const [employeeSelected, setEmployeeSelected] = useState();
+	const [costCenterSelected, setCostCenterSelected] = useState([]);
+
+	const handleEmployeeSelected = (event) => {
+		setEmployeeSelected(event.target.value);
+	};
+	const handleCostCenterSelected = (event) => {
+		setCostCenterSelected(event.target.value);
+	};
 	const handleInput = (info, inputName) => {
 		console.log(inputName);
 		//setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
@@ -101,17 +135,12 @@ export const RegisterModalTask = () => {
 							<SelectField
 								id="assignTo"
 								name="assignTo"
-								//defaultValue={currentInfo?.fuelType || ''}
-								onChange={(e) =>
-									handleInput(e.target.value, e.target.name)
-								}
+								value={employeeSelected}
+								onChange={handleEmployeeSelected}
 							>
-								<StyledMenuItem value="">{`${t(
-									'select'
-								)}...`}</StyledMenuItem>
-								{fuelTypes.map((ft) => (
-									<StyledMenuItem value={ft.value}>
-										{t(ft.name)}
+								{employeesSelect.map((employee) => (
+									<StyledMenuItem value={employee}>
+										{t(employee.name)}
 									</StyledMenuItem>
 								))}
 							</SelectField>
@@ -124,18 +153,32 @@ export const RegisterModalTask = () => {
 					<SelectField
 						id="costCenters"
 						name="costCenters"
-						//defaultValue={currentInfo?.fuelType || ''}
-						onChange={(e) =>
-							handleInput(e.target.value, e.target.name)
+						value={costCenterSelected}
+						multiple
+						onChange={handleCostCenterSelected}
+						renderValue={(selected) =>
+							selected.map((value) => (
+								<Chip
+									key={value}
+									label={value.name}
+									className={classes.chip}
+								/>
+							))
 						}
+						style={{ width: '100%' }}
 					>
-						<StyledMenuItem value="">{`${t(
-							'select'
-						)}...`}</StyledMenuItem>
-						{fuelTypes.map((ft) => (
-							<StyledMenuItem value={ft.value}>
-								{t(ft.name)}
-							</StyledMenuItem>
+						{costCentersSelect.map((center) => (
+							<MenuItem key={center.id} value={center}>
+								<Checkbox
+									checked={
+										costCenterSelected.indexOf(center) > -1
+									}
+									style={{ color: 'green' }}
+								/>
+								<ListItemText>
+									<TitleTask>{center.name}</TitleTask>
+								</ListItemText>
+							</MenuItem>
 						))}
 					</SelectField>
 				</div>

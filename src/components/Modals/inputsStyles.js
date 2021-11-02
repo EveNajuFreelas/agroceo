@@ -123,7 +123,8 @@ export const SelectField = styled(CustomComponents.SelectComponent)`
 		width: 100%;
 		margin-bottom: ${margin.md};
 	}
-	.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+
+	&.MuiOutlinedInput-root {
 		border-color: ${colors.primary};
 	}
 `;
@@ -168,7 +169,7 @@ export const UploadButton = styled(CustomComponents.UploadButtonComponent)`
 	align-items: center;
 	border-left: ${border.input};
 	height: 100%;
-	width: 30%;
+	width: 35%;
 	color: white;
 	border-radius: 0 ${borderRadius.sm} ${borderRadius.sm} 0;
 	background-color: ${colors.primary};

@@ -69,6 +69,7 @@ const Combustivel = () => {
 					columns={columns}
 					yesNo={true}
 					columnYesNo={'invoice'}
+					title={t('fuel')}
 				/>
 			</div>
 		</>

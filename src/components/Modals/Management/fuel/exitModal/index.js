@@ -15,6 +15,7 @@ import {
 } from '../../../inputsStyles';
 import { useManagementContainer } from '../../../../../context/managementContext';
 import { RadioGroup, Divider } from '@material-ui/core';
+import { employeesSelect } from '../../../../../utils/dataMock/selectMock';
 
 export const ExitManagementModal = () => {
 	const { t } = useTranslation();
@@ -23,6 +24,11 @@ export const ExitManagementModal = () => {
 
 	const [whereWasFilled, setWhereWasFilled] = useState('atFarm');
 	const [currentInfo, setCurrentInfo] = useState(activeContent);
+	const [employeeSelected, setEmployeeSelected] = useState();
+
+	const handleEmployeeSelected = (event) => {
+		setEmployeeSelected(event.target.value);
+	};
 
 	const handleInput = (info, inputName) => {
 		setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
@@ -132,6 +138,7 @@ export const ExitManagementModal = () => {
 							<InputField
 								id="fillDate"
 								name="fillDate"
+								type="number"
 								onChange={(e) =>
 									handleInput(e.target.value, e.target.name)
 								}
@@ -145,6 +152,7 @@ export const ExitManagementModal = () => {
 							<InputField
 								id="fillHour"
 								name="fillHour"
+								type="number"
 								onChange={(e) =>
 									handleInput(e.target.value, e.target.name)
 								}
@@ -160,14 +168,14 @@ export const ExitManagementModal = () => {
 							<SelectField
 								id="whoFilledUp"
 								name="whoFilledUp"
-								defaultValue={''}
-								onChange={(e) =>
-									handleInput(e.target.value, e.target.name)
-								}
+								value={employeeSelected}
+								onChange={handleEmployeeSelected}
 							>
-								<StyledMenuItem value="">{`${t(
-									'select'
-								)}...`}</StyledMenuItem>
+								{employeesSelect.map((employee) => (
+									<StyledMenuItem value={employee}>
+										{t(employee.name)}
+									</StyledMenuItem>
+								))}
 							</SelectField>
 						</>
 					)}
@@ -194,6 +202,7 @@ export const ExitManagementModal = () => {
 					<InputField
 						id="odometerHourmeter"
 						name="odometerHourmeter"
+						type="number"
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}

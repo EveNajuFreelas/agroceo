@@ -9,10 +9,11 @@ export const ModalWrapper = styled(Dialog)`
 	.MuiDialog-paper {
 		overflow-x: hidden;
 		padding: ${padding.xg};
+		width: ${(props) => (props.isSmall ? '20%' : '42%')};
 	}
 
 	.MuiDialog-paperWidthSm {
-		min-width: ${(props) => (props.isSmall ? '30%' : '60%')};
+		min-width: ${(props) => (props.isSmall ? '20%' : '40%')};
 	}
 
 	.MuiDialogContent-root {
@@ -22,6 +23,10 @@ export const ModalWrapper = styled(Dialog)`
 	@media (max-width: 1280px) {
 		.MuiDialog-paperWidthSm {
 			min-width: ${(props) => (props.isSmall ? '35%' : '70%')};
+		}
+
+		.MuiDialog-paper {
+			width: ${(props) => (props.isSmall ? '35%' : '42%')};
 		}
 	}
 `;
@@ -71,6 +76,17 @@ export const ModalFooter = styled.div`
 
 		&:hover {
 			background-color: ${colors.events.onHoverPrimaryButton};
+		}
+	}
+
+	.MuiButton-outlinedPrimary {
+		border-color: ${colors.primary};
+		color: ${colors.primary};
+
+		&:hover {
+			border-color: ${colors.success};
+			color: ${colors.success};
+			background-color: ${colors.events.onHoverSubmenu};
 		}
 	}
 `;

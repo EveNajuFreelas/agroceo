@@ -124,8 +124,13 @@ export const SelectField = styled(CustomComponents.SelectComponent)`
 		margin-bottom: ${margin.md};
 	}
 
-	&.MuiOutlinedInput-root {
-		border-color: ${colors.primary};
+	.MuiSelect-selectMenu {
+		max-height: 1.2rem;
+		align-items: center;
+	}
+
+	&.MuiOutlinedInput-root .MuiSelect-root .MuiListItemText-root {
+		margin: 0;
 	}
 `;
 

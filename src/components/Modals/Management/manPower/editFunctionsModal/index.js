@@ -7,17 +7,21 @@ import {
     StyledMenuItem
 } from '../../../inputsStyles';
 import { useModalsContainer } from '../../../../../context/modalsContext';
-import { Checkbox } from "@material-ui/core";
+import { Checkbox, FormControl, FormControlLabel } from "@material-ui/core";
 
 export const EditFunctionsModal = () => {
     const { t } = useTranslation();
-    const { modalUtilizationState, closeUtilizationModal, activeContents } = useModalsContainer();
+    const { modalUtilizationState, closeUtilizationModal, activeContent } = useModalsContainer();
     const weekdays = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
     const dayPeriods = ['morning', 'afternoon', 'night'];
 
     const handleInput = (info, inputName) => {
 		//setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
 	};
+
+    const handleCheckboxChange = (e) => {
+        console.log(e.target.value);
+    }
 
     return (<ModalShell
         open={modalUtilizationState}
@@ -53,7 +57,7 @@ export const EditFunctionsModal = () => {
                     onChange={(e) =>
                         handleInput(e.target.value, e.target.name)
                     }
-                    defaultValue={activeContents?.roleName}
+                    defaultValue={activeContent?.roleName}
                 />
             </div>
             <div style={{ width: '48%' }}>
@@ -65,28 +69,36 @@ export const EditFunctionsModal = () => {
                         handleInput(e.target.value, e.target.name)
                     }
                 >
-                    {activeContents?.obligations.map(o => (
-                        <StyledMenuItem value={o}>
-                            {o}
-                        </StyledMenuItem>
-                    ))}
+                    {/* {activeContent?.obligations.map(o => (
+                        <StyledMenuItem value={o}>{o}</StyledMenuItem>
+                    ))} */}
                 </SelectField>
             </div>
         </div>
         <div style={{ display: 'flex' }}>
             {weekdays.map(wd => (
-                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                <FormControl style={{ display: 'flex', flexDirection: 'column' }}>
                     <div style={{ display: 'flex', alignItems: 'center' }}>
-                        <Checkbox value={wd} />
-                        <p>{wd}</p>
+                        <FormControlLabel
+                            control={<Checkbox value={wd} onChange={handleCheckboxChange} name={wd} />}
+                            label={wd}
+                        />
                     </div>
                     {dayPeriods.map(dp => (
                         <div style={{ display: 'flex', alignItems: 'center' }}>
-                            <Checkbox value={`${wd} ${dp}`} disabled/>
-                            <p>{dp}</p>
+                            <FormControlLabel
+                                control={
+                                    <Checkbox 
+                                        value={`${wd} ${dp}`} 
+                                        disabled 
+                                        onChange={handleCheckboxChange}
+                                        name={dp}
+                                    />}
+                                label={dp}
+                            />
                         </div>
                     ))}
-                </div>
+                </FormControl>
             ))}
         </div>
     </ModalShell>);

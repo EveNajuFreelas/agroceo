@@ -17,8 +17,10 @@ import { RegisterModalVehicle } from '../../../components/Modals/Management/vehi
 //import { useManagementContainer } from '../../../context/managementContext';
 import { useModalsContainer } from '../../../context/modalsContext';
 import { UtilizationModal } from '../../../components/Modals/Management/vehicleModals/UtilzationModal';
+import { usePageContext } from '../../../context/pageContext';
 
 const Veiculos = () => {
+	const { setPageTitle } = usePageContext();
 	const { openModal } = useModalsContainer();
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
@@ -26,6 +28,7 @@ const Veiculos = () => {
 
 	useEffect(() => {
 		getVehicle();
+		setPageTitle('vehicle');
 	}, []);
 
 	const columns = [

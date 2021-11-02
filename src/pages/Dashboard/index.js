@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import BarChart from '../../components/Charts/Bar';
 import PizzaChart from '../../components/Charts/Pizza';
 import OverviewFinancial from '../../components/Financeiro/OverviewFinancial';
@@ -9,7 +9,12 @@ import {
 	OverviewFinancialContainer,
 } from './styles';
 const Dashboard = () => {
-	const { drawerOpen } = usePageContext();
+	const { drawerOpen, setPageTitle } = usePageContext();
+	
+	useEffect(() => {
+		setPageTitle('greeting');
+	}, []);
+
 	return (
 		<ContainerDashboard drawerOpen={drawerOpen}>
 			<OverviewFinancialContainer drawerOpen={drawerOpen}>

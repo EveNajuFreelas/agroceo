@@ -13,8 +13,10 @@ import { useDemand } from '../../../context/demandContext';
 import CircleLoading from '../../../components/LoadingCircle';
 import { DemandsModal } from '../../../components/Modals/Management/demands';
 import { useModalsContainer } from '../../../context/modalsContext';
+import { usePageContext } from '../../../context/pageContext';
 
 const Demandas = () => {
+	const { setPageTitle } = usePageContext();
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
 	const { demands, deleteDemands, getDemands, isLoading } = useDemand();
@@ -22,6 +24,7 @@ const Demandas = () => {
 
 	useEffect(() => {
 		getDemands();
+		setPageTitle('demand');
 	}, []);
 
 	const columns = [

@@ -33,7 +33,7 @@ export const Header = () => {
 	const [dropdownValue, setDropdownValue] = useState(
 		mockProperties.length > 0 ? mockProperties[0].value : 'none'
 	);
-	const { drawerOpen } = usePageContext();
+	const { drawerOpen, pageTitle } = usePageContext();
 
 	const todayDate = new Date().toLocaleDateString(t('date'), {
 		year: 'numeric',
@@ -49,7 +49,7 @@ export const Header = () => {
 	return (
 		<HeaderStyle drawerOpen={drawerOpen}>
 			<HeaderInfo>
-				<HeaderTitle>{t('greeting')}</HeaderTitle>
+				<HeaderTitle>{t(pageTitle)}</HeaderTitle>
 				<HeaderDate>{todayDate}</HeaderDate>
 			</HeaderInfo>
 			<StyledSelect value={dropdownValue} onChange={handleDropdown}>

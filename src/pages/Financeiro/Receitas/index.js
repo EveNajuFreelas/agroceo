@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
 	FinancialOverview,
 	SummaryContainer,
@@ -12,8 +12,10 @@ import CardTotalValue from '../../../components/Card/CardTotalValue';
 import TableWithDescriptionIcon from '../../../components/Table/TableDescriptionWithIcon';
 import { financeiroData } from '../../../utils/dataMock/mock';
 import TableHeader from '../../../components/Table/TableHeader';
+import { usePageContext } from '../../../context/pageContext';
 
 const Receitas = () => {
+	const { setPageTitle } = usePageContext();
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
 
@@ -28,6 +30,10 @@ const Receitas = () => {
 		t('%ByProperty'),
 		t('documentPhoto'),
 	];
+
+	useEffect(() => {
+		setPageTitle('income');
+	}, []);
 
 	return (
 		<FinancialOverview>

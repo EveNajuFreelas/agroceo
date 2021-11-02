@@ -15,8 +15,10 @@ import CircleLoading from '../../../components/LoadingCircle';
 import { RegisterModalVehicle } from '../../../components/Modals/Management/vehicleModals/RegisterModal';
 import { useModalsContainer } from '../../../context/modalsContext';
 import { UtilizationModal } from '../../../components/Modals/Management/vehicleModals/UtilzationModal';
+import { usePageContext } from '../../../context/pageContext';
 
 const Tratores = () => {
+	const { setPageTitle } = usePageContext();
 	const { openModal } = useModalsContainer();
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
@@ -24,6 +26,7 @@ const Tratores = () => {
 
 	useEffect(() => {
 		getTractor();
+		setPageTitle('tractor');
 	}, []);
 
 	const columns = [

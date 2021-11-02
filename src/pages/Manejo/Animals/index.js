@@ -22,16 +22,19 @@ import { useAnimals } from '../../../context/animalsContext';
 import CircleLoading from '../../../components/LoadingCircle';
 import { AnimalsModal } from '../../../components/Modals/Management/animals';
 import { useModalsContainer } from '../../../context/modalsContext';
+import { usePageContext } from '../../../context/pageContext';
 
 const Animals = () => {
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
 	const { isLoading, animals, getAnimals, deleteAnimals } = useAnimals();
 	const { openModal } = useModalsContainer();
+	const { setPageTitle } = usePageContext();
 	const [value, setValue] = useState(0);
 
 	useEffect(() => {
 		getAnimals();
+		setPageTitle('animals');
 	}, []);
 
 	const handleChange = (event, newValue) => {

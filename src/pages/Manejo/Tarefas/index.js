@@ -15,8 +15,10 @@ import CircleLoading from '../../../components/LoadingCircle';
 
 import { RegisterModalTask } from '../../../components/Modals/Management/task';
 import { useModalsContainer } from '../../../context/modalsContext';
+import { usePageContext } from '../../../context/pageContext';
 
 const Tarefas = () => {
+	const { setPageTitle } = usePageContext();
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
 	const { getTasks, tasks, deleteTasks, isLoading } = useTask();
@@ -24,6 +26,7 @@ const Tarefas = () => {
 
 	useEffect(() => {
 		getTasks();
+		setPageTitle('assignments');
 	}, []);
 
 	const columns = [

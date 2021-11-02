@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { TitleSection } from '../../../components/Geral/styles';
 import { HeadSection } from '../styles';
 
@@ -14,8 +14,10 @@ import { useManagementContainer } from '../../../context/managementContext';
 import { InitialManagementModal } from '../../../components/Modals/Management';
 import { EntranceManagementModal } from '../../../components/Modals/Management/fuel/entranceModal/index';
 import { ExitManagementModal } from '../../../components/Modals/Management/fuel/exitModal/index';
+import { usePageContext } from '../../../context/pageContext';
 
 const Combustivel = () => {
+	const { setPageTitle } = usePageContext();
 	const { openInitialModal } = useManagementContainer();
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
@@ -35,6 +37,10 @@ const Combustivel = () => {
 	const filter = (mes) => {
 		console.log(mes);
 	};
+
+	useEffect(() => {
+		setPageTitle('fuel');
+	}, []);
 
 	return (
 		<>

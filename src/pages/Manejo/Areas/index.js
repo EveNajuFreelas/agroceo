@@ -12,8 +12,10 @@ import TableWithChip from '../../../components/Table/TableWithChip';
 import CircleLoading from '../../../components/LoadingCircle';
 import { AreaModal } from '../../../components/Modals/Management/areas';
 import { useModalsContainer } from '../../../context/modalsContext';
+import { usePageContext } from '../../../context/pageContext';
 
 const Areas = () => {
+	const { setPageTitle } = usePageContext();
 	const { t } = useTranslation();
 	const { openModal } = useModalsContainer();
 	const { colors } = defaultTheme;
@@ -23,6 +25,7 @@ const Areas = () => {
 
 	useEffect(() => {
 		getAreasAndModules();
+		setPageTitle('areas');
 	}, []);
 
 	const handleChange = (event, newValue) => {

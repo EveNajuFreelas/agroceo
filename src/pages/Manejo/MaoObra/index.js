@@ -15,8 +15,10 @@ import { EditEmployeeModal } from '../../../components/Modals/Management/manPowe
 import { useModalsContainer } from '../../../context/modalsContext';
 import { FunctionsModal } from '../../../components/Modals/Management/manPower/functionsModal';
 import { EditFunctionsModal } from '../../../components/Modals/Management/manPower/editFunctionsModal';
+import { usePageContext } from '../../../context/pageContext';
 
 const MaoDeObra = () => {
+	const { setPageTitle } = usePageContext();
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
 	const { roles, employees, getRoles, getEmployees, isLoading, deleteRole } =
@@ -30,6 +32,7 @@ const MaoDeObra = () => {
 	useEffect(() => {
 		getRoles();
 		getEmployees();
+		setPageTitle('manpower');
 	}, []);
 
 	const handleChange = (event, newValue) => {

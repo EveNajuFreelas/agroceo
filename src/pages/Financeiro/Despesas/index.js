@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
 	FinancialOverview,
 	SummaryContainer,
@@ -13,8 +13,10 @@ import TableWithDescriptionIcon from '../../../components/Table/TableDescription
 import { financeiroData } from '../../../utils/dataMock/mock';
 import TableHeader from '../../../components/Table/TableHeader';
 import { FinancialModal } from '../../../components/Modals/Financial/index';
+import { usePageContext } from '../../../context/pageContext';
 
 const Despesas = () => {
+	const { setPageTitle } = usePageContext();
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
 
@@ -29,6 +31,10 @@ const Despesas = () => {
 		t('%ByProperty'),
 		t('documentPhoto'),
 	];
+
+	useEffect(() => {
+		setPageTitle('expenses');
+	}, []);
 
 	return (
 		<>

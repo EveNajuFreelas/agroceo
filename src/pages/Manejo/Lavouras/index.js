@@ -14,8 +14,10 @@ import { useTillage } from '../../../context/tillageContext';
 import CircleLoading from '../../../components/LoadingCircle';
 import { AgricultureModal } from '../../../components/Modals/Management/agriculture';
 import { useModalsContainer } from '../../../context/modalsContext';
+import { usePageContext } from '../../../context/pageContext';
 
 const Lavouras = () => {
+	const { setPageTitle } = usePageContext();
 	const { t } = useTranslation();
 	const { openModal } = useModalsContainer();
 	const { colors } = defaultTheme;
@@ -23,6 +25,7 @@ const Lavouras = () => {
 
 	useEffect(() => {
 		getTillage();
+		setPageTitle('agriculture');
 	}, []);
 
 	const columns = [

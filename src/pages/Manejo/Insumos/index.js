@@ -11,14 +11,17 @@ import { itensMenuCombustivel } from '../../../utils/dataMock/itensMenu';
 import ButtonIconAdd from '../../../components/Geral/ButtonIcon';
 import { useInput } from '../../../context/inputsContext';
 import CircleLoading from '../../../components/LoadingCircle';
+import { usePageContext } from '../../../context/pageContext';
 
 const Insumos = () => {
+	const { setPageTitle } = usePageContext();
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
 	const { inputs, getInputs, isLoading, filter } = useInput();
 
 	useEffect(() => {
 		getInputs();
+		setPageTitle('input');
 	}, []);
 
 	const columns = [

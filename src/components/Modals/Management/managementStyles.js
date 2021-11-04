@@ -2,7 +2,7 @@ import { Button, Radio } from '@material-ui/core';
 import styled from 'styled-components';
 import { defaultTheme } from '../../../theme';
 
-const { margin, colors, text } = defaultTheme;
+const { margin, colors, text, borderRadius } = defaultTheme;
 
 export const TypeManagementButton = styled((props) => (
 	<Button {...props} variant="outlined" />
@@ -28,8 +28,35 @@ export const TypeManagementButton = styled((props) => (
 	}
 `;
 
-export const FuelTypeRadio = styled(Radio)`
-	&.MuiRadio-root {
-		align-items: center;
+export const FuelTypeRadio = styled.input`
+	display: none;
+
+	&:checked + label {
+		background: rgba(4, 241, 130, 0.15);
+		color: ${colors.darkerGreen};
+		border-color: ${colors.darkerGreen};
+
+		& img {
+			color: ${colors.darkerGreen};
+			filter: brightness(0) saturate(100%) invert(31%) sepia(28%)
+				saturate(1478%) hue-rotate(103deg) brightness(101%)
+				contrast(98%);
+		}
 	}
+`;
+
+export const FuelLabelRadio = styled.label`
+	width: 43%;
+	height: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+
+	border: 1px solid ${colors.neutral};
+	margin-right: ${margin.lg2};
+	border-radius: ${borderRadius.lg};
+	gap: ${margin.lg};
+	color: ${colors.primary};
+	font-size: ${text.size.medium};
 `;

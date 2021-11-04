@@ -40,6 +40,8 @@ import areaInput from '../../utils/Icons/areaInput.svg';
 import mapInput from '../../utils/Icons/mapInput.svg';
 import bagInput from '../../utils/Icons/bagInput.svg';
 import weightInput from '../../utils/Icons/weightInput.svg';
+import gasStation from '../../utils/Icons/gasStation.svg';
+import manage from '../../utils/Icons/manage.svg';
 
 export const iconList = {
 	add_a_photo,
@@ -84,4 +86,6 @@ export const iconList = {
 	mapInput,
 	bagInput,
 	weightInput,
+	manage,
+	gasStation,
 };

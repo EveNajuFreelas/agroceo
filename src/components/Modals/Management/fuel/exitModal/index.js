@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ModalShell } from '../../../../Modal/index';
-import { FuelTypeRadio } from '../../managementStyles';
+import { FuelTypeRadio, FuelLabelRadio } from '../../managementStyles';
 import { fuelTypes } from '../../../../../utils/dataMock/mock';
 import {
 	InputFieldsWrapper,
@@ -16,6 +16,7 @@ import {
 import { useManagementContainer } from '../../../../../context/managementContext';
 import { RadioGroup, Divider } from '@material-ui/core';
 import { employeesSelect } from '../../../../../utils/dataMock/selectMock';
+import { iconList } from '../../../../../assets/Icons/icon-list';
 
 export const ExitManagementModal = () => {
 	const { t } = useTranslation();
@@ -74,21 +75,32 @@ export const ExitManagementModal = () => {
 							value={whereWasFilled}
 						>
 							<FuelTypeRadio
+								type="radio"
+								name="filledUpTank"
+								id="atFarm"
 								value="atFarm"
-								label={t('atFarm')}
 								onClick={(e) =>
 									setWhereWasFilled(e.target.value)
 								}
 							/>
-							{t('atFarm')}
+							<FuelLabelRadio for="atFarm">
+								<img src={iconList.manage} />
+								{t('atFarm')}
+							</FuelLabelRadio>
+
 							<FuelTypeRadio
+								type="radio"
+								name="filledUpTank"
+								id="atCity"
 								value="atCity"
-								label={t('atCity')}
 								onClick={(e) =>
 									setWhereWasFilled(e.target.value)
 								}
 							/>
-							{t('atCity')}
+							<FuelLabelRadio for="atCity">
+								<img src={iconList.gasStation} />
+								{t('atCity')}
+							</FuelLabelRadio>
 						</RadioGroup>
 					</FormControlStyled>
 					<InputLabelStyled htmlFor="fuelType">

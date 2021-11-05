@@ -55,8 +55,10 @@ const TableWithDescriptionIcon = ({
 					columns={columns}
 					hasChecked={checkedItems.length}
 					deleteFunction={deleteFunction}
-					data={checkedItems.length > 0 ? checkedItems : data}
+					data={data}
+					checkedItems={checkedItems}
 					title={title}
+					setCheckedItems={setCheckedItems}
 				/>
 				<TableBody>
 					{data.map((row) => {
@@ -81,12 +83,10 @@ const TableWithDescriptionIcon = ({
 								</TableCell>
 
 								<TableCell align="left" width="200px">
-									<Link component="button" color="inherit">
-										<LabelWithIcon
-											iconName={'entrada'}
-											title={row.data.description}
-										/>
-									</Link>
+									<LabelWithIcon
+										iconName={'entrada'}
+										title={row.data.description}
+									/>
 								</TableCell>
 
 								{keys.map((column, index) => {

@@ -12,13 +12,25 @@ const TableHeadDefault = ({
 	deleteFunction,
 	data,
 	title,
+	checkedItems,
+	setCheckedItems,
 }) => {
+	let fullChecked = checkedItems.length === data.length;
+
+	const handleCheck = () => {
+		checkedItems.length > 2 ? setCheckedItems([]) : setCheckedItems(data);
+	};
+
 	return (
 		<TableHead>
 			<TableRow style={{ height: '50px' }}>
 				{space && <TableCell width={1} />}
 				<TableCell padding="checkbox">
-					<Checkbox style={{ color: 'green' }} />
+					<Checkbox
+						checked={fullChecked}
+						style={{ color: 'green' }}
+						onChange={() => handleCheck()}
+					/>
 				</TableCell>
 				{columns.map((column, index) => {
 					return index === 0 || index === 1 ? (
@@ -38,13 +50,13 @@ const TableHeadDefault = ({
 							<ButtonIcon
 								src={iconList.print}
 								onClick={() =>
-									printOutPDF(title, columns, data)
+									printOutPDF(title, columns, checkedItems)
 								}
 							/>
 							<ButtonIcon
 								src={iconList.pdf}
 								onClick={() =>
-									generatePDF(title, columns, data)
+									generatePDF(title, columns, checkedItems)
 								}
 							/>
 						</div>

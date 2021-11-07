@@ -2,7 +2,12 @@ import { useEffect, useState } from 'react';
 import { ModalShell } from '../../Modal/index';
 import { useTranslation } from 'react-i18next';
 import { useExpensesContainer } from '../../../context/financesContext/expensesContext';
-import { PropertyDivisionWrapper, PropertiesField, Subtitle, ParcelButton } from './styles';
+import {
+	PropertyDivisionWrapper,
+	PropertiesField,
+	Subtitle,
+	ParcelButton,
+} from './styles';
 import {
 	InputFieldsWrapper,
 	InputField,
@@ -13,20 +18,19 @@ import {
 	ControlledInput,
 	InputLabelStyled,
 } from '../inputsStyles';
-import { 
-	Checkbox, 
-	Divider, 
-	InputAdornment, 
+import {
+	Checkbox,
+	Divider,
+	InputAdornment,
 	Table,
-	TableHead, 
-	TableRow, 
-	TableCell, 
-	TableBody 
+	TableHead,
+	TableRow,
+	TableCell,
+	TableBody,
 } from '@material-ui/core';
 
 export const FinancialModal = ({ title, breadcrumbs }) => {
-	const { modalState, setModalState, activeContent } =
-		useExpensesContainer();
+	const { modalState, setModalState, activeContent } = useExpensesContainer();
 	const { t } = useTranslation();
 	const [currentInfo, setCurrentInfo] = useState(activeContent);
 	const [editParcelModal, setEditParcelModal] = useState(false);
@@ -37,7 +41,7 @@ export const FinancialModal = ({ title, breadcrumbs }) => {
 	}, [activeContent]);
 
 	const handleInput = (info, inputName) => {
-		setCurrentInfo(curr => ({ ...curr, [inputName]: info }));
+		setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
 	};
 
 	const handlePropertiesInput = (info, inputName, id) => {
@@ -49,7 +53,7 @@ export const FinancialModal = ({ title, breadcrumbs }) => {
 			...currentInfo.Properties[id],
 			[inputName]: info,
 		};
-		setCurrentInfo(curr => ({ ...curr, Properties: newArray }));
+		setCurrentInfo((curr) => ({ ...curr, Properties: newArray }));
 	};
 
 	const editParcelStatusModal = () => {
@@ -74,44 +78,42 @@ export const FinancialModal = ({ title, breadcrumbs }) => {
 					},
 				]}
 			>
-				<p style={{marginBottom: '10px'}}>{currentParcel?.details}</p>
-				<InputLabelStyled htmlFor='parcelDate'>
+				<p style={{ marginBottom: '10px' }}>{currentParcel?.details}</p>
+				<InputLabelStyled htmlFor="parcelDate">
 					{t('parcelDate')}
 				</InputLabelStyled>
 				<InputField
-					id='parcelDate'
-					type='date'
-					name='parcelDate'
-					onChange={e =>
-						handleInput(e.target.value, e.target.name)
-					}
+					id="parcelDate"
+					type="date"
+					name="parcelDate"
+					onChange={(e) => handleInput(e.target.value, e.target.name)}
 				/>
-				<InputLabelStyled htmlFor="payedValue">{t('payedValue')}</InputLabelStyled>
-				<InputField 
-					id="payedValue"
-					type="number"
-				/>
+				<InputLabelStyled htmlFor="payedValue">
+					{t('payedValue')}
+				</InputLabelStyled>
+				<InputField id="payedValue" type="number" />
 			</ModalShell>
 		);
-	}
+	};
 
 	const handleParcelEditClick = (parcel) => {
 		console.log(parcel);
-		if(!parcel.status) {
+		if (!parcel.status) {
 			setEditParcelModal(true);
 			setCurrentParcel(parcel);
 		}
-	}
-	
+	};
+
 	const renderSelectedProperties = () => {
-		const { numberParcels, parcelsValue, payedParcels } = currentInfo.selectedProperties;
+		const { numberParcels, parcelsValue, payedParcels } =
+			currentInfo.selectedProperties;
 		const tableRows = [];
 
-		for(let i = 1; i <= numberParcels; i++) {
+		for (let i = 1; i <= numberParcels; i++) {
 			const newRow = {
 				details: `${t('parcel')} ${i}x${numberParcels}`,
-				value: parcelsValue,
-				status: !!payedParcels.find(p => p === i),
+				value: `R$ ${parcelsValue}`,
+				status: !!payedParcels.find((p) => p === i),
 			};
 
 			tableRows.push(newRow);
@@ -127,12 +129,15 @@ export const FinancialModal = ({ title, breadcrumbs }) => {
 					</TableRow>
 				</TableHead>
 				<TableBody>
-					{tableRows.map(row => (
+					{tableRows.map((row) => (
 						<TableRow>
 							<TableCell>{row.details}</TableCell>
 							<TableCell>{row.value}</TableCell>
 							<TableCell>
-								<ParcelButton onClick={() => handleParcelEditClick(row)} isPayed={row.status}>
+								<ParcelButton
+									onClick={() => handleParcelEditClick(row)}
+									disabled={row.status}
+								>
 									{t(row.status ? 'payed' : 'notPayed')}
 								</ParcelButton>
 							</TableCell>
@@ -140,11 +145,11 @@ export const FinancialModal = ({ title, breadcrumbs }) => {
 					))}
 				</TableBody>
 			</Table>
-		)
-	}
+		);
+	};
 
 	const renderProperties = () => {
-		return currentInfo.Properties?.map(prop => (
+		return currentInfo.Properties?.map((prop) => (
 			<PropertiesField key={prop.id}>
 				<Checkbox
 					style={{
@@ -164,17 +169,17 @@ export const FinancialModal = ({ title, breadcrumbs }) => {
 				/>
 				<ControlledInput
 					value={prop.percentage}
-					onChange={e =>
+					onChange={(e) =>
 						handlePropertiesInput(
 							Number(e.target.value),
 							'percentage',
 							prop.id
 						)
 					}
-					type='number'
+					type="number"
 					InputProps={{
 						endAdornment: (
-							<InputAdornment position='end'>
+							<InputAdornment position="end">
 								<span
 									style={{
 										fontSize: '25px',
@@ -189,18 +194,18 @@ export const FinancialModal = ({ title, breadcrumbs }) => {
 				/>
 				<ControlledInput
 					defaultValue={prop.value}
-					onChange={e =>
+					onChange={(e) =>
 						handlePropertiesInput(
 							Number(e.target.value),
 							'value',
 							prop.id
 						)
 					}
-					type='number'
+					type="number"
 					InputProps={{
 						style: { textAlign: 'end' },
 						startAdornment: (
-							<InputAdornment position='start'>R$</InputAdornment>
+							<InputAdornment position="start">R$</InputAdornment>
 						),
 					}}
 				/>
@@ -208,150 +213,151 @@ export const FinancialModal = ({ title, breadcrumbs }) => {
 		));
 	};
 
+	return (
+		<>
+			{editParcelStatusModal()}
+			<ModalShell
+				open={modalState}
+				handleClose={() => setModalState(false)}
+				title={currentInfo?.description || title}
+				breadcrumbs={breadcrumbs}
+				actionButtons={[
+					{
+						onClick: () => setModalState(false),
+						title: 'cancel',
+						color: 'secondary',
+						variant: 'outlined',
+					},
+					{
+						onClick: () => setModalState(false),
+						title: 'save',
+						color: 'primary',
+						variant: 'contained',
+					},
+				]}
+			>
+				<InputFieldsWrapper>
+					<div style={{ width: '48%' }}>
+						<InputLabelStyled htmlFor="description">
+							{t('description')}
+						</InputLabelStyled>
+						<InputField
+							id="description"
+							name="Description"
+							defaultValue={currentInfo?.description}
+							onChange={(e) =>
+								handleInput(e.target.value, e.target.name)
+							}
+						/>
+						<InputLabelStyled htmlFor="totalValue">
+							{t('totalValue')}
+						</InputLabelStyled>
+						<InputField
+							id="totalValue"
+							name="TotalValue"
+							type="money"
+							defaultValue={currentInfo?.TotalValue}
+							onChange={(e) =>
+								handleInput(e.target.value, e.target.name)
+							}
+						/>
+						<InputLabelStyled htmlFor="expensesDate">
+							{t('expensesDate')}
+						</InputLabelStyled>
+						<InputField
+							id="expensesDate"
+							name="DateDespesa"
+							type="date"
+							onChange={(e) =>
+								handleInput(e.target.value, e.target.name)
+							}
+						/>
+						<InputLabelStyled htmlFor="receipt">
+							{t('receipt')}
+						</InputLabelStyled>
+						<UploadField
+							id="receipt"
+							docName={
+								currentInfo?.DocumentPicture !== '--'
+									? currentInfo?.DocumentPicture
+									: null
+							}
+							name="Receipt"
+							buttonName={t('select')}
+							onChange={(e) =>
+								handleInput(e.target.value, e.target.name)
+							}
+						/>
+					</div>
 
-	return (<>
-		{editParcelStatusModal()}
-		<ModalShell
-			open={modalState}
-			handleClose={() => setModalState(false)}
-			title={ currentInfo?.description || title}
-			breadcrumbs={breadcrumbs}
-			actionButtons={[
-				{
-					onClick: () => setModalState(false),
-					title: 'cancel',
-					color: 'secondary',
-					variant: 'outlined',
-				},
-				{
-					onClick: () => setModalState(false),
-					title: 'save',
-					color: 'primary',
-					variant: 'contained',
-				},
-			]}
-		>
-			<InputFieldsWrapper>
-				<div style={{ width: '48%' }}>
-					<InputLabelStyled htmlFor='description'>
-						{t('description')}
-					</InputLabelStyled>
-					<InputField
-						id='description'
-						name='Description'
-						defaultValue={currentInfo?.description}
-						onChange={e =>
-							handleInput(e.target.value, e.target.name)
-						}
-					/>
-					<InputLabelStyled htmlFor='totalValue'>
-						{t('totalValue')}
-					</InputLabelStyled>
-					<InputField
-						id='totalValue'
-						name='TotalValue'
-						type='money'
-						defaultValue={currentInfo?.TotalValue}
-						onChange={e =>
-							handleInput(e.target.value, e.target.name)
-						}
-					/>
-					<InputLabelStyled htmlFor='expensesDate'>
-						{t('expensesDate')}
-					</InputLabelStyled>
-					<InputField
-						id='expensesDate'
-						name='DateDespesa'
-						type='date'
-						onChange={e =>
-							handleInput(e.target.value, e.target.name)
-						}
-					/>
-					<InputLabelStyled htmlFor='receipt'>
-						{t('receipt')}
-					</InputLabelStyled>
-					<UploadField
-						id='receipt'
-						docName={
-							currentInfo?.DocumentPicture !== '--'
-								? currentInfo?.DocumentPicture
-								: null
-						}
-						name='Receipt'
-						buttonName={t('select')}
-						onChange={e =>
-							handleInput(e.target.value, e.target.name)
-						}
-					/>
-				</div>
+					<Divider orientation="vertical" flexItem component="div" />
 
-				<Divider orientation='vertical' flexItem component='div' />
-
-				<div style={{ width: '48%' }}>
-					<InputLabelStyled htmlFor='payment'>
-						{t('payment')}
-					</InputLabelStyled>
-					<SelectField
-						id='payment'
-						name='Payment'
-						value={currentInfo?.Payment}
-						onChange={e =>
-							handleInput(e.target.value, e.target.name)
-						}
-					>
-						<StyledMenuItem value='Cartão de crédito'>
-							Cartão de Crédito
-						</StyledMenuItem>
-					</SelectField>
-					<InputLabelStyled htmlFor='parcels'>
-						{t('parcels')}
-					</InputLabelStyled>
-					<SelectField
-						id='parcels'
-						name='Parcela'
-						value={currentInfo?.Parcela}
-						onChange={e =>
-							handleInput(e.target.value, e.target.name)
-						}
-					>
-						<StyledMenuItem value='10x'>10x</StyledMenuItem>
-					</SelectField>
-					<InputLabelStyled htmlFor='firstParcel'>
-						{t('firstParcel')}
-					</InputLabelStyled>
-					<InputField
-						id='firstParcel'
-						type='date'
-						name='FirstParcela'
-						onChange={e =>
-							handleInput(e.target.value, e.target.name)
-						}
-					/>
-					<InputLabelStyled htmlFor='accountPlan'>
-						{t('AccountPlan')}
-					</InputLabelStyled>
-					<SelectField
-						id='AccountPlan'
-						name='AccountPlan'
-						value={currentInfo?.AccountPlan}
-						onChange={e =>
-							handleInput(e.target.value, e.target.name)
-						}
-					>
-						<StyledMenuItem value='Combustivel'>
-							Combustível
-						</StyledMenuItem>
-					</SelectField>
-				</div>
-			</InputFieldsWrapper>
-			{currentInfo.selectedProperties 
-			? renderSelectedProperties() 
-			: (
-				<PropertyDivisionWrapper>
-					<Subtitle>Divisão entre propriedades</Subtitle>
-					{renderProperties()}
-				</PropertyDivisionWrapper>
-			)}
-		</ModalShell>
-	</>);
+					<div style={{ width: '48%' }}>
+						<InputLabelStyled htmlFor="payment">
+							{t('payment')}
+						</InputLabelStyled>
+						<SelectField
+							id="payment"
+							name="Payment"
+							value={currentInfo?.Payment}
+							onChange={(e) =>
+								handleInput(e.target.value, e.target.name)
+							}
+						>
+							<StyledMenuItem value="Cartão de crédito">
+								Cartão de Crédito
+							</StyledMenuItem>
+						</SelectField>
+						<InputLabelStyled htmlFor="parcels">
+							{t('parcels')}
+						</InputLabelStyled>
+						<SelectField
+							id="parcels"
+							name="Parcela"
+							value={currentInfo?.Parcela}
+							onChange={(e) =>
+								handleInput(e.target.value, e.target.name)
+							}
+						>
+							<StyledMenuItem value="10x">10x</StyledMenuItem>
+						</SelectField>
+						<InputLabelStyled htmlFor="firstParcel">
+							{t('firstParcel')}
+						</InputLabelStyled>
+						<InputField
+							id="firstParcel"
+							type="date"
+							name="FirstParcela"
+							onChange={(e) =>
+								handleInput(e.target.value, e.target.name)
+							}
+						/>
+						<InputLabelStyled htmlFor="accountPlan">
+							{t('AccountPlan')}
+						</InputLabelStyled>
+						<SelectField
+							id="AccountPlan"
+							name="AccountPlan"
+							value={currentInfo?.AccountPlan}
+							onChange={(e) =>
+								handleInput(e.target.value, e.target.name)
+							}
+						>
+							<StyledMenuItem value="Combustivel">
+								Combustível
+							</StyledMenuItem>
+						</SelectField>
+					</div>
+				</InputFieldsWrapper>
+				{currentInfo.selectedProperties ? (
+					renderSelectedProperties()
+				) : (
+					<PropertyDivisionWrapper>
+						<Subtitle>Divisão entre propriedades</Subtitle>
+						{renderProperties()}
+					</PropertyDivisionWrapper>
+				)}
+			</ModalShell>
+		</>
+	);
 };

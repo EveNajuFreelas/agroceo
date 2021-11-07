@@ -22,8 +22,17 @@ export const Subtitle = styled.span`
 `;
 
 export const ParcelButton = styled(Button)`
-	.MuiButton-root {
-		color: ${(props) => props.isPayed ? colors.neutral0 : colors.auxiliar };
-		border: ${props => !props.isPayed && border.payedButton };
+	&.MuiButton-root {
+		width: 40%;
+		border-radius: 40px;
+
+		color: ${colors.auxiliar};
+		border: ${border.payedButton};
+	}
+
+	&.MuiButton-root.Mui-disabled {
+		background: ${colors.greenLight};
+		color: ${colors.neutral0};
+		border: none;
 	}
 `;

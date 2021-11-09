@@ -85,6 +85,7 @@ const Veiculos = () => {
 						putInIcon={true}
 						description={true}
 						deleteFunction={deleteVehicle}
+						title={t('vehicle')}
 					/>
 				)}
 			</div>

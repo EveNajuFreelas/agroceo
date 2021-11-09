@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import { defaultTheme } from '../../../theme';
 
 import {
@@ -21,22 +21,37 @@ const TableNormal = ({
 	putInIcon,
 	description,
 	deleteFunction,
+	title,
 }) => {
-	const { colors } = defaultTheme;
 	const { openUtilizationModal } = useModalsContainer();
+	const { colors } = defaultTheme;
 
+	const [checkedItems, setCheckedItems] = useState([]);
 	const COLUMN_INITIAL = description ? 1 : 0;
 
-	if (data.length === 0) {
-		return <NoRegister />;
-	}
-
+	if (data.length === 0) return <NoRegister />;
 	let keys = Object.keys(data[0]);
+
+	const handleCheck = (e, item) => {
+		setCheckedItems(
+			checkedItems.includes(item)
+				? checkedItems.filter((c) => c !== item)
+				: [...checkedItems, item]
+		);
+	};
 
 	return (
 		<StyledTableContainer>
 			<Table>
-				<TableHeadDefault columns={columns} />
+				<TableHeadDefault
+					columns={columns}
+					hasChecked={checkedItems.length}
+					deleteFunction={deleteFunction}
+					data={data}
+					checkedItems={checkedItems}
+					title={title}
+					setCheckedItems={setCheckedItems}
+				/>
 				<TableBody>
 					{data.map((row) => {
 						return (
@@ -44,7 +59,8 @@ const TableNormal = ({
 								<TableCell padding="checkbox">
 									<Checkbox
 										style={{ color: 'green' }}
-										//checked={isItemSelected}
+										onChange={(e) => handleCheck(e, row)}
+										checked={checkedItems.includes(row)}
 										inputProps={{
 											'aria-labelledby': row.id,
 										}}

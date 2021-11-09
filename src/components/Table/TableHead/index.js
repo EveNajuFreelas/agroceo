@@ -18,7 +18,8 @@ const TableHeadDefault = ({
 	let fullChecked = checkedItems.length === data.length;
 
 	const handleCheck = () => {
-		checkedItems.length > 2 ? setCheckedItems([]) : setCheckedItems(data);
+		console.log(checkedItems);
+		checkedItems.length > 1 ? setCheckedItems([]) : setCheckedItems(data);
 	};
 
 	return (

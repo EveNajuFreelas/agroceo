@@ -41,6 +41,10 @@ const Animals = () => {
 		setValue(newValue);
 	};
 
+	const deleteFunction = () => {
+		console.log('deletar');
+	};
+
 	let columnsRegisteredAnimals = [
 		'ID',
 		t('raceSpecies'),
@@ -151,6 +155,7 @@ const Animals = () => {
 					columns={columnsWeighings}
 					putInIcon={false}
 					description={false}
+					deleteFunction={deleteFunction}
 					title={t('weighings')}
 				/>
 			)}

@@ -117,7 +117,7 @@ const RevisionSecond = ({ t }) => {
 				renderValue={(selected) => selected.join(', ')}
 				style={{ width: '100%' }}
 			>
-				{itemsRevised.map((item) => (
+				{itemsRevised.sort().map((item) => (
 					<MenuItem key={item.id} value={item.name}>
 						<Checkbox
 							checked={itemsSelected.indexOf(item.name) > -1}

@@ -25,31 +25,31 @@ const TableWithChip = ({ data, columns, deleteFunction }) => {
 	const handleEditClick = (content) => {
 		editActiveContent(content);
 		openUtilizationModal();
-	}
+	};
 
 	return (
 		<StyledTableContainer>
 			<Table>
 				<TableHead>
 					<TableRow style={{ height: '50px' }}>
-						<TableCell padding='checkbox'>
+						<TableCell padding="checkbox">
 							<Checkbox style={{ color: 'green' }} />
 						</TableCell>
 						{columns.map((column, index) => {
 							return lastColumn === index ? (
-								<TableCell align='right'>{column}</TableCell>
+								<TableCell align="right">{column}</TableCell>
 							) : (
-								<TableCell align='left'>{column}</TableCell>
+								<TableCell align="left">{column}</TableCell>
 							);
 						})}
 						<TableCell />
 					</TableRow>
 				</TableHead>
 				<TableBody>
-					{data.map(row => {
+					{data.map((row) => {
 						return (
 							<TableRow key={row.id}>
-								<TableCell padding='checkbox'>
+								<TableCell padding="checkbox">
 									<Checkbox
 										style={{ color: 'green' }}
 										//checked={isItemSelected}
@@ -60,7 +60,7 @@ const TableWithChip = ({ data, columns, deleteFunction }) => {
 								</TableCell>
 
 								<TableCell
-									width='50px'
+									width="50px"
 									style={{ color: colors.neutral6 }}
 								>
 									{row.id}
@@ -91,9 +91,9 @@ const TableWithChip = ({ data, columns, deleteFunction }) => {
 									);
 								})}
 
-								<TableCell width={60} align='center'>
+								<TableCell width={60} align="center">
 									<img
-										alt='icon edit'
+										alt="icon edit"
 										style={{
 											marginRight: 10,
 											cursor: 'pointer',
@@ -102,7 +102,7 @@ const TableWithChip = ({ data, columns, deleteFunction }) => {
 										onClick={() => handleEditClick(row)}
 									/>
 									<img
-										alt='icon delete'
+										alt="icon delete"
 										style={{ cursor: 'pointer' }}
 										src={iconList.deleteIcon}
 										onClick={() => deleteFunction(row.id)}

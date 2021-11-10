@@ -30,7 +30,7 @@ const TableNormal = ({
 	const COLUMN_INITIAL = description ? 1 : 0;
 
 	if (data.length === 0) return <NoRegister />;
-	let keys = Object.keys(data[0]);
+	let keys = Object.keys(data[0].data);
 
 	const handleCheck = (e, item) => {
 		setCheckedItems(
@@ -62,7 +62,7 @@ const TableNormal = ({
 										onChange={(e) => handleCheck(e, row)}
 										checked={checkedItems.includes(row)}
 										inputProps={{
-											'aria-labelledby': row.id,
+											'aria-labelledby': row.data.id,
 										}}
 									/>
 								</TableCell>
@@ -71,14 +71,19 @@ const TableNormal = ({
 									width="50px"
 									style={{ color: colors.neutral6 }}
 								>
-									{row.id}
+									{row.data.id}
 								</TableCell>
 
 								{description && (
-									<TableCell>{row.description}</TableCell>
+									<TableCell>
+										{row.data.description}
+									</TableCell>
 								)}
 
 								{keys.map((column, index) => {
+									console.log(column);
+									//console.log(row.data[column]);
+									console.log(row.data['brand']);
 									return (
 										//tem alguma forma de fazer melhor certeza k k k k
 										index > COLUMN_INITIAL && (
@@ -90,7 +95,7 @@ const TableNormal = ({
 												}
 												key={index}
 											>
-												{row[column]}
+												{row.data[column]}
 											</TableCell>
 										)
 									);
@@ -124,7 +129,9 @@ const TableNormal = ({
 											cursor: 'pointer',
 										}}
 										src={iconList.deleteIcon}
-										onClick={() => deleteFunction(row.id)}
+										onClick={() =>
+											deleteFunction(row.data.id)
+										}
 									/>
 								</TableCell>
 							</TableRow>

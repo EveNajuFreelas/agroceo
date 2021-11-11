@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { defaultTheme } from '../../../../theme';
 
 import {
@@ -18,11 +18,19 @@ import { useTranslation } from 'react-i18next';
 const TableTarefas = ({ data, columns, deleteFunction }) => {
 	const { colors } = defaultTheme;
 	const { t } = useTranslation();
+	const [checkedItems, setCheckedItems] = useState([]);
 
 	if (data.length === 0) {
 		return <NoRegister />;
 	}
 
+	const handleCheck = (e, item) => {
+		setCheckedItems(
+			checkedItems.includes(item)
+				? checkedItems.filter((c) => c !== item)
+				: [...checkedItems, item]
+		);
+	};
 	const getColor = Object.freeze({
 		open: '#13ABCD',
 		refused: colors.auxiliar,
@@ -33,51 +41,62 @@ const TableTarefas = ({ data, columns, deleteFunction }) => {
 	return (
 		<StyledTableContainer>
 			<Table>
-				<TableHeadDefault columns={columns} />
+				<TableHeadDefault
+					columns={columns}
+					hasChecked={checkedItems.length}
+					deleteFunction={deleteFunction}
+					data={data}
+					checkedItems={checkedItems}
+					title={t('task')}
+					setCheckedItems={setCheckedItems}
+				/>
 				<TableBody>
-					{data.map(row => {
+					{data.map((row) => {
 						return (
-							<TableRow key={row.id}>
-								<TableCell padding='checkbox'>
+							<TableRow key={row.data.id}>
+								<TableCell padding="checkbox">
 									<Checkbox
 										style={{ color: 'green' }}
-										//checked={isItemSelected}
+										onChange={(e) => handleCheck(e, row)}
+										checked={checkedItems.includes(row)}
 										inputProps={{
-											'aria-labelledby': row.id,
+											'aria-labelledby': row.data.id,
 										}}
 									/>
 								</TableCell>
 								<TableCell
-									width='50px'
+									width="50px"
 									style={{ color: colors.neutral6 }}
 								>
-									{row.id}
+									{row.data.id}
 								</TableCell>
 
-								<TableCell align='left'>{row.title}</TableCell>
-
-								<TableCell align='right'>
-									{row.expected}
+								<TableCell align="left">
+									{row.data.title}
 								</TableCell>
 
-								<TableCell align='right'>
-									{row.centers}
+								<TableCell align="right">
+									{row.data.expected}
+								</TableCell>
+
+								<TableCell align="right">
+									{row.data.centers}
 								</TableCell>
 
 								<TableCell
-									align='right'
-									style={{ color: getColor[row.status] }}
+									align="right"
+									style={{ color: getColor[row.data.status] }}
 								>
-									{t(row.status)}
+									{t(row.data.status)}
 								</TableCell>
 
-								<TableCell align='right'>
-									{row.responsible}
+								<TableCell align="right">
+									{row.data.responsible}
 								</TableCell>
 
-								<TableCell width={100} align='center'>
+								<TableCell width={100} align="center">
 									<img
-										alt='icon edit'
+										alt="icon edit"
 										style={{
 											marginRight: 10,
 											cursor: 'pointer',
@@ -85,12 +104,14 @@ const TableTarefas = ({ data, columns, deleteFunction }) => {
 										src={iconList.edit}
 									/>
 									<img
-										alt='icon delete'
+										alt="icon delete"
 										style={{
 											cursor: 'pointer',
 										}}
 										src={iconList.deleteIcon}
-										onClick={() => deleteFunction(row.id)}
+										onClick={() =>
+											deleteFunction(row.data.id)
+										}
 									/>
 								</TableCell>
 							</TableRow>

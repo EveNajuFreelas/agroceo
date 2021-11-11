@@ -21,6 +21,8 @@ export function icon(subtitle) {
 	return icons[subtitle];
 }
 export const createPDF = (title, columns, data) => {
+	console.log('data', data);
+
 	doc.text(title, 15, 10);
 
 	doc.autoTableSetDefaults({
@@ -28,6 +30,8 @@ export const createPDF = (title, columns, data) => {
 	});
 
 	let dados = data.map((item) => Object.values(item.data));
+
+	console.log('dados', dados);
 
 	doc.autoTable({
 		head: [columns],

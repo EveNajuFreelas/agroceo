@@ -146,54 +146,6 @@ export const manejoCombustivel = [
 	},
 ];
 
-export const manejoVeiculos = [
-	{
-		id: '00004',
-		nickname: 'Caminhonete',
-		brand: 'Ford',
-		model: 'Ranger Raptor',
-		color: 'Prata',
-		board: 'ABC1D23',
-		vehicleOwner: 'Terceiros',
-		updated_at: '18/09/2021',
-	},
-	{
-		id: '00005',
-		nickname: 'Moto',
-		Marca: 'Honda',
-		Modelo: 'NXR 160 Bros',
-		Cor: 'Vermelha',
-		Placa: 'ZXY9W87',
-		Proprietario: 'Fazenda',
-		Data: '05/04/2020',
-	},
-];
-
-export const manejoTratores = [
-	{
-		id: '00004',
-		description: 'Caminhonete',
-		Marca: 'Ford',
-		Modelo: 'Ranger Raptor',
-		Cor: 'Prata',
-		Ano: '2012',
-		Placa: 'ABC1D23',
-		Proprietario: 'Terceiros',
-		Data: '18/09/2021',
-	},
-	{
-		id: '00005',
-		description: 'Moto',
-		Marca: 'Honda',
-		Modelo: 'NXR 160 Bros',
-		Cor: 'Vermelha',
-		Ano: '2015',
-		Placa: 'ZXY9W87',
-		Proprietario: 'Fazenda',
-		Data: '05/04/2020',
-	},
-];
-
 export const manejoMaoFuncionario = [
 	{
 		id: '00004',
@@ -236,22 +188,26 @@ export const manejoMaoFuncoes = [
 
 export const manejoInsumos = [
 	{
-		id: '00004',
-		Description: 'Adubo',
-		Quantidade: '60',
-		Medida: 'Kg',
-		Apresentacao: 'Sacos de 20kg',
-		Documento: 'Não',
-		Quem: 'José da Silva',
+		data: {
+			id: '00004',
+			Description: 'Adubo',
+			Quantidade: '60',
+			Medida: 'Kg',
+			Apresentacao: 'Sacos de 20kg',
+			Documento: 'Não',
+			Quem: 'José da Silva',
+		},
 	},
 	{
-		id: '00004',
-		Description: 'Adubo',
-		Quantidade: '10',
-		Medida: 'Kg',
-		Apresentacao: 'Sacos de 20kg',
-		Documento: 'Não',
-		Quem: 'José da Silva',
+		data: {
+			id: '00004',
+			Description: 'Adubo',
+			Quantidade: '20',
+			Medida: 'Kg',
+			Apresentacao: 'Sacos de 20kg',
+			Documento: 'Sim',
+			Quem: 'José da Silva',
+		},
 	},
 ];
 
@@ -275,24 +231,6 @@ export const fuelTypes = [
 	{
 		value: 'ethanol',
 		name: 'ethanol',
-	},
-];
-export const animaisData = [
-	{
-		id: '002',
-		specie: 'Bovino',
-		type: 'Corte',
-		sex: 'Macho',
-		age: '12 meses',
-		quantity: 340,
-	},
-	{
-		id: '002',
-		specie: 'Bovino',
-		type: 'Leite',
-		sex: 'Fêmea',
-		age: '24 meses',
-		quantity: 158,
 	},
 ];
 
@@ -331,140 +269,166 @@ export const animaisMoviment = [
 
 export const animaisWeighings = [
 	{
-		id: '002',
-		lot: '1 - Lote de Engorda',
-		qntdAnimals: '100',
-		animalsWeighed: '30%',
-		averageWeight: '260 kg',
-		lastWeighing: '10/10/2021',
-		subarea: '1 - Pasto da onça',
+		data: {
+			id: '002',
+			lot: '1 - Lote de Engorda',
+			qntdAnimals: '100',
+			animalsWeighed: '30%',
+			averageWeight: '260 kg',
+			lastWeighing: '10/10/2021',
+			subarea: '1 - Pasto da onça',
+		},
 	},
 	{
-		id: '004',
-		lot: '1 - Lote de Engorda',
-		qntdAnimals: '100',
-		animalsWeighed: '30%',
-		averageWeight: '260 kg',
-		lastWeighing: '10/10/2021',
-		subarea: '1 - Pasto da onça',
+		data: {
+			id: '004',
+			lot: '1 - Lote de Engorda',
+			qntdAnimals: '100',
+			animalsWeighed: '30%',
+			averageWeight: '260 kg',
+			lastWeighing: '10/10/2021',
+			subarea: '1 - Pasto da onça',
+		},
 	},
 ];
 
 export const animaisLots = [
 	{
-		id: '002',
-		lot: 'Lote 1',
-		nameLot: 'Lote de Engorda',
-		subarea: 'Sub-área 1 “Pasto da onça”',
-		total: '100',
-		content: [
-			{
-				raceSpecies: 'Bovino',
-				type: 'Corte',
-				sex: 'Macho',
-				age: '12 meses',
-				quantity: 10,
-			},
-			{
-				raceSpecies: 'Bovino',
-				type: 'Corte',
-				sex: 'Macho',
-				age: '12 meses',
-				quantity: 10,
-			},
-		],
+		data: {
+			id: '002',
+			lot: 'Lote 1',
+			nameLot: 'Lote de Engorda',
+			subarea: 'Sub-área 1 “Pasto da onça”',
+			total: '100',
+			content: [
+				{
+					raceSpecies: 'Bovino',
+					type: 'Corte',
+					sex: 'Macho',
+					age: '12 meses',
+					quantity: 10,
+				},
+				{
+					raceSpecies: 'Bovino',
+					type: 'Corte',
+					sex: 'Macho',
+					age: '12 meses',
+					quantity: 10,
+				},
+			],
+		},
 	},
 	{
-		id: '004',
-		lot: 'Lote 1',
-		nameLot: 'Lote de Engorda',
-		subarea: 'Sub-área 1 “Pasto da onça”',
-		total: '100',
-		content: [
-			{
-				raceSpecies: 'Bovino',
-				type: 'Corte',
-				sex: 'Macho',
-				age: '12 meses',
-				quantity: 10,
-			},
-		],
+		data: {
+			id: '004',
+			lot: 'Lote 1',
+			nameLot: 'Lote de Engorda',
+			subarea: 'Sub-área 1 “Pasto da onça”',
+			total: '100',
+			content: [
+				{
+					raceSpecies: 'Bovino',
+					type: 'Corte',
+					sex: 'Macho',
+					age: '12 meses',
+					quantity: 10,
+				},
+			],
+		},
 	},
 ];
 
 export const manejoDemandas = [
 	{
-		id: '000004',
-		demand: 'Cerca quebrada no pasto da onça',
-		createBy: 'Dito (Benedito)',
-		demandPhoto: 'https://www.google.com/',
-		task: true,
+		data: {
+			id: '000004',
+			demand: 'Cerca quebrada no pasto da onça',
+			createBy: 'Dito (Benedito)',
+			demandPhoto: 'https://www.google.com/',
+			task: true,
+		},
 	},
 	{
-		id: '000018',
-		demand: 'Cerca quebrada no pasto da onça',
-		createBy: 'Dito (Benedito)',
-		demandPhoto: 'https://www.google.com/',
-		task: false,
+		data: {
+			id: '000018',
+			demand: 'Cerca quebrada no pasto da onça',
+			createBy: 'Dito (Benedito)',
+			demandPhoto: 'https://www.google.com/',
+			task: false,
+		},
 	},
 ];
 
 export const manejoTask = [
 	{
-		id: '000004',
-		title: 'Porteira da sede quebrada',
-		startDate: '13/10/2021',
-		cost: 'Animais, Lavoura',
-		status: 'Iniciada',
-		responsible: 'Rodrigo Alves de Souza',
+		data: {
+			id: '000004',
+			title: 'Porteira da sede quebrada',
+			startDate: '13/10/2021',
+			cost: 'Animais, Lavoura',
+			status: 'Iniciada',
+			responsible: 'Rodrigo Alves de Souza',
+		},
 	},
 	{
-		id: '000004',
-		title: 'Concertar colchete do retiro',
-		startDate: '13/10/2021',
-		cost: 'Infraestrutura',
-		status: 'Recusada',
-		responsible: 'José da Silva',
+		data: {
+			id: '000004',
+			title: 'Concertar colchete do retiro',
+			startDate: '13/10/2021',
+			cost: 'Infraestrutura',
+			status: 'Recusada',
+			responsible: 'José da Silva',
+		},
 	},
 	{
-		id: '000004',
-		title: 'Porteira da sede quebrada',
-		startDate: '13/10/2021',
-		cost: null || '-',
-		status: 'Concluída',
-		responsible: 'Rodrigo Alves de Souza',
+		data: {
+			id: '000004',
+			title: 'Porteira da sede quebrada',
+			startDate: '13/10/2021',
+			cost: null || '-',
+			status: 'Concluída',
+			responsible: 'Rodrigo Alves de Souza',
+		},
 	},
 	{
-		id: '000004',
-		title: 'Concertar colchete do retiro',
-		startDate: '13/10/2021',
-		cost: 'Infraestrutura',
-		status: 'Não iniciada',
-		responsible: 'José da Silva',
+		data: {
+			id: '000004',
+			title: 'Concertar colchete do retiro',
+			startDate: '13/10/2021',
+			cost: 'Infraestrutura',
+			status: 'Não iniciada',
+			responsible: 'José da Silva',
+		},
 	},
 	{
-		id: '000004',
-		title: 'Porteira da sede quebrada',
-		startDate: '13/10/2021',
-		cost: 'Animais, Lavoura',
-		status: 'Demanda',
-		responsible: null || '-',
+		data: {
+			id: '000004',
+			title: 'Porteira da sede quebrada',
+			startDate: '13/10/2021',
+			cost: 'Animais, Lavoura',
+			status: 'Demanda',
+			responsible: null || '-',
+		},
 	},
 ];
 
 export const manejoLavouras = [
 	{
-		id: '000004',
-		typeAgriculture: 'Arroz',
-		subarea: 'Sub-área 9 “Antiga matinha” - 60 ha',
-		numberBags: '100 sacos',
-		weightPerBag: '50 kg',
+		data: {
+			id: '000004',
+			typeAgriculture: 'Arroz',
+			subarea: 'Sub-área 9 “Antiga matinha” - 60 ha',
+			numberBags: '100 sacos',
+			weightPerBag: '50 kg',
+		},
 	},
 	{
-		id: '000018',
-		typeAgriculture: 'Soja',
-		subarea: 'Sub-área 10 “Área do córrego” - 50 ha',
-		numberBags: '90 sacos',
-		weightPerBag: '45 kg',
+		data: {
+			id: '000018',
+			typeAgriculture: 'Soja',
+			subarea: 'Sub-área 10 “Área do córrego” - 50 ha',
+			numberBags: '90 sacos',
+			weightPerBag: '45 kg',
+		},
 	},
 ];

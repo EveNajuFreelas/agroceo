@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { defaultTheme } from '../../../../theme';
 
 import {
@@ -14,62 +14,82 @@ import { iconList } from '../../../../assets/Icons/icon-list';
 import TableHeadDefault from '../../TableHead';
 import YesNo from '../../yesNo';
 import NoRegister from '../../../NoRegistry';
+import { useTranslation } from 'react-i18next';
 
 const TableDemandas = ({ data, columns, deleteFunction }) => {
 	const { colors } = defaultTheme;
+	const { t } = useTranslation();
+	const [checkedItems, setCheckedItems] = useState([]);
 
 	if (data.length === 0) {
 		return <NoRegister />;
 	}
 
+	const handleCheck = (e, item) => {
+		setCheckedItems(
+			checkedItems.includes(item)
+				? checkedItems.filter((c) => c !== item)
+				: [...checkedItems, item]
+		);
+	};
+
 	return (
 		<StyledTableContainer>
 			<Table>
-				<TableHeadDefault columns={columns} />
+				<TableHeadDefault
+					columns={columns}
+					hasChecked={checkedItems.length}
+					deleteFunction={deleteFunction}
+					data={data}
+					checkedItems={checkedItems}
+					title={t('demands')}
+					setCheckedItems={setCheckedItems}
+				/>
 				<TableBody>
-					{data.map(row => {
+					{data.map((row) => {
 						return (
-							<TableRow key={row.id}>
-								<TableCell padding='checkbox'>
+							<TableRow key={row.data.id}>
+								<TableCell padding="checkbox">
 									<Checkbox
 										style={{ color: 'green' }}
-										//checked={isItemSelected}
+										onChange={(e) => handleCheck(e, row)}
+										checked={checkedItems.includes(row)}
 										inputProps={{
-											'aria-labelledby': row.id,
+											'aria-labelledby': row.data.id,
 										}}
 									/>
 								</TableCell>
 								<TableCell
-									width='50px'
+									width="50px"
 									style={{ color: colors.neutral6 }}
 								>
-									{row.id}
+									{row.data.id}
 								</TableCell>
 
-								<TableCell align='left'>
-									{row.description}
+								<TableCell align="left">
+									{row.data.description}
 								</TableCell>
 
-								<TableCell align='right'>
-									{row.createBy}
+								<TableCell align="right">
+									{row.data.createBy}
 								</TableCell>
 
-								<TableCell align='right'>
+								<TableCell align="right">
 									<a
-										href={row.photo}
+										href={row.data.photo}
 										style={{ color: `${colors.primary}` }}
 									>
 										Link da foto
 									</a>
 								</TableCell>
 
-								<TableCell align='right'>
-									<YesNo text={row.task} />
+								<TableCell align="right">
+									<YesNo text={row.data.task} />
 								</TableCell>
 
-								<TableCell width={100} align='center'>
+								<TableCell width={100} align="center">
 									<img
-										alt='icon edit'
+										alt="icon edit"
 										style={{
 											marginRight: 10,
 											cursor: 'pointer',
@@ -77,12 +97,14 @@ const TableDemandas = ({ data, columns, deleteFunction }) => {
 										src={iconList.edit}
 									/>
 									<img
-										alt='icon delete'
+										alt="icon delete"
 										style={{
 											cursor: 'pointer',
 										}}
 										src={iconList.deleteIcon}
-										onClick={() => deleteFunction(row.id)}
+										onClick={() =>
+											deleteFunction(row.data.id)
+										}
 									/>
 								</TableCell>
 							</TableRow>

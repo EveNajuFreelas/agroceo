@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { defaultTheme } from '../../../theme';
 
 import {
@@ -18,11 +18,17 @@ import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 
 import { iconList } from '../../../assets/Icons/icon-list';
 
-const CollapseRow = ({ row, deleteFunction, columns }) => {
+const CollapseRow = ({
+	row,
+	deleteFunction,
+	columns,
+	checkedItems,
+	handleCheck,
+}) => {
 	const { colors } = defaultTheme;
 	const [open, setOpen] = useState(false);
 
-	let columnsContent = Object.keys(row.content[0]);
+	let columnsContent = Object.keys(row.data.content[0]);
 
 	const useRowStyles = makeStyles({
 		root: {
@@ -37,7 +43,7 @@ const CollapseRow = ({ row, deleteFunction, columns }) => {
 		<>
 			<TableRow>
 				<TableCell>
-					<IconButton size='small' onClick={() => setOpen(!open)}>
+					<IconButton size="small" onClick={() => setOpen(!open)}>
 						{open ? (
 							<KeyboardArrowUpIcon />
 						) : (
@@ -45,29 +51,30 @@ const CollapseRow = ({ row, deleteFunction, columns }) => {
 						)}
 					</IconButton>
 				</TableCell>
-				<TableCell padding='checkbox'>
+				<TableCell padding="checkbox">
 					<Checkbox
 						style={{ color: 'green' }}
-						//checked={isItemSelected}
+						onChange={(e) => handleCheck(e, row)}
+						checked={checkedItems.includes(row)}
 						inputProps={{
-							'aria-labelledby': row.id,
+							'aria-labelledby': row.data.id,
 						}}
 					/>
 				</TableCell>
 
-				<TableCell width='50px' style={{ color: colors.neutral6 }}>
-					{row.id}
+				<TableCell width="50px" style={{ color: colors.neutral6 }}>
+					{row.data.id}
 				</TableCell>
 
-				<TableCell component='th' scope='row'>
-					{row.lot}
+				<TableCell component="th" scope="row">
+					{row.data.lot}
 				</TableCell>
-				<TableCell align='right'>{row.nameLot}</TableCell>
-				<TableCell align='right'>{row.subarea}</TableCell>
-				<TableCell align='right'>{row.total}</TableCell>
-				<TableCell width={100} align='center'>
+				<TableCell align="right">{row.data.nameLot}</TableCell>
+				<TableCell align="right">{row.data.subarea}</TableCell>
+				<TableCell align="right">{row.data.total}</TableCell>
+				<TableCell width={100} align="center">
 					<img
-						alt='icon edit'
+						alt="icon edit"
 						style={{
 							marginRight: 10,
 							cursor: 'pointer',
@@ -75,12 +82,12 @@ const CollapseRow = ({ row, deleteFunction, columns }) => {
 						src={iconList.edit}
 					/>
 					<img
-						alt='icon delete'
+						alt="icon delete"
 						style={{
 							cursor: 'pointer',
 						}}
 						src={iconList.deleteIcon}
-						onClick={() => deleteFunction(row.id)}
+						onClick={() => deleteFunction(row.data.id)}
 					/>
 				</TableCell>
 			</TableRow>
@@ -91,7 +98,7 @@ const CollapseRow = ({ row, deleteFunction, columns }) => {
 					}}
 					colSpan={7}
 				>
-					<Collapse in={open} timeout='auto' unmountOnExit>
+					<Collapse in={open} timeout="auto" unmountOnExit>
 						<Box>
 							<Table>
 								<TableHead>
@@ -108,7 +115,7 @@ const CollapseRow = ({ row, deleteFunction, columns }) => {
 											return index !==
 												columns.length - 1 ? (
 												<TableCell
-													align='left'
+													align="left"
 													style={{
 														fontWeight: 700,
 														lineHeight: '1px',
@@ -118,7 +125,7 @@ const CollapseRow = ({ row, deleteFunction, columns }) => {
 												</TableCell>
 											) : (
 												<TableCell
-													align='right'
+													align="right"
 													style={{ fontWeight: 700 }}
 												>
 													{column}
@@ -129,8 +136,8 @@ const CollapseRow = ({ row, deleteFunction, columns }) => {
 								</TableHead>
 
 								<TableBody>
-									{row.content.map(contentRow => (
-										<TableRow key={contentRow.date}>
+									{row.data.content.map((contentRow) => (
+										<TableRow>
 											<TableCell
 												width={'1px'}
 												style={{
@@ -143,11 +150,11 @@ const CollapseRow = ({ row, deleteFunction, columns }) => {
 													return index ===
 														columnsContent.length -
 															1 ? (
-														<TableCell align='right'>
+														<TableCell align="right">
 															{contentRow[column]}
 														</TableCell>
 													) : (
-														<TableCell align='left'>
+														<TableCell align="left">
 															{contentRow[column]}
 														</TableCell>
 													);

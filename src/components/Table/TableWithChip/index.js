@@ -19,7 +19,7 @@ const TableWithChip = ({ data, columns, deleteFunction }) => {
 	const { colors } = defaultTheme;
 	const { editActiveContent, openUtilizationModal } = useModalsContainer();
 
-	let keys = Object.keys(data[0]);
+	let keys = Object.keys(data[0].data);
 	const lastColumn = keys.length - 1;
 
 	const handleEditClick = (content) => {
@@ -84,7 +84,7 @@ const TableWithChip = ({ data, columns, deleteFunction }) => {
 														items={row[column]}
 													/>
 												) : (
-													row[column] || '--'
+													row.data[column] || '--'
 												)}
 											</TableCell>
 										)

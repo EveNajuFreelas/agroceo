@@ -15,6 +15,7 @@ import CircleLoading from '../../../components/LoadingCircle';
 import { AgricultureModal } from '../../../components/Modals/Management/agriculture';
 import { useModalsContainer } from '../../../context/modalsContext';
 import { usePageContext } from '../../../context/pageContext';
+import { manejoLavouras } from '../../../utils/dataMock/mock';
 
 const Lavouras = () => {
 	const { setPageTitle } = usePageContext();
@@ -63,7 +64,7 @@ const Lavouras = () => {
 				<CircleLoading />
 			) : (
 				<TableNormal
-					data={tillage}
+					data={manejoLavouras}
 					columns={columns}
 					putInIcon={false}
 					description={false}

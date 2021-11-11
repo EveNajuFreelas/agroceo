@@ -70,7 +70,7 @@ const TableWithDescriptionIcon = ({
 										onChange={(e) => handleCheck(e, row)}
 										checked={checkedItems.includes(row)}
 										inputProps={{
-											'aria-labelledby': row.data.id,
+											'aria-labelledby': row.id,
 										}}
 									/>
 								</TableCell>

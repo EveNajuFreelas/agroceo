@@ -1,20 +1,22 @@
 export function FormatResponseAnimals(t, response) {
 	let tempArray = [];
-	response.forEach(res => {
+	response.forEach((res) => {
 		tempArray.push({
-			id: res.id,
-			specie: t(enumSpecie[res.specie]),
-			category: t(enumCategory[res.category]),
-			sex: t(enumSex[res.sex]),
-			age: calculationMonths(res.age) + ' meses',
-			theAmount: res.theAmount,
+			data: {
+				id: res.id,
+				specie: t(enumSpecie[res.specie]),
+				category: t(enumCategory[res.category]),
+				sex: t(enumSex[res.sex]),
+				age: calculationMonths(res.age) + ' meses',
+				theAmount: res.theAmount,
+			},
 		});
 	});
 
 	return tempArray;
 }
 
-const calculationMonths = date => {
+const calculationMonths = (date) => {
 	let years = new Date().getFullYear() - new Date(date).getFullYear();
 	return Math.abs(
 		years * 12 + (new Date(date).getMonth() - new Date().getMonth())

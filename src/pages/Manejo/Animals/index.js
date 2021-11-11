@@ -30,12 +30,23 @@ const Animals = () => {
 	const { isLoading, animals, getAnimals, deleteAnimals } = useAnimals();
 	const { openModal } = useModalsContainer();
 	const { setPageTitle } = usePageContext();
+
 	const [value, setValue] = useState(0);
+	const [checkedItems, setCheckedItems] = useState([]);
 
 	useEffect(() => {
 		getAnimals();
 		setPageTitle('animals');
+		console.log(animaisLots);
 	}, []);
+
+	const handleCheck = (e, item) => {
+		setCheckedItems(
+			checkedItems.includes(item)
+				? checkedItems.filter((c) => c !== item)
+				: [...checkedItems, item]
+		);
+	};
 
 	const handleChange = (event, newValue) => {
 		setValue(newValue);
@@ -129,12 +140,20 @@ const Animals = () => {
 						<TableHeadDefault
 							columns={columnsLotsAnimals}
 							space={true}
+							hasChecked={checkedItems.length}
+							deleteFunction={deleteFunction}
+							data={animaisLots}
+							checkedItems={checkedItems}
+							title={t('animals')}
+							setCheckedItems={setCheckedItems}
 						/>
 						<TableBody>
 							{animaisLots.map((row) => (
 								<CollapseRow
 									row={row}
 									columns={columnTableCollapse}
+									checkedItems={checkedItems}
+									handleCheck={handleCheck}
 								/>
 							))}
 						</TableBody>

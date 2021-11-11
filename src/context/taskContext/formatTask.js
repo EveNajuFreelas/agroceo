@@ -2,12 +2,14 @@ export const formatResponseTask = (response) => {
 	let tempArray = [];
 	response.forEach((res) => {
 		tempArray.push({
-			id: res.id,
-			title: res.title,
-			status: formatStatus[res.status],
-			expected: res.expected.substring(0, res.expected.indexOf('T')),
-			responsible: `${res.professional.name} ${res.professional.surName}`,
-			centers: 'Animais, Lavoura',
+			data: {
+				id: res.id,
+				title: res.title,
+				status: formatStatus[res.status],
+				expected: res.expected.substring(0, res.expected.indexOf('T')),
+				responsible: `${res.professional.name} ${res.professional.surName}`,
+				centers: 'Animais, Lavoura',
+			},
 		});
 	});
 

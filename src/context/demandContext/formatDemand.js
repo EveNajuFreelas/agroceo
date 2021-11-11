@@ -1,12 +1,14 @@
-export const formatResponseDemands = response => {
+export const formatResponseDemands = (response) => {
 	let tempArray = [];
-	response.forEach(res => {
+	response.forEach((res) => {
 		tempArray.push({
-			id: res.id,
-			description: res.description,
-			createBy: '-',
-			photo: '-',
-			task: false,
+			data: {
+				id: res.id,
+				description: res.description,
+				createBy: '-',
+				photo: '-',
+				task: false,
+			},
 		});
 	});
 

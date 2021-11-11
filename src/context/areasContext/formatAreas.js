@@ -1,26 +1,30 @@
-export const formatResponseArea = response => {
+export const formatResponseArea = (response) => {
 	let tempArray = [];
-	response.forEach(res => {
+	response.forEach((res) => {
 		tempArray.push({
-			id: res.id,
-			name: res.name,
-			size: `${res.size} ha`,
-			destination: res.destination.name,
+			data: {
+				id: res.id,
+				name: res.name,
+				size: `${res.size} ha`,
+				destination: res.destination.name,
+			},
 		});
 	});
 
 	return tempArray;
 };
 
-export const formatResponseModule = response => {
+export const formatResponseModule = (response) => {
 	let tempArray = [];
-	response.forEach(res => {
+	response.forEach((res) => {
 		tempArray.push({
-			id: res.id,
-			name: res.name,
-			nickname: res.surName,
-			pastures: subareas || null,
-			destination: res.destination.name,
+			data: {
+				id: res.id,
+				name: res.name,
+				nickname: res.surName,
+				pastures: subareas || null,
+				destination: res.destination.name,
+			},
 		});
 	});
 

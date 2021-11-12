@@ -240,6 +240,14 @@ export const english = {
 	functionName: 'Function Name',
 	obligationsList: 'Obligations List',
 	editFunction: 'Edit Function',
+	receivedDate: 'Received Date',
+	receivedHour: 'Received Hour',
+	measurementUnit: 'Measurement Unit',
+	liters: 'lt - Liters',
+	kilograms: 'kg - Kilograms',
+	meters: 'm - Meters',
+	example20kg: 'Example: 20kg sack',
+	whoWithdrew: 'Who Withdrew',
 
 	// 	batch name
 	// link to a subarea

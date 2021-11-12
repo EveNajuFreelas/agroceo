@@ -275,4 +275,12 @@ export const portuguese = {
 	kilos: 'Quilos',
 	inHectares: 'Em hectáres',
 	selectLot: 'Selecinar o lote',
+	receivedDate: 'Data de Recebimento',
+	receivedHour: 'Hora de Recebimento',
+	measurementUnit: 'Unidade de Medida',
+	liters: 'lt - Litros',
+	kilograms: 'kg - Quilogramas',
+	meters: 'm - Metros',
+	example20kg: 'Exemplo: Saco de 20kg',
+	whoWithdrew: 'Quem retirou'
 };

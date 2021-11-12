@@ -156,7 +156,7 @@ export const manejoMaoFuncionario = [
 		Tipo: 'Permanente',
 	},
 	{
-		id: '00004',
+		id: '00003',
 		Nome: 'Benedito Candido Gomes',
 		Apelido: 'Dito',
 		Funcao: 'Ordenhador',
@@ -431,4 +431,19 @@ export const manejoLavouras = [
 			weightPerBag: '45 kg',
 		},
 	},
+];
+
+export const unidadeDeMedida = [
+	{
+		value: 'lt',
+		name: 'liters',
+	}, 
+	{
+		value: 'kg',
+		name: 'kilograms',
+	},
+	{
+		value: 'm',
+		name: 'meters',
+	}
 ];

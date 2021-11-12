@@ -17,6 +17,7 @@ const useInputContainer = () => {
 			})
 			.catch(err => {
 				console.error(err);
+				setLoading(false);
 			});
 	};
 

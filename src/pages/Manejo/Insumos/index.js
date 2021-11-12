@@ -12,12 +12,17 @@ import ButtonIconAdd from '../../../components/Geral/ButtonIcon';
 import { useInput } from '../../../context/inputsContext';
 import CircleLoading from '../../../components/LoadingCircle';
 import { usePageContext } from '../../../context/pageContext';
+import { InitialManagementModal } from '../../../components/Modals/Management';
+import { EntranceSuppliesModal } from '../../../components/Modals/Management/supplies/entranceModal/index';
+import { ExitSuppliesModal } from '../../../components/Modals/Management/supplies/exitModal/index';
+import { useManagementContainer } from '../../../context/managementContext';
 
 const Insumos = () => {
 	const { setPageTitle } = usePageContext();
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
 	const { inputs, getInputs, isLoading, filter } = useInput();
+	const { openInitialModal } = useManagementContainer();
 
 	useEffect(() => {
 		getInputs();
@@ -36,6 +41,9 @@ const Insumos = () => {
 
 	return (
 		<>
+			<InitialManagementModal />
+			<EntranceSuppliesModal />
+			<ExitSuppliesModal />
 			<HeadSection>
 				<TitleSection>
 					{t('input')}
@@ -49,6 +57,7 @@ const Insumos = () => {
 					backgroundColor={colors.primary}
 					textButton="Registro"
 					marginBottom={true}
+					onClick={openInitialModal}
 				/>
 			</HeadSection>
 			{isLoading ? (

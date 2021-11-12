@@ -1,12 +1,12 @@
-export const formatResponseInputs = response => {
+export const formatResponseInputs = (response) => {
 	let tempArray = [];
-	response.map(res => {
+	response.map((res) => {
 		tempArray.push({
 			data: {
 				id: res.id,
-				description: res.name,
-				quantity: res.theAmount,
-				unit: res.unitOfMeasurement,
+				description: res.description,
+				quantity: res.taker,
+				unit: res.unit_of_measurement,
 				apresentation: res.presentation,
 				document: res.urlDoc ? true : false,
 				whoReceived: res.whoReceivedPeople.name || '--',
@@ -16,6 +16,5 @@ export const formatResponseInputs = response => {
 			},
 		});
 	});
-
 	return tempArray;
 };

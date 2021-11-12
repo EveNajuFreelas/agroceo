@@ -78,7 +78,11 @@ const Areas = () => {
 				/>
 			)}
 			{value === 1 && (
-				<TableWithChip data={modules} columns={columnsModules} />
+				<TableWithChip
+					data={modules}
+					columns={columnsModules}
+					thirdLeft
+				/>
 			)}
 		</>
 	);

@@ -14,6 +14,8 @@ const TableHeadDefault = ({
 	title,
 	checkedItems,
 	setCheckedItems,
+	thirdLeft,
+	secondLeft,
 }) => {
 	let fullChecked = checkedItems.length === data.length;
 
@@ -34,7 +36,10 @@ const TableHeadDefault = ({
 					/>
 				</TableCell>
 				{columns.map((column, index) => {
-					return index === 0 || index === 1 ? (
+					return index === 0 ||
+						index === 1 ||
+						(secondLeft && index === 2) ||
+						(thirdLeft && index === 3) ? (
 						<TableCell align="left">{column}</TableCell>
 					) : (
 						<TableCell align="right">{column}</TableCell>

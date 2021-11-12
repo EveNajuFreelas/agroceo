@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { defaultTheme } from '../../../theme';
 
 import {
@@ -14,13 +14,24 @@ import { StyledTableContainer } from '../styles';
 import { iconList } from '../../../assets/Icons/icon-list';
 import ChipTable from '../Chip';
 import { useModalsContainer } from '../../../context/modalsContext';
+import TableHeadDefault from '../TableHead';
 
-const TableWithChip = ({ data, columns, deleteFunction }) => {
+const TableWithChip = ({ data, columns, deleteFunction, thirdLeft }) => {
 	const { colors } = defaultTheme;
 	const { editActiveContent, openUtilizationModal } = useModalsContainer();
 
+	const [checkedItems, setCheckedItems] = useState([]);
+
 	let keys = Object.keys(data[0].data);
 	const lastColumn = keys.length - 1;
+
+	const handleCheck = (e, item) => {
+		setCheckedItems(
+			checkedItems.includes(item)
+				? checkedItems.filter((c) => c !== item)
+				: [...checkedItems, item]
+		);
+	};
 
 	const handleEditClick = (content) => {
 		editActiveContent(content);
@@ -30,21 +41,17 @@ const TableWithChip = ({ data, columns, deleteFunction }) => {
 	return (
 		<StyledTableContainer>
 			<Table>
-				<TableHead>
-					<TableRow style={{ height: '50px' }}>
-						<TableCell padding="checkbox">
-							<Checkbox style={{ color: 'green' }} />
-						</TableCell>
-						{columns.map((column, index) => {
-							return lastColumn === index ? (
-								<TableCell align="right">{column}</TableCell>
-							) : (
-								<TableCell align="left">{column}</TableCell>
-							);
-						})}
-						<TableCell />
-					</TableRow>
-				</TableHead>
+				<TableHeadDefault
+					columns={columns}
+					hasChecked={checkedItems.length}
+					deleteFunction={deleteFunction}
+					data={data}
+					secondLeft
+					thirdLeft={thirdLeft}
+					checkedItems={checkedItems}
+					title={'something'}
+					setCheckedItems={setCheckedItems}
+				/>
 				<TableBody>
 					{data.map((row) => {
 						return (
@@ -52,7 +59,8 @@ const TableWithChip = ({ data, columns, deleteFunction }) => {
 								<TableCell padding="checkbox">
 									<Checkbox
 										style={{ color: 'green' }}
-										//checked={isItemSelected}
+										onChange={(e) => handleCheck(e, row)}
+										checked={checkedItems.includes(row)}
 										inputProps={{
 											'aria-labelledby': row.id,
 										}}
@@ -63,7 +71,7 @@ const TableWithChip = ({ data, columns, deleteFunction }) => {
 									width="50px"
 									style={{ color: colors.neutral6 }}
 								>
-									{row.id}
+									{row.data.id}
 								</TableCell>
 
 								{keys.map((column, index) => {
@@ -79,9 +87,9 @@ const TableWithChip = ({ data, columns, deleteFunction }) => {
 												key={index}
 											>
 												{index === keys.length - 2 &&
-												row[column] ? (
+												row.data[column] ? (
 													<ChipTable
-														items={row[column]}
+														items={row.data[column]}
 													/>
 												) : (
 													row.data[column] || '--'

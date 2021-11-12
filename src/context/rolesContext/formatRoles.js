@@ -1,6 +1,6 @@
-export const formatResponseEmployee = response => {
+export const formatResponseEmployee = (response) => {
 	let tempArray = [];
-	response.map(res => {
+	response.map((res) => {
 		tempArray.push({
 			data: {
 				id: res.id,
@@ -16,36 +16,39 @@ export const formatResponseEmployee = response => {
 	return tempArray;
 };
 
-export const formatResponseRole = response => {
+export const formatResponseRole = (response) => {
 	let tempArray = [];
-	response.map(res => {
+	response.map((res) => {
+		console.log(res);
 		tempArray.push({
-			id: res.id,
-			roleName: res.name,
-			obligations: formatObligations(res.obligations),
-			daysWeek: formatDays(res.days.days.days),
+			data: {
+				id: res.id,
+				roleName: res.name,
+				obligations: formatObligations(res.obligations),
+				daysWeek: formatDays(res.days.days.days),
+			},
 		});
 	});
 
 	return tempArray;
 };
 
-const formatObligations = obligations => {
+const formatObligations = (obligations) => {
 	let tempArray = [];
 
-	obligations.map(obligation => {
+	obligations.map((obligation) => {
 		tempArray.push(obligation.name);
 	});
 
 	return tempArray;
 };
 
-const formatDays = days => {
+const formatDays = (days) => {
 	let tempArray = [];
-	days.map(day => {
+	days.map((day) => {
 		if (day.checked) {
 			const nome = day.day;
-			day.timeCourse.map(dayTime => {
+			day.timeCourse.map((dayTime) => {
 				if (dayTime.checked) {
 					tempArray.push(`${nome}-feira (${dayTime.name})`);
 				}

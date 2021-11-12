@@ -47,7 +47,7 @@ const Insumos = () => {
 				<ButtonIconAdd
 					color={colors.neutral0}
 					backgroundColor={colors.primary}
-					textButton='Registro'
+					textButton="Registro"
 					marginBottom={true}
 				/>
 			</HeadSection>
@@ -60,6 +60,7 @@ const Insumos = () => {
 						columns={columns}
 						yesNo={true}
 						columnYesNo={'document'}
+						title={t('input')}
 					/>
 				</div>
 			)}

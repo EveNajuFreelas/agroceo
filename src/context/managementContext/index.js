@@ -38,6 +38,11 @@ const ManagementContext = () => {
     }
     
     const editActiveContent = (data) => setActiveContent(data);
+
+    const submitNewSupplyEntry = (data) => {
+        // add API call here
+        setActiveContent(data);
+    }
     
     const clearContent = () => setActiveContent({});
     
@@ -52,7 +57,8 @@ const ManagementContext = () => {
         openExitModal,
         openInitialModal,
         closeModals,
-        setActiveContent
+        setActiveContent,
+        submitNewSupplyEntry
     }
 };
 

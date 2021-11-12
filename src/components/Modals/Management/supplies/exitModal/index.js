@@ -13,13 +13,17 @@ import { useManagementContainer } from '../../../../../context/managementContext
 
 export const ExitSuppliesModal = () => {
 	const { t } = useTranslation();
-	const { exitModalState, closeModals, activeContent } = useManagementContainer();
+	const { exitModalState, closeModals, activeContent, submitNewSupplyEntry } = useManagementContainer();
 
 	const [currentInfo, setCurrentInfo] = useState(activeContent);
 
 	const handleInput = (info, inputName) => {
 		setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
 	};
+
+	const handleSave = () => {
+		submitNewSupplyEntry(currentInfo);
+	}
 
 	return (
 		<ModalShell

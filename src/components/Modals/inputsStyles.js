@@ -41,6 +41,12 @@ const CustomComponents = {
 			<p>{props.buttonName}</p>
 		</label>
 	),
+	UploadPhotoButtonComponent: (props) => (
+		<img src={iconList.add_a_photo} size={30} color={'#000'} alt="" {...props} />
+	),
+	AddPictureComponent: (props) => (
+		<>return component here (not working, placeholder while on progress)</>
+	),
 };
 
 export const InputFieldsWrapper = styled.div`
@@ -197,3 +203,10 @@ export const ControlledInput = styled((props) => (
 		height: 40px;
 	}
 `;
+
+export const AddPictureButton = styled(CustomComponents.UploadPhotoButtonComponent)`
+
+`;
+
+export const AddPictureSection = styled(CustomComponents.AddPictureComponent)`
+`

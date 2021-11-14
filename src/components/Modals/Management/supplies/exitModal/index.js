@@ -39,7 +39,7 @@ export const ExitSuppliesModal = () => {
 					variant: 'outlined',
 				},
 				{
-					onClick: () => closeModals(),
+					onClick: () => handleSave(),
 					title: 'save',
 					color: 'primary',
 					variant: 'contained',

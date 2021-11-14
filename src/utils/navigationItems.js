@@ -98,7 +98,7 @@ export const menuItems = [
 			{
 				id: 4.1,
 				text: 'profile',
-				url: '/dashboard',
+				url: '/',
 			},
 		],
 	},

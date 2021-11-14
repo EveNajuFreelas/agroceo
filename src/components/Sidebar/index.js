@@ -14,10 +14,13 @@ import {
     ListWrapper,
     SubSidebarHeader,
 } from './styles';
+import { ProfileModal } from '../Modals/Profile';
+import { useAuthentication } from '../../context/authContext';
 
 const Sidebar = () => {
     const { t } = useTranslation();
     const { drawerOpen, changeDrawerState } = usePageContext();
+    const { setShowProfileModal } = useAuthentication();
     const history = useHistory();
     const [activeId, setActiveId] = useState(-1);
     const [activeSubmenu, setActiveSubmenu] = useState([]);
@@ -40,10 +43,18 @@ const Sidebar = () => {
         }
     }
 
+    const handleSubItemClick = (item) => {
+        if(item.text === 'profile') {
+            setShowProfileModal(true);
+        } else {
+            navigateTo(item.url);
+        }
+    }
+
     const renderSubItems = () => activeSubmenu.map(i => (
         <ListItemWrapper
             key={i.id}
-            onClick={() => navigateTo(i.url)}
+            onClick={() => handleSubItemClick(i)}
             isSubSidebar
         >
             <ListItemName isSubSidebar>{t(i.text)}</ListItemName>
@@ -52,6 +63,7 @@ const Sidebar = () => {
     
     return (
         <>
+        <ProfileModal />
         <SidebarWrapper
             isOpen={drawerOpen}
             anchor="left"

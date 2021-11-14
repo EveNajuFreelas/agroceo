@@ -13,6 +13,8 @@ const useAuthenticationContainer = () => {
 	const [user, setUser] = useState(localStorage.getItem('@agroceo/user'));
 	const [properties, setProperties] = useState();
 	const [propertiesSelected, setPropertiesSelected] = useState([5]);
+	const [showProfileModal, setShowProfileModal] = useState(true);
+	const [newProfileInfo, setNewProfileInfo] = useState();
 
 	let token =
 		'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjksImlhdCI6MTYzMzg5MTI3NX0.fGb8aGcMui62Alr6kfq2WzXpnbggoFGEtX6dGGWj6Gw';
@@ -83,7 +85,12 @@ const useAuthenticationContainer = () => {
 		loadUser,
 		properties,
 		propertiesSelected,
+		setPropertiesSelected,
 		token,
+		showProfileModal,
+		setShowProfileModal,
+		newProfileInfo,
+		setNewProfileInfo,
 	};
 };
 

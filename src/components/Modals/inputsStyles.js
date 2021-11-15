@@ -22,7 +22,6 @@ const CustomComponents = {
 				variant="outlined"
 				IconComponent={ExpandMore}
 				margin="dense"
-				//defaultValue={''}
 			/>
 		</div>
 	),
@@ -43,16 +42,16 @@ const CustomComponents = {
 		</label>
 	),
 	UploadPhotoButtonComponent: (props) => (
-		<img
-			src={iconList.add_a_photo}
-			size={30}
-			color={'#000'}
-			alt=""
-			{...props}
-		/>
+		<label className={props.className} htmlFor="picture-upload">
+			<Icon name={iconList.add_a_photo} size={25} />
+			<input type="file" id="picture-upload" />
+		</label>
 	),
 	AddPictureComponent: (props) => (
-		<>return component here (not working, placeholder while on progress)</>
+		<label className={props.className}>
+			<Icon name={iconList.farm} size={50} />
+			<AddPictureButton />
+		</label>
 	),
 };
 
@@ -203,16 +202,21 @@ export const StyledSlider = styled(Slider)`
 	}
 `;
 
-export const ControlledInput = styled((props) => (
-	<TextField {...props} variant="outlined" />
+export const ControlledInput = styled((props) => (<TextField {...props} variant="outlined" />
 ))`
 	.MuiOutlinedInput-root {
 		height: 40px;
 	}
 `;
 
-export const AddPictureButton = styled(
-	CustomComponents.UploadPhotoButtonComponent
-)``;
+export const AddPictureButton = styled(CustomComponents.UploadPhotoButtonComponent)`
+	input[type='file'] {
+		display: none;
+	}
+`;
 
-export const AddPictureSection = styled(CustomComponents.AddPictureComponent)``;
+export const AddPictureSection = styled(CustomComponents.AddPictureComponent)`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+`;

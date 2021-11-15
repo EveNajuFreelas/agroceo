@@ -35,7 +35,7 @@ export const ProfileModal = () => {
             ]}
         >
             <InputFieldsWrapper style={{ flexDirection: 'column' }}>
-                <AddPictureSection/>
+                <AddPictureSection />
                 <InputLabelStyled htmlFor="name">
                     {t('name')}
                 </InputLabelStyled>

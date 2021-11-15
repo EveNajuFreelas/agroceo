@@ -44,7 +44,7 @@ const TableWithDescriptionIcon = ({
 	};
 
 	const handleClick = (info) => {
-		editActiveContent(info);
+		//editActiveContent(info);
 		setModalState(true);
 	};
 

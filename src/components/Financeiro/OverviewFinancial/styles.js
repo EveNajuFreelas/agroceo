@@ -6,7 +6,7 @@ const { margin } = defaultTheme;
 export const CardTab = styled.div`
 	display: flex;
 	gap: 5px;
-	margin-bottom: ${margin.lg} ;
+	margin-bottom: ${margin.lg};
 `;
 
 export const CardList = styled.ul`
@@ -23,7 +23,7 @@ export const FilterFinancial = styled.span`
 	margin-bottom: ${margin.lg};
 	font-size: ${defaultTheme.text.size.large};
 
-	@media (max-width: 1025px){
+	@media (max-width: 1025px) {
 		font-size: ${defaultTheme.text.size.medium};
 	}
 `;
@@ -32,7 +32,12 @@ export const FilterLabel = styled.span`
 	font-size: ${defaultTheme.text.size.large};
 	color: ${defaultTheme.colors.neutralDark};
 
-	@media (max-width: 1025px){
+	@media (max-width: 1025px) {
 		font-size: ${defaultTheme.text.size.medium};
 	}
+`;
+
+export const HeadContainer = styled.div`
+	display: flex;
+	justify-content: space-between;
 `;

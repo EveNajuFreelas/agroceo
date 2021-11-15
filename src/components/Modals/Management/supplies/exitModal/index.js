@@ -10,10 +10,14 @@ import {
 	InputLabelStyled,
 } from '../../../inputsStyles';
 import { useManagementContainer } from '../../../../../context/managementContext';
+import { ItemTableRowSupplies, TitleTableRowSupplies } from './styles';
+import { InputAdornment } from '@material-ui/core';
+import { AccessTime } from '@material-ui/icons';
 
 export const ExitSuppliesModal = () => {
 	const { t } = useTranslation();
-	const { exitModalState, closeModals, activeContent, submitNewSupplyEntry } = useManagementContainer();
+	const { exitModalState, closeModals, activeContent, submitNewSupplyEntry } =
+		useManagementContainer();
 
 	const [currentInfo, setCurrentInfo] = useState(activeContent);
 
@@ -23,10 +27,11 @@ export const ExitSuppliesModal = () => {
 
 	const handleSave = () => {
 		submitNewSupplyEntry(currentInfo);
-	}
+	};
 
 	return (
 		<ModalShell
+			isSmall
 			open={exitModalState}
 			handleClose={closeModals}
 			title={t('checkout')}
@@ -47,21 +52,25 @@ export const ExitSuppliesModal = () => {
 			]}
 		>
 			<InputFieldsWrapper style={{ flexDirection: 'column' }}>
-
-				<div style={{ display: 'flex' }}>
-					<div>
-						<p>{t('qtd')}</p>
-						{activeContent?.quantity}
-					</div>
-					<div>
-						<p>{t('presentation')}</p>
-						{activeContent?.presentation}
-					</div>
-					<div>
-						<p>{t('measurementUnit')}</p>
-						{activeContent?.measurementUnit}
-					</div>
+				<div>
+					<table style={{ width: '100%' }}>
+						<thead>
+							<TitleTableRowSupplies>
+								<th>Qtd</th>
+								<th>{t('presentation')}</th>
+								<th>{t('measurementUnit')}</th>
+							</TitleTableRowSupplies>
+						</thead>
+						<tbody>
+							<ItemTableRowSupplies>
+								<td>{activeContent?.quantity}</td>
+								<td> {activeContent?.presentation}</td>
+								<td> {activeContent?.measurementUnit}</td>
+							</ItemTableRowSupplies>
+						</tbody>
+					</table>
 				</div>
+
 				<InputLabelStyled htmlFor="whoWithdrew">
 					{t('whoWithdrew')}
 				</InputLabelStyled>
@@ -69,13 +78,8 @@ export const ExitSuppliesModal = () => {
 					id="whoWithdrew"
 					name="whoWithdrew"
 					defaultValue={currentInfo?.whoWithdrew}
-					onChange={(e) =>
-						handleInput(e.target.value, e.target.name)
-					}
+					onChange={(e) => handleInput(e.target.value, e.target.name)}
 				>
-					<StyledMenuItem value="">{`${t(
-						'select'
-					)}...`}</StyledMenuItem>
 					{manejoMaoFuncionario.map((ft) => (
 						<StyledMenuItem value={ft.id}>
 							{t(ft.Apelido)}
@@ -83,7 +87,9 @@ export const ExitSuppliesModal = () => {
 					))}
 				</SelectField>
 
-				<div style={{ display: 'flex', justifyContent: 'space-between' }}>
+				<div
+					style={{ display: 'flex', justifyContent: 'space-between' }}
+				>
 					<div style={{ width: '48%' }}>
 						<InputLabelStyled htmlFor="receivedDate">
 							{t('receivedDate')}
@@ -108,6 +114,15 @@ export const ExitSuppliesModal = () => {
 							onChange={(e) =>
 								handleInput(e.target.value, e.target.name)
 							}
+							InputProps={{
+								endAdornment: (
+									<InputAdornment position="end">
+										<AccessTime
+											style={{ color: '#A3a3a3' }}
+										/>
+									</InputAdornment>
+								),
+							}}
 						/>
 					</div>
 				</div>
@@ -119,10 +134,9 @@ export const ExitSuppliesModal = () => {
 					id="quantity"
 					name="quantity"
 					type="number"
-					onChange={(e) =>
-						handleInput(e.target.value, e.target.name)
-					}
+					onChange={(e) => handleInput(e.target.value, e.target.name)}
 					helperText={t('justNumbers')}
+					placeholder={t('typeSomething')}
 				/>
 			</InputFieldsWrapper>
 		</ModalShell>

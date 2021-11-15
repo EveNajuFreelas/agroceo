@@ -22,6 +22,7 @@ const CustomComponents = {
 				variant="outlined"
 				IconComponent={ExpandMore}
 				margin="dense"
+				//defaultValue={''}
 			/>
 		</div>
 	),
@@ -42,7 +43,13 @@ const CustomComponents = {
 		</label>
 	),
 	UploadPhotoButtonComponent: (props) => (
-		<img src={iconList.add_a_photo} size={30} color={'#000'} alt="" {...props} />
+		<img
+			src={iconList.add_a_photo}
+			size={30}
+			color={'#000'}
+			alt=""
+			{...props}
+		/>
 	),
 	AddPictureComponent: (props) => (
 		<>return component here (not working, placeholder while on progress)</>
@@ -204,9 +211,8 @@ export const ControlledInput = styled((props) => (
 	}
 `;
 
-export const AddPictureButton = styled(CustomComponents.UploadPhotoButtonComponent)`
+export const AddPictureButton = styled(
+	CustomComponents.UploadPhotoButtonComponent
+)``;
 
-`;
-
-export const AddPictureSection = styled(CustomComponents.AddPictureComponent)`
-`
+export const AddPictureSection = styled(CustomComponents.AddPictureComponent)``;

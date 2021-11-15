@@ -9,7 +9,10 @@ import {
 	InputFieldsWrapper,
 	InputLabelStyled,
 } from '../../../inputsStyles';
-import { unidadeDeMedida, manejoMaoFuncionario } from '../../../../../utils/dataMock/mock';
+import {
+	unidadeDeMedida,
+	manejoMaoFuncionario,
+} from '../../../../../utils/dataMock/mock';
 import { useTranslation } from 'react-i18next';
 import {
 	Button,
@@ -98,6 +101,7 @@ export const EntranceSuppliesModal = () => {
 		<>
 			{renderConfirmDialog()}
 			<ModalShell
+				isSmall
 				open={entranceModalState}
 				handleClose={closeModals}
 				title={t('entranceRegister')}
@@ -121,7 +125,6 @@ export const EntranceSuppliesModal = () => {
 				]}
 			>
 				<InputFieldsWrapper style={{ flexDirection: 'column' }}>
-
 					<InputLabelStyled htmlFor="whoReceived">
 						{t('whoReceived')}
 					</InputLabelStyled>
@@ -143,7 +146,12 @@ export const EntranceSuppliesModal = () => {
 						))}
 					</SelectField>
 
-					<div style={{ display: 'flex', justifyContent: 'space-between' }}>
+					<div
+						style={{
+							display: 'flex',
+							justifyContent: 'space-between',
+						}}
+					>
 						<div style={{ width: '48%' }}>
 							<InputLabelStyled htmlFor="receivedDate">
 								{t('receivedDate')}
@@ -172,7 +180,12 @@ export const EntranceSuppliesModal = () => {
 						</div>
 					</div>
 
-					<div style={{ display: 'flex', justifyContent: 'space-between' }}>
+					<div
+						style={{
+							display: 'flex',
+							justifyContent: 'space-between',
+						}}
+					>
 						<div style={{ width: '48%' }}>
 							<InputLabelStyled htmlFor="quantity">
 								{t('quantity')}
@@ -194,7 +207,9 @@ export const EntranceSuppliesModal = () => {
 							<SelectField
 								id="measurementUnit"
 								name="measurementUnit"
-								defaultValue={currentInfo?.measurementUnit || ''}
+								defaultValue={
+									currentInfo?.measurementUnit || ''
+								}
 								onChange={(e) =>
 									handleInput(e.target.value, e.target.name)
 								}

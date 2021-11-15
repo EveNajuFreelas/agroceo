@@ -1,5 +1,11 @@
 import React from 'react';
-import { CardTab, CardList, FilterFinancial, FilterLabel } from './styles.js';
+import {
+	CardTab,
+	CardList,
+	FilterFinancial,
+	FilterLabel,
+	HeadContainer,
+} from './styles.js';
 
 import CardFinancial from '../../Card/CardFinancial';
 import CardListItem from '../../Card/CardListItem';
@@ -10,37 +16,44 @@ import {
 	itensMenuMonth,
 	itensMenuYear,
 } from '../../../utils/dataMock/itensMenu.js';
+import ButtonReports from '../../../pages/Dashboard/ButtonReports/index.js';
+import { useTranslation } from 'react-i18next';
 
 const OverviewFinancial = () => {
-	const filter = mes => {
+	const filter = (mes) => {
 		console.log(mes);
 	};
 
+	const { t } = useTranslation();
+
 	return (
 		<>
-			<FilterFinancial>
-				<FilterLabel>Financeiro</FilterLabel>
-				<Filter itensMenu={itensMenuYear} clickFunction={filter} />
-				<Filter itensMenu={itensMenuMonth} clickFunction={filter} />
-			</FilterFinancial>
+			<HeadContainer>
+				<FilterFinancial>
+					<FilterLabel>Financeiro</FilterLabel>
+					<Filter itensMenu={itensMenuYear} clickFunction={filter} />
+					<Filter itensMenu={itensMenuMonth} clickFunction={filter} />
+				</FilterFinancial>
+				<ButtonReports t={t} />
+			</HeadContainer>
 			<CardTab>
 				<CardFinancial
 					value={'R$ 40.000'}
 					month={'setembro'}
 					icon={iconList.despesas}
-					description={'Despesas'}
+					description={t('expenses')}
 				/>
 				<CardFinancial
 					value={'R$ 60.000'}
 					month={'setembro'}
 					icon={iconList.receitas}
-					description={'Receitas'}
+					description={t('income')}
 				/>
 				<CardFinancial
 					value={'R$ 7.000'}
 					month={'setembro'}
 					icon={iconList.investimentos}
-					description={'Investimentos'}
+					description={t('investments')}
 				/>
 			</CardTab>
 			<CardList>

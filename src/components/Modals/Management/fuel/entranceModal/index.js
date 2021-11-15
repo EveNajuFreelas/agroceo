@@ -35,7 +35,7 @@ export const EntranceManagementModal = () => {
 
 	const { colors } = defaultTheme;
 
-	const [currentInfo, setCurrentInfo] = useState(activeContent);
+	const [currentInfo, setCurrentInfo] = useState({});
 	const [confirmDialogActive, setConfirmDialogActive] = useState(false);
 
 	const handleInput = (info, inputName) => {
@@ -49,6 +49,7 @@ export const EntranceManagementModal = () => {
 				break;
 			case 'save':
 				setActiveContent(currentInfo);
+				console.log(currentInfo);
 				closeModals();
 				break;
 			case 'cancel':

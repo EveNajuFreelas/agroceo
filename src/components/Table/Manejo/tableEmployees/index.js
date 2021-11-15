@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 
 import { defaultTheme } from '../../../../theme';
 import { useTranslation } from 'react-i18next';
@@ -7,7 +7,6 @@ import {
 	Table,
 	TableBody,
 	TableCell,
-	TableHead,
 	TableRow,
 	Checkbox,
 } from '@material-ui/core';
@@ -19,12 +18,14 @@ import { iconList } from '../../../../assets/Icons/icon-list';
 import { useRole } from '../../../../context/rolesContext';
 import NoRegister from '../../../NoRegistry';
 import { useModalsContainer } from '../../../../context/modalsContext';
+import TableHeadDefault from '../../TableHead';
 
 const TableEmployees = ({ data }) => {
 	const { t } = useTranslation();
 	const { deleteEmployee } = useRole();
-	const { editActiveContent, openEditModal} = useModalsContainer();
+	const { editActiveContent, openEditModal } = useModalsContainer();
 	const { colors } = defaultTheme;
+	const [checkedItems, setCheckedItems] = useState([]);
 
 	if (data.length === 0) {
 		return <NoRegister />;
@@ -39,93 +40,105 @@ const TableEmployees = ({ data }) => {
 		t('typeContract'),
 	];
 
+	const handleCheck = (e, item) => {
+		setCheckedItems(
+			checkedItems.includes(item)
+				? checkedItems.filter((c) => c !== item)
+				: [...checkedItems, item]
+		);
+	};
+
+	const deleteFunction = () => {
+		console.log(checkedItems);
+	};
+
 	const handleEditClick = (content) => {
 		editActiveContent(content);
 		openEditModal();
-	}
+	};
 
 	return (
 		<StyledTableContainer>
 			<Table>
-				<TableHead>
-					<TableRow style={{ height: '50px' }}>
-						<TableCell padding='checkbox'>
-							<Checkbox style={{ color: 'green' }} />
-						</TableCell>
-						{columns.map((column, index) => {
-							return index === 0 || index === 1 ? (
-								<TableCell align='left'>{column}</TableCell>
-							) : (
-								<TableCell align='right'>{column}</TableCell>
-							);
-						})}
-						<TableCell />
-					</TableRow>
-				</TableHead>
+				<TableHeadDefault
+					columns={columns}
+					hasChecked={checkedItems.length}
+					deleteFunction={deleteFunction}
+					data={data}
+					checkedItems={checkedItems}
+					title={t('employees')}
+					setCheckedItems={setCheckedItems}
+				/>
 				<TableBody>
-					{data.map(row => {
-						row = row.data;
+					{data.map((row) => {
 						return (
-							<TableRow key={row.id}>
-								<TableCell padding='checkbox'>
+							<TableRow key={row.data.id}>
+								<TableCell padding="checkbox">
 									<Checkbox
 										style={{ color: 'green' }}
-										//checked={isItemSelected}
+										onChange={(e) => handleCheck(e, row)}
+										checked={checkedItems.includes(row)}
 										inputProps={{
-											'aria-labelledby': row.id,
+											'aria-labelledby': row.data.id,
 										}}
 									/>
 								</TableCell>
 
 								<TableCell
-									width='50px'
+									width="50px"
 									style={{ color: colors.neutral6 }}
 								>
-									{row.id}
+									{row.data.id}
 								</TableCell>
 
-								<TableCell width='200px'>{row.name}</TableCell>
-
-								<TableCell align='right'>
-									{row.surName}
+								<TableCell width="200px">
+									{row.data.name}
 								</TableCell>
 
-								<TableCell align='right'>
-									{row.role || '--'}
+								<TableCell align="right">
+									{row.data.surName}
+								</TableCell>
+
+								<TableCell align="right">
+									{row.data.role || '--'}
 								</TableCell>
 
 								<TableCell
-									align='right'
-									key={row.id}
-									width='300px'
+									align="right"
+									key={row.data.id}
+									width="300px"
 								>
 									<LabelWithIcon
-										title={row.phone}
-										iconSrc={iconList[row.country]}
+										title={row.data.phone}
+										iconSrc={iconList[row.data.country]}
 										justifyEnd={true}
 									/>
 								</TableCell>
 
-								<TableCell align='right'>
-									{row.contract}
+								<TableCell align="right">
+									{row.data.contract}
 								</TableCell>
 
-								<TableCell width={60} align='center'>
+								<TableCell width={60} align="center">
 									<img
-										alt='icon edit'
+										alt="icon edit"
 										style={{
 											marginRight: 10,
 										}}
 										src={iconList.edit}
-										onClick={() => handleEditClick(row)}
+										onClick={() =>
+											handleEditClick(row.data)
+										}
 									/>
 									<img
-										alt='icon delete'
+										alt="icon delete"
 										src={iconList.deleteIcon}
 										style={{
 											cursor: 'pointer',
 										}}
-										onClick={() => deleteEmployee(row.id)}
+										onClick={() =>
+											deleteEmployee(row.data.id)
+										}
 									/>
 								</TableCell>
 							</TableRow>

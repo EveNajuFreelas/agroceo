@@ -68,7 +68,7 @@ export const portuguese = {
 	reports: 'Relatórios',
 	settings: 'Configurações',
 	profile: 'Perfil',
-	income: 'Receita',
+	income: 'Receitas',
 	investments: 'Investimentos',
 	fuel: 'Combustível',
 	manpower: 'Mão de Obra',
@@ -282,5 +282,5 @@ export const portuguese = {
 	kilograms: 'kg - Quilogramas',
 	meters: 'm - Metros',
 	example20kg: 'Exemplo: Saco de 20kg',
-	whoWithdrew: 'Quem retirou'
+	whoWithdrew: 'Quem retirou',
 };

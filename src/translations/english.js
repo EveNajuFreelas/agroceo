@@ -67,7 +67,7 @@ export const english = {
 	reports: 'Reports',
 	settings: 'Settings',
 	profile: 'Profile',
-	income: 'Income',
+	income: 'Incomes',
 	investments: 'Investments',
 	fuel: 'Fuel',
 	manpower: 'Manpower',

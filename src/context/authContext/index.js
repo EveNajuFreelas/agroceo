@@ -13,18 +13,18 @@ const useAuthenticationContainer = () => {
 	const [user, setUser] = useState(localStorage.getItem('@agroceo/user'));
 	const [properties, setProperties] = useState();
 	const [propertiesSelected, setPropertiesSelected] = useState([5]);
-	const [showProfileModal, setShowProfileModal] = useState(true);
+	const [showProfileModal, setShowProfileModal] = useState(false);
 	const [newProfileInfo, setNewProfileInfo] = useState();
 
 	let token =
 		'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjksImlhdCI6MTYzMzg5MTI3NX0.fGb8aGcMui62Alr6kfq2WzXpnbggoFGEtX6dGGWj6Gw';
 
 	const { isLoading, mutateAsync, isSuccess, isError } = useMutation(
-		user => {
+		(user) => {
 			return api.post('/Auth', user);
 		},
 		{
-			onSuccess: async result => {
+			onSuccess: async (result) => {
 				await saveObject(User, result.data);
 				await saveObject(Properties, result.data.properties);
 				await saveObject(AccessToken, result.data.token);
@@ -32,7 +32,7 @@ const useAuthenticationContainer = () => {
 				setProperties(result.data.properties);
 				setReady(true);
 			},
-			onError: error => {
+			onError: (error) => {
 				console.error('onError', error);
 			},
 		}
@@ -48,7 +48,7 @@ const useAuthenticationContainer = () => {
 		getPropertiesFromStorage();
 	}, []);
 
-	const signIn = async userData => {
+	const signIn = async (userData) => {
 		if (userData) {
 			try {
 				await mutateAsync(userData);

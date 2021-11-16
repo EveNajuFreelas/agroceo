@@ -31,13 +31,20 @@ const CustomComponents = {
 			<UploadButton
 				onChange={props.onChange}
 				buttonName={props.buttonName}
+				name={props.name}
+				helperText={props.helperText}
 			/>
 		</div>
 	),
 	UploadButtonComponent: (props) => (
 		<label className={props.className}>
 			<Icon name={iconList.iconUpload} size={15} />
-			<input onChange={props.onChange} id="file-upload" type="file" />
+			<input
+				onChange={props.onChange}
+				id="file-upload"
+				type="file"
+				name={props.name}
+			/>
 			<p>{props.buttonName}</p>
 		</label>
 	),
@@ -164,7 +171,6 @@ export const UploadField = styled(CustomComponents.UploadComponent)`
 
 	.label {
 		padding: 0 ${padding.lg};
-		color: ${colors.neutral4};
 	}
 `;
 

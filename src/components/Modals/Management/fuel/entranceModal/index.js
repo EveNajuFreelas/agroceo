@@ -39,7 +39,11 @@ export const EntranceManagementModal = () => {
 	const [confirmDialogActive, setConfirmDialogActive] = useState(false);
 
 	const handleInput = (info, inputName) => {
+		// if (inputName === '') {
+		// 	info = info.split('\\').pop();
+		// }
 		setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
+		console.log(currentInfo);
 	};
 
 	const handleSave = (opt) => {
@@ -150,7 +154,7 @@ export const EntranceManagementModal = () => {
 					<InputField
 						id="quantity"
 						name="quantity"
-						type="money"
+						type="number"
 						defaultValue={currentInfo?.quantity}
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
@@ -174,12 +178,12 @@ export const EntranceManagementModal = () => {
 					</InputLabelStyled>
 					<UploadField
 						id="receipt"
-						docName=""
 						name="receipt"
 						buttonName={t('select')}
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}
+						docName={currentInfo?.receipt?.split('\\').pop()}
 					/>
 				</InputFieldsWrapper>
 			</ModalShell>

@@ -5,7 +5,7 @@ import { ReactComponent as farm } from '../../utils/Icons/farm.svg';
 import report from '../../utils/Icons/report.svg';
 import settings from '../../utils/Icons/settings.svg';
 import { ReactComponent as iconMenu } from '../../utils/Icons/iconMenu.svg';
-import { ReactComponent as add_a_photo } from '../../utils/Icons/add_a_photo.svg';
+import add_a_photo from '../../utils/Icons/add_a_photo.svg';
 import expand_more from '../../utils/Icons/expand_more.svg';
 import { ReactComponent as homeMenu } from '../../utils/Icons/homeMenu.svg';
 import homeRecurso from '../../utils/Icons/homeRecurso.svg';

@@ -84,7 +84,7 @@ const TableWithDescriptionIcon = ({
 
 								<TableCell align="left" width="200px">
 									<LabelWithIcon
-										iconName={'entrada'}
+										iconName="box"
 										title={row.data.description}
 									/>
 								</TableCell>

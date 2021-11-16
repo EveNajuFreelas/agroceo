@@ -21,14 +21,17 @@ export const AgricultureModal = () => {
 	const { t } = useTranslation();
 	const { modalState, closeModals } = useModalsContainer();
 
+	const [currentInfo, setCurrentInfo] = useState({});
 	const [subareasSelected, setSubareasSelected] = useState([]);
 
-	const handleSubareasSelected = (event) => {
-		setSubareasSelected(event.target.value);
+	const handleInput = (info, inputName) => {
+		setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
 	};
 
-	const handleInput = (info, inputName) => {
-		//setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
+	const handleSave = () => {
+		console.log(currentInfo);
+		setCurrentInfo({});
+		closeModals();
 	};
 
 	return (
@@ -46,7 +49,7 @@ export const AgricultureModal = () => {
 					variant: 'outlined',
 				},
 				{
-					onClick: () => closeModals(),
+					onClick: () => handleSave(),
 					title: 'save',
 					color: 'primary',
 					variant: 'contained',
@@ -66,7 +69,9 @@ export const AgricultureModal = () => {
 					<SelectField
 						id="subarea"
 						name="subarea"
-						onChange={handleSubareasSelected}
+						onChange={(e) =>
+							handleInput(e.target.value, e.target.name)
+						}
 					>
 						{subareas.map((subarea) => (
 							<MenuItem key={subarea.id} value={subarea}>
@@ -85,7 +90,6 @@ export const AgricultureModal = () => {
 					<InputField
 						id="typeAgriculture"
 						name="typeAgriculture"
-						//defaultValue={currentInfo?.quantity}
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}

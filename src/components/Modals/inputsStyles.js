@@ -43,13 +43,12 @@ const CustomComponents = {
 	),
 	UploadPhotoButtonComponent: (props) => (
 		<label className={props.className} htmlFor="picture-upload">
-			<Icon name={iconList.add_a_photo} size={25} />
+			<img src={iconList.add_a_photo} />
 			<input type="file" id="picture-upload" />
 		</label>
 	),
 	AddPictureComponent: (props) => (
 		<label className={props.className}>
-			<Icon name={iconList.farm} size={50} />
 			<AddPictureButton />
 		</label>
 	),
@@ -202,15 +201,19 @@ export const StyledSlider = styled(Slider)`
 	}
 `;
 
-export const ControlledInput = styled((props) => (<TextField {...props} variant="outlined" />
+export const ControlledInput = styled((props) => (
+	<TextField {...props} variant="outlined" />
 ))`
 	.MuiOutlinedInput-root {
 		height: 40px;
 	}
 `;
 
-export const AddPictureButton = styled(CustomComponents.UploadPhotoButtonComponent)`
+export const AddPictureButton = styled(
+	CustomComponents.UploadPhotoButtonComponent
+)`
 	input[type='file'] {
+		cursor: pointer;
 		display: none;
 	}
 `;
@@ -219,4 +222,5 @@ export const AddPictureSection = styled(CustomComponents.AddPictureComponent)`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	margin-bottom: ${margin.sm};
 `;

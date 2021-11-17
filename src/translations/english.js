@@ -227,6 +227,29 @@ export const english = {
 	telephone: 'Telephone',
 	temporary: 'Temporary',
 	permanent: 'Permanent',
+	movement: 'Movement',
+	weighing: 'Weighing',
+	inMonths: 'In Months',
+	register: 'Register',
+	registerAnimals: 'Register animals',
+	lotname: 'Lot name',
+	linkSubarea: 'Link subarea',
+	selectInventory: 'Select Inventory',
+	editQuantityAnimalsLot: 'Number of animals you want to include in the lot',
+	availableStock: 'Available stock',
+	subareaChange: 'Subarea change',
+	informDateMovement: 'Inform Date Movement',
+	inputType: 'Input type',
+	outputType: 'Output type',
+	birth: 'Birth',
+	purchase: 'Purchase',
+	transferFarmsSameOwner: 'Transfer between farms of the same owner',
+	weaningPrediction: 'Weaning predicition',
+	observation: 'Observation',
+	animalTransitGuide: 'Animal Transit Guide (ATG)',
+	death: 'Death',
+	sale: 'Sale',
+	departureFarmBySameOwner: 'Departure to farm owned by the same owner',
 	details: 'Details',
 	value: 'Value',
 	payed: 'Payed',
@@ -248,24 +271,17 @@ export const english = {
 	meters: 'm - Meters',
 	example20kg: 'Example: 20kg sack',
 	whoWithdrew: 'Who Withdrew',
-
-	// 	batch name
-	// link to a subarea
-	// Select from inventory
-	// Number of animals you want to include in the batch
-	// Available in stock
-	// subarea change
-	// inform the date of movement
-
-	// 	inputType
-	// birth
-	// purchase
-	// transfer between farms of the same owner
-	// weaning prediction
-	// observation
-	// animal transit guide
-
-	// 	death
-	// sale
-	// Departure to farm owned by the same owner
+	address: 'Endereço',
+	lastWeighingWeight: 'Last weighing weigth',
+	homeSubarea: 'Home subarea',
+	destinationSubArea: 'Destination subarea',
+	dateWeighing: 'Date weighing',
+	bags: 'Bags',
+	kilos: 'Kilos',
+	inHectares: 'In Hectares',
+	selectLot: 'Select lot',
+	odometerInitialFile: 'Odometer initial file',
+	odometerFinalFile: 'Odometer final file',
+	odometerPhotoReview: 'Odometer photo review',
+	hourmeterPhotoReview: 'Hourmeter photo review',
 };

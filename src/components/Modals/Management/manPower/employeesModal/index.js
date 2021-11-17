@@ -15,10 +15,27 @@ import { fuelTypes } from '../../../../../utils/dataMock/mock';
 
 import { RadioGroup, FormControlLabel, Radio } from '@material-ui/core';
 import { useModalsContainer } from '../../../../../context/modalsContext';
+import { ContainerSelectCountry } from '../../../Profile/styles';
+import { iconList } from '../../../../../assets/Icons/icon-list';
 
 export const EmployeesModal = () => {
 	const { t } = useTranslation();
 	const { modalState, closeModals } = useModalsContainer();
+
+	const countries = [
+		{
+			number: 55,
+			icon: 'Brasil',
+		},
+		{
+			number: 1,
+			icon: 'Usa',
+		},
+		{
+			number: 61,
+			icon: 'Australia',
+		},
+	];
 
 	const handleInput = (info, inputName) => {
 		//setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
@@ -136,6 +153,7 @@ export const EmployeesModal = () => {
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}
+						accept="image/*"
 						//placeholder={t('sendFile')}
 					/>
 
@@ -178,12 +196,12 @@ export const EmployeesModal = () => {
 								// 	handleInput(e.target.value, e.target.name)
 								// }
 							>
-								<StyledMenuItem value="">{`${t(
-									'select'
-								)}...`}</StyledMenuItem>
-								{fuelTypes.map((ft) => (
-									<StyledMenuItem value={ft.value}>
-										{t(ft.name)}
+								{countries.map((country) => (
+									<StyledMenuItem value={country.icon}>
+										<ContainerSelectCountry>
+											<img src={iconList[country.icon]} />
+											<span>+{country.number}</span>
+										</ContainerSelectCountry>
 									</StyledMenuItem>
 								))}
 							</SelectField>

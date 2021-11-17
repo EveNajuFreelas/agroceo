@@ -27,12 +27,22 @@ const CustomComponents = {
 	),
 	UploadComponent: (props) => (
 		<div className={props.className} style={{ width: '100%' }}>
-			<p className="label">{props.docName || props.label}</p>
+			<p
+				className="label"
+				style={{
+					textOverflow: 'ellipsis',
+					whiteSpace: 'nowrap',
+					overflow: 'hidden',
+				}}
+			>
+				{props.docName || props.label}
+			</p>
 			<UploadButton
 				onChange={props.onChange}
 				buttonName={props.buttonName}
 				name={props.name}
 				helperText={props.helperText}
+				accept={props.accept}
 			/>
 		</div>
 	),
@@ -44,19 +54,25 @@ const CustomComponents = {
 				id="file-upload"
 				type="file"
 				name={props.name}
+				accept={props.accept}
 			/>
 			<p>{props.buttonName}</p>
 		</label>
 	),
 	UploadPhotoButtonComponent: (props) => (
 		<label className={props.className} htmlFor="picture-upload">
-			<img src={iconList.add_a_photo} />
-			<input type="file" id="picture-upload" />
+			<img src={props.img || iconList.add_a_photo} />
+			<input
+				type="file"
+				id="picture-upload"
+				accept="image/*"
+				onChange={props.onChange}
+			/>
 		</label>
 	),
 	AddPictureComponent: (props) => (
 		<label className={props.className}>
-			<AddPictureButton />
+			<AddPictureButton onChange={props.onChange} img={props.img} />
 		</label>
 	),
 };
@@ -218,9 +234,17 @@ export const ControlledInput = styled((props) => (
 export const AddPictureButton = styled(
 	CustomComponents.UploadPhotoButtonComponent
 )`
+	cursor: pointer;
+
 	input[type='file'] {
 		cursor: pointer;
 		display: none;
+	}
+
+	img {
+		width: 180px;
+		height: 180px;
+		border-radius: 100px;
 	}
 `;
 

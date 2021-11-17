@@ -9,11 +9,11 @@ export const ModalWrapper = styled(Dialog)`
 	.MuiDialog-paper {
 		overflow-x: hidden;
 		padding: ${padding.xg};
-		width: ${(props) => (props.isSmall ? '20%' : '42%')};
+		width: ${(props) => (props.isSmall ? '23%' : '42%')};
 	}
 
 	.MuiDialog-paperWidthSm {
-		min-width: ${(props) => (props.isSmall ? '20%' : '40%')};
+		min-width: ${(props) => (props.isSmall ? '23%' : '40%')};
 	}
 
 	.MuiDialogContent-root {

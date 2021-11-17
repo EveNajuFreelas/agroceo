@@ -238,7 +238,7 @@ export const portuguese = {
 	lotname: 'Nome do lote',
 	linkSubarea: 'Vincular a uma sub-área',
 	selectInventory: 'Selecionar do inventário',
-	editQuantityAnimalsLot: 'Number of animals you want to include in the lot',
+	editQuantityAnimalsLot: 'Número de animais para incluir no lote',
 	availableStock: 'Disponível em estoque',
 	subareaChange: 'Mudança de sub-área',
 	informDateMovement: 'Informar a data de movimentação',
@@ -283,4 +283,5 @@ export const portuguese = {
 	meters: 'm - Metros',
 	example20kg: 'Exemplo: Saco de 20kg',
 	whoWithdrew: 'Quem retirou',
+	address: 'Endereço',
 };

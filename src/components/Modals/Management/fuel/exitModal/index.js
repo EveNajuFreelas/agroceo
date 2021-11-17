@@ -202,11 +202,14 @@ export const ExitManagementModal = () => {
 					<UploadField
 						id="odometerHourmeterFile"
 						name="odometerHourmeterFile"
-						docName=""
 						buttonName={t('select')}
+						accept="image/*"
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}
+						docName={currentInfo?.odometerHourmeterFile
+							?.split('\\')
+							.pop()}
 					/>
 					<InputLabelStyled htmlFor="odometerHourmeter">
 						{t('odometerHourmeter')}

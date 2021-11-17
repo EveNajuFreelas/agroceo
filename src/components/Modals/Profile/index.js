@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { iconList } from '../../../assets/Icons/icon-list';
 import { useAuthentication } from '../../../context/authContext';
 import { ModalShell } from '../../Modal';
 import {
@@ -7,15 +8,45 @@ import {
 	InputField,
 	InputFieldsWrapper,
 	InputLabelStyled,
+	SelectField,
+	StyledMenuItem,
 } from '../inputsStyles';
+import { ContainerSelectCountry } from './styles';
 
 export const ProfileModal = () => {
 	const { t } = useTranslation();
 	const { showProfileModal, setShowProfileModal } = useAuthentication();
 	const [currentInfo, setCurrentInfo] = useState();
+	const [image, setImage] = useState({});
+
+	const countries = [
+		{
+			number: 55,
+			icon: 'Brasil',
+		},
+		{
+			number: 1,
+			icon: 'Usa',
+		},
+		{
+			number: 61,
+			icon: 'Australia',
+		},
+	];
 
 	const handleInput = (info, inputName) => {
 		setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
+	};
+
+	useEffect(() => {
+		console.log(image);
+	}, [image]);
+
+	const handleImgChange = ({ target }) => {
+		setImage({
+			preview: URL.createObjectURL(target.files[0]),
+			raw: target.files[0],
+		});
 	};
 
 	return (
@@ -41,13 +72,17 @@ export const ProfileModal = () => {
 			]}
 		>
 			<InputFieldsWrapper style={{ flexDirection: 'column' }}>
-				<AddPictureSection />
+				<AddPictureSection
+					img={image.preview}
+					onChange={handleImgChange}
+				/>
 				<InputLabelStyled htmlFor="name">{t('name')}</InputLabelStyled>
 				<InputField
 					id="name"
 					name="name"
 					defaultValue={currentInfo?.name}
 					onChange={(e) => handleInput(e.target.value, e.target.name)}
+					placeholder={t('typeSomething')}
 				/>
 				<InputLabelStyled htmlFor="nickname">
 					{t('nickname')}
@@ -57,25 +92,34 @@ export const ProfileModal = () => {
 					name="nickname"
 					defaultValue={currentInfo?.nickname}
 					onChange={(e) => handleInput(e.target.value, e.target.name)}
+					placeholder={t('typeSomething')}
 				/>
 
 				<div
 					style={{ display: 'flex', justifyContent: 'space-between' }}
 				>
-					<div style={{ width: '48%' }}>
+					<div style={{ width: '30%' }}>
 						<InputLabelStyled htmlFor="country">
 							{t('country')}
 						</InputLabelStyled>
-						<InputField
+						<SelectField
 							id="country"
 							name="country"
-							type="number"
 							onChange={(e) =>
 								handleInput(e.target.value, e.target.name)
 							}
-						/>
+						>
+							{countries.map((country) => (
+								<StyledMenuItem value={country.icon}>
+									<ContainerSelectCountry>
+										<img src={iconList[country.icon]} />
+										<span>+{country.number}</span>
+									</ContainerSelectCountry>
+								</StyledMenuItem>
+							))}
+						</SelectField>
 					</div>
-					<div style={{ width: '48%' }}>
+					<div style={{ width: '68%' }}>
 						<InputLabelStyled htmlFor="phone">
 							{t('phone')}
 						</InputLabelStyled>
@@ -86,18 +130,18 @@ export const ProfileModal = () => {
 							onChange={(e) =>
 								handleInput(e.target.value, e.target.name)
 							}
+							placeholder={t('typeSomething')}
 						/>
 					</div>
 				</div>
 
-				<InputLabelStyled htmlFor="email">
-					{t('email')}
-				</InputLabelStyled>
+				<InputLabelStyled htmlFor="email">Email</InputLabelStyled>
 				<InputField
 					id="email"
 					name="email"
 					defaultValue={currentInfo?.email}
 					onChange={(e) => handleInput(e.target.value, e.target.name)}
+					placeholder={t('typeSomething')}
 				/>
 				<InputLabelStyled htmlFor="address">
 					{t('address')}
@@ -107,6 +151,7 @@ export const ProfileModal = () => {
 					name="address"
 					defaultValue={currentInfo?.address}
 					onChange={(e) => handleInput(e.target.value, e.target.name)}
+					placeholder={t('typeSomething')}
 				/>
 			</InputFieldsWrapper>
 		</ModalShell>

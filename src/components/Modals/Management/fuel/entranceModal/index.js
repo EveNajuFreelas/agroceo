@@ -184,6 +184,7 @@ export const EntranceManagementModal = () => {
 							handleInput(e.target.value, e.target.name)
 						}
 						docName={currentInfo?.receipt?.split('\\').pop()}
+						accept="application/pdf, text/xml"
 					/>
 				</InputFieldsWrapper>
 			</ModalShell>

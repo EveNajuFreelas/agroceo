@@ -22,17 +22,19 @@ const CustomComponents = {
 				variant="outlined"
 				IconComponent={ExpandMore}
 				margin="dense"
+				displayEmpty
 			/>
 		</div>
 	),
 	UploadComponent: (props) => (
-		<div className={props.className} style={{ width: '100%' }}>
+		<div className={props.className} style={{ width: '99.5%' }}>
 			<p
 				className="label"
 				style={{
 					textOverflow: 'ellipsis',
 					whiteSpace: 'nowrap',
 					overflow: 'hidden',
+					width: '55%',
 				}}
 			>
 				{props.docName || props.label}
@@ -55,6 +57,7 @@ const CustomComponents = {
 				type="file"
 				name={props.name}
 				accept={props.accept}
+				placeholder="Enviar arquivo"
 			/>
 			<p>{props.buttonName}</p>
 		</label>

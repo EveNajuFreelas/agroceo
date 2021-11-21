@@ -22,6 +22,7 @@ import {
 } from '@material-ui/core';
 import { iconList } from '../../../../../assets/Icons/icon-list';
 import { defaultTheme } from '../../../../../theme';
+import ItemSelect from '../../../SelectField';
 
 export const EntranceManagementModal = () => {
 	const { t } = useTranslation();
@@ -128,27 +129,26 @@ export const EntranceManagementModal = () => {
 				]}
 			>
 				<InputFieldsWrapper style={{ flexDirection: 'column' }}>
-					<InputLabelStyled htmlFor="fuelType">
+					<InputLabelStyled required htmlFor="fuelType">
 						{t('fuelType')}
 					</InputLabelStyled>
 					<SelectField
 						id="fuelType"
 						name="fuelType"
-						defaultValue={currentInfo?.fuelType || ''}
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}
 					>
-						<StyledMenuItem value="">{`${t(
-							'select'
-						)}...`}</StyledMenuItem>
+						<StyledMenuItem>
+							<ItemSelect value="" />
+						</StyledMenuItem>
 						{fuelTypes.map((ft) => (
 							<StyledMenuItem value={ft.value}>
 								{t(ft.name)}
 							</StyledMenuItem>
 						))}
 					</SelectField>
-					<InputLabelStyled htmlFor="quantity">
+					<InputLabelStyled required htmlFor="quantity">
 						{t('quantity')}
 					</InputLabelStyled>
 					<InputField
@@ -161,6 +161,7 @@ export const EntranceManagementModal = () => {
 						}
 						helperText={t('justNumbers')}
 						style={{ marginBottom: '0px' }}
+						placeholder={t('typeSomething')}
 						InputProps={{
 							endAdornment: (
 								<InputAdornment position="end">
@@ -185,6 +186,7 @@ export const EntranceManagementModal = () => {
 						}
 						docName={currentInfo?.receipt?.split('\\').pop()}
 						accept="application/pdf, text/xml"
+						helperText="formato"
 					/>
 				</InputFieldsWrapper>
 			</ModalShell>

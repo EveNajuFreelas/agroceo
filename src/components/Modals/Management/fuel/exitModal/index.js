@@ -17,6 +17,8 @@ import { useManagementContainer } from '../../../../../context/managementContext
 import { RadioGroup, Divider } from '@material-ui/core';
 import { employeesSelect } from '../../../../../utils/dataMock/selectMock';
 import { iconList } from '../../../../../assets/Icons/icon-list';
+import InputMask from 'react-input-mask';
+import ItemSelect from '../../../SelectField';
 
 export const ExitManagementModal = () => {
 	const { t } = useTranslation();
@@ -103,27 +105,26 @@ export const ExitManagementModal = () => {
 							</FuelLabelRadio>
 						</RadioGroup>
 					</FormControlStyled>
-					<InputLabelStyled htmlFor="fuelType">
+					<InputLabelStyled required htmlFor="fuelType">
 						{t('fuelType')}
 					</InputLabelStyled>
 					<SelectField
 						id="fuelType"
 						name="fuelType"
-						defaultValue={currentInfo?.fuelType || ''}
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}
 					>
-						<StyledMenuItem value="">{`${t(
-							'select'
-						)}...`}</StyledMenuItem>
+						<StyledMenuItem>
+							<ItemSelect value="" />
+						</StyledMenuItem>
 						{fuelTypes.map((ft) => (
 							<StyledMenuItem value={ft.value}>
 								{t(ft.name)}
 							</StyledMenuItem>
 						))}
 					</SelectField>
-					<InputLabelStyled htmlFor="quantity">
+					<InputLabelStyled required htmlFor="quantity">
 						{t('quantity')}
 					</InputLabelStyled>
 					<InputField
@@ -144,37 +145,52 @@ export const ExitManagementModal = () => {
 						}}
 					>
 						<div style={{ width: '48%' }}>
-							<InputLabelStyled htmlFor="fillDate">
+							<InputLabelStyled required htmlFor="fillDate">
 								{t('fillDate')}
 							</InputLabelStyled>
-							<InputField
-								id="fillDate"
-								name="fillDate"
-								type="number"
+							<InputMask
+								mask="99 / 99 / 9999"
+								maskChar=" "
 								onChange={(e) =>
 									handleInput(e.target.value, e.target.name)
 								}
-								helperText={t('justNumbers')}
-							/>
+							>
+								{() => (
+									<InputField
+										id="fillDate"
+										name="fillDate"
+										helperText={t('justNumbers')}
+										placeholder="DD/MM/AAAA"
+									/>
+								)}
+							</InputMask>
 						</div>
 						<div style={{ width: '48%' }}>
-							<InputLabelStyled htmlFor="fillHour">
+							<InputLabelStyled required htmlFor="fillHour">
 								{t('fillHour')}
 							</InputLabelStyled>
-							<InputField
-								id="fillHour"
-								name="fillHour"
-								type="number"
+							<InputMask
+								mask="99 : 99"
+								maskPlaceholder="00 : 00"
+								maskChar=" "
 								onChange={(e) =>
 									handleInput(e.target.value, e.target.name)
 								}
-								helperText={t('justNumbers')}
-							/>
+							>
+								{() => (
+									<InputField
+										id="fillHour"
+										name="fillHour"
+										helperText={t('justNumbers')}
+										placeholder="00:00"
+									/>
+								)}
+							</InputMask>
 						</div>
 					</div>
 					{whereWasFilled === 'atFarm' && (
 						<>
-							<InputLabelStyled htmlFor="whoFilledUp">
+							<InputLabelStyled required htmlFor="whoFilledUp">
 								{t('whoFilledUp')}
 							</InputLabelStyled>
 							<SelectField
@@ -183,6 +199,9 @@ export const ExitManagementModal = () => {
 								value={employeeSelected}
 								onChange={handleEmployeeSelected}
 							>
+								<StyledMenuItem>
+									<ItemSelect value="" />
+								</StyledMenuItem>
 								{employeesSelect.map((employee) => (
 									<StyledMenuItem value={employee}>
 										{t(employee.name)}
@@ -211,7 +230,7 @@ export const ExitManagementModal = () => {
 							?.split('\\')
 							.pop()}
 					/>
-					<InputLabelStyled htmlFor="odometerHourmeter">
+					<InputLabelStyled required htmlFor="odometerHourmeter">
 						{t('odometerHourmeter')}
 					</InputLabelStyled>
 					<InputField
@@ -224,35 +243,43 @@ export const ExitManagementModal = () => {
 						helperText={t('justNumbers')}
 						placeholder="Selecione"
 					/>
-					<InputLabelStyled htmlFor="driver">
+					<InputLabelStyled required htmlFor="driver">
 						{t('driver')}
 					</InputLabelStyled>
 					<SelectField
 						id="driver"
 						name="driver"
-						defaultValue={''}
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}
 					>
-						<StyledMenuItem value="">{`${t(
-							'select'
-						)}...`}</StyledMenuItem>
+						<StyledMenuItem>
+							<ItemSelect value="" />
+						</StyledMenuItem>
+						{fuelTypes.map((ft) => (
+							<StyledMenuItem value={ft.value}>
+								{t(ft.name)}
+							</StyledMenuItem>
+						))}
 					</SelectField>
-					<InputLabelStyled htmlFor="vehicle">
+					<InputLabelStyled required htmlFor="vehicle">
 						{t('vehicle')}
 					</InputLabelStyled>
 					<SelectField
 						id="vehicle"
 						name="vehicle"
-						defaultValue={''}
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}
 					>
-						<StyledMenuItem value="">{`${t(
-							'select'
-						)}...`}</StyledMenuItem>
+						<StyledMenuItem>
+							<ItemSelect value="" />
+						</StyledMenuItem>
+						{fuelTypes.map((ft) => (
+							<StyledMenuItem value={ft.value}>
+								{t(ft.name)}
+							</StyledMenuItem>
+						))}
 					</SelectField>
 				</div>
 			</InputFieldsWrapper>

@@ -52,6 +52,7 @@ const TableHeadDefault = ({
 								alt="icon delete"
 								src={iconList.deleteIcon}
 								onClick={deleteFunction}
+								style={{ padding: '10px', cursor: 'pointer' }}
 							/>
 							<ButtonIcon
 								src={iconList.print}

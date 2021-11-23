@@ -43,6 +43,7 @@ export const ProfileModal = () => {
 	}, [image]);
 
 	const handleImgChange = ({ target }) => {
+		console.log(target.files[0]);
 		setImage({
 			preview: URL.createObjectURL(target.files[0]),
 			raw: target.files[0],

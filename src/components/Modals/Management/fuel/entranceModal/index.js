@@ -40,9 +40,6 @@ export const EntranceManagementModal = () => {
 	const [confirmDialogActive, setConfirmDialogActive] = useState(false);
 
 	const handleInput = (info, inputName) => {
-		// if (inputName === '') {
-		// 	info = info.split('\\').pop();
-		// }
 		setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
 		console.log(currentInfo);
 	};
@@ -54,6 +51,7 @@ export const EntranceManagementModal = () => {
 				break;
 			case 'save':
 				setActiveContent(currentInfo);
+				setConfirmDialogActive(false);
 				console.log(currentInfo);
 				closeModals();
 				break;
@@ -69,33 +67,32 @@ export const EntranceManagementModal = () => {
 	};
 
 	const renderConfirmDialog = () => (
-		<Dialog
-			style={{ padding: '20px' }}
-			onClose={() => handleSave('cancel')}
-			open={confirmDialogActive}
-		>
+		<Dialog onClose={() => handleSave('cancel')} open={confirmDialogActive}>
 			<DialogTitle>{t('attention')}</DialogTitle>
 			<DialogContent>
 				<p>{t('receiptNotSent')}</p>
 				<p>{t('confirmSendingWithoutReceipt')}</p>
 			</DialogContent>
-			<DialogActions style={{ justifyContent: 'center' }}>
+			<DialogActions style={{ justifyContent: 'center', gap: '10px' }}>
+				<Button
+					color="secondary"
+					variant="outlined"
+					style={{ fontWeight: 'bold', width: '30%' }}
+					onClick={() => handleSave('cancel')}
+				>
+					{t('no')}
+				</Button>
 				<Button
 					style={{
 						borderColor: `${colors.primary}`,
 						color: `${colors.primary}`,
+						fontWeight: 'bold',
+						width: '30%',
 					}}
 					variant="outlined"
 					onClick={() => handleSave('save')}
 				>
 					{t('yes')}
-				</Button>
-				<Button
-					color="secondary"
-					variant="outlined"
-					onClick={() => handleSave('cancel')}
-				>
-					{t('no')}
 				</Button>
 			</DialogActions>
 		</Dialog>
@@ -122,9 +119,9 @@ export const EntranceManagementModal = () => {
 							handleSave(
 								currentInfo.receipt ? 'save' : 'openDialog'
 							),
-						title: 'save',
+						title: 'continue',
 						color: 'primary',
-						variant: 'contained',
+						variant: 'outlined',
 					},
 				]}
 			>

@@ -120,6 +120,7 @@ const TableWithDescriptionIcon = ({
 										onClick={() => handleClick(row.data)}
 									/>
 									<img
+										style={{ cursor: 'pointer' }}
 										alt="icon delete"
 										src={iconList.deleteIcon}
 									/>

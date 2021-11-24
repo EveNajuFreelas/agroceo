@@ -23,96 +23,98 @@ import Demandas from './pages/Manejo/Demandas';
 import Tarefas from './pages/Manejo/Tarefas';
 import Lavouras from './pages/Manejo/Lavouras';
 
+import materialUITheme from '../src/theme/materialUITheme';
+
 export function App() {
 	return (
-		<ThemeProvider>
+		<ThemeProvider theme={materialUITheme}>
 			<Router>
 				<Switch>
 					<Route
-						path='/'
+						path="/"
 						exact
-						component={() => <Redirect to='/dashboard' />}
+						component={() => <Redirect to="/dashboard" />}
 					/>
-					<NotLoggedRoute path='/login' exact component={Login} />
+					<NotLoggedRoute path="/login" exact component={Login} />
 
 					<NotLoggedRoute
-						path='/dashboard'
+						path="/dashboard"
 						exact
 						component={Dashboard}
 					/>
 
 					<NotLoggedRoute
-						path='/financeiro/despesas'
+						path="/financeiro/despesas"
 						exact
 						component={Despesas}
 					/>
 					<NotLoggedRoute
-						path='/financeiro/investimentos'
+						path="/financeiro/investimentos"
 						exact
 						component={Investimento}
 					/>
 					<NotLoggedRoute
-						path='/financeiro/receitas'
+						path="/financeiro/receitas"
 						exact
 						component={Receitas}
 					/>
 
 					<NotLoggedRoute
-						path='/manejo/combustivel'
+						path="/manejo/combustivel"
 						exact
 						component={Combustivel}
 					/>
 
 					<NotLoggedRoute
-						path='/manejo/veiculos'
+						path="/manejo/veiculos"
 						exact
 						component={Veiculos}
 					/>
 
 					<NotLoggedRoute
-						path='/manejo/maodeobra'
+						path="/manejo/maodeobra"
 						exact
 						component={MaoDeObra}
 					/>
 
 					<NotLoggedRoute
-						path='/manejo/tratores'
+						path="/manejo/tratores"
 						exact
 						component={Tratores}
 					/>
 
 					<NotLoggedRoute
-						path='/manejo/insumos'
+						path="/manejo/insumos"
 						exact
 						component={Insumos}
 					/>
 
 					<NotLoggedRoute
-						path='/manejo/areas'
+						path="/manejo/areas"
 						exact
 						component={Areas}
 					/>
 
 					<NotLoggedRoute
-						path='/manejo/lavouras'
+						path="/manejo/lavouras"
 						exact
 						component={Lavouras}
 					/>
 
 					<NotLoggedRoute
-						path='/manejo/animais'
+						path="/manejo/animais"
 						exact
 						component={Animals}
 					/>
 
 					<NotLoggedRoute
-						path='/manejo/demandas'
+						path="/manejo/demandas"
 						exact
 						component={Demandas}
 					/>
 
 					<NotLoggedRoute
-						path='/manejo/tarefas'
+						path="/manejo/tarefas"
 						exact
 						component={Tarefas}
 					/>

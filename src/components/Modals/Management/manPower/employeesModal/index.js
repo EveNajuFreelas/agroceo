@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ModalShell } from '../../../../Modal/index';
 
@@ -13,14 +14,24 @@ import {
 } from '../../../inputsStyles';
 import { fuelTypes } from '../../../../../utils/dataMock/mock';
 
-import { RadioGroup, FormControlLabel, Radio } from '@material-ui/core';
+import {
+	RadioGroup,
+	FormControlLabel,
+	Radio,
+	TextField,
+} from '@material-ui/core';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+
 import { useModalsContainer } from '../../../../../context/modalsContext';
 import { ContainerSelectCountry } from '../../../Profile/styles';
 import { iconList } from '../../../../../assets/Icons/icon-list';
+import InputMask from 'react-input-mask';
+import ItemSelect from '../../../SelectField';
 
 export const EmployeesModal = () => {
 	const { t } = useTranslation();
 	const { modalState, closeModals } = useModalsContainer();
+	const [currentInfo, setCurrentInfo] = useState({});
 
 	const countries = [
 		{
@@ -38,7 +49,11 @@ export const EmployeesModal = () => {
 	];
 
 	const handleInput = (info, inputName) => {
-		//setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
+		setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
+	};
+
+	const handleSave = () => {
+		console.log(currentInfo);
 	};
 
 	return (
@@ -56,7 +71,7 @@ export const EmployeesModal = () => {
 					variant: 'outlined',
 				},
 				{
-					onClick: () => closeModals(),
+					onClick: () => handleSave(),
 					title: 'save',
 					color: 'primary',
 					variant: 'contained',
@@ -83,12 +98,12 @@ export const EmployeesModal = () => {
 							<FormControlLabel
 								value="temporary"
 								label={t('temporary')}
-								control={<Radio />}
+								control={<Radio color="primary" />}
 							/>
 							<FormControlLabel
 								value="permanent"
 								label={t('permanent')}
-								control={<Radio />}
+								control={<Radio color="primary" />}
 							/>
 						</RadioGroup>
 					</FormControlStyled>
@@ -111,7 +126,7 @@ export const EmployeesModal = () => {
 							justifyContent: 'space-between',
 						}}
 					>
-						<div style={{ width: '48%' }}>
+						<div style={{ width: '52%' }}>
 							<InputLabelStyled htmlFor="nickname">
 								{t('nickname')}
 							</InputLabelStyled>
@@ -121,20 +136,28 @@ export const EmployeesModal = () => {
 								onChange={(e) =>
 									handleInput(e.target.value, e.target.name)
 								}
+								placeholder={t('typeSomething')}
 							/>
 						</div>
-						<div style={{ width: '48%' }}>
+						<div style={{ width: '46%' }}>
 							<InputLabelStyled htmlFor="cpf">
 								CPF
 							</InputLabelStyled>
-							<InputField
-								id="cpf"
-								name="cpf"
-
-								// onChange={(e) =>
-								// 	handleInput(e.target.value, e.target.name)
-								// }
-							/>
+							<InputMask
+								mask="999.999.999-99"
+								maskChar=" "
+								onChange={(e) =>
+									handleInput(e.target.value, e.target.name)
+								}
+							>
+								{() => (
+									<InputField
+										id="cpf"
+										name="cpf"
+										placeholder="000.000.000-00"
+									/>
+								)}
+							</InputMask>
 						</div>
 					</div>
 
@@ -143,18 +166,17 @@ export const EmployeesModal = () => {
 					</InputLabelStyled>
 					<UploadField
 						id="employeePhoto"
-						// docName={
-						// 	currentInfo?.DocumentPicture !== '--'
-						// 		? currentInfo?.DocumentPicture
-						// 		: null
-						// }
+						docName={
+							currentInfo?.DocumentPicture !== '--'
+								? currentInfo?.DocumentPicture
+								: null
+						}
 						name="employeePhoto"
 						buttonName={t('select')}
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}
 						accept="image/*"
-						//placeholder={t('sendFile')}
 					/>
 
 					<InputLabelStyled required htmlFor="occupation">
@@ -163,14 +185,13 @@ export const EmployeesModal = () => {
 					<SelectField
 						id="occupation"
 						name="occupation"
-						//defaultValue={currentInfo?.fuelType || ''}
-						// onChange={(e) =>
-						// 	handleInput(e.target.value, e.target.name)
-						// }
+						onChange={(e) =>
+							handleInput(e.target.value, e.target.name)
+						}
 					>
-						<StyledMenuItem value="">{`${t(
-							'select'
-						)}...`}</StyledMenuItem>
+						<StyledMenuItem>
+							<ItemSelect value="" />
+						</StyledMenuItem>
 						{fuelTypes.map((ft) => (
 							<StyledMenuItem value={ft.value}>
 								{t(ft.name)}
@@ -191,16 +212,19 @@ export const EmployeesModal = () => {
 							<SelectField
 								id="country"
 								name="country"
-								//defaultValue={currentInfo?.fuelType || ''}
-								// onChange={(e) =>
-								// 	handleInput(e.target.value, e.target.name)
-								// }
+								onChange={(e) =>
+									handleInput(e.target.value, e.target.name)
+								}
+								defaultValue="Brasil"
 							>
 								{countries.map((country) => (
 									<StyledMenuItem value={country.icon}>
 										<ContainerSelectCountry>
-											<img src={iconList[country.icon]} />
-											<span>+{country.number}</span>
+											<img
+												src={iconList[country.icon]}
+												alt={country.icon}
+											/>
+											<span>{country.icon}</span>
 										</ContainerSelectCountry>
 									</StyledMenuItem>
 								))}
@@ -210,14 +234,22 @@ export const EmployeesModal = () => {
 							<InputLabelStyled required htmlFor="telephone">
 								{t('telephone')}
 							</InputLabelStyled>
-							<InputField
-								id="telephone"
-								name="telephone"
+							<InputMask
+								mask="(99) 9 9999-9999"
+								maskChar=" "
 								onChange={(e) =>
 									handleInput(e.target.value, e.target.name)
 								}
-								helperText={t('justNumbers')}
-							/>
+							>
+								{() => (
+									<InputField
+										id="telephone"
+										name="telephone"
+										helperText={t('justNumbers')}
+										placeholder="(00) 0 0000-0000"
+									/>
+								)}
+							</InputMask>
 						</div>
 					</div>
 				</div>

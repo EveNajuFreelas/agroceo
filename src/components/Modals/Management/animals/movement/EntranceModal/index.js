@@ -1,14 +1,12 @@
 import {
 	SelectField,
 	InputField,
-	StyledMenuItem,
 	InputLabelStyled,
 	InputLabelRadio,
 	FormControlStyled,
 	UploadField,
 } from '../../../../inputsStyles';
 
-import { fuelTypes } from '../../../../../../utils/dataMock/mock';
 import {
 	RadioGroup,
 	FormControlLabel,
@@ -26,14 +24,10 @@ import {
 import { TitleTask } from '../../../vehicleModals/UtilzationModal/UtilizationOption/styles';
 
 export const EntranceModal = ({ t, typeEntrance }) => {
-	const [specieSelected, setSpecieSelected] = useState([]);
-	const [categorySelected, setCategorySelected] = useState([]);
+	const [currentInfo, setCurrentInfo] = useState({});
 
-	const handleSpecieSelected = (event) => {
-		setSpecieSelected(event.target.value);
-	};
-	const handleCategorySelected = (event) => {
-		setCategorySelected(event.target.value);
+	const handleInput = (info, inputName) => {
+		setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
 	};
 
 	return (
@@ -51,8 +45,8 @@ export const EntranceModal = ({ t, typeEntrance }) => {
 				<SelectField
 					id="specie"
 					name="specie"
-					value={specieSelected}
-					onChange={handleSpecieSelected}
+					value={currentInfo?.specie}
+					onChange={e => handleInput(e.target.value, e.target.name)}
 				>
 					{speciesSelect.map((specie) => (
 						<MenuItem key={specie.id} value={specie.name}>
@@ -87,8 +81,8 @@ export const EntranceModal = ({ t, typeEntrance }) => {
 					id="age"
 					name="age"
 					type="number"
-					//defaultValue={currentInfo?.quantity}
-					//onChange={(e) => handleInput(e.target.value, e.target.name)}
+					defaultValue={currentInfo?.quantity}
+					onChange={(e) => handleInput(e.target.value, e.target.name)}
 					placeholder={t('typeSomething')}
 					helperText={t('inMonths')}
 				/>
@@ -102,8 +96,8 @@ export const EntranceModal = ({ t, typeEntrance }) => {
 							id="weaningPrediction"
 							name="weaningPrediction"
 							type="number"
-							//defaultValue={currentInfo?.quantity}
-							//onChange={(e) => handleInput(e.target.value, e.target.name)}
+							defaultValue={currentInfo?.quantity}
+							onChange={(e) => handleInput(e.target.value, e.target.name)}
 							placeholder={t('typeSomething')}
 							helperText={t('inMonths')}
 						/>
@@ -120,9 +114,9 @@ export const EntranceModal = ({ t, typeEntrance }) => {
 							docName=""
 							name="invoice"
 							buttonName={t('select')}
-							// onChange={(e) =>
-							// 	handleInput(e.target.value, e.target.name)
-							// }
+							onChange={(e) =>
+								handleInput(e.target.value, e.target.name)
+							}
 						/>
 
 						<InputLabelStyled htmlFor="animalTransitGuide">
@@ -133,9 +127,9 @@ export const EntranceModal = ({ t, typeEntrance }) => {
 							docName=""
 							name="animalTransitGuide"
 							buttonName={t('select')}
-							// onChange={(e) =>
-							// 	handleInput(e.target.value, e.target.name)
-							// }
+							onChange={(e) =>
+								handleInput(e.target.value, e.target.name)
+							}
 						/>
 					</>
 				)}
@@ -154,8 +148,8 @@ export const EntranceModal = ({ t, typeEntrance }) => {
 				<SelectField
 					id="category"
 					name="category"
-					value={categorySelected}
-					onChange={handleCategorySelected}
+					value={currentInfo?.category}
+					onChange={e => handleInput(e.target.value, e.target.name)}
 				>
 					{categorySelect.map((category) => (
 						<MenuItem key={category.id} value={category.name}>
@@ -173,8 +167,8 @@ export const EntranceModal = ({ t, typeEntrance }) => {
 					id="quantity"
 					name="quantity"
 					type="number"
-					//defaultValue={currentInfo?.quantity}
-					//onChange={(e) => handleInput(e.target.value, e.target.name)}
+					defaultValue={currentInfo?.quantity}
+					onChange={(e) => handleInput(e.target.value, e.target.name)}
 					placeholder={t('typeSomething')}
 					helperText={t('justNumbers')}
 				/>
@@ -186,8 +180,8 @@ export const EntranceModal = ({ t, typeEntrance }) => {
 					id="averageWeight"
 					name="averageWeight"
 					type="number"
-					//defaultValue={currentInfo?.quantity}
-					//onChange={(e) => handleInput(e.target.value, e.target.name)}
+					defaultValue={currentInfo?.averageWeight}
+					onChange={(e) => handleInput(e.target.value, e.target.name)}
 					placeholder={t('typeSomething')}
 					helperText={t('justNumbers')}
 					InputProps={{
@@ -209,8 +203,8 @@ export const EntranceModal = ({ t, typeEntrance }) => {
 					id="observation"
 					name="observation"
 					type="textArea"
-					//defaultValue={currentInfo?.quantity}
-					//onChange={(e) => handleInput(e.target.value, e.target.name)}
+					defaultValue={currentInfo?.observation}
+					onChange={(e) => handleInput(e.target.value, e.target.name)}
 					placeholder={t('typeSomething')}
 					helperText={t('justNumbers')}
 				/>

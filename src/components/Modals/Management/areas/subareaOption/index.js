@@ -1,27 +1,24 @@
 import {
-	Checkbox,
 	InputAdornment,
 	ListItemText,
 	MenuItem,
 } from '@material-ui/core';
 import { useState } from 'react';
 import { iconList } from '../../../../../assets/Icons/icon-list';
-import { fuelTypes } from '../../../../../utils/dataMock/mock';
 import { areas } from '../../../../../utils/dataMock/selectMock';
 
 import {
 	SelectField,
 	InputField,
-	StyledMenuItem,
 	InputLabelStyled,
 } from '../../../inputsStyles';
 import { TitleTask } from '../../vehicleModals/UtilzationModal/UtilizationOption/styles';
 
 export const SubAreaOption = ({ t }) => {
-	const [areaSelected, setAreaSelected] = useState([]);
+	const [currentInfo, setCurrentInfo] = useState({});
 
-	const handleAreasSelected = (event) => {
-		setAreaSelected(event.target.value);
+	const handleInput = (info, inputName) => {
+		setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
 	};
 
 	return (
@@ -51,9 +48,10 @@ export const SubAreaOption = ({ t }) => {
 								</InputAdornment>
 							),
 						}}
-						// onChange={(e) =>
-						// 	handleInput(e.target.value, e.target.name)
-						// }
+						value={currentInfo?.totalArea}
+						onChange={(e) =>
+							handleInput(e.target.value, e.target.name)
+						}
 					/>
 				</div>
 				<div style={{ width: '48%' }}>
@@ -74,9 +72,10 @@ export const SubAreaOption = ({ t }) => {
 								</InputAdornment>
 							),
 						}}
-						// onChange={(e) =>
-						// 	handleInput(e.target.value, e.target.name)
-						// }
+						value={currentInfo?.availableArea}
+						onChange={(e) =>
+							handleInput(e.target.value, e.target.name)
+						}
 					/>
 				</div>
 			</div>
@@ -87,8 +86,10 @@ export const SubAreaOption = ({ t }) => {
 			<SelectField
 				id="destination"
 				name="destination"
-				value={areaSelected}
-				onChange={handleAreasSelected}
+				value={currentInfo?.destination}
+				onChange={(e) =>
+					handleInput(e.target.value, e.target.name)
+				}
 			>
 				{areas.map((area) => (
 					<MenuItem key={area.id} value={area.name}>
@@ -123,9 +124,10 @@ export const SubAreaOption = ({ t }) => {
 							),
 						}}
 						helperText={t('inHectares')}
-						// onChange={(e) =>
-						// 	handleInput(e.target.value, e.target.name)
-						// }
+						value={currentInfo?.subareaSize}
+						onChange={(e) =>
+							handleInput(e.target.value, e.target.name)
+						}
 					/>
 				</div>
 				<div style={{ width: '58%' }}>
@@ -135,10 +137,10 @@ export const SubAreaOption = ({ t }) => {
 					<InputField
 						id="subareaDescription"
 						name="subareaDescription"
-
-						// onChange={(e) =>
-						// 	handleInput(e.target.value, e.target.name)
-						// }
+						value={currentInfo?.subareaDescription}
+						onChange={(e) =>
+							handleInput(e.target.value, e.target.name)
+						}
 					/>
 				</div>
 			</div>

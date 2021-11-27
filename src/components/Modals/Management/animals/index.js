@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { ModalShell } from '../../../Modal/index';
-
 import {
 	InputFieldsWrapper,
 	InputLabelRadio,
@@ -10,10 +9,9 @@ import {
 	RadioGroup,
 	FormControlLabel,
 	Radio,
-	Divider,
 } from '@material-ui/core';
 import { useModalsContainer } from '../../../../context/modalsContext';
-import { AnimalsFirst, AnimalsSecond, ModalAnimals } from './animal';
+import { ModalAnimals } from './animal';
 import { ModalLot } from './lot';
 import { ModalMovements } from './movement';
 import { ModalWeighing } from './weighing';
@@ -22,10 +20,6 @@ export const AnimalsModal = ({ t }) => {
 	const { modalState, closeModals } = useModalsContainer();
 
 	const [register, setRegister] = useState('animals');
-
-	const handleInput = (info, inputName) => {
-		//setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
-	};
 
 	return (
 		<ModalShell

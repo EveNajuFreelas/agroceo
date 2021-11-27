@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useTranslation } from "react-i18next"
 import { ModalShell } from "../../../../Modal"
 import {
@@ -12,16 +13,14 @@ import { Checkbox, FormControl, FormControlLabel } from "@material-ui/core";
 export const EditFunctionsModal = () => {
     const { t } = useTranslation();
     const { modalUtilizationState, closeUtilizationModal, activeContent } = useModalsContainer();
+	const [currentInfo, setCurrentInfo] = useState(activeContent);
+
     const weekdays = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
     const dayPeriods = ['morning', 'afternoon', 'night'];
 
     const handleInput = (info, inputName) => {
-		//setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
+		setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
 	};
-
-    const handleCheckboxChange = (e) => {
-        console.log(e.target.value);
-    }
 
     return (<ModalShell
         open={modalUtilizationState}
@@ -57,7 +56,7 @@ export const EditFunctionsModal = () => {
                     onChange={(e) =>
                         handleInput(e.target.value, e.target.name)
                     }
-                    defaultValue={activeContent?.roleName}
+                    defaultValue={currentInfo?.functionName}
                 />
             </div>
             <div style={{ width: '48%' }}>
@@ -69,9 +68,9 @@ export const EditFunctionsModal = () => {
                         handleInput(e.target.value, e.target.name)
                     }
                 >
-                    {/* {activeContent?.obligations.map(o => (
+                    {currentInfo?.obligations?.map(o => (
                         <StyledMenuItem value={o}>{o}</StyledMenuItem>
-                    ))} */}
+                    ))}
                 </SelectField>
             </div>
         </div>
@@ -80,7 +79,13 @@ export const EditFunctionsModal = () => {
                 <FormControl style={{ display: 'flex', flexDirection: 'column' }}>
                     <div style={{ display: 'flex', alignItems: 'center' }}>
                         <FormControlLabel
-                            control={<Checkbox value={wd} onChange={handleCheckboxChange} name={wd} />}
+                            control={<Checkbox 
+                                value={wd} 
+                                onChange={(e) =>
+                                    handleInput(e.target.value, e.target.name)
+                                }
+                                name={wd} 
+                            />}
                             label={wd}
                         />
                     </div>
@@ -91,7 +96,9 @@ export const EditFunctionsModal = () => {
                                     <Checkbox 
                                         value={`${wd} ${dp}`} 
                                         disabled 
-                                        onChange={handleCheckboxChange}
+                                        onChange={(e) =>
+                                            handleInput(e.target.value, e.target.name)
+                                        }
                                         name={dp}
                                     />}
                                 label={dp}

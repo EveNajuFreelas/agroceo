@@ -1,7 +1,6 @@
-import { useState } from 'react';
+import { useState } from 'react'; 
 import { useTranslation } from 'react-i18next';
 import { ModalShell } from '../../../../Modal/index';
-
 import {
 	InputFieldsWrapper,
 	InputLabelRadio,
@@ -13,15 +12,7 @@ import {
 	UploadField,
 } from '../../../inputsStyles';
 import { fuelTypes } from '../../../../../utils/dataMock/mock';
-
-import {
-	RadioGroup,
-	FormControlLabel,
-	Radio,
-	TextField,
-} from '@material-ui/core';
-import Autocomplete from '@material-ui/lab/Autocomplete';
-
+import { RadioGroup, FormControlLabel, Radio } from '@material-ui/core';
 import { useModalsContainer } from '../../../../../context/modalsContext';
 import { ContainerSelectCountry } from '../../../Profile/styles';
 import { iconList } from '../../../../../assets/Icons/icon-list';
@@ -30,8 +21,8 @@ import ItemSelect from '../../../SelectField';
 
 export const EmployeesModal = () => {
 	const { t } = useTranslation();
-	const { modalState, closeModals } = useModalsContainer();
-	const [currentInfo, setCurrentInfo] = useState({});
+	const { modalState, closeModals, activeContent } = useModalsContainer();
+	const [currentInfo, setCurrentInfo] = useState(activeContent);
 
 	const countries = [
 		{
@@ -52,10 +43,6 @@ export const EmployeesModal = () => {
 		setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
 	};
 
-	const handleSave = () => {
-		console.log(currentInfo);
-	};
-
 	return (
 		<ModalShell
 			isSmall
@@ -71,7 +58,7 @@ export const EmployeesModal = () => {
 					variant: 'outlined',
 				},
 				{
-					onClick: () => handleSave(),
+					onClick: () => closeModals(),
 					title: 'save',
 					color: 'primary',
 					variant: 'contained',
@@ -185,6 +172,7 @@ export const EmployeesModal = () => {
 					<SelectField
 						id="occupation"
 						name="occupation"
+						defaultValue={currentInfo?.fuelType || ''}
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}
@@ -212,10 +200,10 @@ export const EmployeesModal = () => {
 							<SelectField
 								id="country"
 								name="country"
+								defaultValue={currentInfo?.country || 'Brasil'}
 								onChange={(e) =>
 									handleInput(e.target.value, e.target.name)
 								}
-								defaultValue="Brasil"
 							>
 								{countries.map((country) => (
 									<StyledMenuItem value={country.icon}>

@@ -11,16 +11,17 @@ const useRoleContainer = () => {
 	const [isLoading, setLoading] = useState(true);
 
 	const getRoles = () => {
-		propertiesSelected.map((property) => {
-			api.get(`/offices/${property}`)
+		propertiesSelected.map(async (property) => (
+			await api.get(`/offices/${property}`)
 				.then((res) => {
 					setRoles(formatResponseRole(res.data.office));
 					setLoading(false);
 				})
 				.catch((err) => {
 					console.error(err);
-				});
-		});
+					setLoading(false);
+				})
+		));
 	};
 
 	const getEmployees = () => {
@@ -33,6 +34,7 @@ const useRoleContainer = () => {
 				})
 				.catch((err) => {
 					console.error(err);
+					setLoading(false);
 				});
 		});
 	};

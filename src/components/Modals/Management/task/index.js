@@ -40,20 +40,11 @@ export const RegisterModalTask = () => {
 	const classes = useStyles();
 
 	const { t } = useTranslation();
-	const { modalState, closeModals } = useModalsContainer();
+	const { modalState, closeModals, activeContent } = useModalsContainer();
+	const [currentInfo, setCurrentInfo] = useState(activeContent);
 
-	const [employeeSelected, setEmployeeSelected] = useState();
-	const [costCenterSelected, setCostCenterSelected] = useState([]);
-
-	const handleEmployeeSelected = (event) => {
-		setEmployeeSelected(event.target.value);
-	};
-	const handleCostCenterSelected = (event) => {
-		setCostCenterSelected(event.target.value);
-	};
 	const handleInput = (info, inputName) => {
-		console.log(inputName);
-		//setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
+		setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
 	};
 
 	return (
@@ -135,8 +126,10 @@ export const RegisterModalTask = () => {
 							<SelectField
 								id="assignTo"
 								name="assignTo"
-								value={employeeSelected}
-								onChange={handleEmployeeSelected}
+								value={currentInfo?.assignTo}
+								onChange={(e) =>
+									handleInput(e.target.value, e.target.name)
+								}
 							>
 								{employeesSelect.map((employee) => (
 									<StyledMenuItem value={employee}>
@@ -153,9 +146,11 @@ export const RegisterModalTask = () => {
 					<SelectField
 						id="costCenters"
 						name="costCenters"
-						value={costCenterSelected}
+						value={currentInfo?.costCenters}
 						multiple
-						onChange={handleCostCenterSelected}
+						onChange={(e) =>
+							handleInput(e.target.value, e.target.name)
+						}
 						renderValue={(selected) =>
 							selected.map((value) => (
 								<Chip
@@ -171,7 +166,7 @@ export const RegisterModalTask = () => {
 							<MenuItem key={center.id} value={center}>
 								<Checkbox
 									checked={
-										costCenterSelected.indexOf(center) > -1
+										currentInfo?.costCenters.indexOf(center) > -1
 									}
 									style={{ color: 'green' }}
 								/>
@@ -201,7 +196,6 @@ export const RegisterModalTask = () => {
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}
-						//placeholder={t('sendFile')}
 					/>
 				</div>
 			</InputFieldsWrapper>

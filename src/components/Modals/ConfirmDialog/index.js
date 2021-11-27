@@ -6,7 +6,7 @@ import {
 	DialogTitle,
 } from '@material-ui/core';
 
-export const ConfirmDialog = ({ t }) => {
+export const ConfirmDialog = ({ t, handleSave, confirmDialogActive }) => {
 	return (
 		<Dialog
 			style={{ padding: '20px' }}

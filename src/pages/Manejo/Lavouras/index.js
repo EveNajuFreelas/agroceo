@@ -22,7 +22,7 @@ const Lavouras = () => {
 	const { t } = useTranslation();
 	const { openModal } = useModalsContainer();
 	const { colors } = defaultTheme;
-	const { isLoading, tillage, getTillage, deleteTillage } = useTillage();
+	const { isLoading, getTillage, deleteTillage } = useTillage();
 
 	useEffect(() => {
 		getTillage();

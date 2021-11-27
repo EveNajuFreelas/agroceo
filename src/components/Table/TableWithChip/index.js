@@ -22,8 +22,8 @@ const TableWithChip = ({ data, columns, deleteFunction, thirdLeft }) => {
 
 	const [checkedItems, setCheckedItems] = useState([]);
 
-	let keys = Object.keys(data[0].data);
-	const lastColumn = keys.length - 1;
+	let keys = data[0] && Object.keys(data[0].data);
+	const lastColumn = keys && keys.length - 1;
 
 	const handleCheck = (e, item) => {
 		setCheckedItems(

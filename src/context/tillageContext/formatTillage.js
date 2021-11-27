@@ -1,6 +1,7 @@
 export const formatResponseTillage = (response) => {
 	let tempArray = [];
 	response.forEach((res) => {
+		console.log(res);
 		tempArray.push({
 			data: {
 				id: res.id,

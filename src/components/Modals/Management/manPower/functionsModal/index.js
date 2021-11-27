@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useTranslation } from "react-i18next"
 import { ModalShell } from "../../../../Modal"
 import {
@@ -11,12 +12,13 @@ import { Checkbox } from "@material-ui/core";
 
 export const FunctionsModal = () => {
     const { t } = useTranslation();
-    const { secondModalState, closeSecondModal } = useModalsContainer();
+    const { secondModalState, closeSecondModal, activeContent } = useModalsContainer();
     const weekdays = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
     const dayPeriods = ['morning', 'afternoon', 'night'];
+	const [currentInfo, setCurrentInfo] = useState(activeContent);
 
     const handleInput = (info, inputName) => {
-		//setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
+		setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
 	};
 
     return (<ModalShell
@@ -53,6 +55,7 @@ export const FunctionsModal = () => {
                     onChange={(e) =>
                         handleInput(e.target.value, e.target.name)
                     }
+                    defaultValue={currentInfo?.functionName}
                 />
             </div>
             <div style={{ width: '48%' }}>
@@ -63,6 +66,7 @@ export const FunctionsModal = () => {
                     onChange={(e) =>
                         handleInput(e.target.value, e.target.name)
                     }
+                    defaultValue={currentInfo?.obligationsList}
                 >
                     <StyledMenuItem value='Cartão de crédito'>
                         Cartão de Crédito

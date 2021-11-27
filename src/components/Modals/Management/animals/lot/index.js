@@ -1,9 +1,6 @@
-import { fuelTypes } from '../../../../../utils/dataMock/mock';
-
 import {
 	SelectField,
 	InputField,
-	StyledMenuItem,
 	InputLabelStyled,
 } from '../../../inputsStyles';
 import CloseIcon from '@material-ui/icons/Close';
@@ -11,18 +8,18 @@ import CloseIcon from '@material-ui/icons/Close';
 import { ItemTableRow, TitleTableRow } from './styles';
 import { useState } from 'react';
 import { lotSelect, subareas } from '../../../../../utils/dataMock/selectMock';
-import { Checkbox, ListItemText, MenuItem } from '@material-ui/core';
-import { TitleTask } from '../../vehicleModals/UtilzationModal/UtilizationOption/styles';
+import { ListItemText, MenuItem } from '@material-ui/core';
 
 export const ModalLot = ({ t }) => {
 	const [inventorySelected, setInventorySelected] = useState([]);
-	const [subareasSelected, setSubareasSelected] = useState({});
+	const [currentInfo, setCurrentInfo] = useState({});
+	
+	const handleInput = (info, inputName) => {
+		setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
+	};
 
 	const handleInventorySelected = (event) => {
 		setInventorySelected(event.target.value);
-	};
-	const handleSubareaSelected = (event) => {
-		setSubareasSelected(event.target.value);
 	};
 
 	return (
@@ -40,8 +37,8 @@ export const ModalLot = ({ t }) => {
 				<InputField
 					id="lotname"
 					name="lotname"
-					//defaultValue={currentInfo?.quantity}
-					//onChange={(e) => handleInput(e.target.value, e.target.name)}
+					defaultValue={currentInfo?.quantity}
+					onChange={(e) => handleInput(e.target.value, e.target.name)}
 					placeholder={t('typeSomething')}
 				/>
 
@@ -51,8 +48,8 @@ export const ModalLot = ({ t }) => {
 				<SelectField
 					id="linkSubarea"
 					name="linkSubarea"
-					value={subareasSelected}
-					onChange={handleSubareaSelected}
+					value={currentInfo?.linkSubarea}
+					onChange={(e) => handleInput(e.target.value, e.target.name)}
 				>
 					{subareas.map((subarea) => (
 						<MenuItem key={subarea.id} value={subarea}>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { createContainer, useContainer } from 'unstated-next';
 
 const ModalsContext = () => {
@@ -27,6 +27,7 @@ const ModalsContext = () => {
 
 	const closeModals = () => {
 		setmodalState(false);
+		setActiveContent();
 	};
 
 	const closeSecondModal = () => {
@@ -61,7 +62,6 @@ const ModalsContext = () => {
 		closeEditModal,
 		closeUtilizationModal,
 		closeSecondModal,
-		setActiveContent,
 	};
 };
 

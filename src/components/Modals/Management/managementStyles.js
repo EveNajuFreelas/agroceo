@@ -1,4 +1,4 @@
-import { Button, Radio } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import styled from 'styled-components';
 import { defaultTheme } from '../../../theme';
 

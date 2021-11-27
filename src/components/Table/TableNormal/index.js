@@ -23,7 +23,7 @@ const TableNormal = ({
 	deleteFunction,
 	title,
 }) => {
-	const { openUtilizationModal } = useModalsContainer();
+	const { openUtilizationModal, openModal, editActiveContent } = useModalsContainer();
 	const { colors } = defaultTheme;
 
 	const [checkedItems, setCheckedItems] = useState([]);
@@ -81,11 +81,7 @@ const TableNormal = ({
 								)}
 
 								{keys.map((column, index) => {
-									console.log(column);
-									//console.log(row.data[column]);
-									console.log(row.data['brand']);
 									return (
-										//tem alguma forma de fazer melhor certeza k k k k
 										index > COLUMN_INITIAL && (
 											<TableCell
 												align={
@@ -122,6 +118,11 @@ const TableNormal = ({
 											cursor: 'pointer',
 										}}
 										src={iconList.edit}
+										onClick={() => {
+											openModal();
+											editActiveContent(row.data);
+											console.log(row.data);
+										}}
 									/>
 									<img
 										alt="icon delete"

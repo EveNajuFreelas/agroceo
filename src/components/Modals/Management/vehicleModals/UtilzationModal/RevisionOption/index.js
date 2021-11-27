@@ -13,76 +13,76 @@ import {
 import { ListItems, TitleList } from '../../../styles';
 import { TitleTask } from '../UtilizationOption/styles';
 
-const RevisionFirst = ({ odometerHourmeter, t }) => {
-	return (
-		<>
-			<div
-				style={{
-					display: 'flex',
-					justifyContent: 'space-between',
-				}}
-			>
-				<div style={{ width: '49%' }}>
-					<InputLabelStyled required htmlFor="lastRevision">
-						{t('lastRevision')}
-					</InputLabelStyled>
-					<InputField
-						id="lastRevision"
-						name="lastRevision"
-						// onChange={(e) =>
-						// 	handleInput(e.target.value, e.target.name)
-						// }
-					/>
-				</div>
-				<div style={{ width: '49%' }}>
-					<InputLabelStyled required htmlFor="odometerLastRevision">
-						{t('odometerLastRevision')}
-					</InputLabelStyled>
-					<InputField
-						id="odometerLastRevision"
-						name="odometerLastRevision"
-
-						// onChange={(e) =>
-						// 	handleInput(e.target.value, e.target.name)
-						// }
-					/>
-				</div>
+const RevisionFirst = ({ odometerHourmeter, t, currentInfo, handleInput }) => (
+	<>
+		<div
+			style={{
+				display: 'flex',
+				justifyContent: 'space-between',
+			}}
+		>
+			<div style={{ width: '49%' }}>
+				<InputLabelStyled required htmlFor="lastRevision">
+					{t('lastRevision')}
+				</InputLabelStyled>
+				<InputField
+					id="lastRevision"
+					name="lastRevision"
+					defaultValue={currentInfo?.firstRevision?.lastRevision}
+					onChange={(e) =>
+						handleInput(e.target.value, e.target.name)
+					}
+				/>
 			</div>
+			<div style={{ width: '49%' }}>
+				<InputLabelStyled required htmlFor="odometerLastRevision">
+					{t('odometerLastRevision')}
+				</InputLabelStyled>
+				<InputField
+					id="odometerLastRevision"
+					name="odometerLastRevision"
+					defaultValue={currentInfo?.firstRevision?.odometerLastRevision}
+					onChange={(e) =>
+						handleInput(e.target.value, e.target.name)
+					}
+				/>
+			</div>
+		</div>
 
-			<InputLabelStyled required htmlFor="nextRevision">
-				{t('nextRevision')}
-			</InputLabelStyled>
-			<SelectField
-				id="nextRevision"
-				name="nextRevision"
-				//defaultValue={currentInfo?.fuelType || ''}
-				// onChange={(e) =>
-				// 	handleInput(e.target.value, e.target.name)
-				// }
-			>
-				<StyledMenuItem value="">{`${t('select')}...`}</StyledMenuItem>
-				{fuelTypes.map((ft) => (
-					<StyledMenuItem value={ft.value}>
-						{t(ft.name)}
-					</StyledMenuItem>
-				))}
-			</SelectField>
-			<InputLabelStyled required htmlFor="pictureReview">
-				{t(`${odometerHourmeter}PhotoReview`)}
-			</InputLabelStyled>
-			<UploadField
-				id="pictureReview"
-				name="pictureReview"
-				docName=""
-				buttonName={t('select')}
-				// onChange={(e) =>
-				// 	handleInput(e.target.value, e.target.name)
-				// }
-			/>
-		</>
-	);
-};
+		<InputLabelStyled required htmlFor="nextRevision">
+			{t('nextRevision')}
+		</InputLabelStyled>
+		<SelectField
+			id="nextRevision"
+			name="nextRevision"
+			defaultValue={currentInfo?.firstRevision?.lastRevision}
+			onChange={(e) =>
+				handleInput(e.target.value, e.target.name)
+			}
+		>
+			<StyledMenuItem value="">{`${t('select')}...`}</StyledMenuItem>
+			{fuelTypes.map((ft) => (
+				<StyledMenuItem value={ft.value}>
+					{t(ft.name)}
+				</StyledMenuItem>
+			))}
+		</SelectField>
+		<InputLabelStyled required htmlFor="pictureReview">
+			{t(`${odometerHourmeter}PhotoReview`)}
+		</InputLabelStyled>
+		<UploadField
+			id="pictureReview"
+			name="pictureReview"
+			docName=""
+			buttonName={t('select')}
+			// onChange={(e) =>
+			// 	handleInput(e.target.value, e.target.name)
+			// }
+		/>
+	</>
+);
 
+//Revisar este
 const RevisionSecond = ({ t }) => {
 	const [itemsSelected, setItemsSelected] = useState([]);
 

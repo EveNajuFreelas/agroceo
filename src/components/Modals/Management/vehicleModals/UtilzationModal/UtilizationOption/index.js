@@ -1,6 +1,4 @@
 import { useState } from 'react';
-import { fuelTypes } from '../../../../../../utils/dataMock/mock';
-
 import {
 	SelectField,
 	InputField,
@@ -18,17 +16,13 @@ import {
 	MenuItem,
 	Checkbox,
 	ListItemText,
-	Input,
 } from '@material-ui/core';
 import { ItemRow, StatusTask, TitleRow, TitleTask } from './styles';
 import { iconList } from '../../../../../../assets/Icons/icon-list';
 import { defaultTheme } from '../../../../../../theme';
 
-const UtilizationFirst = ({ odometerHourmeter, t, employees }) => {
+const UtilizationFirst = ({ odometerHourmeter, t, employees, handleInput }) => {
 	const [employeeSelected, setEmployeeSelected] = useState();
-	const handleInput = (info, inputName) => {
-		//setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
-	};
 
 	const handleEmployeeSelected = (event) => {
 		setEmployeeSelected(event.target.value);
@@ -64,9 +58,9 @@ const UtilizationFirst = ({ odometerHourmeter, t, employees }) => {
 					<InputField
 						id="dateUse"
 						name="dateUse"
-						// onChange={(e) =>
-						// 	handleInput(e.target.value, e.target.name)
-						// }
+						onChange={(e) =>
+							handleInput(e.target.value, e.target.name)
+						}
 					/>
 				</div>
 				<div style={{ width: '48%' }}>
@@ -76,10 +70,9 @@ const UtilizationFirst = ({ odometerHourmeter, t, employees }) => {
 					<InputField
 						id="hour"
 						name="hour"
-
-						// onChange={(e) =>
-						// 	handleInput(e.target.value, e.target.name)
-						// }
+						onChange={(e) =>
+							handleInput(e.target.value, e.target.name)
+						}
 					/>
 				</div>
 			</div>
@@ -144,9 +137,9 @@ const UtilizationFirst = ({ odometerHourmeter, t, employees }) => {
 				name="initialPicture"
 				docName=""
 				buttonName={t('select')}
-				// onChange={(e) =>
-				// 	handleInput(e.target.value, e.target.name)
-				// }
+				onChange={(e) =>
+					handleInput(e.target.value, e.target.name)
+				}
 			/>
 			<InputLabelStyled required htmlFor="finalPicture">
 				{t(`${odometerHourmeter}FinalFile`)}
@@ -156,9 +149,9 @@ const UtilizationFirst = ({ odometerHourmeter, t, employees }) => {
 				name="finalPicture"
 				docName=""
 				buttonName={t('select')}
-				// onChange={(e) =>
-				// 	handleInput(e.target.value, e.target.name)
-				// }
+				onChange={(e) =>
+					handleInput(e.target.value, e.target.name)
+				}
 			/>
 		</>
 	);

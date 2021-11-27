@@ -18,7 +18,6 @@ import {
 	DialogContent,
 	DialogTitle,
 	InputAdornment,
-	SvgIcon,
 } from '@material-ui/core';
 import { iconList } from '../../../../../assets/Icons/icon-list';
 import { defaultTheme } from '../../../../../theme';
@@ -36,7 +35,7 @@ export const EntranceManagementModal = () => {
 
 	const { colors } = defaultTheme;
 
-	const [currentInfo, setCurrentInfo] = useState({});
+	const [currentInfo, setCurrentInfo] = useState(activeContent);
 	const [confirmDialogActive, setConfirmDialogActive] = useState(false);
 
 	const handleInput = (info, inputName) => {
@@ -52,7 +51,6 @@ export const EntranceManagementModal = () => {
 			case 'save':
 				setActiveContent(currentInfo);
 				setConfirmDialogActive(false);
-				console.log(currentInfo);
 				closeModals();
 				break;
 			case 'cancel':

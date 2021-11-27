@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useTranslation } from "react-i18next"
 import { ModalShell } from "../../../../Modal"
 import {
@@ -14,12 +15,11 @@ import { useModalsContainer } from '../../../../../context/modalsContext';
 export const EditEmployeeModal = () => {
     const { t } = useTranslation();
 	const { modalEditState, closeEditModal, activeContent } = useModalsContainer();
+	const [currentInfo, setCurrentInfo] = useState(activeContent);
 
     const handleInput = (info, inputName) => {
-		//setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
+		setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
 	};
-
-	console.log(activeContent);
 
     return (<ModalShell
 		isSmall
@@ -58,16 +58,18 @@ export const EditEmployeeModal = () => {
 				>
 					{t('typeContract')}
 				</InputLabelRadio>
-				<RadioGroup row id="typeContract" name="typeContract" defaultValue={activeContent?.contract}>
+				<RadioGroup row id="typeContract" name="typeContract" defaultValue={currentInfo?.typeContract}>
 					<FormControlLabel
 						value="Temporário"
 						label={t('temporary')}
 						control={<Radio />}
+						onChange={(e) => handleInput(e.target.value, "typeContract")}
 					/>
 					<FormControlLabel
 						value="Permanente"
 						label={t('permanent')}
 						control={<Radio />}
+						onChange={(e) => handleInput(e.target.value, "typeContract")}
 					/>
 				</RadioGroup>
 			</FormControlStyled>
@@ -101,6 +103,7 @@ export const EditEmployeeModal = () => {
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}
+						defaultValue={currentInfo?.nickname}
 					/>
 				</div>
 				<div style={{ width: '48%' }}>
@@ -113,7 +116,7 @@ export const EditEmployeeModal = () => {
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}
-						defaultValue={activeContent?.phone}
+						defaultValue={currentInfo?.phone}
 					/>
 				</div>
 			</div>

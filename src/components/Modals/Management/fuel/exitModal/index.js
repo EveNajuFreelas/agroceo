@@ -22,16 +22,12 @@ import ItemSelect from '../../../SelectField';
 
 export const ExitManagementModal = () => {
 	const { t } = useTranslation();
-	const { exitModalState, closeModals, activeContent } =
-		useManagementContainer();
+	const { exitModalState, closeModals, activeContent } = useManagementContainer();
 
-	const [whereWasFilled, setWhereWasFilled] = useState('atFarm');
-	const [currentInfo, setCurrentInfo] = useState(activeContent);
-	const [employeeSelected, setEmployeeSelected] = useState();
-
-	const handleEmployeeSelected = (event) => {
-		setEmployeeSelected(event.target.value);
-	};
+	const [currentInfo, setCurrentInfo] = useState({
+		...activeContent,
+		whereWasFilled: 'atFarm'
+	});
 
 	const handleInput = (info, inputName) => {
 		setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
@@ -67,26 +63,24 @@ export const ExitManagementModal = () => {
 					}}
 				>
 					<FormControlStyled component="fieldset">
-						<InputLabelRadio htmlFor="filledUpTank">
+						<InputLabelRadio htmlFor="whereWasFilled">
 							{t('whereWasFueled')}
 						</InputLabelRadio>
 						<RadioGroup
 							row
-							id="filledUpTank"
-							name="filledUpTank"
-							value={whereWasFilled}
+							id="whereWasFilled"
+							name="whereWasFilled"
+							value={currentInfo?.whereWasFilled}
 						>
 							<FuelTypeRadio
 								type="radio"
 								name="filledUpTank"
 								id="atFarm"
 								value="atFarm"
-								onClick={(e) =>
-									setWhereWasFilled(e.target.value)
-								}
+								onClick={(e) => handleInput(e.target.value, e.target.name)}
 							/>
 							<FuelLabelRadio for="atFarm">
-								<img src={iconList.manage} />
+								<img src={iconList.manage} alt="" />
 								{t('atFarm')}
 							</FuelLabelRadio>
 
@@ -95,12 +89,10 @@ export const ExitManagementModal = () => {
 								name="filledUpTank"
 								id="atCity"
 								value="atCity"
-								onClick={(e) =>
-									setWhereWasFilled(e.target.value)
-								}
+								onClick={(e) => handleInput(e.target.value, e.target.name)}
 							/>
 							<FuelLabelRadio for="atCity">
-								<img src={iconList.gasStation} />
+								<img src={iconList.gasStation} alt="" />
 								{t('atCity')}
 							</FuelLabelRadio>
 						</RadioGroup>
@@ -173,9 +165,6 @@ export const ExitManagementModal = () => {
 								mask="99 : 99"
 								maskPlaceholder="00 : 00"
 								maskChar=" "
-								onChange={(e) =>
-									handleInput(e.target.value, e.target.name)
-								}
 							>
 								{() => (
 									<InputField
@@ -183,12 +172,16 @@ export const ExitManagementModal = () => {
 										name="fillHour"
 										helperText={t('justNumbers')}
 										placeholder="00:00"
+										defaultValue={currentInfo?.fillHour}
+										onChange={(e) =>
+											handleInput(e.target.value, e.target.name)
+										}
 									/>
 								)}
 							</InputMask>
 						</div>
 					</div>
-					{whereWasFilled === 'atFarm' && (
+					{currentInfo?.whereWasFilled === 'atFarm' && (
 						<>
 							<InputLabelStyled required htmlFor="whoFilledUp">
 								{t('whoFilledUp')}
@@ -196,8 +189,8 @@ export const ExitManagementModal = () => {
 							<SelectField
 								id="whoFilledUp"
 								name="whoFilledUp"
-								value={employeeSelected}
-								onChange={handleEmployeeSelected}
+								value={currentInfo?.whoFilledUp}
+								onChange={e => handleInput(e.target.value, e.target.name)}
 							>
 								<StyledMenuItem>
 									<ItemSelect value="" />

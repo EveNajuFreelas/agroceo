@@ -10,7 +10,7 @@ const useTillageContainer = () => {
 	const { propertiesSelected } = useAuthentication();
 
 	const getTillage = () => {
-		propertiesSelected.map(each => {
+		propertiesSelected.map(each => (
 			api.get(`/tillages/${each}`)
 				.then(res => {
 					setTillage(formatResponseTillage(res.data.tillage));
@@ -18,8 +18,9 @@ const useTillageContainer = () => {
 				})
 				.catch(err => {
 					console.error(err);
-				});
-		});
+					setLoading(false);
+				})
+		));
 	};
 
 	const deleteTillage = id => {
@@ -49,6 +50,7 @@ const useTillageContainer = () => {
 		getTillage,
 		isLoading,
 		deleteTillage,
+		postTillage,
 	};
 };
 

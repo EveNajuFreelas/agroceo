@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ModalShell } from '../../../../Modal/index';
-import { FuelTypeRadio } from '../../managementStyles';
 import { fuelTypes } from '../../../../../utils/dataMock/mock';
 import {
 	InputFieldsWrapper,
@@ -13,7 +12,6 @@ import {
 	InputLabelRadio,
 	FormControlStyled,
 } from '../../../inputsStyles';
-import { useManagementContainer } from '../../../../../context/managementContext';
 import {
 	RadioGroup,
 	FormControlLabel,
@@ -31,11 +29,11 @@ export const RegisterModalVehicle = ({
 	odometerHourmeter,
 }) => {
 	const { t } = useTranslation();
-	const { modalState, closeModals } = useModalsContainer();
+	const { modalState, closeModals, activeContent } = useModalsContainer();
+	const [currentInfo, setCurrentInfo] = useState(activeContent);
 
 	const handleInput = (info, inputName) => {
-		console.log(inputName);
-		//setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
+		setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
 	};
 
 	const groupBoardYearField = () => {
@@ -48,6 +46,7 @@ export const RegisterModalVehicle = ({
 					<InputField
 						id="board"
 						name="board"
+						defaultValue={currentInfo?.board}
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}
@@ -61,6 +60,7 @@ export const RegisterModalVehicle = ({
 					<InputField
 						id="yearAcquisition"
 						name="yearAcquisition"
+						defaultValue={currentInfo?.yearAcquisition}
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}
@@ -109,7 +109,7 @@ export const RegisterModalVehicle = ({
 								id="description"
 								name="description"
 								type="text"
-								//defaultValue={currentInfo?.quantity}
+								defaultValue={currentInfo?.description}
 								onChange={(e) =>
 									handleInput(e.target.value, e.target.name)
 								}
@@ -123,7 +123,7 @@ export const RegisterModalVehicle = ({
 					<SelectField
 						id="brand"
 						name="brand"
-						//defaultValue={currentInfo?.fuelType || ''}
+						defaultValue={currentInfo?.brand || ''}
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}
@@ -143,7 +143,7 @@ export const RegisterModalVehicle = ({
 					<SelectField
 						id="model"
 						name="model"
-						//defaultValue={currentInfo?.fuelType || ''}
+						defaultValue={currentInfo?.model || ''}
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}
@@ -172,7 +172,6 @@ export const RegisterModalVehicle = ({
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}
-						//placeholder={t('sendFile')}
 					/>
 					<div
 						style={{
@@ -187,6 +186,7 @@ export const RegisterModalVehicle = ({
 							<InputField
 								id="color"
 								name="color"
+								defaultValue={currentInfo?.color}
 								onChange={(e) =>
 									handleInput(e.target.value, e.target.name)
 								}
@@ -201,6 +201,7 @@ export const RegisterModalVehicle = ({
 								id="manufactureYear"
 								name="manufactureYear"
 								type="number"
+								defaultValue={currentInfo?.manufactureYear}
 								onChange={(e) =>
 									handleInput(e.target.value, e.target.name)
 								}
@@ -229,6 +230,7 @@ export const RegisterModalVehicle = ({
 							<InputField
 								id="currentOdometer"
 								name="currentOdometer"
+								defaultValue={currentInfo?.currentOdometer}
 								onChange={(e) =>
 									handleInput(e.target.value, e.target.name)
 								}
@@ -252,6 +254,7 @@ export const RegisterModalVehicle = ({
 							<InputField
 								id="reviewEveryKm"
 								name="reviewEveryKm"
+								defaultValue={currentInfo?.reviewEveryKm}
 								onChange={(e) =>
 									handleInput(e.target.value, e.target.name)
 								}
@@ -294,6 +297,7 @@ export const RegisterModalVehicle = ({
 							<InputField
 								id="lastRevision"
 								name="lastRevision"
+								defaultValue={currentInfo?.lastRevision}
 								onChange={(e) =>
 									handleInput(e.target.value, e.target.name)
 								}
@@ -317,6 +321,7 @@ export const RegisterModalVehicle = ({
 							<InputField
 								id="lastRevision"
 								name="lastRevision"
+								defaultValue={currentInfo?.yearAcquisition}
 								onChange={(e) =>
 									handleInput(e.target.value, e.target.name)
 								}
@@ -325,10 +330,15 @@ export const RegisterModalVehicle = ({
 						</div>
 					</div>
 					<FormControlStyled component="fieldset">
-						<InputLabelRadio component="legend">
+						<InputLabelRadio component="legend" htmlFor="ownerVehicle">
 							{t('owner')}
 						</InputLabelRadio>
-						<RadioGroup row id="ownerVehicle" name="filledUpTank">
+						<RadioGroup 
+							row 
+							id="ownerVehicle" 
+							name="ownerVehicle" 
+							defaultValue={currentInfo?.ownerVehicle}
+						>
 							<FormControlLabel
 								value="farm"
 								control={<Radio />}

@@ -1,11 +1,9 @@
 import {
 	SelectField,
 	InputField,
-	StyledMenuItem,
 	InputLabelStyled,
 } from '../../../inputsStyles';
 
-import { fuelTypes } from '../../../../../utils/dataMock/mock';
 import { ItemTableRowWeighing, TitleTableRowWeighing } from './styles';
 import { useState } from 'react';
 import { InputAdornment, ListItemText, MenuItem } from '@material-ui/core';
@@ -17,22 +15,12 @@ import {
 import { ItemTableRow } from '../lot/styles';
 
 export const ModalWeighing = ({ t }) => {
-	const [lotSelected, setLotSelected] = useState([]);
-	const [subareaHomeSelected, setSubareaHomeSelected] = useState([]);
-	const [subareaDestinationSelected, setSubareaDestinationSelected] =
-		useState([]);
+	const [currentInfo, setCurrentInfo] = useState({});
 
-	const handleLotSelected = (event) => {
-		setLotSelected(event.target.value);
+	const handleInput = (info, inputName) => {
+		setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
 	};
 
-	const handleSubareaHomeSelected = (event) => {
-		setSubareaHomeSelected(event.target.value);
-	};
-
-	const handleSubareaDestinationSelected = (event) => {
-		setSubareaDestinationSelected(event.target.value);
-	};
 	return (
 		<div style={{ display: 'flex', flexDirection: 'column' }}>
 			<div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -49,8 +37,8 @@ export const ModalWeighing = ({ t }) => {
 					<SelectField
 						id="selectLot"
 						name="selectLot"
-						value={lotSelected}
-						onChange={handleLotSelected}
+						value={currentInfo?.selectLot}
+						onChange={(e) => handleInput(e.target.value, e.target.name)}
 						style={{ width: '100%' }}
 					>
 						{weighingSelect.map((lot) => (
@@ -64,7 +52,7 @@ export const ModalWeighing = ({ t }) => {
 												justifyContent: 'space-between',
 												gap: '10%',
 											}}
-											onCLick={console.log('clicou')}
+											onClick={console.log('clicou')}
 										>
 											<td>{lot.id}</td>
 											<td>{lot.name}</td>
@@ -91,8 +79,8 @@ export const ModalWeighing = ({ t }) => {
 								id="quantity"
 								name="quantity"
 								type="number"
-								//defaultValue={currentInfo?.quantity}
-								//onChange={(e) => handleInput(e.target.value, e.target.name)}
+								defaultValue={currentInfo?.quantity}
+								onChange={(e) => handleInput(e.target.value, e.target.name)}
 								placeholder={t('typeSomething')}
 								helperText={t('justNumbers')}
 							/>
@@ -105,8 +93,8 @@ export const ModalWeighing = ({ t }) => {
 							<InputField
 								id="dateWeighing"
 								name="dateWeighing"
-								//defaultValue={currentInfo?.quantity}
-								//onChange={(e) => handleInput(e.target.value, e.target.name)}
+								defaultValue={currentInfo?.dataWeighing}
+								onChange={(e) => handleInput(e.target.value, e.target.name)}
 								placeholder={t('typeSomething')}
 								helperText={t('justNumbers')}
 							/>
@@ -120,8 +108,8 @@ export const ModalWeighing = ({ t }) => {
 								id="averageWeight"
 								name="averageWeight"
 								type="number"
-								//defaultValue={currentInfo?.quantity}
-								//onChange={(e) => handleInput(e.target.value, e.target.name)}
+								defaultValue={currentInfo?.averageWeight}
+								onChange={(e) => handleInput(e.target.value, e.target.name)}
 								placeholder={t('typeSomething')}
 								helperText={t('justNumbers')}
 								InputProps={{
@@ -158,8 +146,8 @@ export const ModalWeighing = ({ t }) => {
 							name="lastWeighing"
 							value="10 / 10 / 2021"
 							disabled
-							//defaultValue={currentInfo?.quantity}
-							//onChange={(e) => handleInput(e.target.value, e.target.name)}
+							defaultValue={currentInfo?.lastWeighing}
+							onChange={(e) => handleInput(e.target.value, e.target.name)}
 							placeholder={t('typeSomething')}
 						/>
 					</div>
@@ -175,8 +163,8 @@ export const ModalWeighing = ({ t }) => {
 							name="lastWeighingWeight"
 							value="270 Kg"
 							disabled
-							//defaultValue={currentInfo?.quantity}
-							//onChange={(e) => handleInput(e.target.value, e.target.name)}
+							defaultValue={currentInfo?.lastWeighingWeight}
+							onChange={(e) => handleInput(e.target.value, e.target.name)}
 							placeholder={t('typeSomething')}
 							InputProps={{
 								endAdornment: (
@@ -207,8 +195,8 @@ export const ModalWeighing = ({ t }) => {
 					<SelectField
 						id="homeSubarea"
 						name="homeSubarea"
-						value={subareaHomeSelected}
-						onChange={handleSubareaHomeSelected}
+						value={currentInfo?.homeSubarea}
+						onChange={(e) => handleInput(e.target.value, e.target.name)}
 					>
 						{subareas.map((subarea) => (
 							<MenuItem key={subarea.id} value={subarea}>
@@ -228,8 +216,8 @@ export const ModalWeighing = ({ t }) => {
 					<SelectField
 						id="destinationSubArea"
 						name="destinationSubArea"
-						value={subareaDestinationSelected}
-						onChange={handleSubareaDestinationSelected}
+						value={currentInfo?.destinationSubArea}
+						onChange={(e) => handleInput(e.target.value, e.target.name)}
 					>
 						{subareas.map((subarea) => (
 							<MenuItem key={subarea.id} value={subarea}>

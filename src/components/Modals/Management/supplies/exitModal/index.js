@@ -98,6 +98,7 @@ export const ExitSuppliesModal = () => {
 							id="receivedDate"
 							name="receivedDate"
 							type="date"
+							defaultValue={currentInfo?.receivedDate}
 							onChange={(e) =>
 								handleInput(e.target.value, e.target.name)
 							}
@@ -111,6 +112,7 @@ export const ExitSuppliesModal = () => {
 							id="receivedHour"
 							name="receivedHour"
 							type="hour"
+							defaultValue={currentInfo?.receivedHour}
 							onChange={(e) =>
 								handleInput(e.target.value, e.target.name)
 							}
@@ -134,6 +136,7 @@ export const ExitSuppliesModal = () => {
 					id="quantity"
 					name="quantity"
 					type="number"
+					defaultValue={currentInfo?.quantity}
 					onChange={(e) => handleInput(e.target.value, e.target.name)}
 					helperText={t('justNumbers')}
 					placeholder={t('typeSomething')}

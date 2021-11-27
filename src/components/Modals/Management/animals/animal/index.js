@@ -1,9 +1,6 @@
-import { fuelTypes } from '../../../../../utils/dataMock/mock';
-
 import {
 	SelectField,
 	InputField,
-	StyledMenuItem,
 	InputLabelStyled,
 	InputLabelRadio,
 	FormControlStyled,
@@ -24,14 +21,10 @@ import {
 } from '../../../../../utils/dataMock/selectMock';
 
 export const ModalAnimals = ({ t }) => {
-	const [specieSelected, setSpecieSelected] = useState([]);
-	const [categorySelected, setCategorySelected] = useState([]);
+	const [currentInfo, setCurrentInfo] = useState({});
 
-	const handleSpecieSelected = (event) => {
-		setSpecieSelected(event.target.value);
-	};
-	const handleCategorySelected = (event) => {
-		setCategorySelected(event.target.value);
+	const handleInput = (info, inputName) => {
+		setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
 	};
 
 	return (
@@ -49,8 +42,8 @@ export const ModalAnimals = ({ t }) => {
 				<SelectField
 					id="specie"
 					name="specie"
-					value={specieSelected}
-					onChange={handleSpecieSelected}
+					value={currentInfo?.specie}
+					onChange={(e) => handleInput(e.target.value, e.target.name)}
 				>
 					{speciesSelect.map((specie) => (
 						<MenuItem key={specie.id} value={specie.name}>
@@ -69,11 +62,13 @@ export const ModalAnimals = ({ t }) => {
 							value="male"
 							label={t('male')}
 							control={<Radio />}
+							defaultChecked={currentInfo?.sex === 'male'}
 						/>
 						<FormControlLabel
 							value="female"
 							label={t('female')}
 							control={<Radio />}
+							defaultChecked={currentInfo?.sex === 'female'}
 						/>
 					</RadioGroup>
 				</FormControlStyled>
@@ -85,8 +80,8 @@ export const ModalAnimals = ({ t }) => {
 					id="age"
 					name="age"
 					type="number"
-					//defaultValue={currentInfo?.quantity}
-					//onChange={(e) => handleInput(e.target.value, e.target.name)}
+					defaultValue={currentInfo?.age}
+					onChange={(e) => handleInput(e.target.value, e.target.name)}
 					placeholder={t('typeSomething')}
 					helperText={t('inMonths')}
 				/>
@@ -105,8 +100,8 @@ export const ModalAnimals = ({ t }) => {
 				<SelectField
 					id="category"
 					name="category"
-					value={categorySelected}
-					onChange={handleCategorySelected}
+					value={currentInfo?.category}
+					onChange={(e) => handleInput(e.target.value, e.target.name)}
 				>
 					{categorySelect.map((category) => (
 						<MenuItem key={category.id} value={category.name}>
@@ -124,8 +119,8 @@ export const ModalAnimals = ({ t }) => {
 					id="quantity"
 					name="quantity"
 					type="number"
-					//defaultValue={currentInfo?.quantity}
-					//onChange={(e) => handleInput(e.target.value, e.target.name)}
+					defaultValue={currentInfo?.quantity}
+					onChange={(e) => handleInput(e.target.value, e.target.name)}
 					placeholder={t('typeSomething')}
 					helperText={t('justNumbers')}
 				/>
@@ -137,8 +132,8 @@ export const ModalAnimals = ({ t }) => {
 					id="averageWeight"
 					name="averageWeight"
 					type="number"
-					//defaultValue={currentInfo?.quantity}
-					//onChange={(e) => handleInput(e.target.value, e.target.name)}
+					defaultValue={currentInfo?.averageWeight}
+					onChange={(e) => handleInput(e.target.value, e.target.name)}
 					placeholder={t('typeSomething')}
 					helperText={t('justNumbers')}
 				/>

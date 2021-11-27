@@ -1,12 +1,10 @@
 import {
 	SelectField,
 	InputField,
-	StyledMenuItem,
 	InputLabelStyled,
 	UploadField,
 } from '../../../../inputsStyles';
 
-import { fuelTypes } from '../../../../../../utils/dataMock/mock';
 import { WrapperRow } from './styles';
 import { useState } from 'react';
 import {
@@ -17,16 +15,10 @@ import { ListItemText, MenuItem } from '@material-ui/core';
 import { ItemTableRow } from '../../lot/styles';
 
 export const ExitModal = ({ t, typeExit }) => {
-	const [inventorySelected, setInventorySelected] = useState([]);
+	const [currentInfo, setCurrentInfo] = useState({});
 
-	const [subareasSelected, setSubareasSelected] = useState({});
-
-	const handleSubareaSelected = (event) => {
-		setSubareasSelected(event.target.value);
-	};
-
-	const handleInventorySelected = (event) => {
-		setInventorySelected(event.target.value);
+	const handleInput = (info, inputName) => {
+		setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
 	};
 
 	return (
@@ -39,7 +31,7 @@ export const ExitModal = ({ t, typeExit }) => {
 					<SelectField
 						id="selectInventory"
 						name="selectInventory"
-						onChange={handleInventorySelected}
+						onChange={(e) => handleInput(e.target.value, e.target.name)}
 						style={{ width: '100%' }}
 					>
 						{lotSelect.map((lot) => (
@@ -76,8 +68,8 @@ export const ExitModal = ({ t, typeExit }) => {
 						id="quantity"
 						name="quantity"
 						type="textArea"
-						//defaultValue={currentInfo?.quantity}
-						//onChange={(e) => handleInput(e.target.value, e.target.name)}
+						defaultValue={currentInfo?.quantity}
+						onChange={(e) => handleInput(e.target.value, e.target.name)}
 						placeholder={t('typeSomething')}
 					/>
 				</div>
@@ -90,8 +82,8 @@ export const ExitModal = ({ t, typeExit }) => {
 					<SelectField
 						id="linkSubarea"
 						name="linkSubarea"
-						value={subareasSelected}
-						onChange={handleSubareaSelected}
+						value={currentInfo?.linkSubarea}
+						onChange={(e) => handleInput(e.target.value, e.target.name)}
 					>
 						{subareas.map((subarea) => (
 							<MenuItem key={subarea.id} value={subarea}>
@@ -112,8 +104,8 @@ export const ExitModal = ({ t, typeExit }) => {
 						id="observation"
 						name="observation"
 						type="textArea"
-						//defaultValue={currentInfo?.quantity}
-						//onChange={(e) => handleInput(e.target.value, e.target.name)}
+						defaultValue={currentInfo?.observation}
+						onChange={(e) => handleInput(e.target.value, e.target.name)}
 						placeholder={t('typeSomething')}
 					/>
 				</div>
@@ -130,9 +122,9 @@ export const ExitModal = ({ t, typeExit }) => {
 							docName=""
 							name="invoice"
 							buttonName={t('select')}
-							// onChange={(e) =>
-							// 	handleInput(e.target.value, e.target.name)
-							// }
+							onChange={(e) =>
+								handleInput(e.target.value, e.target.name)
+							}
 						/>
 					</div>
 
@@ -145,9 +137,9 @@ export const ExitModal = ({ t, typeExit }) => {
 							docName=""
 							name="animalTransitGuide"
 							buttonName={t('select')}
-							// onChange={(e) =>
-							// 	handleInput(e.target.value, e.target.name)
-							// }
+							onChange={(e) =>
+								handleInput(e.target.value, e.target.name)
+							}
 						/>
 					</div>
 				</WrapperRow>

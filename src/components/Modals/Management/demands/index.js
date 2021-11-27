@@ -13,9 +13,10 @@ import { useModalsContainer } from '../../../../context/modalsContext';
 export const DemandsModal = ({ title, breadcrumbs }) => {
 	const { t } = useTranslation();
 	const { modalState, closeModals } = useModalsContainer();
+	const [currentInfo, setCurrentInfo] = useState({});
 
 	const handleInput = (info, inputName) => {
-		//setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
+		setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
 	};
 
 	return (
@@ -54,6 +55,7 @@ export const DemandsModal = ({ title, breadcrumbs }) => {
 					<InputField
 						id="demands"
 						name="demands"
+						defaultValue={currentInfo?.demands}
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}
@@ -65,17 +67,17 @@ export const DemandsModal = ({ title, breadcrumbs }) => {
 					</InputLabelStyled>
 					<UploadField
 						id="demandPhoto"
-						// docName={
-						// 	currentInfo?.DocumentPicture !== '--'
-						// 		? currentInfo?.DocumentPicture
-						// 		: null
-						// }
+						docName={
+							currentInfo?.DocumentPicture !== '--'
+								? currentInfo?.DocumentPicture
+								: null
+						}
 						name="demandPhoto"
 						buttonName={t('select')}
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}
-						//placeholder={t('sendFile')}
+						placeholder={t('sendFile')}
 					/>
 				</div>
 			</InputFieldsWrapper>

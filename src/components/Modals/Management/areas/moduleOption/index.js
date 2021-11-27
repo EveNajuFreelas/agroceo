@@ -1,24 +1,23 @@
 import { Checkbox, ListItemText, MenuItem } from '@material-ui/core';
 import { useState } from 'react';
-import { fuelTypes } from '../../../../../utils/dataMock/mock';
 import { areas, subareas } from '../../../../../utils/dataMock/selectMock';
 
 import {
 	SelectField,
 	InputField,
-	StyledMenuItem,
 	InputLabelStyled,
 } from '../../../inputsStyles';
 import { ListItems, TitleList } from '../../styles';
 import { TitleTask } from '../../vehicleModals/UtilzationModal/UtilizationOption/styles';
 
 export const ModuleOption = ({ t }) => {
-	const [areaSelected, setAreaSelected] = useState([]);
 	const [subareasSelected, setSubareasSelected] = useState([]);
+	const [currentInfo, setCurrentInfo] = useState({});
 
-	const handleAreasSelected = (event) => {
-		setAreaSelected(event.target.value);
+	const handleInput = (info, inputName) => {
+		setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
 	};
+
 	const handleSubareaSelected = (event) => {
 		setSubareasSelected(event.target.value);
 	};
@@ -38,9 +37,10 @@ export const ModuleOption = ({ t }) => {
 					<InputField
 						id="moduleName"
 						name="moduleName"
-						// onChange={(e) =>
-						// 	handleInput(e.target.value, e.target.name)
-						// }
+						value={currentInfo?.moduleName}
+						onChange={(e) =>
+							handleInput(e.target.value, e.target.name)
+						}
 					/>
 				</div>
 				<div style={{ width: '49%' }}>
@@ -50,10 +50,10 @@ export const ModuleOption = ({ t }) => {
 					<InputField
 						id="moduleNickname"
 						name="moduleNickname"
-
-						// onChange={(e) =>
-						// 	handleInput(e.target.value, e.target.name)
-						// }
+						value={currentInfo?.moduleNickname}
+						onChange={(e) =>
+							handleInput(e.target.value, e.target.name)
+						}
 					/>
 				</div>
 			</div>
@@ -64,8 +64,10 @@ export const ModuleOption = ({ t }) => {
 			<SelectField
 				id="destination"
 				name="destination"
-				value={areaSelected}
-				onChange={handleAreasSelected}
+				value={currentInfo?.destination}
+				onChange={(e) =>
+					handleInput(e.target.value, e.target.name)
+				}
 			>
 				{areas.map((area) => (
 					<MenuItem key={area.id} value={area.name}>

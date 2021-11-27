@@ -9,7 +9,6 @@ import {
 	InputField,
 	InputLabelStyled,
 	SelectField,
-	StyledMenuItem,
 } from '../../inputsStyles';
 import { WrapperInputText } from './styles';
 import { InputAdornment, ListItemText, MenuItem } from '@material-ui/core';
@@ -19,24 +18,22 @@ import { subareas } from '../../../../utils/dataMock/selectMock';
 
 export const AgricultureModal = () => {
 	const { t } = useTranslation();
-	const { modalState, closeModals } = useModalsContainer();
+	const { modalState, closeModals, activeContent } = useModalsContainer();
 
-	const [currentInfo, setCurrentInfo] = useState({});
-	const [subareasSelected, setSubareasSelected] = useState([]);
-
-	const handleInput = (info, inputName) => {
-		setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
-	};
+	const [currentInfo, setCurrentInfo] = useState(activeContent);
 
 	const handleSave = () => {
 		console.log(currentInfo);
 		setCurrentInfo({});
 		closeModals();
+	}
+
+	const handleInput = (info, inputName) => {
+		setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
 	};
 
 	return (
 		<ModalShell
-			isSmall
 			open={modalState}
 			handleClose={closeModals}
 			title={t('registerAgriculture')}
@@ -69,9 +66,8 @@ export const AgricultureModal = () => {
 					<SelectField
 						id="subarea"
 						name="subarea"
-						onChange={(e) =>
-							handleInput(e.target.value, e.target.name)
-						}
+						onChange={e => handleInput(e.target.value, e.target.name)}
+						defaultValue={currentInfo?.subarea}
 					>
 						{subareas.map((subarea) => (
 							<MenuItem key={subarea.id} value={subarea}>
@@ -94,13 +90,9 @@ export const AgricultureModal = () => {
 							handleInput(e.target.value, e.target.name)
 						}
 						placeholder={t('typeSomething')}
+						defaultValue={currentInfo?.typeAgriculture}
 					/>
-					<div
-						style={{
-							display: 'flex',
-							justifyContent: 'space-between',
-						}}
-					>
+					<div style={{ display: 'flex', justifyContent: 'space-between' }}>
 						<div style={{ width: '48%' }}>
 							<InputLabelStyled required htmlFor="quantity">
 								{t('quantity')}
@@ -110,12 +102,8 @@ export const AgricultureModal = () => {
 									id="quantity"
 									name="quantity"
 									type="number"
-									onChange={(e) =>
-										handleInput(
-											e.target.value,
-											e.target.name
-										)
-									}
+									onChange={(e) => handleInput(e.target.value, e.target.name)}
+									defaultValue={currentInfo?.numberBags}
 									helperText={t('justNumbers')}
 									placeholder="0"
 									InputProps={{
@@ -141,12 +129,8 @@ export const AgricultureModal = () => {
 									id="weightPerBag"
 									name="weightPerBag"
 									type="number"
-									onChange={(e) =>
-										handleInput(
-											e.target.value,
-											e.target.name
-										)
-									}
+									defaultValue={Number(currentInfo?.weightPerBag)}
+									onChange={(e) => handleInput(e.target.value, e.target.name)}
 									helperText={t('justNumbers')}
 									placeholder="0"
 									InputProps={{

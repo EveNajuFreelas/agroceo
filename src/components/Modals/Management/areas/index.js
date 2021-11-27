@@ -18,10 +18,6 @@ export const AreaModal = ({ title, breadcrumbs }) => {
 
 	const [register, setRegister] = useState('subarea');
 
-	const handleInput = (info, inputName) => {
-		//setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
-	};
-
 	return (
 		<ModalShell
 			isSmall

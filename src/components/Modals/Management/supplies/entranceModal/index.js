@@ -160,6 +160,7 @@ export const EntranceSuppliesModal = () => {
 								id="receivedDate"
 								name="receivedDate"
 								type="date"
+								defaultValue={currentInfo?.receivedDate}
 								onChange={(e) =>
 									handleInput(e.target.value, e.target.name)
 								}
@@ -173,6 +174,7 @@ export const EntranceSuppliesModal = () => {
 								id="receivedHour"
 								name="receivedHour"
 								type="hour"
+								defaultValue={currentInfo?.receivedHour}
 								onChange={(e) =>
 									handleInput(e.target.value, e.target.name)
 								}
@@ -198,6 +200,7 @@ export const EntranceSuppliesModal = () => {
 									handleInput(e.target.value, e.target.name)
 								}
 								helperText={t('justNumbers')}
+								defaultValue={currentInfo?.quantity}
 							/>
 						</div>
 						<div style={{ width: '48%' }}>
@@ -207,9 +210,7 @@ export const EntranceSuppliesModal = () => {
 							<SelectField
 								id="measurementUnit"
 								name="measurementUnit"
-								defaultValue={
-									currentInfo?.measurementUnit || ''
-								}
+								defaultValue={currentInfo?.measurementUnit || ''}
 								onChange={(e) =>
 									handleInput(e.target.value, e.target.name)
 								}
@@ -230,10 +231,10 @@ export const EntranceSuppliesModal = () => {
 						{t('presentation')}
 					</InputLabelStyled>
 					<InputField
-						id="quantity"
-						name="quantity"
+						id="suppliesValue"
+						name="suppliesValue"
 						type="money"
-						defaultValue={currentInfo?.quantity}
+						defaultValue={currentInfo?.suppliesValue}
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}

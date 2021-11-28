@@ -16,7 +16,7 @@ import { FinancialModal } from '../../../components/Modals/Financial/index';
 import { usePageContext } from '../../../context/pageContext';
 
 const Despesas = () => {
-	const { setPageTitle } = usePageContext();
+	const { setPageTitle, setBreadcrumbs } = usePageContext();
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
 
@@ -34,6 +34,7 @@ const Despesas = () => {
 
 	useEffect(() => {
 		setPageTitle('expenses');
+		setBreadcrumbs([t('financial'), t('expenses')]);
 	}, []);
 
 	return (

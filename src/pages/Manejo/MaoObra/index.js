@@ -18,7 +18,7 @@ import { EditFunctionsModal } from '../../../components/Modals/Management/manPow
 import { usePageContext } from '../../../context/pageContext';
 
 const MaoDeObra = () => {
-	const { setPageTitle } = usePageContext();
+	const { setPageTitle, setBreadcrumbs } = usePageContext();
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
 	const { roles, employees, getRoles, getEmployees, isLoading, deleteRole } =
@@ -33,6 +33,7 @@ const MaoDeObra = () => {
 		getRoles();
 		getEmployees();
 		setPageTitle('manpower');
+		setBreadcrumbs([t('management'), t('manpower')]);
 	}, []);
 
 	const handleChange = (event, newValue) => {

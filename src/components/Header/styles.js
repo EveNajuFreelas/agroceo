@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { defaultTheme } from '../../theme';
-import { Select, MenuItem } from '@material-ui/core';
+import { Select, MenuItem, Breadcrumbs } from '@material-ui/core';
 import { ExpandMore } from '@material-ui/icons';
 
 const { align, text, border, margin, colors, padding, borderRadius, width } =
@@ -31,10 +31,15 @@ export const HeaderTitle = styled.p`
 	margin: 0;
 `;
 
-export const HeaderDate = styled.p`
+export const HeaderBreadcrumb = styled(Breadcrumbs)`
 	margin: 0;
 	size: ${text.size.caption};
 	color: ${colors.neutral6};
+
+	li {
+		color: ${colors.neutral6};
+		font-size: ${text.size.small};
+	}
 `;
 
 export const HeaderInfo = styled.div`

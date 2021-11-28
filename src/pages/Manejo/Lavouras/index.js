@@ -18,7 +18,7 @@ import { usePageContext } from '../../../context/pageContext';
 import { manejoLavouras } from '../../../utils/dataMock/mock';
 
 const Lavouras = () => {
-	const { setPageTitle } = usePageContext();
+	const { setPageTitle, setBreadcrumbs } = usePageContext();
 	const { t } = useTranslation();
 	const { openModal } = useModalsContainer();
 	const { colors } = defaultTheme;
@@ -27,6 +27,7 @@ const Lavouras = () => {
 	useEffect(() => {
 		getTillage();
 		setPageTitle('agriculture');
+		setBreadcrumbs([t('management'), t('agriculture')]);
 	}, []);
 
 	const columns = [

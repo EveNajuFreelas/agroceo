@@ -4,7 +4,7 @@ import { usePageContext } from '../../context/pageContext';
 import {
 	HeaderStyle,
 	HeaderTitle,
-	HeaderDate,
+	HeaderBreadcrumb,
 	HeaderInfo,
 	StyledSelect,
 	StyledMenuItem,
@@ -33,14 +33,7 @@ export const Header = () => {
 	const [dropdownValue, setDropdownValue] = useState(
 		mockProperties.length > 0 ? mockProperties[0].value : 'none'
 	);
-	const { drawerOpen, pageTitle } = usePageContext();
-
-	const todayDate = new Date().toLocaleDateString(t('date'), {
-		year: 'numeric',
-		month: 'long',
-		day: 'numeric',
-		timeZone: 'utc',
-	});
+	const { drawerOpen, pageTitle, breadcrumbs } = usePageContext();
 
 	const handleDropdown = e => {
 		setDropdownValue(e.target.value);
@@ -50,7 +43,9 @@ export const Header = () => {
 		<HeaderStyle drawerOpen={drawerOpen}>
 			<HeaderInfo>
 				<HeaderTitle>{t(pageTitle)}</HeaderTitle>
-				<HeaderDate>{todayDate}</HeaderDate>
+				<HeaderBreadcrumb>
+					{breadcrumbs && breadcrumbs.map((b) => <p>{t(b)}</p>)}
+				</HeaderBreadcrumb>
 			</HeaderInfo>
 			<StyledSelect value={dropdownValue} onChange={handleDropdown}>
 				{mockProperties.length > 0 ? (

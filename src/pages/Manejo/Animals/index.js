@@ -29,7 +29,7 @@ const Animals = () => {
 	const { colors } = defaultTheme;
 	const { isLoading, animals, getAnimals, deleteAnimals } = useAnimals();
 	const { openModal } = useModalsContainer();
-	const { setPageTitle } = usePageContext();
+	const { setPageTitle, setBreadcrumbs } = usePageContext();
 
 	const [value, setValue] = useState(0);
 	const [checkedItems, setCheckedItems] = useState([]);
@@ -37,7 +37,7 @@ const Animals = () => {
 	useEffect(() => {
 		getAnimals();
 		setPageTitle('animals');
-		console.log(animaisLots);
+		setBreadcrumbs([t('management'), t('animals')]);
 	}, []);
 
 	const handleCheck = (e, item) => {

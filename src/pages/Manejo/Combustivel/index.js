@@ -17,7 +17,7 @@ import { ExitManagementModal } from '../../../components/Modals/Management/fuel/
 import { usePageContext } from '../../../context/pageContext';
 
 const Combustivel = () => {
-	const { setPageTitle } = usePageContext();
+	const { setPageTitle, setBreadcrumbs } = usePageContext();
 	const { openInitialModal } = useManagementContainer();
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
@@ -40,6 +40,7 @@ const Combustivel = () => {
 
 	useEffect(() => {
 		setPageTitle('fuel');
+		setBreadcrumbs([t('management'), t('fuel')]);
 	}, []);
 
 	return (

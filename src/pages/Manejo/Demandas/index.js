@@ -16,7 +16,7 @@ import { useModalsContainer } from '../../../context/modalsContext';
 import { usePageContext } from '../../../context/pageContext';
 
 const Demandas = () => {
-	const { setPageTitle } = usePageContext();
+	const { setPageTitle, setBreadcrumbs } = usePageContext();
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
 	const { demands, deleteDemands, getDemands, isLoading } = useDemand();
@@ -25,6 +25,7 @@ const Demandas = () => {
 	useEffect(() => {
 		getDemands();
 		setPageTitle('demand');
+		setBreadcrumbs([t('management'), t('demand')]);
 	}, []);
 
 	const columns = [

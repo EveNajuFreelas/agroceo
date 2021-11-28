@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import BarChart from '../../components/Charts/Bar';
 import PizzaChart from '../../components/Charts/Pizza';
 import OverviewFinancial from '../../components/Financeiro/OverviewFinancial';
@@ -9,10 +10,17 @@ import {
 	OverviewFinancialContainer,
 } from './styles';
 const Dashboard = () => {
-	const { drawerOpen, setPageTitle } = usePageContext();
+	const { t } = useTranslation();
+	const { drawerOpen, setPageTitle, setBreadcrumbs } = usePageContext();
+	const todayDate = new Date().toLocaleDateString(t('date'), {
+		year: 'numeric',
+		month: 'long',
+		day: 'numeric',
+	});
 	
 	useEffect(() => {
 		setPageTitle('greeting');
+		setBreadcrumbs([todayDate]);
 	}, []);
 
 	return (

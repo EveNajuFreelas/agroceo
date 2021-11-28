@@ -15,7 +15,7 @@ import { useModalsContainer } from '../../../context/modalsContext';
 import { usePageContext } from '../../../context/pageContext';
 
 const Areas = () => {
-	const { setPageTitle } = usePageContext();
+	const { setPageTitle, setBreadcrumbs } = usePageContext();
 	const { t } = useTranslation();
 	const { openModal } = useModalsContainer();
 	const { colors } = defaultTheme;
@@ -26,6 +26,7 @@ const Areas = () => {
 	useEffect(() => {
 		getAreasAndModules();
 		setPageTitle('areas');
+		setBreadcrumbs([t('management'), t('areas')]);
 	}, []);
 
 	const handleChange = (event, newValue) => {

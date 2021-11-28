@@ -18,7 +18,7 @@ import { ExitSuppliesModal } from '../../../components/Modals/Management/supplie
 import { useManagementContainer } from '../../../context/managementContext';
 
 const Insumos = () => {
-	const { setPageTitle } = usePageContext();
+	const { setPageTitle, setBreadcrumbs } = usePageContext();
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
 	const { inputs, getInputs, isLoading, filter } = useInput();
@@ -27,6 +27,7 @@ const Insumos = () => {
 	useEffect(() => {
 		getInputs();
 		setPageTitle('input');
+		setBreadcrumbs([t('management'), t('input')]);
 	}, []);
 
 	const columns = [

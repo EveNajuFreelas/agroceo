@@ -28,6 +28,7 @@ import {
 	TableCell,
 	TableBody,
 } from '@material-ui/core';
+import { timesParcels } from '../../../utils/dataMock/mock.js';
 
 export const FinancialModal = ({ title, breadcrumbs }) => {
 	const { modalState, setModalState, activeContent } = useExpensesContainer();
@@ -46,6 +47,7 @@ export const FinancialModal = ({ title, breadcrumbs }) => {
 
 	const handlePropertiesInput = (info, inputName, id) => {
 		if (inputName === 'percentage') {
+			console.log(info, inputName, id);
 			// fazer equivalência valor total -> porcentagem aqui
 		}
 		const newArray = [...currentInfo.Properties];
@@ -59,7 +61,6 @@ export const FinancialModal = ({ title, breadcrumbs }) => {
 	const editParcelStatusModal = () => {
 		return (
 			<ModalShell
-				isSmall
 				open={editParcelModal}
 				handleClose={() => setEditParcelModal(false)}
 				title={t('updatePayment')}
@@ -293,6 +294,7 @@ export const FinancialModal = ({ title, breadcrumbs }) => {
 					<Divider orientation="vertical" flexItem component="div" />
 
 					<div style={{ width: '48%' }}>
+						
 						<InputLabelStyled htmlFor="payment">
 							{t('payment')}
 						</InputLabelStyled>
@@ -319,7 +321,9 @@ export const FinancialModal = ({ title, breadcrumbs }) => {
 								handleInput(e.target.value, e.target.name)
 							}
 						>
-							<StyledMenuItem value="10x">10x</StyledMenuItem>
+							{timesParcels.map(p => (
+								<StyledMenuItem value={p}>{p}</StyledMenuItem>
+							))}
 						</SelectField>
 						<InputLabelStyled htmlFor="firstParcel">
 							{t('firstParcel')}
@@ -333,7 +337,7 @@ export const FinancialModal = ({ title, breadcrumbs }) => {
 							}
 						/>
 						<InputLabelStyled htmlFor="accountPlan">
-							{t('AccountPlan')}
+							{t('accountPlan')}
 						</InputLabelStyled>
 						<SelectField
 							id="AccountPlan"

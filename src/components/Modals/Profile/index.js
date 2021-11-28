@@ -111,7 +111,7 @@ export const ProfileModal = () => {
 							}
 						>
 							{countries.map((country) => (
-								<StyledMenuItem value={country.icon}>
+								<StyledMenuItem value={country.icon} key={country.icon}>
 									<ContainerSelectCountry>
 										<img src={iconList[country.icon]} alt='' />
 										<span>+{country.number}</span>

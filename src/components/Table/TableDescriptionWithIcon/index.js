@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { defaultTheme } from '../../../theme';
 import LabelWithIcon from '../../LabelWithIcon';
 import {
@@ -7,7 +7,6 @@ import {
 	TableCell,
 	TableRow,
 	Checkbox,
-	Link,
 } from '@material-ui/core';
 import { StyledTableContainer } from '../styles';
 import { iconList } from '../../../assets/Icons/icon-list';
@@ -44,7 +43,8 @@ const TableWithDescriptionIcon = ({
 	};
 
 	const handleClick = (info) => {
-		//editActiveContent(info);
+		console.log(info);
+		editActiveContent(info);
 		setModalState(true);
 	};
 

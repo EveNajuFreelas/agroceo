@@ -18,7 +18,7 @@ import { UtilizationModal } from '../../../components/Modals/Management/vehicleM
 import { usePageContext } from '../../../context/pageContext';
 
 const Tratores = () => {
-	const { setPageTitle } = usePageContext();
+	const { setPageTitle, setBreadcrumbs } = usePageContext();
 	const { openModal } = useModalsContainer();
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
@@ -27,6 +27,7 @@ const Tratores = () => {
 	useEffect(() => {
 		getTractor();
 		setPageTitle('tractor');
+		setBreadcrumbs([t('management'), t('tractor')]);
 	}, []);
 
 	const columns = [

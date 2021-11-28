@@ -16,7 +16,7 @@ import { FinancialModal } from '../../../components/Modals/Financial/index';
 import { usePageContext } from '../../../context/pageContext/index';
 
 const Investimento = () => {
-	const { setPageTitle } = usePageContext();
+	const { setPageTitle, setBreadcrumbs } = usePageContext();
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
 
@@ -34,6 +34,7 @@ const Investimento = () => {
 
 	useEffect(() => {
 		setPageTitle('investments');
+		setBreadcrumbs([t('financial'), t('investments')]);
 	}, []);
 
 	return (

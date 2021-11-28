@@ -18,7 +18,7 @@ import { useModalsContainer } from '../../../context/modalsContext';
 import { usePageContext } from '../../../context/pageContext';
 
 const Tarefas = () => {
-	const { setPageTitle } = usePageContext();
+	const { setPageTitle, setBreadcrumbs } = usePageContext();
 	const { t } = useTranslation();
 	const { colors } = defaultTheme;
 	const { getTasks, tasks, deleteTasks, isLoading } = useTask();
@@ -27,6 +27,7 @@ const Tarefas = () => {
 	useEffect(() => {
 		getTasks();
 		setPageTitle('assignments');
+		setBreadcrumbs([t('management'), t('assignments')]);
 	}, []);
 
 	const columns = [

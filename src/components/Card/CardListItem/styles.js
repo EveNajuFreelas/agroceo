@@ -8,11 +8,11 @@ export const ListItemCard = styled.li`
 	grid-template-columns: 8% 60% 33%;
 	align-items: flex-start;
 	padding: 10px 0;
-	
-	@media (max-width: 1445px){
+
+	@media (max-width: 1445px) {
 		grid-template-columns: 9% 61% 30%;
 	}
-	@media (max-width: 1025px){
+	@media (max-width: 1025px) {
 		grid-template-columns: 5% 60% 33%;
 	}
 `;
@@ -30,7 +30,7 @@ export const TitleSection = styled.div`
 
 export const Title = styled.span`
 	font-size: ${text.size.medium};
-	font-family: ${text.fontFamily.bold};
+	font-weight: bold;
 	color: ${colors.neutral5};
 `;
 
@@ -46,7 +46,7 @@ export const ValueSection = styled.div`
 
 export const Value = styled.span`
 	font-size: ${text.size.medium};
-	font-family: ${text.fontFamily.bold};
+	font-weight: bold;
 	color: ${colors.auxiliar};
 	align-self: flex-end;
 `;

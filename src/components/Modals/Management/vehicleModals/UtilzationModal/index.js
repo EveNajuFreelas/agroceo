@@ -27,9 +27,10 @@ export const UtilizationModal = ({ title, breadcrumbs, odometerHourmeter }) => {
 		useModalsContainer();
 
 	const [register, setRegister] = useState('utilization');
+	const [currentInfo, setCurrentInfo] = useState(null);
 
 	const handleInput = (info, inputName) => {
-		//setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
+		setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
 	};
 
 	return (
@@ -95,12 +96,15 @@ export const UtilizationModal = ({ title, breadcrumbs, odometerHourmeter }) => {
 							odometerHourmeter={odometerHourmeter}
 							employees={employeesSelect}
 							t={t}
+							currentInfo={currentInfo}
+							handleInput={handleInput}
 						/>
 					)}
 					{register === 'revision' && (
 						<RevisionFirst
 							odometerHourmeter={odometerHourmeter}
 							t={t}
+							handleInput={handleInput}
 						/>
 					)}
 				</div>
@@ -109,9 +113,19 @@ export const UtilizationModal = ({ title, breadcrumbs, odometerHourmeter }) => {
 
 				<div style={{ width: '48%' }}>
 					{register === 'utilization' && (
-						<UtilizationSecond t={t} tasks={tasks} />
+						<UtilizationSecond
+							t={t}
+							tasks={tasks}
+							handleInput={handleInput}
+						/>
 					)}
-					{register === 'revision' && <RevisionSecond t={t} />}
+					{register === 'revision' && (
+						<RevisionSecond
+							t={t}
+							handleInput={handleInput}
+							employees={employeesSelect}
+						/>
+					)}
 				</div>
 			</InputFieldsWrapper>
 		</ModalShell>

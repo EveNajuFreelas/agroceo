@@ -13,6 +13,10 @@ import { useManagementContainer } from '../../../../../context/managementContext
 import { ItemTableRowSupplies, TitleTableRowSupplies } from './styles';
 import { InputAdornment } from '@material-ui/core';
 import { AccessTime } from '@material-ui/icons';
+import ItemSelect from '../../../SelectField';
+import { employeesSelect } from '../../../../../utils/dataMock/selectMock';
+import DateInput from '../../inputs/dateInput';
+import HourInput from '../../inputs/hourInput';
 
 export const ExitSuppliesModal = () => {
 	const { t } = useTranslation();
@@ -52,7 +56,7 @@ export const ExitSuppliesModal = () => {
 			]}
 		>
 			<InputFieldsWrapper style={{ flexDirection: 'column' }}>
-				<div>
+				<div style={{ marginBottom: '20px' }}>
 					<table style={{ width: '100%' }}>
 						<thead>
 							<TitleTableRowSupplies>
@@ -71,19 +75,20 @@ export const ExitSuppliesModal = () => {
 					</table>
 				</div>
 
-				<InputLabelStyled htmlFor="whoWithdrew">
+				<InputLabelStyled required htmlFor="whoWithdrew">
 					{t('whoWithdrew')}
 				</InputLabelStyled>
 				<SelectField
 					id="whoWithdrew"
 					name="whoWithdrew"
-					defaultValue={currentInfo?.whoWithdrew}
+					defaultValue={'' || currentInfo?.whoWithdrew}
 					onChange={(e) => handleInput(e.target.value, e.target.name)}
 				>
-					{manejoMaoFuncionario.map((ft) => (
-						<StyledMenuItem value={ft.id}>
-							{t(ft.Apelido)}
-						</StyledMenuItem>
+					<StyledMenuItem>
+						<ItemSelect value="" />
+					</StyledMenuItem>
+					{employeesSelect.map((ft) => (
+						<StyledMenuItem value={ft}>{t(ft.name)}</StyledMenuItem>
 					))}
 				</SelectField>
 
@@ -91,13 +96,11 @@ export const ExitSuppliesModal = () => {
 					style={{ display: 'flex', justifyContent: 'space-between' }}
 				>
 					<div style={{ width: '48%' }}>
-						<InputLabelStyled htmlFor="receivedDate">
+						<InputLabelStyled required htmlFor="receivedDate">
 							{t('receivedDate')}
 						</InputLabelStyled>
-						<InputField
-							id="receivedDate"
+						<DateInput
 							name="receivedDate"
-							type="date"
 							defaultValue={currentInfo?.receivedDate}
 							onChange={(e) =>
 								handleInput(e.target.value, e.target.name)
@@ -105,31 +108,20 @@ export const ExitSuppliesModal = () => {
 						/>
 					</div>
 					<div style={{ width: '48%' }}>
-						<InputLabelStyled htmlFor="receivedHour">
+						<InputLabelStyled required htmlFor="receivedHour">
 							{t('receivedHour')}
 						</InputLabelStyled>
-						<InputField
-							id="receivedHour"
+						<HourInput
 							name="receivedHour"
-							type="hour"
 							defaultValue={currentInfo?.receivedHour}
 							onChange={(e) =>
 								handleInput(e.target.value, e.target.name)
 							}
-							InputProps={{
-								endAdornment: (
-									<InputAdornment position="end">
-										<AccessTime
-											style={{ color: '#A3a3a3' }}
-										/>
-									</InputAdornment>
-								),
-							}}
 						/>
 					</div>
 				</div>
 
-				<InputLabelStyled htmlFor="quantity">
+				<InputLabelStyled required htmlFor="quantity">
 					{t('quantity')}
 				</InputLabelStyled>
 				<InputField

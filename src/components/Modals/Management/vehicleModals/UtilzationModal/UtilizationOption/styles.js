@@ -6,7 +6,7 @@ const { colors, text } = defaultTheme;
 export const TitleRow = styled.tr`
 	th {
 		font-size: ${text.size.normal};
-		font-family: ${text.fontFamily.regular};
+
 		font-weight: 700;
 		padding-bottom: 10px;
 	}
@@ -23,7 +23,6 @@ export const TitleRow = styled.tr`
 `;
 export const ItemRow = styled.tr`
 	td {
-		font-family: ${text.fontFamily.regular};
 		padding-bottom: 10px;
 	}
 

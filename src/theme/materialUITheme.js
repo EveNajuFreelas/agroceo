@@ -10,6 +10,11 @@ const theme = createMuiTheme({
 			contrastText: '#fff',
 		},
 	},
+	props: {
+		MuiRadio: {
+			color: 'primary',
+		},
+	},
 });
 
 export default theme;

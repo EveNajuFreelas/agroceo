@@ -18,7 +18,7 @@ export const PropertiesField = styled(Grid)`
 
 export const Subtitle = styled.span`
 	font-size: ${text.size.medium};
-	font-family: ${text.fontFamily.bold};
+	font-weight: bold;
 `;
 
 export const ParcelButton = styled(Button)`

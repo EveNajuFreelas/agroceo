@@ -1,4 +1,4 @@
-import { useState } from 'react'; 
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ModalShell } from '../../../../Modal/index';
 import {
@@ -85,12 +85,12 @@ export const EmployeesModal = () => {
 							<FormControlLabel
 								value="temporary"
 								label={t('temporary')}
-								control={<Radio color="primary" />}
+								control={<Radio />}
 							/>
 							<FormControlLabel
 								value="permanent"
 								label={t('permanent')}
-								control={<Radio color="primary" />}
+								control={<Radio />}
 							/>
 						</RadioGroup>
 					</FormControlStyled>

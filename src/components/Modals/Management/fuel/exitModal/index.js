@@ -19,14 +19,17 @@ import { employeesSelect } from '../../../../../utils/dataMock/selectMock';
 import { iconList } from '../../../../../assets/Icons/icon-list';
 import InputMask from 'react-input-mask';
 import ItemSelect from '../../../SelectField';
+import HourInput from '../../inputs/hourInput';
+import DateInput from '../../inputs/dateInput';
 
 export const ExitManagementModal = () => {
 	const { t } = useTranslation();
-	const { exitModalState, closeModals, activeContent } = useManagementContainer();
+	const { exitModalState, closeModals, activeContent } =
+		useManagementContainer();
 
 	const [currentInfo, setCurrentInfo] = useState({
 		...activeContent,
-		whereWasFilled: 'atFarm'
+		whereWasFilled: 'atFarm',
 	});
 
 	const handleInput = (info, inputName) => {
@@ -77,7 +80,9 @@ export const ExitManagementModal = () => {
 								name="filledUpTank"
 								id="atFarm"
 								value="atFarm"
-								onClick={(e) => handleInput(e.target.value, e.target.name)}
+								onClick={(e) =>
+									handleInput(e.target.value, e.target.name)
+								}
 							/>
 							<FuelLabelRadio for="atFarm">
 								<img src={iconList.manage} alt="" />
@@ -89,7 +94,9 @@ export const ExitManagementModal = () => {
 								name="filledUpTank"
 								id="atCity"
 								value="atCity"
-								onClick={(e) => handleInput(e.target.value, e.target.name)}
+								onClick={(e) =>
+									handleInput(e.target.value, e.target.name)
+								}
 							/>
 							<FuelLabelRadio for="atCity">
 								<img src={iconList.gasStation} alt="" />
@@ -140,48 +147,26 @@ export const ExitManagementModal = () => {
 							<InputLabelStyled required htmlFor="fillDate">
 								{t('fillDate')}
 							</InputLabelStyled>
-							<InputMask
-								mask="99 / 99 / 9999"
-								maskChar=" "
+							<DateInput
+								name="fillDate"
 								onChange={(e) =>
 									handleInput(e.target.value, e.target.name)
 								}
-							>
-								{() => (
-									<InputField
-										id="fillDate"
-										name="fillDate"
-										helperText={t('justNumbers')}
-										placeholder="DD/MM/AAAA"
-									/>
-								)}
-							</InputMask>
+							/>
 						</div>
 						<div style={{ width: '48%' }}>
 							<InputLabelStyled required htmlFor="fillHour">
 								{t('fillHour')}
 							</InputLabelStyled>
-							<InputMask
-								mask="99 : 99"
-								maskPlaceholder="00 : 00"
-								maskChar=" "
-							>
-								{() => (
-									<InputField
-										id="fillHour"
-										name="fillHour"
-										helperText={t('justNumbers')}
-										placeholder="00:00"
-										defaultValue={currentInfo?.fillHour}
-										onChange={(e) =>
-											handleInput(e.target.value, e.target.name)
-										}
-									/>
-								)}
-							</InputMask>
+							<HourInput
+								name="fillHour"
+								onChange={(e) =>
+									handleInput(e.target.value, e.target.name)
+								}
+							/>
 						</div>
 					</div>
-					{currentInfo?.whereWasFilled === 'atFarm' && (
+					{currentInfo?.filledUpTank === 'atFarm' && (
 						<>
 							<InputLabelStyled required htmlFor="whoFilledUp">
 								{t('whoFilledUp')}
@@ -190,7 +175,9 @@ export const ExitManagementModal = () => {
 								id="whoFilledUp"
 								name="whoFilledUp"
 								value={currentInfo?.whoFilledUp}
-								onChange={e => handleInput(e.target.value, e.target.name)}
+								onChange={(e) =>
+									handleInput(e.target.value, e.target.name)
+								}
 							>
 								<StyledMenuItem>
 									<ItemSelect value="" />

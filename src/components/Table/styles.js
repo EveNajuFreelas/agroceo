@@ -27,7 +27,7 @@ export const StyledTableContainer = styled(TableContainer)`
 		.MuiTableRow-head
 		.MuiTableCell-head {
 		font-size: 14px;
-		font-family: ${text.fontFamily.bold};
+		font-weight: bold;
 	}
 
 	&.MuiTableContainer-root
@@ -36,6 +36,5 @@ export const StyledTableContainer = styled(TableContainer)`
 		.MuiTableRow-root
 		.MuiTableCell-root {
 		font-size: 16px;
-		font-family: ${text.fontFamily.regular};
 	}
 `;

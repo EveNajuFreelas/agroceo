@@ -6,7 +6,7 @@ const { text, colors } = defaultTheme;
 export const TitleTableRowWeighing = styled.tr`
 	th {
 		font-size: ${text.size.normal};
-		font-family: ${text.fontFamily.regular};
+
 		font-weight: 700;
 		padding-bottom: 10px;
 		color: ${colors.neutralDark};
@@ -30,7 +30,6 @@ export const TitleTableRowWeighing = styled.tr`
 `;
 export const ItemTableRowWeighing = styled.tr`
 	td {
-		font-family: ${text.fontFamily.regular};
 		padding-bottom: 10px;
 		font-size: ${text.size.normal};
 	}

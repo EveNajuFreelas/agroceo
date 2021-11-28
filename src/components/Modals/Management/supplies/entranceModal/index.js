@@ -24,6 +24,10 @@ import {
 } from '@material-ui/core';
 import { iconList } from '../../../../../assets/Icons/icon-list';
 import { defaultTheme } from '../../../../../theme';
+import ItemSelect from '../../../SelectField';
+import DateInput from '../../inputs/dateInput';
+import HourInput from '../../inputs/hourInput';
+import { employeesSelect } from '../../../../../utils/dataMock/selectMock';
 
 export const EntranceSuppliesModal = () => {
 	const { t } = useTranslation();
@@ -125,23 +129,23 @@ export const EntranceSuppliesModal = () => {
 				]}
 			>
 				<InputFieldsWrapper style={{ flexDirection: 'column' }}>
-					<InputLabelStyled htmlFor="whoReceived">
+					<InputLabelStyled required htmlFor="whoReceived">
 						{t('whoReceived')}
 					</InputLabelStyled>
 					<SelectField
 						id="whoReceived"
 						name="whoReceived"
-						defaultValue={currentInfo?.whoReceived || ''}
+						defaultValue={'' || currentInfo?.whoReceived}
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}
 					>
-						<StyledMenuItem value="">{`${t(
-							'select'
-						)}...`}</StyledMenuItem>
-						{manejoMaoFuncionario.map((ft) => (
-							<StyledMenuItem value={ft.id}>
-								{t(ft.Apelido)}
+						<StyledMenuItem>
+							<ItemSelect value="" />
+						</StyledMenuItem>
+						{employeesSelect.map((ft) => (
+							<StyledMenuItem value={ft}>
+								{t(ft.name)}
 							</StyledMenuItem>
 						))}
 					</SelectField>
@@ -153,27 +157,23 @@ export const EntranceSuppliesModal = () => {
 						}}
 					>
 						<div style={{ width: '48%' }}>
-							<InputLabelStyled htmlFor="receivedDate">
+							<InputLabelStyled required htmlFor="receivedDate">
 								{t('receivedDate')}
 							</InputLabelStyled>
-							<InputField
-								id="receivedDate"
+							<DateInput
 								name="receivedDate"
-								type="date"
-								defaultValue={currentInfo?.receivedDate}
 								onChange={(e) =>
 									handleInput(e.target.value, e.target.name)
 								}
+								defaultValue={currentInfo?.receivedDate}
 							/>
 						</div>
 						<div style={{ width: '48%' }}>
-							<InputLabelStyled htmlFor="receivedHour">
+							<InputLabelStyled required htmlFor="receivedHour">
 								{t('receivedHour')}
 							</InputLabelStyled>
-							<InputField
-								id="receivedHour"
+							<HourInput
 								name="receivedHour"
-								type="hour"
 								defaultValue={currentInfo?.receivedHour}
 								onChange={(e) =>
 									handleInput(e.target.value, e.target.name)
@@ -189,7 +189,7 @@ export const EntranceSuppliesModal = () => {
 						}}
 					>
 						<div style={{ width: '48%' }}>
-							<InputLabelStyled htmlFor="quantity">
+							<InputLabelStyled required htmlFor="quantity">
 								{t('quantity')}
 							</InputLabelStyled>
 							<InputField
@@ -204,20 +204,25 @@ export const EntranceSuppliesModal = () => {
 							/>
 						</div>
 						<div style={{ width: '48%' }}>
-							<InputLabelStyled htmlFor="measurementUnit">
+							<InputLabelStyled
+								required
+								htmlFor="measurementUnit"
+							>
 								{t('measurementUnit')}
 							</InputLabelStyled>
 							<SelectField
 								id="measurementUnit"
 								name="measurementUnit"
-								defaultValue={currentInfo?.measurementUnit || ''}
+								defaultValue={
+									'' || currentInfo?.measurementUnit
+								}
 								onChange={(e) =>
 									handleInput(e.target.value, e.target.name)
 								}
 							>
-								<StyledMenuItem value="">{`${t(
-									'select'
-								)}...`}</StyledMenuItem>
+								<StyledMenuItem disabled>
+									<ItemSelect value="" />
+								</StyledMenuItem>
 								{unidadeDeMedida.map((ft) => (
 									<StyledMenuItem value={ft.value}>
 										{t(ft.name)}
@@ -239,6 +244,7 @@ export const EntranceSuppliesModal = () => {
 							handleInput(e.target.value, e.target.name)
 						}
 						helperText={t('example20kg')}
+						placeholder={t('typeSomething')}
 						style={{ marginBottom: '0px' }}
 						InputProps={{
 							endAdornment: (
@@ -257,9 +263,10 @@ export const EntranceSuppliesModal = () => {
 					</InputLabelStyled>
 					<UploadField
 						id="document"
-						docName=""
 						name="document"
-						buttonName={t('document')}
+						docName={currentInfo?.document?.split('\\').pop()}
+						accept="application/pdf, text/xml"
+						buttonName={t('select')}
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}

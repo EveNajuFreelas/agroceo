@@ -20,10 +20,10 @@ export const IconCardValue = styled.img`
 
 export const ValueCard = styled.span`
 	font-size: ${text.size.large};
-	font-family: ${text.fontFamily.bold};
+	font-weight: bold;
 `;
 
 export const TextCard = styled.span`
-	color: ${props => props.colorText};
+	color: ${(props) => props.colorText};
 	font-size: ${text.size.caption};
 `;

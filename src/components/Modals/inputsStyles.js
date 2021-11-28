@@ -6,6 +6,7 @@ import {
 	Slider,
 	InputLabel,
 	FormControl,
+	TextareaAutosize,
 } from '@material-ui/core';
 import { ExpandMore } from '@material-ui/icons';
 import { defaultTheme } from '../../theme';
@@ -26,6 +27,7 @@ const CustomComponents = {
 			/>
 		</div>
 	),
+
 	UploadComponent: (props) => (
 		<div className={props.className} style={{ width: '99.5%' }}>
 			<p
@@ -91,7 +93,6 @@ export const InputLabelStyled = styled(InputLabel)`
 		font-size: ${text.size.small};
 		margin-bottom: ${margin.md};
 		color: ${colors.neutral5};
-		font-family: ${text.fontFamily.regular};
 	}
 
 	&.MuiInputLabel-root .MuiInputLabel-asterisk {
@@ -103,7 +104,6 @@ export const InputLabelRadio = styled((props) => <span {...props}></span>)`
 	font-size: ${text.size.normal};
 	margin-bottom: ${margin.md};
 	color: ${colors.neutral5};
-	font-family: ${text.fontFamily.regular};
 
 	${(props) =>
 		props.required &&
@@ -132,20 +132,26 @@ export const InputField = styled((props) => (
 		width: 100%;
 	}
 
-	.MuiFormLabel-root.Mui-focused {
-		color: ${colors.primary};
-	}
-
-	.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
-		border-color: ${colors.primary};
-	}
-
 	.MuiFormHelperText-root {
 		margin-bottom: 12px;
 		margin-left: 0;
 		color: ${colors.neutral6};
-		font-family: ${text.fontFamily.regular};
+
 		font-size: ${text.size.caption};
+	}
+`;
+
+export const TextArea = styled((props) => (
+	<TextareaAutosize {...props} rowsMin={5} />
+))`
+	width: 90%;
+	padding: 10px;
+	border: 1px solid ${colors.neutral3};
+	border-radius: 5px;
+	margin-bottom: 20px;
+
+	textarea:focus {
+		border: 1px solid ${colors.primary};
 	}
 `;
 
@@ -202,7 +208,7 @@ export const UploadButton = styled(CustomComponents.UploadButtonComponent)`
 		margin-left: ${margin.lg};
 		font-size: ${text.size.small};
 
-		font-family: ${text.fontFamily.bold};
+		font-weight: bold;
 	}
 
 	display: flex;

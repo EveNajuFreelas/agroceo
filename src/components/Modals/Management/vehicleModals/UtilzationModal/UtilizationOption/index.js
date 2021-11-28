@@ -7,6 +7,7 @@ import {
 	InputLabelStyled,
 	InputLabelRadio,
 	FormControlStyled,
+	TextArea,
 } from '../../../../inputsStyles';
 import {
 	RadioGroup,
@@ -20,8 +21,17 @@ import {
 import { ItemRow, StatusTask, TitleRow, TitleTask } from './styles';
 import { iconList } from '../../../../../../assets/Icons/icon-list';
 import { defaultTheme } from '../../../../../../theme';
+import ItemSelect from '../../../../SelectField';
+import DateInput from '../../../inputs/dateInput';
+import HourInput from '../../../inputs/hourInput';
 
-const UtilizationFirst = ({ odometerHourmeter, t, employees, handleInput }) => {
+const UtilizationFirst = ({
+	odometerHourmeter,
+	t,
+	employees,
+	handleInput,
+	currentInfo,
+}) => {
 	const [employeeSelected, setEmployeeSelected] = useState();
 
 	const handleEmployeeSelected = (event) => {
@@ -39,6 +49,9 @@ const UtilizationFirst = ({ odometerHourmeter, t, employees, handleInput }) => {
 				value={employeeSelected}
 				onChange={handleEmployeeSelected}
 			>
+				<StyledMenuItem disabled>
+					<ItemSelect value="" />
+				</StyledMenuItem>
 				{employees.map((employee) => (
 					<StyledMenuItem value={employee}>
 						{t(employee.name)}
@@ -55,8 +68,7 @@ const UtilizationFirst = ({ odometerHourmeter, t, employees, handleInput }) => {
 					<InputLabelStyled required htmlFor="dateUse">
 						{t('dateUse')}
 					</InputLabelStyled>
-					<InputField
-						id="dateUse"
+					<DateInput
 						name="dateUse"
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
@@ -67,8 +79,7 @@ const UtilizationFirst = ({ odometerHourmeter, t, employees, handleInput }) => {
 					<InputLabelStyled required htmlFor="hour">
 						{t('hour')}
 					</InputLabelStyled>
-					<InputField
-						id="hour"
+					<HourInput
 						name="hour"
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
@@ -84,7 +95,7 @@ const UtilizationFirst = ({ odometerHourmeter, t, employees, handleInput }) => {
 			>
 				<div style={{ width: '48%' }}>
 					<InputLabelStyled required htmlFor="initialOdometer">
-						{t('initialOdometer')}
+						{t(`${odometerHourmeter}Initial`)}
 					</InputLabelStyled>
 					<InputField
 						id="initialOdometer"
@@ -92,7 +103,9 @@ const UtilizationFirst = ({ odometerHourmeter, t, employees, handleInput }) => {
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}
+						type="number"
 						placeholder="00000000"
+						helperText={t('justNumbers')}
 						InputProps={{
 							endAdornment: (
 								<InputAdornment position="end">
@@ -107,7 +120,7 @@ const UtilizationFirst = ({ odometerHourmeter, t, employees, handleInput }) => {
 				</div>
 				<div style={{ width: '48%' }}>
 					<InputLabelStyled required htmlFor="finalOdometer">
-						{t('finalOdometer')}
+						{t(`${odometerHourmeter}Final`)}
 					</InputLabelStyled>
 					<InputField
 						id="finalOdometer"
@@ -115,7 +128,9 @@ const UtilizationFirst = ({ odometerHourmeter, t, employees, handleInput }) => {
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}
+						type="number"
 						placeholder="00000000"
+						helperText={t('justNumbers')}
 						InputProps={{
 							endAdornment: (
 								<InputAdornment position="end">
@@ -135,11 +150,10 @@ const UtilizationFirst = ({ odometerHourmeter, t, employees, handleInput }) => {
 			<UploadField
 				id="initialPicture"
 				name="initialPicture"
-				docName=""
+				accept="image/*"
+				docName={currentInfo?.initialPicture?.split('\\').pop()}
 				buttonName={t('select')}
-				onChange={(e) =>
-					handleInput(e.target.value, e.target.name)
-				}
+				onChange={(e) => handleInput(e.target.value, e.target.name)}
 			/>
 			<InputLabelStyled required htmlFor="finalPicture">
 				{t(`${odometerHourmeter}FinalFile`)}
@@ -147,17 +161,16 @@ const UtilizationFirst = ({ odometerHourmeter, t, employees, handleInput }) => {
 			<UploadField
 				id="finalPicture"
 				name="finalPicture"
-				docName=""
+				accept="image/*"
+				docName={currentInfo?.finalPicture?.split('\\').pop()}
 				buttonName={t('select')}
-				onChange={(e) =>
-					handleInput(e.target.value, e.target.name)
-				}
+				onChange={(e) => handleInput(e.target.value, e.target.name)}
 			/>
 		</>
 	);
 };
 
-const UtilizationSecond = ({ t, tasks }) => {
+const UtilizationSecond = ({ t, tasks, handleInput }) => {
 	const [tasksSelected, setTasksSelected] = useState([]);
 	const [taskOption, setTaskOption] = useState('');
 	const { colors } = defaultTheme;
@@ -204,13 +217,11 @@ const UtilizationSecond = ({ t, tasks }) => {
 					<InputLabelStyled required htmlFor="justification">
 						{t('justification')}
 					</InputLabelStyled>
-					<InputField
-						id="justification"
-						name="justification"
+					<TextArea
 						placeholder={t('typeSomething')}
-						// onChange={(e) =>
-						// 	handleInput(e.target.value, e.target.name)
-						// }
+						onChange={(e) =>
+							handleInput(e.target.value, e.target.name)
+						}
 					/>
 				</>
 			)}
@@ -229,6 +240,9 @@ const UtilizationSecond = ({ t, tasks }) => {
 						renderValue={(selected) => selected.join(', ')}
 						style={{ width: '100%' }}
 					>
+						<StyledMenuItem disabled>
+							<ItemSelect value="" />
+						</StyledMenuItem>
 						{tasks.map((task) => (
 							<MenuItem key={task.id} value={task}>
 								<Checkbox

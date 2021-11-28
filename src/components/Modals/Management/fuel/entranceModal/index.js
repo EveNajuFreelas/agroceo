@@ -134,7 +134,7 @@ export const EntranceManagementModal = () => {
 							handleInput(e.target.value, e.target.name)
 						}
 					>
-						<StyledMenuItem>
+						<StyledMenuItem disabled>
 							<ItemSelect value="" />
 						</StyledMenuItem>
 						{fuelTypes.map((ft) => (

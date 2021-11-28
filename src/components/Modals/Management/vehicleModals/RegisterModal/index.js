@@ -21,6 +21,9 @@ import {
 } from '@material-ui/core';
 import { useModalsContainer } from '../../../../../context/modalsContext';
 import { iconList } from '../../../../../assets/Icons/icon-list';
+import ItemSelect from '../../../SelectField';
+import InputMask from 'react-input-mask';
+import DateInput from '../../inputs/dateInput';
 
 export const RegisterModalVehicle = ({
 	title,
@@ -40,7 +43,7 @@ export const RegisterModalVehicle = ({
 		return (
 			<div style={{ display: 'flex', justifyContent: 'space-between' }}>
 				<div style={{ width: '48%' }}>
-					<InputLabelStyled htmlFor="board">
+					<InputLabelStyled required htmlFor="board">
 						{t('board')}
 					</InputLabelStyled>
 					<InputField
@@ -54,18 +57,25 @@ export const RegisterModalVehicle = ({
 					/>
 				</div>
 				<div style={{ width: '48%' }}>
-					<InputLabelStyled htmlFor="yearAcquisition">
+					<InputLabelStyled required htmlFor="yearAcquisition">
 						{t('yearAcquisition')}
 					</InputLabelStyled>
-					<InputField
-						id="yearAcquisition"
-						name="yearAcquisition"
-						defaultValue={currentInfo?.yearAcquisition}
+					<InputMask
+						mask="9999"
+						maskChar=" "
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}
-						placeholder="DD/MM/AAAA"
-					/>
+					>
+						{() => (
+							<InputField
+								id="yearAcquisition"
+								name="yearAcquisition"
+								defaultValue={currentInfo?.yearAcquisition}
+								placeholder="0000"
+							/>
+						)}
+					</InputMask>
 				</div>
 			</div>
 		);
@@ -95,14 +105,14 @@ export const RegisterModalVehicle = ({
 			<InputFieldsWrapper>
 				<div
 					style={{
-						width: '48%',
+						width: '45%',
 						display: 'flex',
 						flexDirection: 'column',
 					}}
 				>
 					{description && (
 						<>
-							<InputLabelStyled htmlFor="description">
+							<InputLabelStyled required htmlFor="description">
 								{t('description')}
 							</InputLabelStyled>
 							<InputField
@@ -117,40 +127,40 @@ export const RegisterModalVehicle = ({
 							/>
 						</>
 					)}
-					<InputLabelStyled htmlFor="brand">
+					<InputLabelStyled required htmlFor="brand">
 						{t('brand')}
 					</InputLabelStyled>
 					<SelectField
 						id="brand"
 						name="brand"
-						defaultValue={currentInfo?.brand || ''}
+						defaultValue={'' || currentInfo?.brand}
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}
 					>
-						<StyledMenuItem value="">{`${t(
-							'select'
-						)}...`}</StyledMenuItem>
+						<StyledMenuItem disabled>
+							<ItemSelect value="" />
+						</StyledMenuItem>
 						{fuelTypes.map((ft) => (
 							<StyledMenuItem value={ft.value}>
 								{t(ft.name)}
 							</StyledMenuItem>
 						))}
 					</SelectField>
-					<InputLabelStyled htmlFor="model">
+					<InputLabelStyled required htmlFor="model">
 						{t('model')}
 					</InputLabelStyled>
 					<SelectField
 						id="model"
 						name="model"
-						defaultValue={currentInfo?.model || ''}
+						defaultValue={'' || currentInfo?.model}
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}
 					>
-						<StyledMenuItem value="">{`${t(
-							'select'
-						)}...`}</StyledMenuItem>
+						<StyledMenuItem disabled>
+							<ItemSelect value="" />
+						</StyledMenuItem>
 						{fuelTypes.map((ft) => (
 							<StyledMenuItem value={ft.value}>
 								{t(ft.name)}
@@ -169,6 +179,8 @@ export const RegisterModalVehicle = ({
 						// }
 						name="vehicleFile"
 						buttonName={t('select')}
+						accept="image/*"
+						docName={currentInfo?.vehicleFile?.split('\\').pop()}
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}
@@ -180,7 +192,7 @@ export const RegisterModalVehicle = ({
 						}}
 					>
 						<div style={{ width: '48%' }}>
-							<InputLabelStyled htmlFor="color">
+							<InputLabelStyled required htmlFor="color">
 								{t('color')}
 							</InputLabelStyled>
 							<InputField
@@ -194,20 +206,28 @@ export const RegisterModalVehicle = ({
 							/>
 						</div>
 						<div style={{ width: '48%' }}>
-							<InputLabelStyled htmlFor="manufacture">
+							<InputLabelStyled required htmlFor="manufacture">
 								{t('manufacture')}
 							</InputLabelStyled>
-							<InputField
-								id="manufactureYear"
-								name="manufactureYear"
-								type="number"
-								defaultValue={currentInfo?.manufactureYear}
+							<InputMask
+								mask="9999/99"
+								maskChar=" "
 								onChange={(e) =>
 									handleInput(e.target.value, e.target.name)
 								}
-								helperText={t('justNumbers')}
-								placeholder="0000/00"
-							/>
+							>
+								{() => (
+									<InputField
+										id="manufactureYear"
+										name="manufactureYear"
+										defaultValue={
+											currentInfo?.manufactureYear
+										}
+										helperText={t('justNumbers')}
+										placeholder="0000/00"
+									/>
+								)}
+							</InputMask>
 						</div>
 					</div>
 					{!description && groupBoardYearField()}
@@ -215,7 +235,7 @@ export const RegisterModalVehicle = ({
 
 				<Divider orientation="vertical" flexItem component="div" />
 
-				<div style={{ width: '48%' }}>
+				<div style={{ width: '52%' }}>
 					{description && groupBoardYearField()}
 					<div
 						style={{
@@ -224,7 +244,10 @@ export const RegisterModalVehicle = ({
 						}}
 					>
 						<div style={{ width: '48%' }}>
-							<InputLabelStyled htmlFor="currentOdometer">
+							<InputLabelStyled
+								required
+								htmlFor="currentOdometer"
+							>
 								{t('currentOdometer')}
 							</InputLabelStyled>
 							<InputField
@@ -248,10 +271,11 @@ export const RegisterModalVehicle = ({
 							/>
 						</div>
 						<div style={{ width: '48%' }}>
-							<InputLabelStyled htmlFor="reviewEveryKm">
+							<InputLabelStyled required htmlFor="reviewEveryKm">
 								{t('reviewEveryKm')}
 							</InputLabelStyled>
 							<InputField
+								required
 								id="reviewEveryKm"
 								name="reviewEveryKm"
 								defaultValue={currentInfo?.reviewEveryKm}
@@ -272,13 +296,14 @@ export const RegisterModalVehicle = ({
 							/>
 						</div>
 					</div>
-					<InputLabelStyled htmlFor="uploadFile">
+					<InputLabelStyled htmlFor="odometerFile">
 						{t(`${odometerHourmeter}File`)}
 					</InputLabelStyled>
 					<UploadField
-						id="uploadFile"
-						name="uploadFile"
-						docName=""
+						id="odometerFile"
+						name="odometerFile"
+						accept="image/*"
+						docName={currentInfo?.odometerFile?.split('\\').pop()}
 						buttonName={t('select')}
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
@@ -291,7 +316,7 @@ export const RegisterModalVehicle = ({
 						}}
 					>
 						<div style={{ width: '48%' }}>
-							<InputLabelStyled htmlFor="lastRevision">
+							<InputLabelStyled required htmlFor="lastRevision">
 								{t(`${odometerHourmeter}LastRevision`)}
 							</InputLabelStyled>
 							<InputField
@@ -315,28 +340,28 @@ export const RegisterModalVehicle = ({
 							/>
 						</div>
 						<div style={{ width: '48%' }}>
-							<InputLabelStyled htmlFor="lastRevision">
+							<InputLabelStyled required htmlFor="lastRevision">
 								{t('lastRevision')}
 							</InputLabelStyled>
-							<InputField
-								id="lastRevision"
+							<DateInput
 								name="lastRevision"
-								defaultValue={currentInfo?.yearAcquisition}
 								onChange={(e) =>
 									handleInput(e.target.value, e.target.name)
 								}
-								placeholder="00000000"
 							/>
 						</div>
 					</div>
 					<FormControlStyled component="fieldset">
-						<InputLabelRadio component="legend" htmlFor="ownerVehicle">
+						<InputLabelRadio
+							component="legend"
+							htmlFor="ownerVehicle"
+						>
 							{t('owner')}
 						</InputLabelRadio>
-						<RadioGroup 
-							row 
-							id="ownerVehicle" 
-							name="ownerVehicle" 
+						<RadioGroup
+							row
+							id="ownerVehicle"
+							name="ownerVehicle"
 							defaultValue={currentInfo?.ownerVehicle}
 						>
 							<FormControlLabel

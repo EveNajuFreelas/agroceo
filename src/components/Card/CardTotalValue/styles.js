@@ -31,7 +31,7 @@ export const SecondColumn = styled.div``;
 
 export const ValueTotalCard = styled.div`
 	font-size: 40px;
-	font-family: ${text.fontFamily.bold};
+	font-weight: bold;
 `;
 
 export const DateTotalCard = styled.div`

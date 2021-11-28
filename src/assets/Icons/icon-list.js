@@ -42,8 +42,10 @@ import bagInput from '../../utils/Icons/bagInput.svg';
 import weightInput from '../../utils/Icons/weightInput.svg';
 import gasStation from '../../utils/Icons/gasStation.svg';
 import manage from '../../utils/Icons/manage.svg';
+import clock from '../../utils/Icons/clock.svg';
 
 export const iconList = {
+	clock,
 	add_a_photo,
 	arrowCarrotRight,
 	farm,

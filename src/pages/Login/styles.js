@@ -64,7 +64,7 @@ export const Header = styled.div`
 
 export const Title = styled.div`
 	font-size: ${text.size.h5};
-	font-family: ${text.fontFamily.bold};
+	font-weight: bold;
 	color: #013c21;
 	@media (max-width: 426px) {
 		font-size: ${text.size.small};
@@ -89,8 +89,8 @@ export const InputsArea = styled.div`
 	}
 `;
 
-export const InputField = styled(props => (
-	<TextField variant='outlined' required='true' {...props} />
+export const InputField = styled((props) => (
+	<TextField variant="outlined" required="true" {...props} />
 ))`
 	color: ${colors.neutral5};
 	margin: ${margin.md};
@@ -110,8 +110,8 @@ export const ActionButtons = styled.div`
 	}
 `;
 
-export const LoginButton = styled(props => (
-	<Button variant='contained' {...props} />
+export const LoginButton = styled((props) => (
+	<Button variant="contained" {...props} />
 ))`
 	width: 100%;
 	font-size: ${defaultTheme.text.size.medium};

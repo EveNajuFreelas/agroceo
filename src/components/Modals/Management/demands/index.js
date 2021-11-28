@@ -7,6 +7,7 @@ import {
 	InputLabelStyled,
 	InputField,
 	UploadField,
+	TextArea,
 } from '../../inputsStyles';
 import { useModalsContainer } from '../../../../context/modalsContext';
 
@@ -49,10 +50,11 @@ export const DemandsModal = ({ title, breadcrumbs }) => {
 						width: '100%',
 					}}
 				>
-					<InputLabelStyled htmlFor="demands">
+					<InputLabelStyled required htmlFor="demands">
 						{t('demands')}
 					</InputLabelStyled>
-					<InputField
+					<TextArea
+						style={{ width: '95%' }}
 						id="demands"
 						name="demands"
 						defaultValue={currentInfo?.demands}
@@ -67,9 +69,12 @@ export const DemandsModal = ({ title, breadcrumbs }) => {
 					</InputLabelStyled>
 					<UploadField
 						id="demandPhoto"
+						accept="image/*"
 						docName={
 							currentInfo?.DocumentPicture !== '--'
-								? currentInfo?.DocumentPicture
+								? currentInfo?.DocumentPicture?.split(
+										'\\'
+								  ).pop()
 								: null
 						}
 						name="demandPhoto"

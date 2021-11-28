@@ -9,11 +9,11 @@ export const ModalWrapper = styled(Dialog)`
 	.MuiDialog-paper {
 		overflow-x: hidden;
 		padding: ${padding.xg};
-		width: ${(props) => (props.isSmall ? '23%' : '42%')};
+		width: ${(props) => (props.isSmall ? '23%' : '45%')};
 	}
 
 	.MuiDialog-paperWidthSm {
-		min-width: ${(props) => (props.isSmall ? '23%' : '40%')};
+		min-width: ${(props) => (props.isSmall ? '23%' : '45%')};
 	}
 
 	.MuiDialogContent-root {
@@ -45,7 +45,7 @@ export const CloseModal = styled(Close)`
 
 export const HeaderTitle = styled.div`
 	font-size: ${text.size.large};
-	font-family: ${text.fontFamily.bold};
+	font-weight: bold;
 	margin-top: ${margin.sm};
 `;
 
@@ -64,7 +64,7 @@ export const ModalFooter = styled.div`
 	margin-top: ${margin.xg};
 
 	.MuiButton-label {
-		font-family: ${text.fontFamily.bold};
+		font-weight: bold;
 		font-size: ${text.size.normal};
 		text-transform: capitalize;
 	}

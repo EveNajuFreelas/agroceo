@@ -6,7 +6,6 @@ import {
 	SelectField,
 	InputField,
 	InputLabelStyled,
-	StyledMenuItem,
 } from '../../../inputsStyles';
 import ItemSelect from '../../../SelectField';
 import { ListItems, TitleList } from '../../styles';
@@ -61,7 +60,7 @@ export const ModuleOption = ({ t }) => {
 					/>
 				</div>
 			</div>
-
+			{console.log(currentInfo)}
 			<InputLabelStyled required htmlFor="destination">
 				{t('destination')}
 			</InputLabelStyled>
@@ -69,12 +68,11 @@ export const ModuleOption = ({ t }) => {
 				id="destination"
 				name="destination"
 				value={currentInfo?.destination}
-				defaultValue={''}
 				onChange={(e) => handleInput(e.target.value, e.target.name)}
 			>
-				<StyledMenuItem>
+				<MenuItem disabled>
 					<ItemSelect value="" />
-				</StyledMenuItem>
+				</MenuItem>
 				{areas.map((area) => (
 					<MenuItem key={area.id} value={area.name}>
 						<ListItemText>
@@ -93,12 +91,22 @@ export const ModuleOption = ({ t }) => {
 				value={subareasSelected}
 				multiple
 				onChange={handleSubareaSelected}
-				renderValue={(selected) => selected.join(', ')}
+				renderValue={(selected) => {
+					if (selected.length === 0) {
+						return <ItemSelect value="" />;
+					}
+
+					return selected
+						.map((item) => {
+							return item.destination;
+						})
+						.join(', ');
+				}}
 				style={{ width: '100%' }}
 			>
-				<StyledMenuItem>
+				<MenuItem disabled>
 					<ItemSelect value="" />
-				</StyledMenuItem>
+				</MenuItem>
 				{subareas.map((subarea) => (
 					<MenuItem key={subarea.id} value={subarea}>
 						<Checkbox

@@ -13,9 +13,13 @@ import {
 	weighingSelect,
 } from '../../../../../utils/dataMock/selectMock';
 import { ItemTableRow } from '../lot/styles';
+import ItemSelect from '../../../SelectField';
+import DateInput from '../../inputs/dateInput';
 
 export const ModalWeighing = ({ t }) => {
 	const [currentInfo, setCurrentInfo] = useState({});
+	const [dateLastWeighing, setDateLastWeighing] = useState('10 / 10 / 2013');
+	const [weightLast, setWeightLast] = useState('270 Kg');
 
 	const handleInput = (info, inputName) => {
 		setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
@@ -38,9 +42,14 @@ export const ModalWeighing = ({ t }) => {
 						id="selectLot"
 						name="selectLot"
 						value={currentInfo?.selectLot}
-						onChange={(e) => handleInput(e.target.value, e.target.name)}
+						onChange={(e) =>
+							handleInput(e.target.value, e.target.name)
+						}
 						style={{ width: '100%' }}
 					>
+						<MenuItem disabled>
+							<ItemSelect value="" />
+						</MenuItem>
 						{weighingSelect.map((lot) => (
 							<MenuItem key={lot.id} value={lot}>
 								<ListItemText>
@@ -80,7 +89,9 @@ export const ModalWeighing = ({ t }) => {
 								name="quantity"
 								type="number"
 								defaultValue={currentInfo?.quantity}
-								onChange={(e) => handleInput(e.target.value, e.target.name)}
+								onChange={(e) =>
+									handleInput(e.target.value, e.target.name)
+								}
 								placeholder={t('typeSomething')}
 								helperText={t('justNumbers')}
 							/>
@@ -90,13 +101,12 @@ export const ModalWeighing = ({ t }) => {
 							<InputLabelStyled required htmlFor="dateWeighing">
 								{t('dateWeighing')}
 							</InputLabelStyled>
-							<InputField
-								id="dateWeighing"
+							<DateInput
 								name="dateWeighing"
 								defaultValue={currentInfo?.dataWeighing}
-								onChange={(e) => handleInput(e.target.value, e.target.name)}
-								placeholder={t('typeSomething')}
-								helperText={t('justNumbers')}
+								onChange={(e) =>
+									handleInput(e.target.value, e.target.name)
+								}
 							/>
 						</div>
 
@@ -109,7 +119,9 @@ export const ModalWeighing = ({ t }) => {
 								name="averageWeight"
 								type="number"
 								defaultValue={currentInfo?.averageWeight}
-								onChange={(e) => handleInput(e.target.value, e.target.name)}
+								onChange={(e) =>
+									handleInput(e.target.value, e.target.name)
+								}
 								placeholder={t('typeSomething')}
 								helperText={t('justNumbers')}
 								InputProps={{
@@ -144,10 +156,12 @@ export const ModalWeighing = ({ t }) => {
 						<InputField
 							id="lastWeighing"
 							name="lastWeighing"
-							value="10 / 10 / 2021"
+							value={dateLastWeighing}
 							disabled
 							defaultValue={currentInfo?.lastWeighing}
-							onChange={(e) => handleInput(e.target.value, e.target.name)}
+							onChange={(e) =>
+								handleInput(e.target.value, e.target.name)
+							}
 							placeholder={t('typeSomething')}
 						/>
 					</div>
@@ -161,10 +175,12 @@ export const ModalWeighing = ({ t }) => {
 						<InputField
 							id="lastWeighingWeight"
 							name="lastWeighingWeight"
-							value="270 Kg"
+							value={weightLast}
 							disabled
 							defaultValue={currentInfo?.lastWeighingWeight}
-							onChange={(e) => handleInput(e.target.value, e.target.name)}
+							onChange={(e) =>
+								handleInput(e.target.value, e.target.name)
+							}
 							placeholder={t('typeSomething')}
 							InputProps={{
 								endAdornment: (
@@ -196,8 +212,13 @@ export const ModalWeighing = ({ t }) => {
 						id="homeSubarea"
 						name="homeSubarea"
 						value={currentInfo?.homeSubarea}
-						onChange={(e) => handleInput(e.target.value, e.target.name)}
+						onChange={(e) =>
+							handleInput(e.target.value, e.target.name)
+						}
 					>
+						<MenuItem disabled>
+							<ItemSelect value="" />
+						</MenuItem>
 						{subareas.map((subarea) => (
 							<MenuItem key={subarea.id} value={subarea}>
 								<ListItemText>
@@ -217,8 +238,13 @@ export const ModalWeighing = ({ t }) => {
 						id="destinationSubArea"
 						name="destinationSubArea"
 						value={currentInfo?.destinationSubArea}
-						onChange={(e) => handleInput(e.target.value, e.target.name)}
+						onChange={(e) =>
+							handleInput(e.target.value, e.target.name)
+						}
 					>
+						<MenuItem disabled>
+							<ItemSelect value="" />
+						</MenuItem>
 						{subareas.map((subarea) => (
 							<MenuItem key={subarea.id} value={subarea}>
 								<ListItemText>

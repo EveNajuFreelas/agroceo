@@ -11,7 +11,6 @@ import { itemsRevised } from '../../../../../../utils/dataMock/selectMock';
 import {
 	SelectField,
 	InputField,
-	StyledMenuItem,
 	UploadField,
 	InputLabelStyled,
 } from '../../../../inputsStyles';
@@ -159,13 +158,11 @@ const RevisionSecond = ({ t, handleInput, employees }) => {
 				name="responsible"
 				onChange={(e) => handleInput(e.target.value, e.target.name)}
 			>
-				<StyledMenuItem disabled>
+				<MenuItem disabled>
 					<ItemSelect value="" />
-				</StyledMenuItem>
+				</MenuItem>
 				{employees.map((employee) => (
-					<StyledMenuItem value={employee}>
-						{t(employee.name)}
-					</StyledMenuItem>
+					<MenuItem value={employee}>{t(employee.name)}</MenuItem>
 				))}{' '}
 			</SelectField>
 
@@ -185,7 +182,6 @@ const RevisionSecond = ({ t, handleInput, employees }) => {
 					<MenuItem key={item.id} value={item.name}>
 						<Checkbox
 							checked={itemsSelected.indexOf(item.name) > -1}
-							style={{ color: 'green' }}
 						/>
 						<ListItemText>
 							<TitleTask>{item.name}</TitleTask>

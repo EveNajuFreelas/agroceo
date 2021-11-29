@@ -12,7 +12,6 @@ import {
 	InputFieldsWrapper,
 	InputField,
 	SelectField,
-	StyledMenuItem,
 	UploadField,
 	StyledSlider,
 	ControlledInput,
@@ -27,8 +26,14 @@ import {
 	TableRow,
 	TableCell,
 	TableBody,
+	MenuItem,
 } from '@material-ui/core';
 import { timesParcels } from '../../../utils/dataMock/mock.js';
+import { iconList } from '../../../assets/Icons/icon-list';
+import ReactInputMask from 'react-input-mask';
+import DateInput from '../Management/inputs/dateInput';
+import { paymentList } from '../../../utils/dataMock/selectMock';
+import ItemSelect from '../SelectField';
 
 export const FinancialModal = ({ title, breadcrumbs }) => {
 	const { modalState, setModalState, activeContent } = useExpensesContainer();
@@ -249,26 +254,43 @@ export const FinancialModal = ({ title, breadcrumbs }) => {
 							onChange={(e) =>
 								handleInput(e.target.value, e.target.name)
 							}
+							placeholder={t('typeSomething')}
 						/>
 						<InputLabelStyled htmlFor="totalValue">
 							{t('totalValue')}
 						</InputLabelStyled>
-						<InputField
-							id="totalValue"
-							name="TotalValue"
-							type="money"
-							defaultValue={currentInfo?.TotalValue}
+						<ReactInputMask
+							mask="99,99"
+							maskChar=" "
 							onChange={(e) =>
 								handleInput(e.target.value, e.target.name)
 							}
-						/>
+							value={currentInfo?.TotalValue}
+						>
+							{() => (
+								<InputField
+									id="totalValue"
+									name="TotalValue"
+									placeholder="00,00"
+									style={{ marginBottom: '0px' }}
+									InputProps={{
+										endAdornment: (
+											<InputAdornment position="end">
+												<img
+													alt="icon money"
+													src={iconList.moneyInput}
+												/>
+											</InputAdornment>
+										),
+									}}
+								/>
+							)}
+						</ReactInputMask>
 						<InputLabelStyled htmlFor="expensesDate">
 							{t('expensesDate')}
 						</InputLabelStyled>
-						<InputField
-							id="expensesDate"
+						<DateInput
 							name="DateDespesa"
-							type="date"
 							onChange={(e) =>
 								handleInput(e.target.value, e.target.name)
 							}
@@ -278,12 +300,13 @@ export const FinancialModal = ({ title, breadcrumbs }) => {
 						</InputLabelStyled>
 						<UploadField
 							id="receipt"
+							name="receipt"
+							accept="application/pdf, text/xml"
 							docName={
-								currentInfo?.DocumentPicture !== '--'
-									? currentInfo?.DocumentPicture
+								currentInfo?.receipt
+									? currentInfo?.receipt?.split('\\').pop()
 									: null
 							}
-							name="Receipt"
 							buttonName={t('select')}
 							onChange={(e) =>
 								handleInput(e.target.value, e.target.name)
@@ -294,7 +317,6 @@ export const FinancialModal = ({ title, breadcrumbs }) => {
 					<Divider orientation="vertical" flexItem component="div" />
 
 					<div style={{ width: '48%' }}>
-						
 						<InputLabelStyled htmlFor="payment">
 							{t('payment')}
 						</InputLabelStyled>
@@ -306,9 +328,14 @@ export const FinancialModal = ({ title, breadcrumbs }) => {
 								handleInput(e.target.value, e.target.name)
 							}
 						>
-							<StyledMenuItem value="Cartão de crédito">
-								Cartão de Crédito
-							</StyledMenuItem>
+							<MenuItem disabled>
+								<ItemSelect value="" />
+							</MenuItem>
+							{paymentList.map((item) => (
+								<MenuItem value={item.name} key={item.id}>
+									{item.name}
+								</MenuItem>
+							))}
 						</SelectField>
 						<InputLabelStyled htmlFor="parcels">
 							{t('parcels')}
@@ -321,17 +348,18 @@ export const FinancialModal = ({ title, breadcrumbs }) => {
 								handleInput(e.target.value, e.target.name)
 							}
 						>
-							{timesParcels.map(p => (
-								<StyledMenuItem value={p}>{p}</StyledMenuItem>
+							<MenuItem disabled>
+								<ItemSelect value="" />
+							</MenuItem>
+							{timesParcels.map((p) => (
+								<MenuItem value={p}>{p}</MenuItem>
 							))}
 						</SelectField>
 						<InputLabelStyled htmlFor="firstParcel">
 							{t('firstParcel')}
 						</InputLabelStyled>
-						<InputField
-							id="firstParcel"
-							type="date"
-							name="FirstParcela"
+						<DateInput
+							name="firstParcel"
 							onChange={(e) =>
 								handleInput(e.target.value, e.target.name)
 							}
@@ -340,26 +368,28 @@ export const FinancialModal = ({ title, breadcrumbs }) => {
 							{t('accountPlan')}
 						</InputLabelStyled>
 						<SelectField
-							id="AccountPlan"
-							name="AccountPlan"
-							value={currentInfo?.AccountPlan}
+							id="accountPlan"
+							name="accountPlan"
+							value={currentInfo?.accountPlan}
 							onChange={(e) =>
 								handleInput(e.target.value, e.target.name)
 							}
 						>
-							<StyledMenuItem value="Combustivel">
-								Combustível
-							</StyledMenuItem>
+							<MenuItem disabled>
+								<ItemSelect value="" />
+							</MenuItem>
+							<MenuItem value="Combustivel">Combustível</MenuItem>
 						</SelectField>
 					</div>
 				</InputFieldsWrapper>
-				{currentInfo.selectedProperties ? (
-					renderSelectedProperties()
-				) : (
+				{console.log(!currentInfo?.selectedProperties)}
+				{!currentInfo?.selectedProperties ? (
 					<PropertyDivisionWrapper>
 						<Subtitle>Divisão entre propriedades</Subtitle>
 						{renderProperties()}
 					</PropertyDivisionWrapper>
+				) : (
+					renderSelectedProperties()
 				)}
 			</ModalShell>
 		</>

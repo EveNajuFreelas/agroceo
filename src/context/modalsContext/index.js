@@ -7,7 +7,7 @@ const ModalsContext = () => {
 	const [modalUtilizationState, setModalUtilizationState] = useState(false);
 	const [secondModalState, setSecondModalState] = useState(false);
 
-	const [activeContent, setActiveContent] = useState({ receipt: null });
+	const [activeContent, setActiveContent] = useState({});
 
 	const openModal = () => {
 		setmodalState(true);

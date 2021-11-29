@@ -1,22 +1,20 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ModalShell } from '../../../../Modal/index';
-import { manejoMaoFuncionario } from '../../../../../utils/dataMock/mock';
 import {
 	InputFieldsWrapper,
 	SelectField,
 	InputField,
-	StyledMenuItem,
 	InputLabelStyled,
 } from '../../../inputsStyles';
 import { useManagementContainer } from '../../../../../context/managementContext';
 import { ItemTableRowSupplies, TitleTableRowSupplies } from './styles';
-import { InputAdornment } from '@material-ui/core';
-import { AccessTime } from '@material-ui/icons';
+
 import ItemSelect from '../../../SelectField';
 import { employeesSelect } from '../../../../../utils/dataMock/selectMock';
 import DateInput from '../../inputs/dateInput';
 import HourInput from '../../inputs/hourInput';
+import { MenuItem } from '@material-ui/core';
 
 export const ExitSuppliesModal = () => {
 	const { t } = useTranslation();
@@ -84,11 +82,11 @@ export const ExitSuppliesModal = () => {
 					defaultValue={'' || currentInfo?.whoWithdrew}
 					onChange={(e) => handleInput(e.target.value, e.target.name)}
 				>
-					<StyledMenuItem>
+					<MenuItem disabled>
 						<ItemSelect value="" />
-					</StyledMenuItem>
+					</MenuItem>
 					{employeesSelect.map((ft) => (
-						<StyledMenuItem value={ft}>{t(ft.name)}</StyledMenuItem>
+						<MenuItem value={ft}>{t(ft.name)}</MenuItem>
 					))}
 				</SelectField>
 

@@ -23,7 +23,8 @@ const TableNormal = ({
 	deleteFunction,
 	title,
 }) => {
-	const { openUtilizationModal, openModal, editActiveContent } = useModalsContainer();
+	const { openUtilizationModal, openModal, editActiveContent } =
+		useModalsContainer();
 	const { colors } = defaultTheme;
 
 	const [checkedItems, setCheckedItems] = useState([]);
@@ -58,7 +59,6 @@ const TableNormal = ({
 							<TableRow key={row.id}>
 								<TableCell padding="checkbox">
 									<Checkbox
-										style={{ color: 'green' }}
 										onChange={(e) => handleCheck(e, row)}
 										checked={checkedItems.includes(row)}
 										inputProps={{

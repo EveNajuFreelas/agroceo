@@ -289,4 +289,5 @@ export const portuguese = {
 	example20kg: 'Exemplo: Saco de 20kg',
 	whoWithdrew: 'Quem retirou',
 	address: 'Endereço',
+	accountPlan: 'Plano de contas',
 };

@@ -1,19 +1,23 @@
 import {
 	SelectField,
-	StyledMenuItem,
 	InputLabelStyled,
 	InputLabelRadio,
 	FormControlStyled,
 } from '../../../inputsStyles';
 
-import { RadioGroup, FormControlLabel, Radio } from '@material-ui/core';
+import {
+	RadioGroup,
+	FormControlLabel,
+	Radio,
+	MenuItem,
+} from '@material-ui/core';
 import { useState } from 'react';
 import { EntranceModal } from './EntranceModal';
 import { ExitModal } from './ExitModal';
 
 export const ModalMovements = ({ t }) => {
-	const [typeEntrance, setTypeEntrance] = useState('');
-	const [typeExit, setTypeExit] = useState('');
+	const [typeEntrance, setTypeEntrance] = useState('birth');
+	const [typeExit, setTypeExit] = useState('death');
 	const [typeRegister, setTypeRegister] = useState('entrance');
 
 	return (
@@ -44,6 +48,7 @@ export const ModalMovements = ({ t }) => {
 								value="entrance"
 								label={t('entrance')}
 								control={<Radio />}
+								checked={typeRegister === 'entrance'}
 								onClick={(e) => setTypeRegister(e.target.value)}
 								defaultChecked
 							/>
@@ -68,17 +73,15 @@ export const ModalMovements = ({ t }) => {
 							onChange={(e) => setTypeEntrance(e.target.value)}
 							defaultValue={typeEntrance}
 						>
-							<StyledMenuItem value="birth">
-								{t('birth')}
-							</StyledMenuItem>
+							<MenuItem value="birth">{t('birth')}</MenuItem>
 
-							<StyledMenuItem value="purchase">
+							<MenuItem value="purchase">
 								{t('purchase')}
-							</StyledMenuItem>
+							</MenuItem>
 
-							<StyledMenuItem value="transferFarmsSameOwner">
+							<MenuItem value="transferFarmsSameOwner">
 								{t('transferFarmsSameOwner')}
-							</StyledMenuItem>
+							</MenuItem>
 						</SelectField>
 					</div>
 				)}
@@ -93,17 +96,13 @@ export const ModalMovements = ({ t }) => {
 							value={typeExit}
 							onChange={(e) => setTypeExit(e.target.value)}
 						>
-							<StyledMenuItem value="death">
-								{t('death')}
-							</StyledMenuItem>
+							<MenuItem value="death">{t('death')}</MenuItem>
 
-							<StyledMenuItem value="sale">
-								{t('sale')}
-							</StyledMenuItem>
+							<MenuItem value="sale">{t('sale')}</MenuItem>
 
-							<StyledMenuItem value="departureFarmBySameOwner">
+							<MenuItem value="departureFarmBySameOwner">
 								{t('departureFarmBySameOwner')}
-							</StyledMenuItem>
+							</MenuItem>
 						</SelectField>
 					</div>
 				)}

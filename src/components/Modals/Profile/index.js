@@ -1,3 +1,4 @@
+import { MenuItem } from '@material-ui/core';
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { iconList } from '../../../assets/Icons/icon-list';
@@ -9,7 +10,6 @@ import {
 	InputFieldsWrapper,
 	InputLabelStyled,
 	SelectField,
-	StyledMenuItem,
 } from '../inputsStyles';
 import { ContainerSelectCountry } from './styles';
 
@@ -111,12 +111,18 @@ export const ProfileModal = () => {
 							}
 						>
 							{countries.map((country) => (
-								<StyledMenuItem value={country.icon} key={country.icon}>
+								<MenuItem
+									value={country.icon}
+									key={country.icon}
+								>
 									<ContainerSelectCountry>
-										<img src={iconList[country.icon]} alt='' />
+										<img
+											src={iconList[country.icon]}
+											alt=""
+										/>
 										<span>+{country.number}</span>
 									</ContainerSelectCountry>
-								</StyledMenuItem>
+								</MenuItem>
 							))}
 						</SelectField>
 					</div>

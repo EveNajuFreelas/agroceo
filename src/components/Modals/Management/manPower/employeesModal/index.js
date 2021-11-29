@@ -7,12 +7,16 @@ import {
 	FormControlStyled,
 	SelectField,
 	InputField,
-	StyledMenuItem,
 	InputLabelStyled,
 	UploadField,
 } from '../../../inputsStyles';
 import { fuelTypes } from '../../../../../utils/dataMock/mock';
-import { RadioGroup, FormControlLabel, Radio } from '@material-ui/core';
+import {
+	RadioGroup,
+	FormControlLabel,
+	Radio,
+	MenuItem,
+} from '@material-ui/core';
 import { useModalsContainer } from '../../../../../context/modalsContext';
 import { ContainerSelectCountry } from '../../../Profile/styles';
 import { iconList } from '../../../../../assets/Icons/icon-list';
@@ -147,15 +151,15 @@ export const EmployeesModal = () => {
 							</InputMask>
 						</div>
 					</div>
-
+					{console.log(currentInfo)}
 					<InputLabelStyled htmlFor="employeePhoto">
 						{t('employeePhoto')}
 					</InputLabelStyled>
 					<UploadField
 						id="employeePhoto"
 						docName={
-							currentInfo?.DocumentPicture !== '--'
-								? currentInfo?.DocumentPicture
+							currentInfo?.employeePhoto
+								? currentInfo?.employeePhoto.split('\\').pop()
 								: null
 						}
 						name="employeePhoto"
@@ -172,18 +176,16 @@ export const EmployeesModal = () => {
 					<SelectField
 						id="occupation"
 						name="occupation"
-						defaultValue={currentInfo?.fuelType || ''}
+						defaultValue={'' || currentInfo?.fuelType}
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}
 					>
-						<StyledMenuItem>
+						<MenuItem disabled>
 							<ItemSelect value="" />
-						</StyledMenuItem>
+						</MenuItem>
 						{fuelTypes.map((ft) => (
-							<StyledMenuItem value={ft.value}>
-								{t(ft.name)}
-							</StyledMenuItem>
+							<MenuItem value={ft.value}>{t(ft.name)}</MenuItem>
 						))}
 					</SelectField>
 
@@ -193,7 +195,7 @@ export const EmployeesModal = () => {
 							justifyContent: 'space-between',
 						}}
 					>
-						<div style={{ width: '20%' }}>
+						<div style={{ width: '18%' }}>
 							<InputLabelStyled required htmlFor="country">
 								{t('country')}
 							</InputLabelStyled>
@@ -206,15 +208,14 @@ export const EmployeesModal = () => {
 								}
 							>
 								{countries.map((country) => (
-									<StyledMenuItem value={country.icon}>
+									<MenuItem value={country.icon}>
 										<ContainerSelectCountry>
 											<img
 												src={iconList[country.icon]}
 												alt={country.icon}
 											/>
-											<span>{country.icon}</span>
 										</ContainerSelectCountry>
-									</StyledMenuItem>
+									</MenuItem>
 								))}
 							</SelectField>
 						</div>

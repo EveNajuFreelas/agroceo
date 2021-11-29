@@ -6,7 +6,6 @@ import {
 	InputFieldsWrapper,
 	SelectField,
 	InputField,
-	StyledMenuItem,
 	UploadField,
 	InputLabelStyled,
 	InputLabelRadio,
@@ -18,6 +17,7 @@ import {
 	Radio,
 	Divider,
 	InputAdornment,
+	MenuItem,
 } from '@material-ui/core';
 import { useModalsContainer } from '../../../../../context/modalsContext';
 import { iconList } from '../../../../../assets/Icons/icon-list';
@@ -138,13 +138,11 @@ export const RegisterModalVehicle = ({
 							handleInput(e.target.value, e.target.name)
 						}
 					>
-						<StyledMenuItem disabled>
+						<MenuItem disabled>
 							<ItemSelect value="" />
-						</StyledMenuItem>
+						</MenuItem>
 						{fuelTypes.map((ft) => (
-							<StyledMenuItem value={ft.value}>
-								{t(ft.name)}
-							</StyledMenuItem>
+							<MenuItem value={ft.value}>{t(ft.name)}</MenuItem>
 						))}
 					</SelectField>
 					<InputLabelStyled required htmlFor="model">
@@ -158,13 +156,11 @@ export const RegisterModalVehicle = ({
 							handleInput(e.target.value, e.target.name)
 						}
 					>
-						<StyledMenuItem disabled>
+						<MenuItem disabled>
 							<ItemSelect value="" />
-						</StyledMenuItem>
+						</MenuItem>
 						{fuelTypes.map((ft) => (
-							<StyledMenuItem value={ft.value}>
-								{t(ft.name)}
-							</StyledMenuItem>
+							<MenuItem value={ft.value}>{t(ft.name)}</MenuItem>
 						))}
 					</SelectField>
 					<InputLabelStyled htmlFor="vehicleFile">

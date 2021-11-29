@@ -56,7 +56,6 @@ const TableTarefas = ({ data, columns, deleteFunction }) => {
 							<TableRow key={row.data.id}>
 								<TableCell padding="checkbox">
 									<Checkbox
-										style={{ color: 'green' }}
 										onChange={(e) => handleCheck(e, row)}
 										checked={checkedItems.includes(row)}
 										inputProps={{

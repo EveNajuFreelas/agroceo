@@ -5,7 +5,6 @@ import {
 	InputFieldsWrapper,
 	SelectField,
 	InputField,
-	StyledMenuItem,
 	UploadField,
 	InputLabelStyled,
 } from '../../../Modals/inputsStyles';
@@ -132,9 +131,12 @@ export const RegisterModalTask = () => {
 								}
 							>
 								{employeesSelect.map((employee) => (
-									<StyledMenuItem value={employee}>
+									<MenuItem
+										key={employee.id}
+										value={employee.name}
+									>
 										{t(employee.name)}
-									</StyledMenuItem>
+									</MenuItem>
 								))}
 							</SelectField>
 						</div>
@@ -170,7 +172,6 @@ export const RegisterModalTask = () => {
 											center
 										) > -1
 									}
-									style={{ color: 'green' }}
 								/>
 								<ListItemText>
 									<TitleTask>{center.name}</TitleTask>

@@ -1,8 +1,4 @@
-import {
-	InputAdornment,
-	ListItemText,
-	MenuItem,
-} from '@material-ui/core';
+import { InputAdornment, ListItemText, MenuItem } from '@material-ui/core';
 import { useState } from 'react';
 import { iconList } from '../../../../../assets/Icons/icon-list';
 import { areas } from '../../../../../utils/dataMock/selectMock';
@@ -12,10 +8,14 @@ import {
 	InputField,
 	InputLabelStyled,
 } from '../../../inputsStyles';
+import ItemSelect from '../../../SelectField';
 import { TitleTask } from '../../vehicleModals/UtilzationModal/UtilizationOption/styles';
 
 export const SubAreaOption = ({ t }) => {
 	const [currentInfo, setCurrentInfo] = useState({});
+
+	const [totalArea, setTotalArea] = useState('30 ha');
+	const [availableArea, setAvailableArea] = useState('20 ha');
 
 	const handleInput = (info, inputName) => {
 		setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
@@ -48,7 +48,7 @@ export const SubAreaOption = ({ t }) => {
 								</InputAdornment>
 							),
 						}}
-						value={currentInfo?.totalArea}
+						value={totalArea}
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}
@@ -72,7 +72,7 @@ export const SubAreaOption = ({ t }) => {
 								</InputAdornment>
 							),
 						}}
-						value={currentInfo?.availableArea}
+						value={availableArea}
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}
@@ -87,10 +87,11 @@ export const SubAreaOption = ({ t }) => {
 				id="destination"
 				name="destination"
 				value={currentInfo?.destination}
-				onChange={(e) =>
-					handleInput(e.target.value, e.target.name)
-				}
+				onChange={(e) => handleInput(e.target.value, e.target.name)}
 			>
+				<MenuItem disabled>
+					<ItemSelect value="" />
+				</MenuItem>
 				{areas.map((area) => (
 					<MenuItem key={area.id} value={area.name}>
 						<ListItemText>
@@ -128,6 +129,7 @@ export const SubAreaOption = ({ t }) => {
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}
+						placeholder="ha"
 					/>
 				</div>
 				<div style={{ width: '58%' }}>
@@ -141,6 +143,7 @@ export const SubAreaOption = ({ t }) => {
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}
+						placeholder={t('typeSomething')}
 					/>
 				</div>
 			</div>

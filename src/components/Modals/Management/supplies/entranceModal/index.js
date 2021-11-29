@@ -5,14 +5,10 @@ import {
 	InputField,
 	UploadField,
 	SelectField,
-	StyledMenuItem,
 	InputFieldsWrapper,
 	InputLabelStyled,
 } from '../../../inputsStyles';
-import {
-	unidadeDeMedida,
-	manejoMaoFuncionario,
-} from '../../../../../utils/dataMock/mock';
+import { unidadeDeMedida } from '../../../../../utils/dataMock/mock';
 import { useTranslation } from 'react-i18next';
 import {
 	Button,
@@ -21,6 +17,7 @@ import {
 	DialogContent,
 	DialogTitle,
 	InputAdornment,
+	MenuItem,
 } from '@material-ui/core';
 import { iconList } from '../../../../../assets/Icons/icon-list';
 import { defaultTheme } from '../../../../../theme';
@@ -140,13 +137,11 @@ export const EntranceSuppliesModal = () => {
 							handleInput(e.target.value, e.target.name)
 						}
 					>
-						<StyledMenuItem>
+						<MenuItem disabled>
 							<ItemSelect value="" />
-						</StyledMenuItem>
+						</MenuItem>
 						{employeesSelect.map((ft) => (
-							<StyledMenuItem value={ft}>
-								{t(ft.name)}
-							</StyledMenuItem>
+							<MenuItem value={ft}>{t(ft.name)}</MenuItem>
 						))}
 					</SelectField>
 
@@ -220,13 +215,13 @@ export const EntranceSuppliesModal = () => {
 									handleInput(e.target.value, e.target.name)
 								}
 							>
-								<StyledMenuItem disabled>
+								<MenuItem disabled>
 									<ItemSelect value="" />
-								</StyledMenuItem>
+								</MenuItem>
 								{unidadeDeMedida.map((ft) => (
-									<StyledMenuItem value={ft.value}>
+									<MenuItem value={ft.value}>
 										{t(ft.name)}
-									</StyledMenuItem>
+									</MenuItem>
 								))}
 							</SelectField>
 						</div>

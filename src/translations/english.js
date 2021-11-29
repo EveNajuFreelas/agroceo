@@ -289,4 +289,5 @@ export const english = {
 	odometerFinalFile: 'Odometer final file',
 	odometerPhotoReview: 'Odometer photo review',
 	hourmeterPhotoReview: 'Hourmeter photo review',
+	accountPlan: 'Account Plan',
 };

@@ -58,7 +58,6 @@ const TableWithChip = ({ data, columns, deleteFunction, thirdLeft }) => {
 							<TableRow key={row.id}>
 								<TableCell padding="checkbox">
 									<Checkbox
-										style={{ color: 'green' }}
 										onChange={(e) => handleCheck(e, row)}
 										checked={checkedItems.includes(row)}
 										inputProps={{

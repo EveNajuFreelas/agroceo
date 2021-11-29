@@ -19,6 +19,7 @@ import {
 	categorySelect,
 	speciesSelect,
 } from '../../../../../utils/dataMock/selectMock';
+import ItemSelect from '../../../SelectField';
 
 export const ModalAnimals = ({ t }) => {
 	const [currentInfo, setCurrentInfo] = useState({});
@@ -45,6 +46,9 @@ export const ModalAnimals = ({ t }) => {
 					value={currentInfo?.specie}
 					onChange={(e) => handleInput(e.target.value, e.target.name)}
 				>
+					<MenuItem>
+						<ItemSelect value="" />
+					</MenuItem>
 					{speciesSelect.map((specie) => (
 						<MenuItem key={specie.id} value={specie.name}>
 							<ListItemText>
@@ -103,6 +107,9 @@ export const ModalAnimals = ({ t }) => {
 					value={currentInfo?.category}
 					onChange={(e) => handleInput(e.target.value, e.target.name)}
 				>
+					<MenuItem>
+						<ItemSelect value="" />
+					</MenuItem>
 					{categorySelect.map((category) => (
 						<MenuItem key={category.id} value={category.name}>
 							<ListItemText>

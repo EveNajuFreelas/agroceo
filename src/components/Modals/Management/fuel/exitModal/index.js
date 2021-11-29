@@ -7,14 +7,13 @@ import {
 	InputFieldsWrapper,
 	SelectField,
 	InputField,
-	StyledMenuItem,
 	UploadField,
 	InputLabelStyled,
 	FormControlStyled,
 	InputLabelRadio,
 } from '../../../inputsStyles';
 import { useManagementContainer } from '../../../../../context/managementContext';
-import { RadioGroup, Divider } from '@material-ui/core';
+import { RadioGroup, Divider, MenuItem } from '@material-ui/core';
 import { employeesSelect } from '../../../../../utils/dataMock/selectMock';
 import { iconList } from '../../../../../assets/Icons/icon-list';
 import InputMask from 'react-input-mask';
@@ -114,13 +113,11 @@ export const ExitManagementModal = () => {
 							handleInput(e.target.value, e.target.name)
 						}
 					>
-						<StyledMenuItem>
+						<MenuItem disabled>
 							<ItemSelect value="" />
-						</StyledMenuItem>
+						</MenuItem>
 						{fuelTypes.map((ft) => (
-							<StyledMenuItem value={ft.value}>
-								{t(ft.name)}
-							</StyledMenuItem>
+							<MenuItem value={ft.value}>{t(ft.name)}</MenuItem>
 						))}
 					</SelectField>
 					<InputLabelStyled required htmlFor="quantity">
@@ -179,13 +176,13 @@ export const ExitManagementModal = () => {
 									handleInput(e.target.value, e.target.name)
 								}
 							>
-								<StyledMenuItem>
+								<MenuItem disabled>
 									<ItemSelect value="" />
-								</StyledMenuItem>
+								</MenuItem>
 								{employeesSelect.map((employee) => (
-									<StyledMenuItem value={employee}>
+									<MenuItem value={employee}>
 										{t(employee.name)}
-									</StyledMenuItem>
+									</MenuItem>
 								))}
 							</SelectField>
 						</>
@@ -233,13 +230,11 @@ export const ExitManagementModal = () => {
 							handleInput(e.target.value, e.target.name)
 						}
 					>
-						<StyledMenuItem>
+						<MenuItem disabled>
 							<ItemSelect value="" />
-						</StyledMenuItem>
+						</MenuItem>
 						{fuelTypes.map((ft) => (
-							<StyledMenuItem value={ft.value}>
-								{t(ft.name)}
-							</StyledMenuItem>
+							<MenuItem value={ft.value}>{t(ft.name)}</MenuItem>
 						))}
 					</SelectField>
 					<InputLabelStyled required htmlFor="vehicle">
@@ -252,13 +247,11 @@ export const ExitManagementModal = () => {
 							handleInput(e.target.value, e.target.name)
 						}
 					>
-						<StyledMenuItem>
+						<MenuItem disabled>
 							<ItemSelect value="" />
-						</StyledMenuItem>
+						</MenuItem>
 						{fuelTypes.map((ft) => (
-							<StyledMenuItem value={ft.value}>
-								{t(ft.name)}
-							</StyledMenuItem>
+							<MenuItem value={ft.value}>{t(ft.name)}</MenuItem>
 						))}
 					</SelectField>
 				</div>

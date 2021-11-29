@@ -3,6 +3,7 @@ import {
 	InputField,
 	InputLabelStyled,
 	UploadField,
+	TextArea,
 } from '../../../../inputsStyles';
 
 import { WrapperRow } from './styles';
@@ -13,6 +14,7 @@ import {
 } from '../../../../../../utils/dataMock/selectMock';
 import { ListItemText, MenuItem } from '@material-ui/core';
 import { ItemTableRow } from '../../lot/styles';
+import ItemSelect from '../../../../SelectField';
 
 export const ExitModal = ({ t, typeExit }) => {
 	const [currentInfo, setCurrentInfo] = useState({});
@@ -31,9 +33,14 @@ export const ExitModal = ({ t, typeExit }) => {
 					<SelectField
 						id="selectInventory"
 						name="selectInventory"
-						onChange={(e) => handleInput(e.target.value, e.target.name)}
+						onChange={(e) =>
+							handleInput(e.target.value, e.target.name)
+						}
 						style={{ width: '100%' }}
 					>
+						<MenuItem disabled>
+							<ItemSelect value="" />
+						</MenuItem>
 						{lotSelect.map((lot) => (
 							<MenuItem key={lot.id} value={lot}>
 								<ListItemText>
@@ -67,10 +74,13 @@ export const ExitModal = ({ t, typeExit }) => {
 					<InputField
 						id="quantity"
 						name="quantity"
-						type="textArea"
+						type="number"
 						defaultValue={currentInfo?.quantity}
-						onChange={(e) => handleInput(e.target.value, e.target.name)}
+						onChange={(e) =>
+							handleInput(e.target.value, e.target.name)
+						}
 						placeholder={t('typeSomething')}
+						helperText={t('justNumbers')}
 					/>
 				</div>
 			</WrapperRow>
@@ -83,8 +93,13 @@ export const ExitModal = ({ t, typeExit }) => {
 						id="linkSubarea"
 						name="linkSubarea"
 						value={currentInfo?.linkSubarea}
-						onChange={(e) => handleInput(e.target.value, e.target.name)}
+						onChange={(e) =>
+							handleInput(e.target.value, e.target.name)
+						}
 					>
+						<MenuItem disabled>
+							<ItemSelect value="" />
+						</MenuItem>
 						{subareas.map((subarea) => (
 							<MenuItem key={subarea.id} value={subarea}>
 								<ListItemText>
@@ -100,12 +115,14 @@ export const ExitModal = ({ t, typeExit }) => {
 					<InputLabelStyled htmlFor="observation">
 						{t('observation')}
 					</InputLabelStyled>
-					<InputField
+					<TextArea
 						id="observation"
 						name="observation"
 						type="textArea"
 						defaultValue={currentInfo?.observation}
-						onChange={(e) => handleInput(e.target.value, e.target.name)}
+						onChange={(e) =>
+							handleInput(e.target.value, e.target.name)
+						}
 						placeholder={t('typeSomething')}
 					/>
 				</div>
@@ -119,7 +136,8 @@ export const ExitModal = ({ t, typeExit }) => {
 						</InputLabelStyled>
 						<UploadField
 							id="invoice"
-							docName=""
+							docName={currentInfo?.invoice?.split('\\').pop()}
+							accept="application/pdf, text/xml"
 							name="invoice"
 							buttonName={t('select')}
 							onChange={(e) =>
@@ -134,7 +152,10 @@ export const ExitModal = ({ t, typeExit }) => {
 						</InputLabelStyled>
 						<UploadField
 							id="animalTransitGuide"
-							docName=""
+							docName={currentInfo?.animalTransitGuide
+								?.split('\\')
+								.pop()}
+							accept="application/pdf, text/xml"
 							name="animalTransitGuide"
 							buttonName={t('select')}
 							onChange={(e) =>

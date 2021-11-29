@@ -31,7 +31,6 @@ const TableHeadDefault = ({
 				<TableCell padding="checkbox">
 					<Checkbox
 						checked={fullChecked}
-						style={{ color: 'green' }}
 						onChange={() => handleCheck()}
 					/>
 				</TableCell>

@@ -2,7 +2,6 @@ import { useState } from 'react';
 import {
 	SelectField,
 	InputField,
-	StyledMenuItem,
 	UploadField,
 	InputLabelStyled,
 	InputLabelRadio,
@@ -49,13 +48,11 @@ const UtilizationFirst = ({
 				value={employeeSelected}
 				onChange={handleEmployeeSelected}
 			>
-				<StyledMenuItem disabled>
+				<MenuItem disabled>
 					<ItemSelect value="" />
-				</StyledMenuItem>
+				</MenuItem>
 				{employees.map((employee) => (
-					<StyledMenuItem value={employee}>
-						{t(employee.name)}
-					</StyledMenuItem>
+					<MenuItem value={employee}>{t(employee.name)}</MenuItem>
 				))}
 			</SelectField>
 			<div
@@ -237,17 +234,22 @@ const UtilizationSecond = ({ t, tasks, handleInput }) => {
 						value={tasksSelected}
 						multiple
 						onChange={handleTaskSelected}
-						renderValue={(selected) => selected.join(', ')}
+						renderValue={(selected) =>
+							selected
+								.map((item) => {
+									return item.title;
+								})
+								.join(', ')
+						}
 						style={{ width: '100%' }}
 					>
-						<StyledMenuItem disabled>
+						<MenuItem disabled>
 							<ItemSelect value="" />
-						</StyledMenuItem>
+						</MenuItem>
 						{tasks.map((task) => (
 							<MenuItem key={task.id} value={task}>
 								<Checkbox
 									checked={tasksSelected.indexOf(task) > -1}
-									style={{ color: 'green' }}
 								/>
 								<ListItemText>
 									<TitleTask>{task.title}</TitleTask>

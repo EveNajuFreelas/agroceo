@@ -5,7 +5,6 @@ import {
 	InputField,
 	UploadField,
 	SelectField,
-	StyledMenuItem,
 	InputFieldsWrapper,
 	InputLabelStyled,
 } from '../../../inputsStyles';
@@ -18,6 +17,7 @@ import {
 	DialogContent,
 	DialogTitle,
 	InputAdornment,
+	MenuItem,
 } from '@material-ui/core';
 import { iconList } from '../../../../../assets/Icons/icon-list';
 import { defaultTheme } from '../../../../../theme';
@@ -134,13 +134,11 @@ export const EntranceManagementModal = () => {
 							handleInput(e.target.value, e.target.name)
 						}
 					>
-						<StyledMenuItem disabled>
+						<MenuItem disabled>
 							<ItemSelect value="" />
-						</StyledMenuItem>
+						</MenuItem>
 						{fuelTypes.map((ft) => (
-							<StyledMenuItem value={ft.value}>
-								{t(ft.name)}
-							</StyledMenuItem>
+							<MenuItem value={ft.value}>{t(ft.name)}</MenuItem>
 						))}
 					</SelectField>
 					<InputLabelStyled required htmlFor="quantity">

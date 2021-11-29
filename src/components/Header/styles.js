@@ -17,9 +17,9 @@ export const HeaderStyle = styled.div`
 	background-color: #fff;
 	border-bottom: ${border.header};
 	z-index: 10;
-	
+
 	transition: width 0.3s ease-out;
-	${props =>
+	${(props) =>
 		props.drawerOpen
 			? `width: calc(100% - ${width.sidebarOpen})`
 			: `width: calc(100% - ${width.sidebarClosed})`};
@@ -46,7 +46,7 @@ export const HeaderInfo = styled.div`
 	margin: 0 ${margin.lg};
 `;
 
-export const StyledSelect = styled(props => (
+export const StyledSelect = styled((props) => (
 	<Select {...props} IconComponent={ExpandMore} />
 ))`
 	border: ${border.header};

@@ -177,13 +177,6 @@ export const SelectField = styled(CustomComponents.SelectComponent)`
 	}
 `;
 
-export const StyledMenuItem = styled(MenuItem)`
-	/* & .MuiMenuItem-root.Mui-selected {
-		color: ${colors.primary};
-		background-color: white;
-	} */
-`;
-
 export const UploadField = styled(CustomComponents.UploadComponent)`
 	display: flex;
 	justify-content: space-between;

@@ -1,6 +1,8 @@
+import { colors } from '@material-ui/core';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { usePageContext } from '../../context/pageContext';
+import { defaultTheme } from '../../theme';
 import {
 	HeaderStyle,
 	HeaderTitle,
@@ -33,9 +35,11 @@ export const Header = () => {
 	const [dropdownValue, setDropdownValue] = useState(
 		mockProperties.length > 0 ? mockProperties[0].value : 'none'
 	);
+
+	const { colors } = defaultTheme;
 	const { drawerOpen, pageTitle, breadcrumbs } = usePageContext();
 
-	const handleDropdown = e => {
+	const handleDropdown = (e) => {
 		setDropdownValue(e.target.value);
 	};
 
@@ -47,15 +51,19 @@ export const Header = () => {
 					{breadcrumbs && breadcrumbs.map((b) => <p>{t(b)}</p>)}
 				</HeaderBreadcrumb>
 			</HeaderInfo>
-			<StyledSelect value={dropdownValue} onChange={handleDropdown}>
+			<StyledSelect
+				style={{ color: `${colors.primary}` }}
+				value={dropdownValue}
+				onChange={handleDropdown}
+			>
 				{mockProperties.length > 0 ? (
-					mockProperties.map(prop => (
+					mockProperties.map((prop) => (
 						<StyledMenuItem key={prop.id} value={prop.value}>
 							{prop.title}
 						</StyledMenuItem>
 					))
 				) : (
-					<StyledMenuItem value='none'>
+					<StyledMenuItem value="none">
 						Nenhuma propriedade cadastrada.
 					</StyledMenuItem>
 				)}

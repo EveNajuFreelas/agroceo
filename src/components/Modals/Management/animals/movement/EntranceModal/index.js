@@ -5,6 +5,7 @@ import {
 	InputLabelRadio,
 	FormControlStyled,
 	UploadField,
+	TextArea,
 } from '../../../../inputsStyles';
 
 import {
@@ -22,6 +23,7 @@ import {
 	speciesSelect,
 } from '../../../../../../utils/dataMock/selectMock';
 import { TitleTask } from '../../../vehicleModals/UtilzationModal/UtilizationOption/styles';
+import ItemSelect from '../../../../SelectField';
 
 export const EntranceModal = ({ t, typeEntrance }) => {
 	const [currentInfo, setCurrentInfo] = useState({});
@@ -46,8 +48,11 @@ export const EntranceModal = ({ t, typeEntrance }) => {
 					id="specie"
 					name="specie"
 					value={currentInfo?.specie}
-					onChange={e => handleInput(e.target.value, e.target.name)}
+					onChange={(e) => handleInput(e.target.value, e.target.name)}
 				>
+					<MenuItem disabled>
+						<ItemSelect value="" />
+					</MenuItem>
 					{speciesSelect.map((specie) => (
 						<MenuItem key={specie.id} value={specie.name}>
 							<ListItemText>
@@ -97,7 +102,9 @@ export const EntranceModal = ({ t, typeEntrance }) => {
 							name="weaningPrediction"
 							type="number"
 							defaultValue={currentInfo?.quantity}
-							onChange={(e) => handleInput(e.target.value, e.target.name)}
+							onChange={(e) =>
+								handleInput(e.target.value, e.target.name)
+							}
 							placeholder={t('typeSomething')}
 							helperText={t('inMonths')}
 						/>
@@ -111,8 +118,9 @@ export const EntranceModal = ({ t, typeEntrance }) => {
 						</InputLabelStyled>
 						<UploadField
 							id="invoice"
-							docName=""
 							name="invoice"
+							docName={currentInfo?.invoice?.split('\\').pop()}
+							accept="application/pdf, text/xml"
 							buttonName={t('select')}
 							onChange={(e) =>
 								handleInput(e.target.value, e.target.name)
@@ -124,8 +132,11 @@ export const EntranceModal = ({ t, typeEntrance }) => {
 						</InputLabelStyled>
 						<UploadField
 							id="animalTransitGuide"
-							docName=""
 							name="animalTransitGuide"
+							docName={currentInfo?.animalTransitGuide
+								?.split('\\')
+								.pop()}
+							accept="application/pdf, text/xml"
 							buttonName={t('select')}
 							onChange={(e) =>
 								handleInput(e.target.value, e.target.name)
@@ -149,8 +160,11 @@ export const EntranceModal = ({ t, typeEntrance }) => {
 					id="category"
 					name="category"
 					value={currentInfo?.category}
-					onChange={e => handleInput(e.target.value, e.target.name)}
+					onChange={(e) => handleInput(e.target.value, e.target.name)}
 				>
+					<MenuItem disabled>
+						<ItemSelect value="" />
+					</MenuItem>
 					{categorySelect.map((category) => (
 						<MenuItem key={category.id} value={category.name}>
 							<ListItemText>
@@ -199,14 +213,14 @@ export const EntranceModal = ({ t, typeEntrance }) => {
 				<InputLabelStyled required htmlFor="observation">
 					{t('observation')}
 				</InputLabelStyled>
-				<InputField
+				<TextArea
+					style={{ width: '94%' }}
 					id="observation"
 					name="observation"
 					type="textArea"
 					defaultValue={currentInfo?.observation}
 					onChange={(e) => handleInput(e.target.value, e.target.name)}
 					placeholder={t('typeSomething')}
-					helperText={t('justNumbers')}
 				/>
 			</div>
 		</>

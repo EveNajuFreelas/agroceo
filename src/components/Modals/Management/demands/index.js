@@ -71,10 +71,8 @@ export const DemandsModal = ({ title, breadcrumbs }) => {
 						id="demandPhoto"
 						accept="image/*"
 						docName={
-							currentInfo?.DocumentPicture !== '--'
-								? currentInfo?.DocumentPicture?.split(
-										'\\'
-								  ).pop()
+							currentInfo?.demandPhoto !== '--'
+								? currentInfo?.demandPhoto?.split('\\').pop()
 								: null
 						}
 						name="demandPhoto"

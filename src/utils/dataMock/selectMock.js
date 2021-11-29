@@ -7,11 +7,27 @@ export const areas = [
 	},
 	{
 		id: '2',
-		name: 'Confinamento',
+		name: 'Tanque',
 	},
 	{
 		id: '3',
 		name: 'Baia',
+	},
+	{
+		id: '4',
+		name: 'Confinamento',
+	},
+	{
+		id: '5',
+		name: 'Pasto',
+	},
+	{
+		id: '6',
+		name: 'Pessoas',
+	},
+	{
+		id: '7',
+		name: 'Lavoura',
 	},
 ];
 
@@ -99,22 +115,42 @@ export const speciesSelect = [
 	},
 	{
 		id: '2',
-		name: 'Bovinos',
+		name: 'Aves',
 	},
 	{
 		id: '3',
-		name: 'Caprinos',
+		name: 'Bovinos',
 	},
 	{
 		id: '4',
-		name: 'Muares',
+		name: 'Bubalinos',
 	},
 	{
 		id: '5',
-		name: 'Peixes',
+		name: 'Caprinos',
 	},
 	{
 		id: '6',
+		name: 'Equinos',
+	},
+	{
+		id: '7',
+		name: 'Muares',
+	},
+	{
+		id: '8',
+		name: 'Ovinos',
+	},
+	{
+		id: '9',
+		name: 'Peixes',
+	},
+	{
+		id: '10',
+		name: 'Suídeos',
+	},
+	{
+		id: '11',
 		name: 'Outros',
 	},
 ];
@@ -180,5 +216,35 @@ export const costCentersSelect = [
 	{
 		id: '4',
 		name: 'E mais algum',
+	},
+];
+
+export const functionList = [
+	{
+		id: '1',
+		name: 'Ordenhador',
+	},
+	{
+		id: '2',
+		name: 'Motorista',
+	},
+	{
+		id: '3',
+		name: 'Agricultor',
+	},
+];
+
+export const paymentList = [
+	{
+		id: '1',
+		name: 'Cartão de Créditto',
+	},
+	{
+		id: '2',
+		name: 'Boleto',
+	},
+	{
+		id: '3',
+		name: 'Cartão de Débito',
 	},
 ];

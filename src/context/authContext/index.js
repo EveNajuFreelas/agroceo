@@ -9,9 +9,24 @@ const AccessToken = '@agroceo/accessToken';
 const Properties = '@agroceo/properties';
 
 const useAuthenticationContainer = () => {
+	const propertiesMock = [
+		{
+			id: 1,
+			name: 'Propriedade 1',
+		},
+		{
+			id: 2,
+			name: 'Propriedade 2',
+		},
+		{
+			id: 3,
+			name: 'Propriedade 3',
+		},
+	];
+
 	const [ready, setReady] = useState(false);
 	const [user, setUser] = useState(localStorage.getItem('@agroceo/user'));
-	const [properties, setProperties] = useState();
+	const [properties, setProperties] = useState(propertiesMock);
 	const [propertiesSelected, setPropertiesSelected] = useState([5]);
 	const [showProfileModal, setShowProfileModal] = useState(false);
 	const [newProfileInfo, setNewProfileInfo] = useState();

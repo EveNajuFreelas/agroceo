@@ -75,7 +75,6 @@ const TableEmployees = ({ data }) => {
 							<TableRow key={row.data.id}>
 								<TableCell padding="checkbox">
 									<Checkbox
-										style={{ color: 'green' }}
 										onChange={(e) => handleCheck(e, row)}
 										checked={checkedItems.includes(row)}
 										inputProps={{

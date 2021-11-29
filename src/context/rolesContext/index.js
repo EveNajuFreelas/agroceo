@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { createContainer, useContainer } from 'unstated-next';
 import api from '../../api';
+import { manejoMaoFuncoes } from '../../utils/dataMock/mock';
 import { useAuthentication } from '../authContext';
 import { formatResponseEmployee, formatResponseRole } from './formatRoles';
 
@@ -11,17 +12,20 @@ const useRoleContainer = () => {
 	const [isLoading, setLoading] = useState(true);
 
 	const getRoles = () => {
-		propertiesSelected.map(async (property) => (
-			await api.get(`/offices/${property}`)
-				.then((res) => {
-					setRoles(formatResponseRole(res.data.office));
-					setLoading(false);
-				})
-				.catch((err) => {
-					console.error(err);
-					setLoading(false);
-				})
-		));
+		propertiesSelected.map(
+			async (property) =>
+				await api
+					.get(`/offices/${property}`)
+					.then((res) => {
+						//setRoles(formatResponseRole(res.data));
+						setRoles(manejoMaoFuncoes);
+						setLoading(false);
+					})
+					.catch((err) => {
+						console.error(err);
+						setLoading(false);
+					})
+		);
 	};
 
 	const getEmployees = () => {

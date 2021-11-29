@@ -9,9 +9,15 @@ const theme = createMuiTheme({
 			main: colors.primary,
 			contrastText: '#fff',
 		},
+		error: {
+			main: colors.error,
+		},
 	},
 	props: {
 		MuiRadio: {
+			color: 'primary',
+		},
+		MuiCheckbox: {
 			color: 'primary',
 		},
 	},

@@ -167,22 +167,28 @@ export const manejoMaoFuncionario = [
 
 export const manejoMaoFuncoes = [
 	{
-		id: '00004',
-		Funcao: 'Ordenhador',
-		Obligations: [
-			'Higienizar equipamento',
-			'Apartar Gado',
-			'Ordenhar',
-			'Armazenar Leite',
-			'Something else',
-		],
-		Days: ['Segunda-feira(manhã), Terça-feira(manhã), Quarta-Feira(tarde)'],
+		data: {
+			id: '00004',
+			Funcao: 'Ordenhador',
+			Obligations: [
+				'Higienizar equipamento',
+				'Apartar Gado',
+				'Ordenhar',
+				'Armazenar Leite',
+				'Something else',
+			],
+			Days: [
+				'Segunda-feira(manhã), Terça-feira(manhã), Quarta-Feira(tarde)',
+			],
+		},
 	},
 	{
-		id: '00006',
-		Funcao: 'Ordenhador',
-		Obligations: ['Apartar Gado', 'Ordenhar', 'Armazenar Leite'],
-		Days: ['Segunda-feira(manhã), Quarta-Feira(tarde)'],
+		data: {
+			id: '00006',
+			Funcao: 'Ordenhador',
+			Obligations: ['Apartar Gado', 'Ordenhar', 'Armazenar Leite'],
+			Days: ['Segunda-feira(manhã), Quarta-Feira(tarde)'],
+		},
 	},
 ];
 
@@ -437,7 +443,7 @@ export const unidadeDeMedida = [
 	{
 		value: 'lt',
 		name: 'liters',
-	}, 
+	},
 	{
 		value: 'kg',
 		name: 'kilograms',
@@ -445,7 +451,7 @@ export const unidadeDeMedida = [
 	{
 		value: 'm',
 		name: 'meters',
-	}
+	},
 ];
 
 export const timesParcels = [
@@ -458,5 +464,5 @@ export const timesParcels = [
 	'7x',
 	'8x',
 	'9x',
-	'10x'
-]
+	'10x',
+];

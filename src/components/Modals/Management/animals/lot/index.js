@@ -18,11 +18,13 @@ import {
 	Button,
 } from '@material-ui/core';
 import ItemSelect from '../../../SelectField';
+import DateInput from '../../inputs/dateInput';
 
 export const ModalLot = ({ t }) => {
 	const [inventorySelected, setInventorySelected] = useState([]);
 	const [currentInfo, setCurrentInfo] = useState({});
 	const [openDialogAnimals, setDialogAnimals] = useState(false);
+	const [openDialogSubareas, setDialogSubareas] = useState(false);
 	const [titleSelected, setTitleSelected] = useState('');
 
 	const handleInput = (info, inputName) => {
@@ -42,6 +44,19 @@ export const ModalLot = ({ t }) => {
 
 	const handleSave = () => {
 		setDialogAnimals(!openDialogAnimals);
+	};
+
+	const handleSubareaDialog = () => {
+		setDialogSubareas(!openDialogSubareas);
+	};
+
+	const createTitle = (lot) => {
+		console.log(lot);
+		setTitleSelected(
+			`${lot.specie} - ${lot.category} - ${lot.sex.substr(0, 1)} - ${
+				lot.age
+			}`
+		);
 	};
 
 	const renderAnimalsDialog = () => (
@@ -90,9 +105,47 @@ export const ModalLot = ({ t }) => {
 		</Dialog>
 	);
 
+	const renderSubareaDialog = () => (
+		<Dialog onClose={() => handleSubareaDialog()} open={openDialogSubareas}>
+			<DialogTitle>{t('subareaChange')}</DialogTitle>
+			<DialogContent>
+				<p style={{ marginBottom: '20px' }}>
+					{t('informDateMovement')}
+				</p>
+				<DateInput
+					name="dateMovimentation"
+					onChange={(e) => handleInput(e.target.value, e.target.name)}
+					defaultValue={currentInfo?.quantityAnimal}
+				/>
+			</DialogContent>
+			<DialogActions style={{ justifyContent: 'center', gap: '10px' }}>
+				<Button
+					color="secondary"
+					variant="outlined"
+					style={{ fontWeight: 'bold', width: '30%' }}
+					onClick={() => handleSubareaDialog()}
+				>
+					{t('no')}
+				</Button>
+				<Button
+					color="primary"
+					style={{
+						fontWeight: 'bold',
+						width: '30%',
+					}}
+					variant="outlined"
+					onClick={() => handleSubareaDialog()}
+				>
+					{t('yes')}
+				</Button>
+			</DialogActions>
+		</Dialog>
+	);
+
 	return (
 		<>
 			{renderAnimalsDialog()}
+			{renderSubareaDialog()}
 			<div
 				style={{
 					width: '35%',
@@ -118,7 +171,10 @@ export const ModalLot = ({ t }) => {
 					id="linkSubarea"
 					name="linkSubarea"
 					value={currentInfo?.linkSubarea}
-					onChange={(e) => handleInput(e.target.value, e.target.name)}
+					onChange={(e) => {
+						handleInput(e.target.value, e.target.name);
+						handleSubareaDialog();
+					}}
 				>
 					<MenuItem disabled>
 						<ItemSelect value="" />
@@ -174,15 +230,7 @@ export const ModalLot = ({ t }) => {
 											justifyContent: 'space-between',
 											gap: '10%',
 										}}
-										onCLick={() =>
-											setTitleSelected(
-												`${lot.specie} - ${
-													lot.category
-												} - ${lot.sex.substr(0, 1)} - ${
-													lot.age
-												}`
-											)
-										}
+										onCLick={() => createTitle(lot)}
 									>
 										<td>
 											{lot.specie} - {lot.category}

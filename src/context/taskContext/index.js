@@ -19,6 +19,7 @@ const useTaskContainer = () => {
 				})
 				.catch((err) => {
 					console.error(err);
+					setLoading(false);
 				});
 		});
 	};
@@ -28,9 +29,11 @@ const useTaskContainer = () => {
 		api.post(`/DeleteTask/${id}`)
 			.then((res) => {
 				getTasks();
+				setLoading(false);
 			})
 			.catch((err) => {
 				console.error(err);
+				setLoading(false);
 			});
 	};
 
@@ -39,9 +42,11 @@ const useTaskContainer = () => {
 			.then((res) => {
 				console.log(res);
 				getTasks();
+				setLoading(false);
 			})
 			.catch((err) => {
 				console.error(err);
+				setLoading(false);
 			});
 	};
 

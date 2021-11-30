@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ModalShell } from '../../../Modal/index';
 
@@ -21,9 +21,13 @@ export const AgricultureModal = () => {
 	const { modalState, closeModals, activeContent } = useModalsContainer();
 
 	const [currentInfo, setCurrentInfo] = useState(activeContent);
+	console.log(currentInfo);
+
+	useEffect(() => {
+		setCurrentInfo(activeContent);
+	}, [activeContent]);
 
 	const handleSave = () => {
-		console.log(currentInfo);
 		setCurrentInfo({});
 		closeModals();
 	}
@@ -79,6 +83,11 @@ export const AgricultureModal = () => {
 								</ListItemText>
 							</MenuItem>
 						))}
+						<MenuItem key={currentInfo?.subarea} value={currentInfo?.subarea}>
+							<TitleTask>
+								{currentInfo?.subarea}
+							</TitleTask>
+						</MenuItem>
 					</SelectField>
 					<InputLabelStyled required htmlFor="typeAgriculture">
 						{t('typeAgriculture')}
@@ -100,10 +109,10 @@ export const AgricultureModal = () => {
 							<WrapperInputText>
 								<InputField
 									id="quantity"
-									name="quantity"
+									name="numberBags"
 									type="number"
 									onChange={(e) => handleInput(e.target.value, e.target.name)}
-									defaultValue={currentInfo?.numberBags}
+									defaultValue={currentInfo?.numberBags?.replace(/[^0-9]/g,'')}
 									helperText={t('justNumbers')}
 									placeholder="0"
 									InputProps={{
@@ -129,7 +138,7 @@ export const AgricultureModal = () => {
 									id="weightPerBag"
 									name="weightPerBag"
 									type="number"
-									defaultValue={Number(currentInfo?.weightPerBag)}
+									defaultValue={Number(currentInfo?.weightPerBag?.replace(/[^0-9]/g,''))}
 									onChange={(e) => handleInput(e.target.value, e.target.name)}
 									helperText={t('justNumbers')}
 									placeholder="0"

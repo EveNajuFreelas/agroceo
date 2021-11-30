@@ -106,7 +106,7 @@ const Animals = () => {
 		<CircleLoading />
 	) : (
 		<>
-			<AnimalsModal t={t} />
+			<AnimalsModal t={t} activeTab={value} />
 			<HeadSection>
 				<TabsStyled value={value} onChange={handleChange}>
 					<TabStyled label={t('registeredAnimals')} />

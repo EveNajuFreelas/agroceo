@@ -7,10 +7,7 @@ const ManagementContext = () => {
     const [initialModalState, setInitialModalState] = useState(false);
     
     const [activeContent, setActiveContent] = useState({ 
-        receipt: null, 
-        quantity: 50,
-        presentation: 'Saco de 20kg',
-        measurementUnit: 'kg',
+        receipt: null
     });
 
     const openEntranceModal = () => {

@@ -16,9 +16,11 @@ const useAreaContainer = () => {
 			api.get(`/subareas/${2}`)
 				.then(res => {
 					setAreas(formatResponseArea(res.data));
+					setLoading(false);
 				})
 				.catch(err => {
 					console.error(err);
+					setLoading(false);
 				});
 
 			api.get(`/modules/${property}`)
@@ -28,6 +30,7 @@ const useAreaContainer = () => {
 				})
 				.catch(err => {
 					console.error(err);
+					setLoading(false);
 				});
 		});
 	};

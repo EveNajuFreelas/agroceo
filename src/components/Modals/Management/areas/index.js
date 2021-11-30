@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ModalShell } from '../../../Modal/index';
 
@@ -12,16 +12,19 @@ import { useModalsContainer } from '../../../../context/modalsContext';
 import { ModuleOption } from './moduleOption';
 import { SubAreaOption } from './subareaOption';
 
-export const AreaModal = ({ title, breadcrumbs }) => {
+export const AreaModal = ({ title, breadcrumbs, areaType }) => {
 	const { t } = useTranslation();
-	const { modalState, closeModals } = useModalsContainer();
-
+	const { modalState, closeModals, activeContent, modalUtilizationState } = useModalsContainer();
 	const [register, setRegister] = useState('subarea');
+
+	useEffect(() => {
+		setRegister(areaType == 0 ? 'subarea' : 'module');
+	}, [areaType]);
 
 	return (
 		<ModalShell
 			isSmall
-			open={modalState}
+			open={modalState || modalUtilizationState}
 			handleClose={closeModals}
 			title={title}
 			breadcrumbs={breadcrumbs}
@@ -76,8 +79,8 @@ export const AreaModal = ({ title, breadcrumbs }) => {
 						</RadioGroup>
 					</FormControlStyled>
 
-					{register === 'subarea' && <SubAreaOption t={t} />}
-					{register === 'module' && <ModuleOption t={t} />}
+					{register === 'subarea' && <SubAreaOption t={t} activeContent={activeContent} />}
+					{register === 'module' && <ModuleOption t={t} activeContent={activeContent} />}
 				</div>
 			</InputFieldsWrapper>
 		</ModalShell>

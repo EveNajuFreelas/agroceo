@@ -34,7 +34,7 @@ const TableWithChip = ({ data, columns, deleteFunction, thirdLeft }) => {
 	};
 
 	const handleEditClick = (content) => {
-		editActiveContent(content);
+		editActiveContent(content.data);
 		openUtilizationModal();
 	};
 

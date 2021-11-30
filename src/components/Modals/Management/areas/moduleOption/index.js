@@ -11,9 +11,9 @@ import ItemSelect from '../../../SelectField';
 import { ListItems, TitleList } from '../../styles';
 import { TitleTask } from '../../vehicleModals/UtilzationModal/UtilizationOption/styles';
 
-export const ModuleOption = ({ t }) => {
-	const [subareasSelected, setSubareasSelected] = useState([]);
-	const [currentInfo, setCurrentInfo] = useState({});
+export const ModuleOption = ({ t, activeContent }) => {
+	const [currentInfo, setCurrentInfo] = useState(activeContent); 
+	const [subareasSelected, setSubareasSelected] = useState(currentInfo?.pastures);
 
 	const handleInput = (info, inputName) => {
 		setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
@@ -37,8 +37,8 @@ export const ModuleOption = ({ t }) => {
 					</InputLabelStyled>
 					<InputField
 						id="moduleName"
-						name="moduleName"
-						value={currentInfo?.moduleName}
+						name="name"
+						value={currentInfo?.name}
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}
@@ -51,8 +51,8 @@ export const ModuleOption = ({ t }) => {
 					</InputLabelStyled>
 					<InputField
 						id="moduleNickname"
-						name="moduleNickname"
-						value={currentInfo?.moduleNickname}
+						name="nickname"
+						value={currentInfo?.nickname}
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}
@@ -80,6 +80,11 @@ export const ModuleOption = ({ t }) => {
 						</ListItemText>
 					</MenuItem>
 				))}
+				<MenuItem key={currentInfo?.destination} value={currentInfo?.destination}>
+						<ListItemText>
+							<TitleTask>{currentInfo?.destination}</TitleTask>
+						</ListItemText>
+					</MenuItem>
 			</SelectField>
 
 			<InputLabelStyled required htmlFor="subareas">
@@ -87,7 +92,7 @@ export const ModuleOption = ({ t }) => {
 			</InputLabelStyled>
 			<SelectField
 				id="subareas"
-				name="subareas"
+				name="pastures"
 				value={subareasSelected}
 				multiple
 				onChange={handleSubareaSelected}
@@ -115,8 +120,7 @@ export const ModuleOption = ({ t }) => {
 						/>
 						<ListItemText>
 							<TitleTask>
-								{subarea.destination} {subarea.pastures} -{' '}
-								{subarea.size}
+								{currentInfo.destination} {subarea}
 							</TitleTask>
 						</ListItemText>
 					</MenuItem>
@@ -128,8 +132,7 @@ export const ModuleOption = ({ t }) => {
 				<ListItems>
 					{subareasSelected.map((subarea) => (
 						<li>
-							{subarea.destination} {subarea.pastures} -{' '}
-							{subarea.size}
+							{currentInfo.destination} {subarea}
 						</li>
 					))}
 				</ListItems>

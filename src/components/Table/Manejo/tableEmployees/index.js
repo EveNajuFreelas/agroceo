@@ -53,6 +53,7 @@ const TableEmployees = ({ data }) => {
 	};
 
 	const handleEditClick = (content) => {
+		console.log(content);
 		editActiveContent(content);
 		openEditModal();
 	};

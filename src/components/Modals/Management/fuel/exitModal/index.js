@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ModalShell } from '../../../../Modal/index';
 import { FuelTypeRadio, FuelLabelRadio } from '../../managementStyles';
@@ -16,7 +16,6 @@ import { useManagementContainer } from '../../../../../context/managementContext
 import { RadioGroup, Divider, MenuItem } from '@material-ui/core';
 import { employeesSelect } from '../../../../../utils/dataMock/selectMock';
 import { iconList } from '../../../../../assets/Icons/icon-list';
-import InputMask from 'react-input-mask';
 import ItemSelect from '../../../SelectField';
 import HourInput from '../../inputs/hourInput';
 import DateInput from '../../inputs/dateInput';
@@ -26,10 +25,11 @@ export const ExitManagementModal = () => {
 	const { exitModalState, closeModals, activeContent } =
 		useManagementContainer();
 
-	const [currentInfo, setCurrentInfo] = useState({
-		...activeContent,
-		whereWasFilled: 'atFarm',
-	});
+	const [currentInfo, setCurrentInfo] = useState(activeContent);
+
+	useEffect(() => {
+		setCurrentInfo(activeContent);
+	}, [activeContent])
 
 	const handleInput = (info, inputName) => {
 		setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
@@ -71,31 +71,26 @@ export const ExitManagementModal = () => {
 						<RadioGroup
 							row
 							id="whereWasFilled"
-							name="whereWasFilled"
-							value={currentInfo?.whereWasFilled}
+							defaultValue={currentInfo?.local}
 						>
 							<FuelTypeRadio
 								type="radio"
-								name="filledUpTank"
+								name="local"
 								id="atFarm"
-								value="atFarm"
-								onClick={(e) =>
-									handleInput(e.target.value, e.target.name)
-								}
+								value="Na fazenda"
+								onClick={(e) => handleInput(e.target.value, e.target.name)}
 							/>
-							<FuelLabelRadio for="atFarm">
+							<FuelLabelRadio htmlFor="atFarm">
 								<img src={iconList.manage} alt="" />
 								{t('atFarm')}
 							</FuelLabelRadio>
 
 							<FuelTypeRadio
 								type="radio"
-								name="filledUpTank"
+								name="local"
 								id="atCity"
-								value="atCity"
-								onClick={(e) =>
-									handleInput(e.target.value, e.target.name)
-								}
+								value="Na cidade"
+								onClick={(e) => handleInput(e.target.value, e.target.name)}
 							/>
 							<FuelLabelRadio for="atCity">
 								<img src={iconList.gasStation} alt="" />
@@ -108,7 +103,8 @@ export const ExitManagementModal = () => {
 					</InputLabelStyled>
 					<SelectField
 						id="fuelType"
-						name="fuelType"
+						name="description"
+						defaultValue={currentInfo?.description}
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}
@@ -125,9 +121,9 @@ export const ExitManagementModal = () => {
 					</InputLabelStyled>
 					<InputField
 						id="quantity"
-						name="quantity"
+						name="quantidade"
 						type="number"
-						defaultValue={currentInfo?.quantity}
+						defaultValue={currentInfo?.quantidade?.replace(/[^0-9]/g,'')}
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}
@@ -170,11 +166,9 @@ export const ExitManagementModal = () => {
 							</InputLabelStyled>
 							<SelectField
 								id="whoFilledUp"
-								name="whoFilledUp"
-								value={currentInfo?.whoFilledUp}
-								onChange={(e) =>
-									handleInput(e.target.value, e.target.name)
-								}
+								name="fornecedor"
+								value={currentInfo?.fornecedor}
+								onChange={e => handleInput(e.target.value, e.target.name)}
 							>
 								<MenuItem disabled>
 									<ItemSelect value="" />
@@ -184,6 +178,9 @@ export const ExitManagementModal = () => {
 										{t(employee.name)}
 									</MenuItem>
 								))}
+								<MenuItem value={currentInfo?.fornecedor}>
+									{currentInfo?.fornecedor}
+								</MenuItem>
 							</SelectField>
 						</>
 					)}
@@ -225,7 +222,8 @@ export const ExitManagementModal = () => {
 					</InputLabelStyled>
 					<SelectField
 						id="driver"
-						name="driver"
+						name="motorista"
+						defaultValue={currentInfo?.motorista}
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}
@@ -236,6 +234,9 @@ export const ExitManagementModal = () => {
 						{fuelTypes.map((ft) => (
 							<MenuItem value={ft.value}>{t(ft.name)}</MenuItem>
 						))}
+						<MenuItem value={currentInfo?.motorista}>
+							{currentInfo?.motorista}
+						</MenuItem>
 					</SelectField>
 					<InputLabelStyled required htmlFor="vehicle">
 						{t('vehicle')}
@@ -243,6 +244,7 @@ export const ExitManagementModal = () => {
 					<SelectField
 						id="vehicle"
 						name="vehicle"
+						defaultValue={currentInfo?.veiculo}
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}
@@ -253,6 +255,9 @@ export const ExitManagementModal = () => {
 						{fuelTypes.map((ft) => (
 							<MenuItem value={ft.value}>{t(ft.name)}</MenuItem>
 						))}
+						<MenuItem value={currentInfo?.veiculo}>
+							{currentInfo?.veiculo}
+						</MenuItem>
 					</SelectField>
 				</div>
 			</InputFieldsWrapper>

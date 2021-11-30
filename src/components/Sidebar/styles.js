@@ -31,12 +31,12 @@ export const ListItemWrapper = styled(ListItem)`
 	cursor: pointer;
 
 	.MuiListItem-gutters {
-		padding: ${props => (props.isSubSidebar ? 0 : padding.lg)};
+		padding: ${props => (props.issubsidebar ? 0 : padding.lg)};
 	}
 
 	&:hover {
 		background-color: ${props =>
-			props.isSubSidebar
+			props.issubsidebar
 				? colors.events.onHoverSubmenu
 				: colors.events.onHover};
 		border-radius: ${borderRadius.lg} 0 0 ${borderRadius.lg};
@@ -78,7 +78,7 @@ export const ListExpandButton = styled(ChevronRight)`
 export const ListItemName = styled.div`
 	width: 80%;
 	padding-left: ${padding.md};
-	color: ${props => (props.isSubSidebar ? colors.darkerGreen : 'white')};
+	color: ${props => (props.issubsidebar ? colors.darkerGreen : 'white')};
 `;
 
 export const SubSidebar = styled(Drawer)`

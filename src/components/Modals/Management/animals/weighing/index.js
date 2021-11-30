@@ -5,7 +5,7 @@ import {
 } from '../../../inputsStyles';
 
 import { ItemTableRowWeighing, TitleTableRowWeighing } from './styles';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { InputAdornment, ListItemText, MenuItem } from '@material-ui/core';
 import { iconList } from '../../../../../assets/Icons/icon-list';
 import {
@@ -16,12 +16,17 @@ import { ItemTableRow } from '../lot/styles';
 import ItemSelect from '../../../SelectField';
 import DateInput from '../../inputs/dateInput';
 
-export const ModalWeighing = ({ t }) => {
-	const [currentInfo, setCurrentInfo] = useState({});
+export const ModalWeighing = ({ t, activeContent }) => {
+	const [currentInfo, setCurrentInfo] = useState(activeContent);
 	const [dateLastWeighing, setDateLastWeighing] = useState('10 / 10 / 2013');
 	const [weightLast, setWeightLast] = useState('270 Kg');
+	console.log(currentInfo);
+	useEffect(() => {
+		setCurrentInfo(activeContent);
+	}, [activeContent])
 
 	const handleInput = (info, inputName) => {
+		console.log(inputName, info);
 		setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
 	};
 
@@ -41,7 +46,7 @@ export const ModalWeighing = ({ t }) => {
 					<SelectField
 						id="selectLot"
 						name="selectLot"
-						value={currentInfo?.selectLot}
+						value={currentInfo?.lot}
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}
@@ -61,7 +66,7 @@ export const ModalWeighing = ({ t }) => {
 												justifyContent: 'space-between',
 												gap: '10%',
 											}}
-											onClick={console.log('clicou')}
+											// onClick={console.log('clicou')}
 										>
 											<td>{lot.id}</td>
 											<td>{lot.name}</td>
@@ -72,6 +77,24 @@ export const ModalWeighing = ({ t }) => {
 								</ListItemText>
 							</MenuItem>
 						))}
+						<MenuItem key={currentInfo?.lot} value={currentInfo?.lot}>
+							<ListItemText>
+								<tbody>
+									<ItemTableRow
+										style={{
+											display: 'flex',
+											alignItems: 'center',
+											justifyContent: 'space-between',
+											gap: '10%',
+										}}
+									>
+										<td>{currentInfo?.lot}</td>
+										<td>{currentInfo?.subarea}</td>
+										<td>{currentInfo?.qntdAnimals}</td>
+									</ItemTableRow>
+								</tbody>
+							</ListItemText>
+						</MenuItem>
 					</SelectField>
 
 					<div
@@ -88,7 +111,7 @@ export const ModalWeighing = ({ t }) => {
 								id="quantity"
 								name="quantity"
 								type="number"
-								defaultValue={currentInfo?.quantity}
+								defaultValue={currentInfo?.qntdAnimals?.replace(/[^0-9]/g,'')}
 								onChange={(e) =>
 									handleInput(e.target.value, e.target.name)
 								}
@@ -118,7 +141,7 @@ export const ModalWeighing = ({ t }) => {
 								id="averageWeight"
 								name="averageWeight"
 								type="number"
-								defaultValue={currentInfo?.averageWeight}
+								defaultValue={currentInfo?.averageWeight?.replace(/[^0-9]/g,'')}
 								onChange={(e) =>
 									handleInput(e.target.value, e.target.name)
 								}
@@ -159,9 +182,6 @@ export const ModalWeighing = ({ t }) => {
 							value={dateLastWeighing}
 							disabled
 							defaultValue={currentInfo?.lastWeighing}
-							onChange={(e) =>
-								handleInput(e.target.value, e.target.name)
-							}
 							placeholder={t('typeSomething')}
 						/>
 					</div>
@@ -210,8 +230,8 @@ export const ModalWeighing = ({ t }) => {
 					</InputLabelStyled>
 					<SelectField
 						id="homeSubarea"
-						name="homeSubarea"
-						value={currentInfo?.homeSubarea}
+						name="subarea"
+						value={currentInfo?.subarea}
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}
@@ -227,6 +247,11 @@ export const ModalWeighing = ({ t }) => {
 								</ListItemText>
 							</MenuItem>
 						))}
+						<MenuItem key={currentInfo?.subarea} value={currentInfo?.subarea}>
+							<ListItemText>
+								{currentInfo?.subarea}
+							</ListItemText>
+						</MenuItem>
 					</SelectField>
 				</div>
 

@@ -11,11 +11,9 @@ import {
 import ItemSelect from '../../../SelectField';
 import { TitleTask } from '../../vehicleModals/UtilzationModal/UtilizationOption/styles';
 
-export const SubAreaOption = ({ t }) => {
-	const [currentInfo, setCurrentInfo] = useState({});
-
-	const [totalArea, setTotalArea] = useState('30 ha');
-	const [availableArea, setAvailableArea] = useState('20 ha');
+export const SubAreaOption = ({ t, activeContent }) => {
+	const [currentInfo, setCurrentInfo] = useState(activeContent);
+	console.log(currentInfo);
 
 	const handleInput = (info, inputName) => {
 		setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
@@ -48,7 +46,7 @@ export const SubAreaOption = ({ t }) => {
 								</InputAdornment>
 							),
 						}}
-						value={totalArea}
+						defaultValue={currentInfo?.totalArea}
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}
@@ -72,7 +70,7 @@ export const SubAreaOption = ({ t }) => {
 								</InputAdornment>
 							),
 						}}
-						value={availableArea}
+						defaultValue={currentInfo?.availableArea}
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}
@@ -99,6 +97,11 @@ export const SubAreaOption = ({ t }) => {
 						</ListItemText>
 					</MenuItem>
 				))}
+				<MenuItem key={currentInfo?.destination} value={currentInfo?.destination}>
+					<ListItemText>
+						<TitleTask>{currentInfo?.destination}</TitleTask>
+					</ListItemText>
+				</MenuItem>
 			</SelectField>
 
 			<div
@@ -125,7 +128,7 @@ export const SubAreaOption = ({ t }) => {
 							),
 						}}
 						helperText={t('inHectares')}
-						value={currentInfo?.subareaSize}
+						defaultValue={currentInfo?.size?.replace(/[^0-9]/g,'')}
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}
@@ -138,8 +141,8 @@ export const SubAreaOption = ({ t }) => {
 					</InputLabelStyled>
 					<InputField
 						id="subareaDescription"
-						name="subareaDescription"
-						value={currentInfo?.subareaDescription}
+						name="name"
+						defaultValue={currentInfo?.name}
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}

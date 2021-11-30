@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ModalShell } from '../../../../Modal/index';
 import { fuelTypes } from '../../../../../utils/dataMock/mock';
@@ -24,6 +24,7 @@ import { iconList } from '../../../../../assets/Icons/icon-list';
 import ItemSelect from '../../../SelectField';
 import InputMask from 'react-input-mask';
 import DateInput from '../../inputs/dateInput';
+import { formatDateYMDtoDMY } from '../../../../../utils/functions';
 
 export const RegisterModalVehicle = ({
 	title,
@@ -34,6 +35,10 @@ export const RegisterModalVehicle = ({
 	const { t } = useTranslation();
 	const { modalState, closeModals, activeContent } = useModalsContainer();
 	const [currentInfo, setCurrentInfo] = useState(activeContent);
+
+	useEffect(() => {
+		setCurrentInfo(activeContent);
+	}, [activeContent])
 
 	const handleInput = (info, inputName) => {
 		setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
@@ -144,6 +149,9 @@ export const RegisterModalVehicle = ({
 						{fuelTypes.map((ft) => (
 							<MenuItem value={ft.value}>{t(ft.name)}</MenuItem>
 						))}
+						<MenuItem value={currentInfo?.brand}>
+							{currentInfo?.brand}
+						</MenuItem>
 					</SelectField>
 					<InputLabelStyled required htmlFor="model">
 						{t('model')}
@@ -162,17 +170,15 @@ export const RegisterModalVehicle = ({
 						{fuelTypes.map((ft) => (
 							<MenuItem value={ft.value}>{t(ft.name)}</MenuItem>
 						))}
+						<MenuItem value={currentInfo?.model}>
+							{currentInfo?.model}
+						</MenuItem>
 					</SelectField>
 					<InputLabelStyled htmlFor="vehicleFile">
 						{t('vehicleFile')}
 					</InputLabelStyled>
 					<UploadField
 						id="vehicleFile"
-						// docName={
-						// 	currentInfo?.DocumentPicture !== '--'
-						// 		? currentInfo?.DocumentPicture
-						// 		: null
-						// }
 						name="vehicleFile"
 						buttonName={t('select')}
 						accept="image/*"
@@ -208,6 +214,8 @@ export const RegisterModalVehicle = ({
 							<InputMask
 								mask="9999/99"
 								maskChar=" "
+								type="number"
+								defaultValue={currentInfo?.manufactureYear || currentInfo?.tractorYear}
 								onChange={(e) =>
 									handleInput(e.target.value, e.target.name)
 								}
@@ -341,6 +349,8 @@ export const RegisterModalVehicle = ({
 							</InputLabelStyled>
 							<DateInput
 								name="lastRevision"
+								defaultValue={(currentInfo?.dateOfLastRevision && 
+										formatDateYMDtoDMY(currentInfo?.dateOfLastRevision))}
 								onChange={(e) =>
 									handleInput(e.target.value, e.target.name)
 								}
@@ -354,19 +364,19 @@ export const RegisterModalVehicle = ({
 						>
 							{t('owner')}
 						</InputLabelRadio>
-						<RadioGroup
-							row
-							id="ownerVehicle"
-							name="ownerVehicle"
-							defaultValue={currentInfo?.ownerVehicle}
+						<RadioGroup 
+							row 
+							id="ownerVehicle" 
+							name="vehicleOwner" 
+							defaultValue={currentInfo?.vehicleOwner || currentInfo?.tractorOwner}
 						>
 							<FormControlLabel
-								value="farm"
+								value="Fazenda"
 								control={<Radio />}
 								label={t('farm')}
 							/>
 							<FormControlLabel
-								value="subcontractors"
+								value="Terceiros"
 								control={<Radio />}
 								label={t('subcontractors')}
 							/>

@@ -10,7 +10,7 @@ const useTractorContainer = () => {
 	const { propertiesSelected, token } = useAuthentication();
 
 	const getTractor = () => {
-		propertiesSelected.map(property => {
+		propertiesSelected.map(property => (
 			api.get(`/tractor/${property}`)
 				.then(res => {
 					setTractor(formatResponseTractor(res.data));
@@ -18,8 +18,9 @@ const useTractorContainer = () => {
 				})
 				.catch(err => {
 					console.error(err);
-				});
-		});
+					setLoading(false);
+				})
+		));
 	};
 
 	const deleteTractor = id => {
@@ -28,9 +29,11 @@ const useTractorContainer = () => {
 		api.delete(`/destroytractor/${id}`)
 			.then(res => {
 				getTractor();
+				setLoading(false);
 			})
 			.catch(err => {
 				console.error(err);
+				setLoading(false);
 			});
 	};
 
@@ -40,9 +43,11 @@ const useTractorContainer = () => {
 			.then(res => {
 				console.log(res);
 				getTractor();
+				setLoading(false);
 			})
 			.catch(err => {
 				console.error(err);
+				setLoading(false);
 			});
 	};
 
@@ -51,6 +56,7 @@ const useTractorContainer = () => {
 		getTractor,
 		isLoading,
 		deleteTractor,
+		postTractor
 	};
 };
 

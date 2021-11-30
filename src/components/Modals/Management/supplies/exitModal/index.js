@@ -67,7 +67,7 @@ export const ExitSuppliesModal = () => {
 							<ItemTableRowSupplies>
 								<td>{activeContent?.quantity}</td>
 								<td> {activeContent?.presentation}</td>
-								<td> {activeContent?.measurementUnit}</td>
+								<td> {activeContent?.unit}</td>
 							</ItemTableRowSupplies>
 						</tbody>
 					</table>
@@ -78,8 +78,8 @@ export const ExitSuppliesModal = () => {
 				</InputLabelStyled>
 				<SelectField
 					id="whoWithdrew"
-					name="whoWithdrew"
-					defaultValue={'' || currentInfo?.whoWithdrew}
+					name="whoReceived"
+					defaultValue={currentInfo?.whoReceived}
 					onChange={(e) => handleInput(e.target.value, e.target.name)}
 				>
 					<MenuItem disabled>
@@ -88,6 +88,9 @@ export const ExitSuppliesModal = () => {
 					{employeesSelect.map((ft) => (
 						<MenuItem value={ft}>{t(ft.name)}</MenuItem>
 					))}
+					<MenuItem value={currentInfo?.whoReceived}>
+						{currentInfo?.whoReceived}
+					</MenuItem>
 				</SelectField>
 
 				<div

@@ -11,7 +11,7 @@ const useVehicleContainer = () => {
 	const [isLoading, setLoading] = useState(true);
 
 	const getVehicle = () => {
-		propertiesSelected.map(property => {
+		propertiesSelected.map(property => (
 			api.get(`/GetVehicle/${propertiesSelected}`)
 				.then(res => {
 					setVehicle(formatResponseVehicle(res.data.vehicles));
@@ -19,8 +19,9 @@ const useVehicleContainer = () => {
 				})
 				.catch(err => {
 					console.error(err);
-				});
-		});
+					setLoading(false);
+				})
+			));
 	};
 
 	const deleteVehicle = id => {
@@ -31,9 +32,11 @@ const useVehicleContainer = () => {
 			.then(res => {
 				console.log(res);
 				getVehicle();
+				setLoading(false);
 			})
 			.catch(err => {
 				console.error(err);
+				setLoading(false);
 			});
 	};
 
@@ -41,11 +44,12 @@ const useVehicleContainer = () => {
 		api.defaults.headers.authorization = `Bearer ${token}`;
 		api.post(`/NewVehicle`, data)
 			.then(res => {
-				console.log(res);
 				getVehicle();
+				setLoading(false);
 			})
 			.catch(err => {
 				console.error(err);
+				setLoading(false);
 			});
 	};
 

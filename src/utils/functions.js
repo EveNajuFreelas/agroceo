@@ -50,3 +50,9 @@ export const printOutPDF = (title, columns, data) => {
 	doc.output('dataurlnewwindow', `${title}.pdf`);
 	doc = new jsPDF();
 };
+
+export const formatDateYMDtoDMY = (date) => {
+	const dateArray = date.split('-');
+	const newDate = `${dateArray[2]}/${dateArray[1]}/${dateArray[0]}`
+	return newDate;
+}

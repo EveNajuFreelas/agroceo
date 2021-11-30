@@ -14,6 +14,7 @@ import { useExpensesContainer } from '../../../context/financesContext/expensesC
 import TableHeadDefault from '../TableHead';
 import YesNo from '../yesNo';
 import NoRegister from '../../NoRegistry';
+import { useManagementContainer } from '../../../context/managementContext';
 
 const TableWithDescriptionIcon = ({
 	data,
@@ -23,6 +24,7 @@ const TableWithDescriptionIcon = ({
 	title,
 }) => {
 	const { editActiveContent, setModalState } = useExpensesContainer();
+	const { openExitModal, editActiveContent: editManagementContent } = useManagementContainer();
 	const { colors } = defaultTheme;
 
 	const [checkedItems, setCheckedItems] = useState([]);
@@ -44,8 +46,13 @@ const TableWithDescriptionIcon = ({
 
 	const handleClick = (info) => {
 		console.log(info);
+		// general content + modal state
 		editActiveContent(info);
 		setModalState(true);
+
+		// management content + modal state
+		openExitModal();
+		editManagementContent(info);
 	};
 
 	return (

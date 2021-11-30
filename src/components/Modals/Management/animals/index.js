@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ModalShell } from '../../../Modal/index';
 import {
 	InputFieldsWrapper,
@@ -16,10 +16,30 @@ import { ModalLot } from './lot';
 import { ModalMovements } from './movement';
 import { ModalWeighing } from './weighing';
 
-export const AnimalsModal = ({ t }) => {
-	const { modalState, closeModals } = useModalsContainer();
+export const AnimalsModal = ({ t, activeTab }) => {
+	const { modalState, closeModals, activeContent } = useModalsContainer();
 
 	const [register, setRegister] = useState('animals');
+
+	useEffect(() => {
+		switch(activeTab) {
+			case 0: 
+				setRegister('animals');
+				break;
+			case 1:
+				setRegister('lot');
+				break;
+			case 2:
+				setRegister('movement');
+				break;
+			case 3:
+				setRegister('weighing');
+				break;
+			default:
+				setRegister('animals');
+				break;
+		}
+	}, [activeTab])
 
 	return (
 		<ModalShell
@@ -84,10 +104,10 @@ export const AnimalsModal = ({ t }) => {
 				</RadioGroup>
 			</FormControlStyled>
 			<InputFieldsWrapper>
-				{register === 'animals' && <ModalAnimals t={t} />}
-				{register === 'lot' && <ModalLot t={t} />}
-				{register === 'movement' && <ModalMovements t={t} />}
-				{register === 'weighing' && <ModalWeighing t={t} />}
+				{register === 'animals' && <ModalAnimals t={t} activeContent={activeContent} />}
+				{register === 'lot' && <ModalLot t={t} activeContent={activeContent} />}
+				{register === 'movement' && <ModalMovements t={t} activeContent={activeContent} />}
+				{register === 'weighing' && <ModalWeighing t={t} activeContent={activeContent} />}
 			</InputFieldsWrapper>
 		</ModalShell>
 	);

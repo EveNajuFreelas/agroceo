@@ -54,6 +54,7 @@ const Areas = () => {
 			<AreaModal
 				title={'Registrar Sub-área ou Módulo'}
 				breadcrumbs={['management', 'areas']}
+				areaType={value}
 			/>
 			<HeadSection>
 				<TabsStyled value={value} onChange={handleChange}>

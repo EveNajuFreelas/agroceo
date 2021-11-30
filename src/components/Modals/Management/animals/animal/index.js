@@ -13,7 +13,7 @@ import {
 	MenuItem,
 	ListItemText,
 } from '@material-ui/core';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { TitleTask } from '../../vehicleModals/UtilzationModal/UtilizationOption/styles';
 import {
 	categorySelect,
@@ -21,8 +21,13 @@ import {
 } from '../../../../../utils/dataMock/selectMock';
 import ItemSelect from '../../../SelectField';
 
-export const ModalAnimals = ({ t }) => {
-	const [currentInfo, setCurrentInfo] = useState({});
+export const ModalAnimals = ({ t, activeContent }) => {
+	const [currentInfo, setCurrentInfo] = useState(activeContent);
+	console.log(currentInfo);
+
+	useEffect(() => {
+		setCurrentInfo(activeContent);
+	}, [activeContent])
 
 	const handleInput = (info, inputName) => {
 		setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
@@ -56,20 +61,25 @@ export const ModalAnimals = ({ t }) => {
 							</ListItemText>
 						</MenuItem>
 					))}
+					<MenuItem key={currentInfo?.specie} value={currentInfo?.specie}>
+						<ListItemText>
+							<TitleTask>{currentInfo?.specie}</TitleTask>
+						</ListItemText>
+					</MenuItem>
 				</SelectField>
 				<FormControlStyled component="fieldset">
 					<InputLabelRadio required component="legend" htmlFor="sex">
 						{t('sex')}
 					</InputLabelRadio>
-					<RadioGroup row id="sex" name="sex">
+					<RadioGroup row id="sex" name="sex" defaultValue={currentInfo?.sex}>
 						<FormControlLabel
-							value="male"
+							value="Macho"
 							label={t('male')}
 							control={<Radio />}
 							defaultChecked={currentInfo?.sex === 'male'}
 						/>
 						<FormControlLabel
-							value="female"
+							value="Fêmea"
 							label={t('female')}
 							control={<Radio />}
 							defaultChecked={currentInfo?.sex === 'female'}
@@ -84,7 +94,7 @@ export const ModalAnimals = ({ t }) => {
 					id="age"
 					name="age"
 					type="number"
-					defaultValue={currentInfo?.age}
+					defaultValue={currentInfo?.age?.replace(/[^0-9]/g,'')}
 					onChange={(e) => handleInput(e.target.value, e.target.name)}
 					placeholder={t('typeSomething')}
 					helperText={t('inMonths')}
@@ -126,7 +136,7 @@ export const ModalAnimals = ({ t }) => {
 					id="quantity"
 					name="quantity"
 					type="number"
-					defaultValue={currentInfo?.quantity}
+					defaultValue={currentInfo?.theAmount}
 					onChange={(e) => handleInput(e.target.value, e.target.name)}
 					placeholder={t('typeSomething')}
 					helperText={t('justNumbers')}

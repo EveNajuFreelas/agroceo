@@ -27,6 +27,9 @@ const ModalsContext = () => {
 
 	const closeModals = () => {
 		setmodalState(false);
+		setModalEditState(false);
+		setModalUtilizationState(false);
+		setSecondModalState(false);
 		setActiveContent();
 	};
 

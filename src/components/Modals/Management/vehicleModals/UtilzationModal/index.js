@@ -16,18 +16,21 @@ import {
 import { useModalsContainer } from '../../../../../context/modalsContext';
 import { UtilizationFirst, UtilizationSecond } from './UtilizationOption';
 import { RevisionFirst, RevisionSecond } from './RevisionOption';
-import { useRole } from '../../../../../context/rolesContext';
 import { useTask } from '../../../../../context/taskContext';
 import { employeesSelect } from '../../../../../utils/dataMock/selectMock';
 
 export const UtilizationModal = ({ title, breadcrumbs, odometerHourmeter }) => {
 	const { t } = useTranslation();
 	const { tasks } = useTask();
-	const { modalUtilizationState, closeUtilizationModal } =
+	const { modalUtilizationState, closeUtilizationModal, activeContent } =
 		useModalsContainer();
 
 	const [register, setRegister] = useState('utilization');
-	const [currentInfo, setCurrentInfo] = useState(null);
+	const [currentInfo, setCurrentInfo] = useState(activeContent);
+
+	useEffect(() => {
+		setCurrentInfo(activeContent);
+	}, [activeContent])
 
 	const handleInput = (info, inputName) => {
 		setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));

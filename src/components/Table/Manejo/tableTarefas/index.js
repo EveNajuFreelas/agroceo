@@ -14,11 +14,13 @@ import { iconList } from '../../../../assets/Icons/icon-list';
 import TableHeadDefault from '../../TableHead';
 import NoRegister from '../../../NoRegistry';
 import { useTranslation } from 'react-i18next';
+import { useModalsContainer } from '../../../../context/modalsContext';
 
 const TableTarefas = ({ data, columns, deleteFunction }) => {
 	const { colors } = defaultTheme;
 	const { t } = useTranslation();
 	const [checkedItems, setCheckedItems] = useState([]);
+	const { editActiveContent, openModal } = useModalsContainer();
 
 	if (data.length === 0) {
 		return <NoRegister />;
@@ -31,6 +33,13 @@ const TableTarefas = ({ data, columns, deleteFunction }) => {
 				: [...checkedItems, item]
 		);
 	};
+
+	const handleClick = data => {
+		console.log(data);
+		editActiveContent(data);
+		openModal();
+	}
+
 	const getColor = Object.freeze({
 		open: '#13ABCD',
 		refused: colors.auxiliar,
@@ -101,6 +110,7 @@ const TableTarefas = ({ data, columns, deleteFunction }) => {
 											cursor: 'pointer',
 										}}
 										src={iconList.edit}
+										onClick={() => handleClick(row.data)}
 									/>
 									<img
 										alt="icon delete"

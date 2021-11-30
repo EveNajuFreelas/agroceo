@@ -104,7 +104,7 @@ export const english = {
 	exit: 'Exit',
 	fuelType: 'Fuel Type',
 	commonDiesel: 'Common Diesel',
-	s10Diesel: 'S10 Diesel',
+	s10Diesel: 'S-10 Diesel',
 	commonGasoline: 'Common Gasoline',
 	gasolineAdditive: 'Gasoline Additive',
 	ethanol: 'Ethanol / Alcohol',

@@ -55,9 +55,9 @@ const Sidebar = () => {
         <ListItemWrapper
             key={i.id}
             onClick={() => handleSubItemClick(i)}
-            isSubSidebar
+            issubsidebar={true}
         >
-            <ListItemName isSubSidebar>{t(i.text)}</ListItemName>
+            <ListItemName issubsidebar={true}>{t(i.text)}</ListItemName>
         </ListItemWrapper>
     ));
     
@@ -100,7 +100,7 @@ const Sidebar = () => {
                 PaperProps={{ elevation: 8 }}
             >
                <ListWrapper>
-                    <SubSidebarHeader isSubSidebar>{t(menuItems[activeId].name)}</SubSidebarHeader>
+                    <SubSidebarHeader issubsidebar={true}>{t(menuItems[activeId].name)}</SubSidebarHeader>
                     {renderSubItems()}
                 </ListWrapper>
             </SubSidebar>

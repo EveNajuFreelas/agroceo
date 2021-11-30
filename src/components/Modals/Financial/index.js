@@ -343,7 +343,7 @@ export const FinancialModal = ({ title, breadcrumbs }) => {
 						<SelectField
 							id="parcels"
 							name="Parcela"
-							value={currentInfo?.Parcela}
+							defaultValue={currentInfo?.Parcela}
 							onChange={(e) =>
 								handleInput(e.target.value, e.target.name)
 							}

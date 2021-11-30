@@ -6,7 +6,7 @@ import {
 import CloseIcon from '@material-ui/icons/Close';
 
 import { ItemTableRow, TitleTableRow } from './styles';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { lotSelect, subareas } from '../../../../../utils/dataMock/selectMock';
 import {
 	ListItemText,
@@ -20,12 +20,19 @@ import {
 import ItemSelect from '../../../SelectField';
 import DateInput from '../../inputs/dateInput';
 
-export const ModalLot = ({ t }) => {
-	const [inventorySelected, setInventorySelected] = useState([]);
-	const [currentInfo, setCurrentInfo] = useState({});
+export const ModalLot = ({ t, activeContent }) => {
+	const [currentInfo, setCurrentInfo] = useState(activeContent);
+
+	const [inventorySelected, setInventorySelected] = useState(currentInfo?.content);
 	const [openDialogAnimals, setDialogAnimals] = useState(false);
 	const [openDialogSubareas, setDialogSubareas] = useState(false);
 	const [titleSelected, setTitleSelected] = useState('');
+
+	console.log(activeContent);
+
+	useEffect(() => {
+		setCurrentInfo(activeContent);
+	}, [activeContent]);
 
 	const handleInput = (info, inputName) => {
 		setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
@@ -51,7 +58,6 @@ export const ModalLot = ({ t }) => {
 	};
 
 	const createTitle = (lot) => {
-		console.log(lot);
 		setTitleSelected(
 			`${lot.specie} - ${lot.category} - ${lot.sex.substr(0, 1)} - ${
 				lot.age
@@ -61,7 +67,6 @@ export const ModalLot = ({ t }) => {
 
 	const renderAnimalsDialog = () => (
 		<Dialog onClose={() => handleSave()} open={openDialogAnimals}>
-			{console.log(titleSelected)}
 			<DialogTitle>{titleSelected}</DialogTitle>
 			<DialogContent>
 				<p style={{ marginBottom: '20px' }}>
@@ -158,8 +163,8 @@ export const ModalLot = ({ t }) => {
 				</InputLabelStyled>
 				<InputField
 					id="lotname"
-					name="lotname"
-					defaultValue={currentInfo?.quantity}
+					name="nameLot"
+					defaultValue={currentInfo?.nameLot}
 					onChange={(e) => handleInput(e.target.value, e.target.name)}
 					placeholder={t('typeSomething')}
 				/>
@@ -169,8 +174,8 @@ export const ModalLot = ({ t }) => {
 				</InputLabelStyled>
 				<SelectField
 					id="linkSubarea"
-					name="linkSubarea"
-					value={currentInfo?.linkSubarea}
+					name="subarea"
+					value={currentInfo?.subarea}
 					onChange={(e) => {
 						handleInput(e.target.value, e.target.name);
 						handleSubareaDialog();
@@ -187,6 +192,11 @@ export const ModalLot = ({ t }) => {
 							</ListItemText>
 						</MenuItem>
 					))}
+					<MenuItem key={currentInfo?.subarea} value={currentInfo?.subarea}>
+						<ListItemText>
+							{currentInfo?.subarea}
+						</ListItemText>
+					</MenuItem>
 				</SelectField>
 			</div>
 
@@ -213,7 +223,7 @@ export const ModalLot = ({ t }) => {
 
 						return selected
 							.map((item) => {
-								return `${item.specie} - ${item.category}`;
+								return `${item.specie || item.raceSpecies} - ${item.category || item.type}`;
 							})
 							.join(', ');
 					}}
@@ -261,11 +271,11 @@ export const ModalLot = ({ t }) => {
 							{inventorySelected.map((item) => (
 								<ItemTableRow>
 									<td>
-										{item.specie} - {item.category}
+										{item.specie || item.raceSpecies} - {item.category || item.type}
 									</td>
 									<td>{item.sex}</td>
 									<td>{item.age}</td>
-									<td>{item.qtnd}</td>
+									<td>{item.qtnd || item.quantity}</td>
 									<td>
 										<CloseIcon
 											style={{ cursor: 'pointer' }}

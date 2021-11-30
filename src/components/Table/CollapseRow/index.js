@@ -15,6 +15,7 @@ import {
 } from '@material-ui/core';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import { useModalsContainer } from '../../../context/modalsContext';
 
 import { iconList } from '../../../assets/Icons/icon-list';
 
@@ -25,6 +26,7 @@ const CollapseRow = ({
 	checkedItems,
 	handleCheck,
 }) => {
+	const { editActiveContent, openModal } = useModalsContainer();
 	const { colors } = defaultTheme;
 	const [open, setOpen] = useState(false);
 
@@ -38,6 +40,11 @@ const CollapseRow = ({
 		},
 	});
 	const classes = useRowStyles();
+
+	const handleClick = data => {
+		editActiveContent(data);
+		openModal();
+	}
 
 	return (
 		<>
@@ -79,6 +86,7 @@ const CollapseRow = ({
 							cursor: 'pointer',
 						}}
 						src={iconList.edit}
+						onClick={() => handleClick(row.data)}
 					/>
 					<img
 						alt="icon delete"

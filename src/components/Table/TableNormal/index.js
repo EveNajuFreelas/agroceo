@@ -121,7 +121,6 @@ const TableNormal = ({
 										onClick={() => {
 											openModal();
 											editActiveContent(row.data);
-											console.log(row.data);
 										}}
 									/>
 									<img

@@ -38,7 +38,7 @@ export const ModalLot = ({ t, activeContent }) => {
 		setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
 	};
 
-	const handleInventorySelected = (event, title) => {
+	const handleInventorySelected = (event) => {
 		handleSave();
 		setInventorySelected(event.target.value);
 	};

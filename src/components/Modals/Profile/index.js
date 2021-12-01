@@ -1,6 +1,7 @@
 import { MenuItem } from '@material-ui/core';
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import ReactInputMask from 'react-input-mask';
 import { iconList } from '../../../assets/Icons/icon-list';
 import { useAuthentication } from '../../../context/authContext';
 import { ModalShell } from '../../Modal';
@@ -130,15 +131,21 @@ export const ProfileModal = () => {
 						<InputLabelStyled htmlFor="phone">
 							{t('phone')}
 						</InputLabelStyled>
-						<InputField
-							id="phone"
-							name="phone"
-							type="phone"
+						<ReactInputMask
+							mask="(99) 9 9999-9999"
+							maskChar=" "
 							onChange={(e) =>
 								handleInput(e.target.value, e.target.name)
 							}
-							placeholder={t('typeSomething')}
-						/>
+						>
+							{() => (
+								<InputField
+									id="phone"
+									name="phone"
+									placeholder={t('typeSomething')}
+								/>
+							)}
+						</ReactInputMask>
 					</div>
 				</div>
 

@@ -16,15 +16,15 @@ export const FunctionsModal = () => {
 	const { secondModalState, closeSecondModal, activeContent } =
 		useModalsContainer();
 	const weekdays = [
-		'monday',
-		'tuesday',
-		'wednesday',
-		'thursday',
-		'friday',
-		'saturday',
-		'sunday',
+		t('monday'),
+		t('tuesday'),
+		t('wednesday'),
+		t('thursday'),
+		t('friday'),
+		t('saturday'),
+		t('sunday'),
 	];
-	const dayPeriods = ['morning', 'afternoon', 'night'];
+	const dayPeriods = [t('morning'), t('afternoon'), t('night')];
 	const [currentInfo, setCurrentInfo] = useState(activeContent);
 
 	const handleInput = (info, inputName) => {
@@ -93,7 +93,7 @@ export const FunctionsModal = () => {
 					</SelectField>
 				</div>
 			</div>
-			<div style={{ display: 'flex' }}>
+			<div style={{ display: 'flex', justifyContent: 'space-between' }}>
 				{weekdays.map((wd) => (
 					<div style={{ display: 'flex', flexDirection: 'column' }}>
 						<div style={{ display: 'flex', alignItems: 'center' }}>

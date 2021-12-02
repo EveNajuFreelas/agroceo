@@ -16,7 +16,7 @@ export const EditEmployeeModal = () => {
     const { t } = useTranslation();
 	const { modalEditState, closeEditModal, activeContent } = useModalsContainer();
 	const [currentInfo, setCurrentInfo] = useState(activeContent);
-
+	console.log(currentInfo)
 	useEffect(() => {
 		setCurrentInfo(activeContent);
 	}, [activeContent]);
@@ -103,11 +103,11 @@ export const EditEmployeeModal = () => {
 					</InputLabelStyled>
 					<InputField
 						id="nickname"
-						name="nickname"
+						name="surName"
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}
-						defaultValue={currentInfo?.nickname}
+						defaultValue={currentInfo?.surName}
 					/>
 				</div>
 				<div style={{ width: '48%' }}>
@@ -125,7 +125,7 @@ export const EditEmployeeModal = () => {
 				</div>
 			</div>
 			<InputLabelStyled htmlFor="employeePhoto">{t('employeePhoto')}</InputLabelStyled>
-			<UploadField id='employeePhoto' buttonName={t('select')} />
+			<UploadField id='employeePhoto' buttonName={t('select')} label={t('employeePhoto')} />
         </div>
         </InputFieldsWrapper>
     </ModalShell>);

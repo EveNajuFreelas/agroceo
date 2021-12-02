@@ -56,3 +56,9 @@ export const formatDateYMDtoDMY = (date) => {
 	const newDate = `${dateArray[2]}/${dateArray[1]}/${dateArray[0]}`
 	return newDate;
 }
+
+export const formatStringToFirstCapitalLetter = (data) => {
+	const lowercaseString = data.toLowerCase();
+
+	return lowercaseString.charAt(0).toUpperCase() + lowercaseString.slice(1);
+}

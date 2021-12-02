@@ -32,6 +32,7 @@ export const ExitManagementModal = () => {
 	}, [activeContent])
 
 	const handleInput = (info, inputName) => {
+		console.log('name: ', inputName, ', info: ', info);
 		setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
 	};
 
@@ -72,6 +73,7 @@ export const ExitManagementModal = () => {
 							row
 							id="whereWasFilled"
 							defaultValue={currentInfo?.local}
+							defaultChecked={currentInfo?.local}
 						>
 							<FuelTypeRadio
 								type="radio"
@@ -113,7 +115,7 @@ export const ExitManagementModal = () => {
 							<ItemSelect value="" />
 						</MenuItem>
 						{fuelTypes.map((ft) => (
-							<MenuItem value={ft.value}>{t(ft.name)}</MenuItem>
+							<MenuItem value={t(ft.name)}>{t(ft.name)}</MenuItem>
 						))}
 					</SelectField>
 					<InputLabelStyled required htmlFor="quantity">
@@ -142,6 +144,7 @@ export const ExitManagementModal = () => {
 							</InputLabelStyled>
 							<DateInput
 								name="fillDate"
+								defaultValue={currentInfo?.data?.split('-')[0].trim()}
 								onChange={(e) =>
 									handleInput(e.target.value, e.target.name)
 								}
@@ -153,13 +156,14 @@ export const ExitManagementModal = () => {
 							</InputLabelStyled>
 							<HourInput
 								name="fillHour"
+								defaultValue={currentInfo?.data?.split('-')[1].trim()}
 								onChange={(e) =>
 									handleInput(e.target.value, e.target.name)
 								}
 							/>
 						</div>
 					</div>
-					{currentInfo?.filledUpTank === 'atFarm' && (
+					{currentInfo?.local === "Na fazenda" && (
 						<>
 							<InputLabelStyled required htmlFor="whoFilledUp">
 								{t('whoFilledUp')}

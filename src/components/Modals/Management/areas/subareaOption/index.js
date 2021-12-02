@@ -2,6 +2,7 @@ import { InputAdornment, ListItemText, MenuItem } from '@material-ui/core';
 import { useState } from 'react';
 import { iconList } from '../../../../../assets/Icons/icon-list';
 import { areas } from '../../../../../utils/dataMock/selectMock';
+import { formatStringToFirstCapitalLetter } from '../../../../../utils/functions';
 
 import {
 	SelectField,
@@ -13,9 +14,9 @@ import { TitleTask } from '../../vehicleModals/UtilzationModal/UtilizationOption
 
 export const SubAreaOption = ({ t, activeContent }) => {
 	const [currentInfo, setCurrentInfo] = useState(activeContent);
-	console.log(currentInfo);
 
 	const handleInput = (info, inputName) => {
+		console.log(inputName, info);
 		setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
 	};
 
@@ -84,7 +85,9 @@ export const SubAreaOption = ({ t, activeContent }) => {
 			<SelectField
 				id="destination"
 				name="destination"
-				value={currentInfo?.destination}
+				value={currentInfo.destination && 
+					formatStringToFirstCapitalLetter(currentInfo?.destination)
+				}
 				onChange={(e) => handleInput(e.target.value, e.target.name)}
 			>
 				<MenuItem disabled>
@@ -97,11 +100,6 @@ export const SubAreaOption = ({ t, activeContent }) => {
 						</ListItemText>
 					</MenuItem>
 				))}
-				<MenuItem key={currentInfo?.destination} value={currentInfo?.destination}>
-					<ListItemText>
-						<TitleTask>{currentInfo?.destination}</TitleTask>
-					</ListItemText>
-				</MenuItem>
 			</SelectField>
 
 			<div

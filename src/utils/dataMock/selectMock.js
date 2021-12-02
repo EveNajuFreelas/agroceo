@@ -106,6 +106,12 @@ export const subareas = [
 		pastures: 'Pasto do pomar',
 		destination: 'Pasto 2',
 	},
+	{
+		id: '4',
+		size: '60 ha',
+		pastures: 'Antiga matinha',
+		destination: 'Sub-área 9'
+	}
 ];
 
 export const speciesSelect = [

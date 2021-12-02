@@ -168,9 +168,7 @@ export const RegisterModalTask = () => {
 							<MenuItem key={center.id} value={center}>
 								<Checkbox
 									checked={
-										currentInfo?.costCenters.indexOf(
-											center
-										) > -1
+										currentInfo?.costCenters?.indexOf(center) > -1
 									}
 								/>
 								<ListItemText>

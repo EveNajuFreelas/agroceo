@@ -77,17 +77,11 @@ export const AgricultureModal = () => {
 							<MenuItem key={subarea.id} value={subarea}>
 								<ListItemText>
 									<TitleTask>
-										{subarea.destination} {subarea.pastures}{' '}
-										- {subarea.size}
+										{subarea.destination} {subarea.pastures}{' '} - {subarea.size}
 									</TitleTask>
 								</ListItemText>
 							</MenuItem>
 						))}
-						<MenuItem key={currentInfo?.subarea} value={currentInfo?.subarea}>
-							<TitleTask>
-								{currentInfo?.subarea}
-							</TitleTask>
-						</MenuItem>
 					</SelectField>
 					<InputLabelStyled required htmlFor="typeAgriculture">
 						{t('typeAgriculture')}

@@ -8,14 +8,13 @@ const DateInput = ({ onChange, name, defaultValue }) => {
 	const { t } = useTranslation();
 
 	return (
-		<ReactInputMask mask="99 / 99 / 9999" maskChar=" " onChange={onChange}>
+		<ReactInputMask mask="99 / 99 / 9999" maskChar=" " onChange={onChange} defaultValue={defaultValue}>
 			{() => (
 				<InputField
 					id={name}
 					name={name}
 					helperText={t('justNumbers')}
 					placeholder="DD/MM/AAAA"
-					defaultValue={defaultValue}
 					InputProps={{
 						endAdornment: (
 							<InputAdornment position="end">

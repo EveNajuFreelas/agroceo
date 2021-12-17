@@ -7,6 +7,7 @@ import {
 	InputField,
 	UploadField,
 	InputLabelStyled,
+	TextArea,
 } from '../../../Modals/inputsStyles';
 import {
 	Checkbox,
@@ -22,6 +23,8 @@ import {
 	employeesSelect,
 } from '../../../../utils/dataMock/selectMock';
 import { TitleTask } from '../vehicleModals/UtilzationModal/UtilizationOption/styles';
+import ItemSelect from '../../SelectField';
+
 import { defaultTheme } from '../../../../theme';
 
 export const RegisterModalTask = () => {
@@ -41,9 +44,15 @@ export const RegisterModalTask = () => {
 	const { t } = useTranslation();
 	const { modalState, closeModals, activeContent } = useModalsContainer();
 	const [currentInfo, setCurrentInfo] = useState(activeContent);
+	const [costCenters, setCostsCenters] = useState([]);
+
 
 	const handleInput = (info, inputName) => {
 		setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
+	};
+
+	const handleCostCenters = (event) => {
+		setCostsCenters(event.target.value);
 	};
 
 	return (
@@ -70,12 +79,12 @@ export const RegisterModalTask = () => {
 			<InputFieldsWrapper>
 				<div
 					style={{
-						width: '48%',
+						width: '54%',
 						display: 'flex',
 						flexDirection: 'column',
 					}}
 				>
-					<InputLabelStyled htmlFor="title">
+					<InputLabelStyled required htmlFor="title">
 						{t('title')}
 					</InputLabelStyled>
 					<InputField
@@ -90,13 +99,15 @@ export const RegisterModalTask = () => {
 					<InputLabelStyled htmlFor="description">
 						{t('description')}
 					</InputLabelStyled>
-					<InputField
+					<TextArea
 						id="description"
 						name="description"
+						defaultValue={currentInfo?.description}
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)
 						}
 						placeholder={t('typeSomething')}
+						style={{width: '94%'}}
 					/>
 
 					<div
@@ -106,7 +117,7 @@ export const RegisterModalTask = () => {
 						}}
 					>
 						<div style={{ width: '40%' }}>
-							<InputLabelStyled htmlFor="expectateStartDate">
+							<InputLabelStyled required htmlFor="expectateStartDate">
 								{t('expectateStartDate')}
 							</InputLabelStyled>
 							<InputField
@@ -130,6 +141,9 @@ export const RegisterModalTask = () => {
 									handleInput(e.target.value, e.target.name)
 								}
 							>
+								<MenuItem disabled>
+									<ItemSelect value="" />
+								</MenuItem>
 								{employeesSelect.map((employee) => (
 									<MenuItem
 										key={employee.id}
@@ -148,22 +162,31 @@ export const RegisterModalTask = () => {
 					<SelectField
 						id="costCenters"
 						name="costCenters"
-						value={currentInfo?.costCenters}
+						value={costCenters}
 						multiple
-						onChange={(e) =>
-							handleInput(e.target.value, e.target.name)
-						}
+						onChange={handleCostCenters}
 						renderValue={(selected) =>
-							selected.map((value) => (
+							{
+								console.log(selected);
+								if (typeof selected === 'undefined') {
+									console.log('entrou');
+								    return (
+									<MenuItem disabled>
+										<ItemSelect value="" />
+									</MenuItem>)
+							    }
+
+							return selected.map((value) => (
 								<Chip
 									key={value}
 									label={value.name}
 									className={classes.chip}
 								/>
-							))
+							))}
 						}
 						style={{ width: '100%' }}
 					>
+						
 						{costCentersSelect.map((center) => (
 							<MenuItem key={center.id} value={center}>
 								<Checkbox
@@ -181,18 +204,19 @@ export const RegisterModalTask = () => {
 
 				<Divider orientation="vertical" flexItem component="div" />
 
-				<div style={{ width: '48%' }}>
+				<div style={{ width: '42%' }}>
 					<InputLabelStyled htmlFor="photoBeforeStarting">
 						{t('photoBeforeStarting')}
 					</InputLabelStyled>
 					<UploadField
 						id="photoBeforeStarting"
-						// docName={
-						// 	currentInfo?.DocumentPicture !== '--'
-						// 		? currentInfo?.DocumentPicture
-						// 		: null
-						// }
 						name="photoBeforeStarting"
+						accept="image/*"
+						docName={
+							currentInfo?.photoBeforeStarting
+								? currentInfo?.photoBeforeStarting?.split('\\').pop()
+								: null
+						}
 						buttonName={t('select')}
 						onChange={(e) =>
 							handleInput(e.target.value, e.target.name)

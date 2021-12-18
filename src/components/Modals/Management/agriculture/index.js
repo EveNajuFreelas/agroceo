@@ -73,11 +73,11 @@ export const AgricultureModal = () => {
 						onChange={e => handleInput(e.target.value, e.target.name)}
 						defaultValue={currentInfo?.subarea}
 					>
-						{subareas.map((subarea) => (
-							<MenuItem key={subarea.id} value={subarea}>
+						{subareas?.map((subarea) => (
+							<MenuItem key={subarea.id} value={subarea.subareaName}>
 								<ListItemText>
 									<TitleTask>
-										{subarea.destination} {subarea.pastures}{' '} - {subarea.size}
+										{subarea.subareaName}
 									</TitleTask>
 								</ListItemText>
 							</MenuItem>

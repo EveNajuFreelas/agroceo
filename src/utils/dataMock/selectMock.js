@@ -90,27 +90,23 @@ export const tasksSelect = [
 export const subareas = [
 	{
 		id: '1',
-		size: '7 ha',
-		pastures: 'Pasto da onça',
-		destination: 'Pasto 4',
+		subareaName: 'Sub-área 4 “Pasto da onça” - 7 ha',
 	},
 	{
 		id: '2',
-		size: '10 ha',
-		pastures: 'Pasto da vaca louca',
-		destination: 'Pasto 3',
+		subareaName: 'Sub-área 3 “Pasto da vaca louca” - 10 ha',
 	},
 	{
 		id: '3',
-		size: '7 ha',
-		pastures: 'Pasto do pomar',
-		destination: 'Pasto 2',
+		subareaName: 'Sub-área 2 “Pasto do pomar” - 7 ha',
 	},
 	{
 		id: '4',
-		size: '60 ha',
-		pastures: 'Antiga matinha',
-		destination: 'Sub-área 9'
+		subareaName: 'Sub-área 9 “Antiga matinha” - 60 ha',
+	},
+	{
+		id: '5',
+		subareaName: 'Sub-área 10 “Área do córrego” - 50 ha',
 	}
 ];
 

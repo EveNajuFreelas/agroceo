@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ModalShell } from '../../../../Modal';
 import {
@@ -27,9 +27,74 @@ export const FunctionsModal = () => {
 	const dayPeriods = [t('morning'), t('afternoon'), t('night')];
 	const [currentInfo, setCurrentInfo] = useState(activeContent);
 
+	useEffect(() => {
+		setCurrentInfo(activeContent);
+	}, [activeContent])
+
 	const handleInput = (info, inputName) => {
-		setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
+		if(inputName == 'day') {
+			// setCurrentInfo((curr) => ({
+			// 	...curr,
+			// 	Days: [
+			// 		...curr.Days,
+			// 		{
+			// 			day: info,
+			// 			period: '',
+			// 		}
+			// 	]
+			// }))
+		} else if(inputName == 'period') {
+			// setCurrentInfo((curr) => ({
+			// 	...curr,
+			// 	Days: [
+			// 		...curr.Days,
+			// 		{
+			// 			day: '',
+			// 			period: info,
+			// 		}
+			// 	]
+			// }))
+		} else {
+			setCurrentInfo((curr) => ({ ...curr, [inputName]: info }));
+		}
 	};
+
+	const renderWeekdaysWithDayPeriod = (data) => {
+		const dayId = `${data}-${Math.random()}`;
+		// TODO: atualizar quando currentInfo atualizar
+		const isDisabled = currentInfo?.Days?.filter(days => days.day == data)[0];
+
+		return (
+			<div style={{ display: 'flex', flexDirection: 'column' }}>
+				<div style={{ display: 'flex', alignItems: 'center' }}>
+					<Checkbox 
+						id={dayId} 
+						value={t(data)}
+						name="day"
+						onChange={(e) =>
+							handleInput(e.target.value, e.target.name)
+						} 
+					/>
+					<p>{t(data)}</p>
+				</div>
+				{dayPeriods.map((dp) => (
+					<div
+						style={{
+							display: 'flex',
+							alignItems: 'center',
+						}}
+					>
+						<Checkbox 
+							name="period" 
+							value={t(dp)} 
+							disabled={isDisabled == undefined} 
+						/>
+						<p>{t(dp)}</p>
+					</div>
+				))}
+			</div>
+		);
+	}
 
 	return (
 		<ModalShell
@@ -94,25 +159,7 @@ export const FunctionsModal = () => {
 				</div>
 			</div>
 			<div style={{ display: 'flex', justifyContent: 'space-between' }}>
-				{weekdays.map((wd) => (
-					<div style={{ display: 'flex', flexDirection: 'column' }}>
-						<div style={{ display: 'flex', alignItems: 'center' }}>
-							<Checkbox value={wd} />
-							<p>{wd}</p>
-						</div>
-						{dayPeriods.map((dp) => (
-							<div
-								style={{
-									display: 'flex',
-									alignItems: 'center',
-								}}
-							>
-								<Checkbox value={`${wd} ${dp}`} disabled />
-								<p>{dp}</p>
-							</div>
-						))}
-					</div>
-				))}
+				{weekdays.map((wd) => renderWeekdaysWithDayPeriod(wd))}
 			</div>
 		</ModalShell>
 	);

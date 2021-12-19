@@ -178,7 +178,18 @@ export const manejoMaoFuncoes = [
 				'Something else',
 			],
 			Days: [
-				'Segunda-feira(manhã), Terça-feira(manhã), Quarta-Feira(tarde)',
+				{
+					day: 'Segunda-feira',
+					period: 'Manhã',
+				},
+				{
+					day: 'Terça-feira',
+					period: 'Manhã',
+				},
+				{
+					day: 'Quarta-feira',
+					period: 'Tarde',
+				},
 			],
 		},
 	},
@@ -187,7 +198,16 @@ export const manejoMaoFuncoes = [
 			id: '00006',
 			Funcao: 'Ordenhador',
 			Obligations: ['Apartar Gado', 'Ordenhar', 'Armazenar Leite'],
-			Days: ['Segunda-feira(manhã), Quarta-Feira(tarde)'],
+			Days: [
+				{
+					day: 'Segunda-feira',
+					period: 'Manhã',
+				},
+				{
+					day: 'Quarta-feira',
+					period: 'Tarde',
+				},
+			],
 		},
 	},
 ];

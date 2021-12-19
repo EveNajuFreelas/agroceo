@@ -90,7 +90,10 @@ const TableWithChip = ({ data, columns, deleteFunction, thirdLeft }) => {
 													<ChipTable
 														items={row.data[column]}
 													/>
-												) : (
+												) : (index === keys.length - 1 && row.data['Days']) ? (
+													row.data.Days.map(days => `${days.day} - ${days.period};\n`) || '--'
+												) 
+												: (
 													row.data[column] || '--'
 												)}
 											</TableCell>
